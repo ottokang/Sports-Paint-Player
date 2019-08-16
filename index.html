@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>影片分析播放器</title>
+    <link rel="stylesheet" type="text/css" href="sytle.css">
+</head>
+
+<body>
+    <input id="video_source" type="file" accept="video/*">
+    <span id="message">⬅ 請選擇要播放的影片</span>
+    <div id="pen_control">
+        <span class="item">
+            筆跡顏色：
+            <select id="pen_color" name="pen_color">
+                <option value="#f542a7" selected>紅色</option>
+                <option value="#e8c62e">黃色</option>
+                <option value="#0033cc">藍色</option>
+            </select>
+        </span>
+        <span class="item">
+            放大倍率：
+            <select id="resize_radio" name="resize_radio">
+                <option value="1.2">1.2</option>
+                <option value="1.4">1.4</option>
+                <option value="1.6" selected>1.6</option>
+                <option value="1.8">1.8</option>
+                <option value="2.0">2.0</option>
+            </select>
+        </span>
+    </div>
+    <div id="container">
+        <video id="video_content" autoplay></video>
+        <div id="video_playback_time_info" class="video_info">
+            <span id="current_time"></span>
+            /
+            <span id="total_time"></span>
+        </div>
+        <div id="video_playback_speed_info" class="video_info">
+            播放速度：
+            <span id="playback_speed"></span>
+            %
+        </div>
+        <div id="video_resized" class="video_info">標準</div>
+        <div id="video_osd"></div>
+        <div id="control_area">
+            <button id="toggole_button">顯示操作按鍵<kbd>`</kbd></button>
+            <div id="control_buttons">
+                <button id="backward_01_button">倒轉0.1秒<kbd>Q</kbd></button>
+                <button id="speed_up_button">加速10％<kbd>W</kbd></button>
+                <button id="foward_01_button">快轉0.1秒<kbd>E</kbd></button>
+                <br>
+                <button id="backward_5_button">倒轉5秒<kbd>A</kbd></button>
+                <button id="speed_down_button">減速10％<kbd>S</kbd></button>
+                <button id="foward_5_button">快轉5秒<kbd>D</kbd></button>
+                <br>
+                <button id="speed_restore_button">恢復播放速度<kbd>Z</kbd></button>
+                <button id="resize">以滑鼠位置放大/復原<kbd>X</kbd></button>
+                <button id="clear_canvas">清除筆跡<kbd>C</kbd></button>
+                <br>
+                <button id="play_pause_button">暫停/播放<kbd>Space</kbd></button>
+            </div>
+        </div>
+        <canvas id="canvas_area"></canvas>
+        <input id="video_progress" type="range" name="video_progress" min="0" step="0.01">
+    </div>
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="video_control.js"></script>
+    <script src="draw.js"></script>
+    <script src="key_bind.js"></script>
+</body>
+
+</html>
