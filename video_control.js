@@ -4,7 +4,7 @@ var video = $("#video_content")[0]
 var isResized = false
 
 // 選擇影像後播放
-$("#video_source").change(function () {
+$("#video_source").change(function() {
     let file = this.files[0]
     if (video.canPlayType(file.type) === "") {
         showMessage("瀏覽器無法播放此檔案類型：" + file.type)
@@ -17,7 +17,7 @@ $("#video_source").change(function () {
     }
 
     // 設定播放進度列、顯示播放資訊、設定 container 高度、寬度
-    $("#video_content").on("durationchange", function () {
+    $("#video_content").on("durationchange", function() {
         // 根據螢幕大小，設定 Container 大小
         var maxViewWidth = $(window).width() * 0.97
         var maxViewHeight = $(window).height() * 0.88
@@ -45,12 +45,12 @@ $("#video_source").change(function () {
     })
 
     // 綁定播放進度列點擊事件
-    $("#video_progress").click(function () {
+    $("#video_progress").click(function() {
         video.currentTime = $("#video_progress").val()
     })
 
     // 定時更新進度列、播放資訊
-    setInterval(function () {
+    setInterval(function() {
         $("#video_progress").val(video.currentTime)
         $("#current_time").html(video.currentTime.toString().toHHMMSS())
         $("#total_time").html(video.duration.toString().toHHMMSS())
@@ -68,20 +68,20 @@ function playPause() {
     }
 }
 
-// 快轉、倒轉
-function forwardBackward(time) {
-    video.currentTime = video.currentTime + time
-    if (time > 0) {
-        showOsd("+" + time + "秒", "right", "right")
+// 跳躍秒數設定
+function jump(seconds) {
+    video.currentTime = video.currentTime + seconds
+    if (seconds > 0) {
+        showOsd("+" + seconds + "秒", "right", "right")
     } else {
-        showOsd("" + time + "秒", "left", "left")
+        showOsd("" + seconds + "秒", "left", "left")
     }
 }
 
-// 加速、減速
-function speedUpDown(percentage) {
+// 播放速度設定
+function speed(percentage) {
     if (percentage == "100") {
-        video.playbackRate = 1
+        video.playbackRate = 1.0
         showOsd("恢復播放速度", "center", "increase")
     } else if (percentage > 0 && video.playbackRate < 2) {
         video.playbackRate += (percentage / 100)
@@ -93,17 +93,21 @@ function speedUpDown(percentage) {
     $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 }
 
-// 放大影像、復原影像
-function resize() {
-    if (isResized) {
-        $("#video_content").css("transform", "scale(1)")
-        $("#container").css("cursor", "default")
-        $("#video_resized").html("標準大小")
-        $("#video_resized").css("color", "#ffffff")
-        $("#video_resized").css("font-size", "100%")
-        showOsd("標準大小", "center", "decrease")
-        isResized = false
-    } else {
+// 快速倒轉
+function fastReversePlay(seconds) {
+    showOsd("快速倒轉" + seconds + "秒", "center", "increase", seconds * 400)
+    var originTime = video.currentTime
+    var fastForwardinterval = setInterval(function() {
+        video.currentTime -= 0.2
+        if (video.currentTime < originTime - seconds || video.currentTime < 0.5) {
+            clearInterval(fastForwardinterval)
+        }
+    }, 50)
+}
+
+// 放大影像
+function zoomIn() {
+    if (!isResized) {
         $("#video_content").css("transform-origin", resizeXOffset + "% " + resizeYOffset + "%")
         $("#video_content").css("transform", "scale(" + $("#resize_radio").val() + ")")
         $("#container").css("cursor", "zoom-in")
@@ -115,13 +119,26 @@ function resize() {
     }
 }
 
+// 還原影像大小
+function zoomDefault() {
+    if (isResized) {
+        $("#video_content").css("transform", "scale(1)")
+        $("#container").css("cursor", "default")
+        $("#video_resized").html("標準大小")
+        $("#video_resized").css("color", "#ffffff")
+        $("#video_resized").css("font-size", "100%")
+        showOsd("標準大小", "center", "decrease")
+        isResized = false
+    }
+}
+
 // 顯示訊息
 function showMessage(message) {
     $("#message").html(message)
 }
 
 // 顯示影片 OSD 訊息
-function showOsd(text, position = "center", fadeOut = "increase") {
+function showOsd(text, position = "center", fadeOut = "increase", fadeOutTime = 500) {
     $("#video_osd").remove()
     $("#video_resized").after('<div id="video_osd"></div>')
     $("#video_osd").html(text)
@@ -148,13 +165,13 @@ function showOsd(text, position = "center", fadeOut = "increase") {
 
     $("#video_osd").animate({
         opacity: "0"
-    }, 400, function () {
+    }, fadeOutTime, function() {
         $(this).remove()
     })
 }
 
 // 處理播放時間為時:分:秒
-String.prototype.toHHMMSS = function () {
+String.prototype.toHHMMSS = function() {
     var sec_num = parseInt(this, 10)
     var hours = Math.floor(sec_num / 3600)
     var minutes = Math.floor((sec_num - (hours * 3600)) / 60)

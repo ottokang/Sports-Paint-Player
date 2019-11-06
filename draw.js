@@ -11,20 +11,20 @@ let isMouseDown = false,
     x = 0,
     y = 0
 
-$(function () {
+$(function() {
     // 綁定選擇筆跡顏色動作、文字顏色變更為筆跡顏色
     $("#pen_color").css("color", $("#pen_color").val())
-    $("#pen_color").change(function () {
+    $("#pen_color").change(function() {
         ctx.strokeStyle = $("#pen_color").val()
         $("#pen_color").css("color", $("#pen_color").val())
     })
-    $("#pen_color option").each(function (index) {
+    $("#pen_color option").each(function(index) {
         $(this).css("color", $(this).val())
     })
 })
 
 // 影片啟動時設定 canvas 大小、筆跡樣式
-$("#video_content").on("durationchange", function () {
+$("#video_content").on("durationchange", function() {
     canvas.show()
     ctx.canvas.width = $("#video_content").width()
     ctx.canvas.height = $("#video_content").height()
@@ -35,27 +35,28 @@ $("#video_content").on("durationchange", function () {
 })
 
 // 綁定滑鼠下筆動作
-canvas.mousedown(function (e) {
+canvas.mousedown(function(e) {
     isMouseDown = true
     x = e.offsetX
     y = e.offsetY
     draw(e)
 })
 
-canvas.mouseup(function (e) {
+canvas.mouseup(function(e) {
     isMouseDown = false
 })
 
-canvas.mouseover(function () {
+canvas.mouseover(function() {
     isInCanvas = true
 })
 
-canvas.mouseout(function (e) {
+canvas.mouseout(function(e) {
     isInCanvas = false
 })
 
-canvas.mousemove(function (e) {
+canvas.mousemove(function(e) {
     draw(e)
+    // 紀錄滑鼠座標，作為放大縮小用
     resizeXOffset = parseInt(e.offsetX / ctx.canvas.width * 100)
     resizeYOffset = parseInt(e.offsetY / ctx.canvas.height * 100)
 })
