@@ -3,6 +3,9 @@
 // 設定影片放大基準位置
 var resizeXOffset, resizeYOffset
 
+// 紀錄原先的滑鼠指標
+var originMouseCursor
+
 // 設定 Canvas 畫布
 var canvas = $("#canvas_area")
 var ctx = $("#canvas_area")[0].getContext("2d")
@@ -36,6 +39,8 @@ $("#video_content").on("durationchange", function() {
 
 // 綁定滑鼠下筆動作
 canvas.mousedown(function(e) {
+    originMouseCursor = $("#container").css("cursor")
+    $("#container").css("cursor", "pointer")
     isMouseDown = true
     x = e.offsetX
     y = e.offsetY
@@ -44,14 +49,19 @@ canvas.mousedown(function(e) {
 
 canvas.mouseup(function(e) {
     isMouseDown = false
+    $("#container").css("cursor", originMouseCursor)
 })
 
 canvas.mouseover(function() {
     isInCanvas = true
+    if (isMouseDown) {
+        $("#container").css("cursor", "pointer")
+    }
 })
 
 canvas.mouseout(function(e) {
     isInCanvas = false
+    $("#container").css("cursor", originMouseCursor)
 })
 
 canvas.mousemove(function(e) {

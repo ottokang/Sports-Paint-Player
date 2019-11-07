@@ -8,12 +8,13 @@ kbd {
     line-height: 1.2;
     display: inline-block;
     margin: 0 0.1em 0 0.5em;
-    padding: 0.1em 0.6em;
+    padding: 0.2em 0.6em;
     white-space: nowrap;
     color: #242729;
     border: 1px solid #adb3b9;
     border-radius: 3px;
     background-color: #eeeeee;
+    font-size: 1.2em;
 }
 
 #video_source {
@@ -128,12 +129,21 @@ kbd {
     width: 80%;
 }
 
-#control_area button {
-    font-size: 12px;
-}
-
 #control_buttons {
     display: none;
+}
+
+#control_buttons button {
+    font-size: 12px;
+    width: 10em;
+}
+
+#control_buttons .small {
+    font-size: 0.9em;
+}
+
+#control_buttons .button_info {
+    display: block;
 }
 
 #video_progress {

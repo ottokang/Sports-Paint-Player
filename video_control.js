@@ -84,10 +84,10 @@ function speed(percentage) {
         video.playbackRate = 1.0
         showOsd("恢復播放速度", "center", "increase")
     } else if (percentage > 0 && video.playbackRate < 2) {
-        video.playbackRate += (percentage / 100)
+        video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
         showOsd("播放速度+" + percentage + "%", "center", "increase")
     } else if (percentage < 0 && video.playbackRate > 0.3) {
-        video.playbackRate += (percentage / 100)
+        video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
         showOsd("播放速度" + percentage + "%", "center", "decrease")
     }
     $("#playback_speed").html(Math.floor(video.playbackRate * 100))
@@ -95,7 +95,7 @@ function speed(percentage) {
 
 // 快速倒轉
 function fastReversePlay(seconds) {
-    showOsd("快速倒轉" + seconds + "秒", "center", "increase", seconds * 400)
+    showOsd("快速倒轉" + seconds + "秒", "center", "increase", seconds * 500)
     var originTime = video.currentTime
     var fastForwardinterval = setInterval(function() {
         video.currentTime -= 0.2
@@ -138,7 +138,7 @@ function showMessage(message) {
 }
 
 // 顯示影片 OSD 訊息
-function showOsd(text, position = "center", fadeOut = "increase", fadeOutTime = 500) {
+function showOsd(text, position = "center", fadeOut = "increase", fadeOutTime = 1000) {
     $("#video_osd").remove()
     $("#video_resized").after('<div id="video_osd"></div>')
     $("#video_osd").html(text)
