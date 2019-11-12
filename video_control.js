@@ -32,9 +32,10 @@ $("#video_source").change(function() {
             var conatinerHeight = maxViewHeight
         }
 
-        // 設定 Container 寬、高
+        // 設定 Container 寬、高、Margin-Top 距離
         $("#container").width(containerWidth)
         $("#container").height(conatinerHeight)
+        $("#container").css("margin-top", (maxViewHeight - conatinerHeight) / 2 + "px")
         $("#video_content").width(containerWidth)
         $("#video_content").height(conatinerHeight)
         $("#video_progress").width(containerWidth)

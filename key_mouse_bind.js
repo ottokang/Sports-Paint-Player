@@ -12,20 +12,20 @@ $(function() {
                 playPause()
                 break
 
-            case "KeyA": // A：倒退5秒
-                jump(-5)
+            case "KeyA": // A：倒退
+                jump(0 - parseInt($("#jump_second").val()))
                 break
 
-            case "KeyD": // D：快進5秒
-                jump(5)
+            case "KeyD": // D：快進
+                jump(parseInt($("#jump_second").val()))
                 break
 
-            case "KeyE": // E：倒退0.1秒
-                jump(0.1)
+            case "KeyE": // E：倒退0.2秒
+                jump(0.2)
                 break
 
-            case "KeyQ": // Q：倒退0.1秒
-                jump(-0.1)
+            case "KeyQ": // Q：倒退0.2秒
+                jump(-0.2)
                 break
 
             case "KeyW": // W：加速20%
@@ -40,8 +40,8 @@ $(function() {
                 speed("100")
                 break
 
-            case "KeyZ": // Z：快速倒轉5秒
-                fastReversePlay(5)
+            case "KeyZ": // Z：快速倒轉
+                fastReversePlay(parseInt($("#jump_second").val()))
                 break
 
             case "KeyC": // C：清空畫布

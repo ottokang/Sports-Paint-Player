@@ -29,6 +29,14 @@
                 <option value="2.0">2.0</option>
             </select>
         </span>
+        <span class="item">
+            跳躍秒數：
+            <select id="jump_second" name="jump_second">
+                <option value="3" selected>3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </span>
     </div>
     <div id="container">
         <video id="video_content" autoplay></video>
@@ -47,15 +55,15 @@
         <div id="control_area">
             <button id="toggole_button">顯示操作按鍵<kbd>`</kbd></button>
             <div id="control_buttons">
-                <button id="backward_01_button"><kbd>Q</kbd><span class="button_info">倒退0.1秒</span></span></button>
+                <button id="backward_01_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></span></button>
                 <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
-                <button id="foward_01_button"><kbd>E</kbd><span class="button_info">快進0.1秒</span></button>
+                <button id="foward_01_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
                 <br>
-                <button id="backward_5_button"><kbd>A</kbd><span class="button_info">倒退5秒</span></button>
+                <button id="backward_5_button"><kbd>A</kbd><span class="button_info">倒退</span></button>
                 <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
-                <button id="foward_5_button"><kbd>D</kbd><span class="button_info">快進5秒</span></button>
+                <button id="foward_5_button"><kbd>D</kbd><span class="button_info">快進</span></button>
                 <br>
-                <button id="fast_reverse_button"><kbd>Z</kbd><span class="button_info">快速倒轉5秒</span></button>
+                <button id="fast_reverse_button"><kbd>Z</kbd><span class="button_info">快速倒轉</span></button>
                 <button id="speed_restore_button"><kbd>X</kbd><span class="button_info">恢復播放速度</span></button>
                 <button id="clear_canvas"><kbd>C</kbd><span class="button_info">清除筆跡</span></button>
                 <br>

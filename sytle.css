@@ -18,7 +18,7 @@ kbd {
 }
 
 #video_source {
-    margin: 5px 0 0 5px;
+    margin: 5px;
     padding: 5px;
     border: 2px solid #32ff00;
     border-radius: 10px;
@@ -42,13 +42,13 @@ kbd {
 
 #pen_control .item {
     display: inline-block;
-    margin-right: 0.5em;
+    margin-right: 1em;
 }
 
 #container {
     position: relative;
     overflow: hidden;
-    margin: 5px auto 0 auto;
+    margin: auto;
 }
 
 #video_content {
