@@ -14,6 +14,23 @@ let isMouseDown = false,
     x = 0,
     y = 0
 
+// 影片啟動時設定 canvas 大小、筆跡樣式
+$("#video_content").on("durationchange", function() {
+    canvas.show()
+    ctx.canvas.width = $("#video_content").width()
+    ctx.canvas.height = $("#video_content").height()
+    ctx.strokeStyle = $("#pen_color").val()
+    ctx.lineJoin = "round"
+    ctx.lineCap = "round"
+    ctx.lineWidth = 5
+})
+
+// 綁定畫筆類型選單效果
+$("#pen_type").on("change", function() {
+    $("[class*='pen_type_id_']").hide()
+    $(".pen_type_id_" + $("#pen_type").val()).show()
+})
+
 $(function() {
     // 綁定選擇筆跡顏色動作、文字顏色變更為筆跡顏色
     $("#pen_color").css("color", $("#pen_color").val())
@@ -24,17 +41,6 @@ $(function() {
     $("#pen_color option").each(function(index) {
         $(this).css("color", $(this).val())
     })
-})
-
-// 影片啟動時設定 canvas 大小、筆跡樣式
-$("#video_content").on("durationchange", function() {
-    canvas.show()
-    ctx.canvas.width = $("#video_content").width()
-    ctx.canvas.height = $("#video_content").height()
-    ctx.strokeStyle = $("#pen_color").val()
-    ctx.lineJoin = "round"
-    ctx.lineCap = "round"
-    ctx.lineWidth = 5
 })
 
 // 綁定滑鼠下筆動作

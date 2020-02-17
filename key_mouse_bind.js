@@ -4,6 +4,16 @@ $(function() {
     // 綁定按鍵動作
     $("body").keydown(function(keyEvent) {
         switch (keyEvent.code) {
+            case "Digit1": // 1：畫筆
+                $("#pen_type").val(1).change()
+                showOsd("切換為畫筆", "center", "increase")
+                break
+
+            case "Digit2": // 2：拖曳遮罩
+                $("#pen_type").val(2).change()
+                showOsd("切換為遮罩", "center", "increase")
+                break
+
             case "Backquote": // `：展開/收起操作按鈕
                 $("#control_buttons").toggle(300)
                 break

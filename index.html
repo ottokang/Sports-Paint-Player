@@ -10,8 +10,15 @@
 <body>
     <input id="video_source" type="file" accept="video/*">
     <span id="message">⬅ 請選擇要播放的影片</span>
+
     <div id="pen_control">
         <span class="item">
+            <select id="pen_type" name="pen_type">
+                <option value="1" selected>1.畫筆</option>
+                <option value="2">2.遮罩</option>
+            </select>
+        </span>
+        <span class="item pen_type_id_1">
             筆跡顏色：
             <select id="pen_color" name="pen_color">
                 <option value="#f542a7" selected>紅色</option>
