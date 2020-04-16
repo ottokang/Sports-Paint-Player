@@ -59,10 +59,10 @@
         <div id="control_area">
             <button id="toggole_button">顯示操作按鍵<kbd>`</kbd></button>
             <div id="control_buttons">
-                <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆</span></span></button>
+                <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆</span></button>
                 <button id="mask_button"><kbd>2</kbd><span class="button_info">遮罩</span></button>
                 <br>
-                <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></span></button>
+                <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
                 <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
                 <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
                 <br>
@@ -76,19 +76,19 @@
                 <br>
                 <br>
                 <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
-                <button id="play_pause_button"><kbd class="small">🖱️滑鼠滾輪↑</kbd></kbd><span class="button_info">放大影像</span></button>
-                <button id="play_pause_button"><kbd class="small">🖱️滑鼠滾輪↓</kbd><span class="button_info">還原影像大小</span></button>
+                <button id="zoom_in_button"><kbd class="small">🖱️滑鼠滾輪↑</kbd><span class="button_info">放大影像</span></button>
+                <button id="zoom_restore_button"><kbd class="small">🖱️滑鼠滾輪↓</kbd><span class="button_info">還原影像大小</span></button>
             </div>
         </div>
         <canvas id="canvas_area"></canvas>
         <input id="video_progress" type="range" name="video_progress" min="0" step="0.01">
     </div>
 
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="pen_draw.js"></script>
-    <script src="video_control.js"></script>
-    <script src="canvas_initialize.js"></script>
-    <script src="key_mouse_bind.js"></script>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/pen_draw.js"></script>
+    <script src="js/video_control.js"></script>
+    <script src="js/canvas_initialize.js"></script>
+    <script src="js/key_mouse_bind.js"></script>
 </body>
 
 </html>

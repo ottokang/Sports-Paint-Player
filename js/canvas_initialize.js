@@ -17,6 +17,9 @@ var drawObj = pen,
     x = 0,
     y = 0
 
+// 測試 Canvas
+//setUpTestCanvas()
+
 // 綁定影片啟動時設定 canvas 大小、筆跡樣式
 $("#video_content").on("durationchange", function() {
     canvas.show()
@@ -32,7 +35,6 @@ $("#video_content").on("durationchange", function() {
 $("#pen_type").on("change", function() {
     $("[class*='pen_type_id_']").hide()
     $(".pen_type_id_" + $("#pen_type").val()).show()
-
     switch ($("#pen_type").val()) {
         case "1":
             drawObj = pen
@@ -91,4 +93,15 @@ canvas.mousemove(function(e) {
 function clearCanvas() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     showOsd("清除筆跡", "center", "increase")
+}
+
+function setUpTestCanvas() {
+    canvas.show()
+    ctx.canvas.width = 1200
+    ctx.canvas.height = 800
+    ctx.strokeStyle = "#f542a7"
+    ctx.lineJoin = "round"
+    ctx.lineCap = "round"
+    ctx.lineWidth = 5
+    $("#container").css("position", "inherit")
 }
