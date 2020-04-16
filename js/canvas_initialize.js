@@ -1,28 +1,15 @@
 "use strict"
 
-// 影片縮放基準座標
-var resizeXOffset, resizeYOffset
-
-// 紀錄原先的滑鼠指標
-var originMouseCursor
-
-// 設定 Canvas 畫布
-var canvas = $("#canvas_area")
+// 設定 Canvas 畫布、繪圖物件
 var ctx = $("#canvas_area")[0].getContext("2d")
-
-// 設定繪圖物件
-var drawObj = pen,
-    isMouseDown = false,
-    isInCanvas = false,
-    x = 0,
-    y = 0
+var drawObj = pen
 
 // 測試 Canvas
-//setUpTestCanvas()
+//createTestCanvas()
 
 // 綁定影片啟動時設定 canvas 大小、筆跡樣式
 $("#video_content").on("durationchange", function() {
-    canvas.show()
+    $("#canvas_area").show()
     ctx.canvas.width = $("#video_content").width()
     ctx.canvas.height = $("#video_content").height()
     ctx.strokeStyle = $("#pen_color").val()
@@ -40,7 +27,7 @@ $("#pen_type").on("change", function() {
             drawObj = pen
             break
         case "2":
-            drawObj = null
+            drawObj = mask
             break
     }
 })
@@ -61,32 +48,29 @@ $("#pen_color").change(function() {
     $("#pen_color").css("color", $("#pen_color").val())
 })
 
-// 綁定滑鼠按下動作
-canvas.mousedown(function(e) {
+// 綁定滑鼠在 canvas 上按下動作
+$("#canvas_area").mousedown(function(e) {
     drawObj.mousedown(e)
 })
 
-// 綁定滑鼠放開動作
-canvas.mouseup(function(e) {
+// 綁定滑鼠在 canvas 上放開動作
+$("#canvas_area").mouseup(function(e) {
     drawObj.mouseup(e)
 })
 
-// 綁定滑鼠進入canvas動作
-canvas.mouseover(function(e) {
+// 綁定滑鼠進入 canvas 動作
+$("#canvas_area").mouseover(function(e) {
     drawObj.mouseover(e)
 })
 
-// 綁定滑鼠移出canvas動作
-canvas.mouseout(function(e) {
+// 綁定滑鼠移出 canvas 動作
+$("#canvas_area").mouseout(function(e) {
     drawObj.mouseout(e)
 })
 
-// 綁定滑鼠在canvas上移動動作
-canvas.mousemove(function(e) {
+// 綁定滑鼠在 canvas 上移動動作
+$("#canvas_area").mousemove(function(e) {
     drawObj.mousemove(e)
-    // 紀錄滑鼠座標，作為縮放基準座標
-    resizeXOffset = parseInt(e.offsetX / ctx.canvas.width * 100)
-    resizeYOffset = parseInt(e.offsetY / ctx.canvas.height * 100)
 })
 
 // 清空畫布
@@ -95,8 +79,9 @@ function clearCanvas() {
     showOsd("清除筆跡", "center", "increase")
 }
 
-function setUpTestCanvas() {
-    canvas.show()
+// 建立測試 canvas
+function createTestCanvas() {
+    $("#canvas_area").show()
     ctx.canvas.width = 1200
     ctx.canvas.height = 800
     ctx.strokeStyle = "#f542a7"

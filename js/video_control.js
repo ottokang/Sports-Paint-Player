@@ -1,7 +1,10 @@
 "use strict"
 
 var video = $("#video_content")[0]
-var isResized = false
+
+// 影片是否縮放、縮放基準座標
+var isResized = false,
+    resizeXOffset, resizeYOffset
 
 // 選擇影像後播放
 $("#video_source").change(function() {
@@ -56,6 +59,12 @@ $("#video_source").change(function() {
         $("#current_time").html(video.currentTime.toString().toHHMMSS())
         $("#total_time").html(video.duration.toString().toHHMMSS())
     }, 500)
+
+    // 綁定滑鼠移動紀錄座標，作為縮放基準
+    $("#canvas_area").mousemove(function(e) {
+        resizeXOffset = parseInt(e.offsetX / ctx.canvas.width * 100)
+        resizeYOffset = parseInt(e.offsetY / ctx.canvas.height * 100)
+    })
 })
 
 // 播放、暫停
