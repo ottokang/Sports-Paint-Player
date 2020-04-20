@@ -74,9 +74,11 @@ $("#canvas_area").mousemove(function(e) {
 })
 
 // 清空畫布
-function clearCanvas() {
+function clearCanvas(isShowOsd = true) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    showOsd("清除筆跡", "center", "increase")
+    if (isShowOsd) {
+        showOsd("清除筆跡", "center", "increase")
+    }
 }
 
 // 建立測試 canvas
