@@ -39,17 +39,17 @@ var pen = {
     },
 
     mousemove: function(e) {
-        this.draw(e)
+        if (this.isMouseDown == true && this.isInCanvas == true) {
+            this.draw(e)
+        }
     },
 
     draw: function(e) {
-        if (this.isMouseDown == true && this.isInCanvas == true) {
-            ctx.beginPath()
-            ctx.moveTo(this.x, this.y)
-            ctx.lineTo(e.offsetX, e.offsetY)
-            ctx.stroke()
-            this.x = e.offsetX
-            this.y = e.offsetY
-        }
+        ctx.beginPath()
+        ctx.moveTo(this.x, this.y)
+        ctx.lineTo(e.offsetX, e.offsetY)
+        ctx.stroke()
+        this.x = e.offsetX
+        this.y = e.offsetY
     }
 }

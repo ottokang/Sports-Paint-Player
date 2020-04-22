@@ -6,17 +6,16 @@ var mask = {
     x: 0,
     y: 0,
     originMouseCursor: null,
-    isMaskBackground: false,
 
     mousedown: function(e) {
         this.originMouseCursor = $("#container").css("cursor")
         $("#container").css("cursor", "cell")
         this.isMouseDown = true
+        console.log(this.isInCanvas)
         this.x = e.offsetX
         this.y = e.offsetY
-        this.isMaskBackground = false
-        clearCanvas(false)
-        this.draw(e)
+        this.reDrawBackground()
+        this.drawMask(e)
     },
 
     mouseup: function(e) {
@@ -37,17 +36,23 @@ var mask = {
     },
 
     mousemove: function(e) {
-        this.draw(e)
-    },
-
-    draw: function(e) {
-        // 如果沒有畫背景，且滑鼠按下，則重新繪製背景
-        if (this.isMaskBackground == false && this.isMouseDown == true) {
-            ctx.fillStyle = "rgba(115, 115, 115, 0.5)"
-            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-            this.isMaskBackground = true
+        if (this.isMouseDown == true && this.isInCanvas == true) {
+            //this.draw(e)
         }
 
-        if (this.isMouseDown == true && this.isInCanvas == true) {}
+    },
+
+    reDrawBackground: function() {
+        clearCanvas(false)
+        ctx.fillStyle = "rgba(115, 115, 115, 0.8)"
+        ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
+    },
+
+    drawMask: function(e) {
+        ctx.globalCompositeOperation = "destination-out"
+        ctx.beginPath()
+        ctx.arc(e.offsetX, e.offsetY, 50, 0, 2 * Math.PI)
+        ctx.fill()
+        ctx.globalCompositeOperation = "source-over"
     }
 }

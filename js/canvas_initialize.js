@@ -7,8 +7,8 @@ var drawObj = pen
 // 測試 Canvas
 //createTestCanvas()
 
-// 綁定影片啟動時設定 canvas 大小、筆跡樣式
-$("#video_content").on("durationchange", function() {
+// 設定 canvas 大小、筆跡樣式（在 video_control.js 使用）
+function initCanvas() {
     $("#canvas_area").show()
     ctx.canvas.width = $("#video_content").width()
     ctx.canvas.height = $("#video_content").height()
@@ -16,7 +16,7 @@ $("#video_content").on("durationchange", function() {
     ctx.lineJoin = "round"
     ctx.lineCap = "round"
     ctx.lineWidth = 5
-})
+}
 
 // 綁定畫筆類型變更選單效果
 $("#pen_type").on("change", function() {

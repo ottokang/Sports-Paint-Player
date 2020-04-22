@@ -22,7 +22,7 @@ $("#video_source").change(function() {
     // 設定播放進度列、顯示播放資訊、設定 container 高度、寬度
     $("#video_content").on("durationchange", function() {
         // 根據螢幕大小，設定 Container 大小
-        var maxViewWidth = $(window).width() * 0.97
+        var maxViewWidth = $(window).width()
         var maxViewHeight = $(window).height() * 0.88
         var videoAspectRatio = video.videoWidth / video.videoHeight
         var screenAspectRatio = maxViewWidth / maxViewHeight
@@ -46,6 +46,9 @@ $("#video_source").change(function() {
         $("#video_progress").css("display", "block")
         $(".video_info").css("display", "block")
         $("#playback_speed").html(Math.floor(video.playbackRate * 100))
+
+        // 初始化 Canvas
+        initCanvas()
     })
 
     // 綁定播放進度列點擊事件
