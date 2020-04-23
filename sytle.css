@@ -45,6 +45,11 @@ kbd {
     margin-right: 1em;
 }
 
+#pen_control #mask_size,
+#pen_control #mask_scale {
+    width: 3.2em;
+}
+
 #container {
     position: relative;
     overflow: hidden;

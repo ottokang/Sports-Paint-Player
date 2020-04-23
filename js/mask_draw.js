@@ -6,16 +6,23 @@ var mask = {
     x: 0,
     y: 0,
     originMouseCursor: null,
+    backgroudCanvasData: null,
+
+    init: function() {
+        $("#container").css("cursor", "auto")
+        return this
+    },
 
     mousedown: function(e) {
         this.originMouseCursor = $("#container").css("cursor")
-        $("#container").css("cursor", "cell")
+        $("#container").css("cursor", "grabbing")
         this.isMouseDown = true
-        console.log(this.isInCanvas)
+        this.isInCanvas = true
         this.x = e.offsetX
         this.y = e.offsetY
         this.reDrawBackground()
-        this.drawMask(e)
+        this.drawCircleMask(e)
+        this.backgroudCanvasData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
     mouseup: function(e) {
@@ -25,8 +32,10 @@ var mask = {
 
     mouseover: function(e) {
         this.isInCanvas = true
+        this.x = e.offsetX
+        this.y = e.offsetY
         if (this.isMouseDown) {
-            $("#container").css("cursor", "cell")
+            $("#container").css("cursor", "grabbing")
         }
     },
 
@@ -36,10 +45,13 @@ var mask = {
     },
 
     mousemove: function(e) {
+        $("#container").css("cursor", "grab")
         if (this.isMouseDown == true && this.isInCanvas == true) {
-            //this.draw(e)
+            clearCanvas(false)
+            ctx.putImageData(this.backgroudCanvasData, 0, 0)
+            this.drawCircleMask(e, parseFloat($("#mask_scale").val()))
+            this.drawPathMask(e)
         }
-
     },
 
     reDrawBackground: function() {
@@ -48,11 +60,20 @@ var mask = {
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
-    drawMask: function(e) {
+    drawCircleMask: function(e, scale = 1) {
         ctx.globalCompositeOperation = "destination-out"
         ctx.beginPath()
-        ctx.arc(e.offsetX, e.offsetY, 50, 0, 2 * Math.PI)
+        ctx.arc(e.offsetX, e.offsetY, parseInt($("#mask_size").val()) * scale, 0, 2 * Math.PI)
         ctx.fill()
+        ctx.globalCompositeOperation = "source-over"
+    },
+
+    drawPathMask: function(e) {
+        ctx.globalCompositeOperation = "destination-out"
+        ctx.beginPath()
+        ctx.moveTo(this.x, this.y)
+        ctx.lineTo(e.offsetX, e.offsetY)
+        ctx.stroke()
         ctx.globalCompositeOperation = "source-over"
     }
 }

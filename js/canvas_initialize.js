@@ -18,16 +18,21 @@ function initCanvas() {
     ctx.lineWidth = 5
 }
 
+// 設定畫筆選單
+$("[class*='pen_type_id_']").hide()
+$(".pen_type_id_" + $("#pen_type").val()).show()
+
+
 // 綁定畫筆類型變更選單效果
 $("#pen_type").on("change", function() {
     $("[class*='pen_type_id_']").hide()
     $(".pen_type_id_" + $("#pen_type").val()).show()
     switch ($("#pen_type").val()) {
         case "1":
-            drawObj = pen
+            drawObj = pen.init()
             break
         case "2":
-            drawObj = mask
+            drawObj = mask.init()
             break
     }
 })

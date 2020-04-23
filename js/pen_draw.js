@@ -12,10 +12,16 @@ var pen = {
         "藍色": "#0033cc"
     },
 
+    init: function() {
+        $("#container").css("cursor", "auto")
+        return this
+    },
+
     mousedown: function(e) {
         this.originMouseCursor = $("#container").css("cursor")
         $("#container").css("cursor", "pointer")
         this.isMouseDown = true
+        this.isInCanvas = true
         this.x = e.offsetX
         this.y = e.offsetY
         this.draw(e)
@@ -28,6 +34,8 @@ var pen = {
 
     mouseover: function(e) {
         this.isInCanvas = true
+        this.x = e.offsetX
+        this.y = e.offsetY
         if (this.isMouseDown) {
             $("#container").css("cursor", "pointer")
         }
