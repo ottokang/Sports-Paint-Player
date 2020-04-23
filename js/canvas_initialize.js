@@ -18,23 +18,12 @@ function initCanvas() {
     ctx.lineWidth = 5
 }
 
-// 設定畫筆選單
-$("[class*='pen_type_id_']").hide()
-$(".pen_type_id_" + $("#pen_type").val()).show()
-
+// 初始畫筆選單、畫筆物件
+initDrawObj()
 
 // 綁定畫筆類型變更選單效果
 $("#pen_type").on("change", function() {
-    $("[class*='pen_type_id_']").hide()
-    $(".pen_type_id_" + $("#pen_type").val()).show()
-    switch ($("#pen_type").val()) {
-        case "1":
-            drawObj = pen.init()
-            break
-        case "2":
-            drawObj = mask.init()
-            break
-    }
+    initDrawObj()
 })
 
 // 設定畫筆顏色選項
@@ -96,4 +85,18 @@ function createTestCanvas() {
     ctx.lineCap = "round"
     ctx.lineWidth = 5
     $("#container").css("position", "inherit")
+}
+
+// 初始畫筆物件、畫筆選單
+function initDrawObj() {
+    $("[class*='pen_type_id_']").hide()
+    $(".pen_type_id_" + $("#pen_type").val()).show()
+    switch ($("#pen_type").val()) {
+        case "1":
+            drawObj = pen.init()
+            break
+        case "2":
+            drawObj = mask.init()
+            break
+    }
 }
