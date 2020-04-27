@@ -39,15 +39,15 @@ $(function() {
                 break
 
             case "KeyW": // W：加速20%
-                speed(20.0)
+                setPlaybackRate(20.0)
                 break
 
             case "KeyS": // S：減速20%
-                speed(-20.0)
+                setPlaybackRate(-20.0)
                 break
 
             case "KeyX": // X：恢復播放速度
-                speed("100")
+                setPlaybackRate("100")
                 break
 
             case "KeyZ": // Z：快速倒轉

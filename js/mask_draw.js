@@ -69,11 +69,11 @@ var mask = {
     },
 
     drawPathMask: function(e) {
-        ctx.globalCompositeOperation = "destination-out"
+        //ctx.globalCompositeOperation = "destination-out"
         ctx.beginPath()
         ctx.moveTo(this.x, this.y)
         ctx.lineTo(e.offsetX, e.offsetY)
         ctx.stroke()
-        ctx.globalCompositeOperation = "source-over"
+        //ctx.globalCompositeOperation = "source-over"
     }
 }

@@ -10,10 +10,10 @@ var isResized = false,
 $("#video_source").change(function() {
     let file = this.files[0]
     if (video.canPlayType(file.type) === "") {
-        showMessage("瀏覽器無法播放此檔案類型：" + file.type)
+        showMessage(`瀏覽器無法播放此檔案類型：${file.type}，建議將影片轉檔為 H.264 + AAC 格式。`, 6)
         return
     } else {
-        showMessage("可播放，檔案類型：" + file.type)
+        showMessage("開始播放", 1.2)
         video.src = URL.createObjectURL(file)
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案
         $("#video_content").focus()
@@ -42,7 +42,7 @@ $("#video_source").change(function() {
         $("#video_content").width(containerWidth)
         $("#video_content").height(conatinerHeight)
         $("#video_progress").width(containerWidth)
-        $("#video_progress").prop('max', video.duration)
+        $("#video_progress").prop("max", video.duration)
         $("#video_progress").css("display", "block")
         $(".video_info").css("display", "block")
         $("#playback_speed").html(Math.floor(video.playbackRate * 100))
@@ -85,35 +85,35 @@ function playPause() {
 function jump(seconds) {
     video.currentTime = video.currentTime + seconds
     if (seconds > 0) {
-        showOsd("+" + seconds + "秒", "right", "right")
+        showOsd(`+${seconds}秒`, "right", "right")
     } else {
-        showOsd("" + seconds + "秒", "left", "left")
+        showOsd(`${seconds}秒`, "left", "left")
     }
 }
 
-// 播放速度設定
-function speed(percentage) {
+// 設定播放速度
+function setPlaybackRate(percentage) {
     if (percentage == "100") {
         video.playbackRate = 1.0
         showOsd("恢復播放速度", "center", "increase")
     } else if (percentage > 0 && video.playbackRate < 2) {
         video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
-        showOsd("播放速度+" + percentage + "%", "center", "increase")
+        showOsd(`播放速度${percentage}%`, "center", "increase")
     } else if (percentage < 0 && video.playbackRate > 0.3) {
         video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
-        showOsd("播放速度" + percentage + "%", "center", "decrease")
+        showOsd(`播放速度${percentage}%`, "center", "decrease")
     }
     $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 }
 
 // 快速倒轉
 function fastReversePlay(seconds) {
-    showOsd("快速倒轉" + seconds + "秒", "center", "increase", seconds * 500)
+    showOsd(`快速倒轉${seconds}秒`, "center", "increase", seconds * 500)
     var originTime = video.currentTime
-    var fastForwardinterval = setInterval(function() {
+    var fastForwardInterval = setInterval(function() {
         video.currentTime -= 0.2
         if (video.currentTime < originTime - seconds || video.currentTime < 0.5) {
-            clearInterval(fastForwardinterval)
+            clearInterval(fastForwardInterval)
         }
     }, 50)
 }
@@ -146,8 +146,12 @@ function zoomDefault() {
 }
 
 // 顯示訊息
-function showMessage(message) {
-    $("#message").html(message)
+function showMessage(message, countDown = 2) {
+    $("#message").html(message).show()
+    var messageInterval = setInterval(function() {
+        $("#message").hide("slow")
+        clearInterval(messageInterval)
+    }, countDown * 1000)
 }
 
 // 顯示影片 OSD 訊息
@@ -156,7 +160,7 @@ function showOsd(text, position = "center", fadeOut = "increase", fadeOutTime = 
     $("#video_resized").after('<div id="video_osd"></div>')
     $("#video_osd").html(text)
     $("#video_osd").show()
-    $("#video_osd").attr("class", "osd_" + position)
+    $("#video_osd").attr("class", `osd_${position}`)
     // OSD 訊息置中
     $("#video_osd").css("margin-left", -($("#video_osd").width() / 2))
     $("#video_osd").css("margin-top", -($("#video_osd").height() / 2))
@@ -191,13 +195,13 @@ String.prototype.toHHMMSS = function() {
     var seconds = sec_num - (hours * 3600) - (minutes * 60)
 
     if (hours < 10) {
-        hours = "0" + hours
+        hours = `0${hours}`
     }
     if (minutes < 10) {
-        minutes = "0" + minutes
+        minutes = `0${minutes}`
     }
     if (seconds < 10) {
-        seconds = "0" + seconds
+        seconds = `0${seconds}`
     }
-    return hours + ':' + minutes + ':' + seconds
+    return hours + ":" + minutes + ":" + seconds
 }
