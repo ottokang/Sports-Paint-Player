@@ -32,8 +32,6 @@ var mask = {
 
     mouseover: function(e) {
         this.isInCanvas = true
-        this.x = e.offsetX
-        this.y = e.offsetY
         if (this.isMouseDown) {
             $("#container").css("cursor", "grabbing")
         }
@@ -56,24 +54,49 @@ var mask = {
 
     reDrawBackground: function() {
         clearCanvas(false)
-        ctx.fillStyle = "rgba(115, 115, 115, 0.8)"
+        ctx.fillStyle = `rgba(30, 30, 30, ${$("#mask_transparency").val()})`
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
     drawCircleMask: function(e, scale = 1) {
         ctx.globalCompositeOperation = "destination-out"
         ctx.beginPath()
-        ctx.arc(e.offsetX, e.offsetY, parseInt($("#mask_size").val()) * scale, 0, 2 * Math.PI)
+        ctx.arc(e.offsetX, e.offsetY, parseInt($("#mask_radius").val()) * scale, 0, 2 * Math.PI)
         ctx.fill()
         ctx.globalCompositeOperation = "source-over"
     },
 
     drawPathMask: function(e) {
-        //ctx.globalCompositeOperation = "destination-out"
+        let pathMaskCoordinates1 = this.getPathMaskCoordinates(this.x, this.y,
+            e.offsetX, e.offsetY, parseInt($("#mask_radius").val()))
+        let pathMaskCoordinates2 = this.getPathMaskCoordinates(e.offsetX, e.offsetY,
+            this.x, this.y, parseInt($("#mask_radius").val()) * parseFloat($("#mask_scale").val()))
+        ctx.globalCompositeOperation = "destination-out"
         ctx.beginPath()
-        ctx.moveTo(this.x, this.y)
-        ctx.lineTo(e.offsetX, e.offsetY)
-        ctx.stroke()
-        //ctx.globalCompositeOperation = "source-over"
+        ctx.moveTo(pathMaskCoordinates1.x1, pathMaskCoordinates1.y1)
+        ctx.lineTo(pathMaskCoordinates1.x2, pathMaskCoordinates1.y2)
+        ctx.lineTo(pathMaskCoordinates2.x1, pathMaskCoordinates2.y1)
+        ctx.lineTo(pathMaskCoordinates2.x2, pathMaskCoordinates2.y2)
+        ctx.closePath()
+        ctx.fill()
+        ctx.globalCompositeOperation = "source-over"
+    },
+
+    getPathMaskCoordinates: function(baseX, baseY, faceX, faceY, radius) {
+        let result = {
+            x1: 0,
+            y1: 0,
+            x2: 0,
+            y2: 0
+        }
+        let x_distance = (faceX - baseX)
+        let y_distance = (faceY - baseY)
+        let degree = Math.atan2(y_distance, x_distance) * 180 / Math.PI
+
+        result.x1 = baseX + radius * Math.cos((degree + 90) * Math.PI / 180)
+        result.y1 = baseY + radius * Math.sin((degree + 90) * Math.PI / 180)
+        result.x2 = baseX + radius * Math.cos((degree - 90) * Math.PI / 180)
+        result.y2 = baseY + radius * Math.sin((degree - 90) * Math.PI / 180)
+        return result
     }
 }

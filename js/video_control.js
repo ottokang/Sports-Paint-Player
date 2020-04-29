@@ -4,7 +4,8 @@ var video = $("#video_content")[0]
 
 // 影片是否縮放、縮放基準座標
 var isResized = false,
-    resizeXOffset, resizeYOffset
+    resizeXOffset,
+    resizeYOffset
 
 // 選擇影像後播放
 $("#video_source").change(function() {
@@ -13,6 +14,8 @@ $("#video_source").change(function() {
         showMessage(`瀏覽器無法播放此檔案類型：${file.type}，建議將影片轉檔為 H.264 + AAC 格式。`, 6)
         return
     } else {
+        $("#video_source").show()
+        $("#select_video_button").hide()
         showMessage("開始播放", 1.2)
         video.src = URL.createObjectURL(file)
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案

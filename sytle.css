@@ -18,17 +18,17 @@ kbd {
 }
 
 #video_source {
-    margin: 5px;
+    display: none;
+    margin: 0 0 5px 0;
     padding: 5px;
-    border: 2px solid #32ff00;
     border-radius: 10px;
-    background: #ffffff;
+    background: #c6c2bc;
 }
 
 #message {
     font-size: 1.5em;
     position: absolute;
-    display: inline-block;
+    display: none;
     margin: 10px;
     color: #fff;
     top: 40%;
@@ -39,6 +39,44 @@ kbd {
     transform: translateX(-50%);
     left: 50%;
     z-index: 1;
+}
+
+#select_video_button {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: 30%;
+    z-index: 1;
+    display: inline-block;
+    background: #feda71;
+    background: linear-gradient(#feda71, #febe4d);
+    border: solid 1px #eab551;
+    border-bottom: solid 3px #b98a37;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px #fee9aa;
+    color: #996633;
+    text-shadow: 0 1px 0 #fedd9b;
+    font-size: 1.5em;
+    color: #403434;
+}
+
+#select_video_button label {
+    padding: 10px;
+}
+
+#select_video_button:hover {
+    background: #fec455;
+    background: linear-gradient(#fec455, #fecd61);
+    border: solid 1px #e6a93d;
+    border-bottom: solid 3px #b98a37;
+    box-shadow: inset 0 0 0 1px #fedb98;
+}
+
+#select_video_button:active {
+    background: #f9bd4f;
+    background: linear-gradient(#f9bd4f, #f0b64d);
+    border: solid 1px #a77f35;
+    box-shadow: inset 0 10px 15px 0 #dba646;
 }
 
 #pen_control {
@@ -52,8 +90,9 @@ kbd {
     margin-right: 1em;
 }
 
-#pen_control #mask_size,
-#pen_control #mask_scale {
+#pen_control #mask_radius,
+#pen_control #mask_scale,
+#pen_control #mask_transparency {
     width: 3.2em;
 }
 
