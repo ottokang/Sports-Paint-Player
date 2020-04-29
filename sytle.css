@@ -204,3 +204,10 @@ kbd {
     margin: 0 auto;
     cursor: pointer;
 }
+
+#version {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    color: #999999;
+}
