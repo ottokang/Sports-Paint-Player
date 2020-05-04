@@ -8,12 +8,12 @@ var mask = {
     originMouseCursor: null,
     backgroudCanvasData: null,
 
-    init: function() {
+    init() {
         $("#container").css("cursor", "auto")
         return this
     },
 
-    mousedown: function(e) {
+    mousedown(e) {
         this.originMouseCursor = $("#container").css("cursor")
         $("#container").css("cursor", "grabbing")
         this.isMouseDown = true
@@ -25,24 +25,24 @@ var mask = {
         this.backgroudCanvasData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
-    mouseup: function(e) {
+    mouseup(e) {
         this.isMouseDown = false
         $("#container").css("cursor", this.originMouseCursor)
     },
 
-    mouseover: function(e) {
+    mouseover(e) {
         this.isInCanvas = true
         if (this.isMouseDown) {
             $("#container").css("cursor", "grabbing")
         }
     },
 
-    mouseout: function(e) {
+    mouseout(e) {
         this.isInCanvas = false
         $("#container").css("cursor", this.originMouseCursor)
     },
 
-    mousemove: function(e) {
+    mousemove(e) {
         $("#container").css("cursor", "grab")
         if (this.isMouseDown == true && this.isInCanvas == true) {
             clearCanvas(false)
@@ -52,13 +52,13 @@ var mask = {
         }
     },
 
-    reDrawBackground: function() {
+    reDrawBackground() {
         clearCanvas(false)
         ctx.fillStyle = `rgba(30, 30, 30, ${$("#mask_transparency").val()})`
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
-    drawCircleMask: function(e, scale = 1) {
+    drawCircleMask(e, scale = 1) {
         ctx.globalCompositeOperation = "destination-out"
         ctx.beginPath()
         ctx.arc(e.offsetX, e.offsetY, parseInt($("#mask_radius").val()) * scale, 0, 2 * Math.PI)
@@ -66,7 +66,7 @@ var mask = {
         ctx.globalCompositeOperation = "source-over"
     },
 
-    drawPathMask: function(e) {
+    drawPathMask(e) {
         let pathMaskCoordinates1 = this.getPathMaskCoordinates(this.x, this.y,
             e.offsetX, e.offsetY, parseInt($("#mask_radius").val()))
         let pathMaskCoordinates2 = this.getPathMaskCoordinates(e.offsetX, e.offsetY,
@@ -82,7 +82,7 @@ var mask = {
         ctx.globalCompositeOperation = "source-over"
     },
 
-    getPathMaskCoordinates: function(baseX, baseY, faceX, faceY, radius) {
+    getPathMaskCoordinates(baseX, baseY, faceX, faceY, radius) {
         let result = {
             x1: 0,
             y1: 0,

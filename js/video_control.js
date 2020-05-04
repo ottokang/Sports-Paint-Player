@@ -1,9 +1,8 @@
 "use strict"
 
-var video = $("#video_content")[0]
-
-// 影片是否縮放、縮放基準座標
-var isResized = false,
+// 初始化影片物件、影片是否縮放、縮放基準座標
+var video = $("#video_content")[0],
+    isResized = false,
     resizeXOffset,
     resizeYOffset
 
@@ -50,8 +49,12 @@ $("#video_source").change(function() {
         $(".video_info").css("display", "block")
         $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 
-        // 初始化 Canvas
-        initCanvas()
+        // 設定 Canvas 大小
+        $("#canvas_area").show()
+        ctx.canvas.width = $("#video_content").width()
+        ctx.canvas.height = $("#video_content").height()
+
+        //initCanvas()
     })
 
     // 綁定播放進度列點擊事件

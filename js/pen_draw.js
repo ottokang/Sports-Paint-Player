@@ -1,63 +1,82 @@
 "use strict"
 
 var pen = {
-    isMouseDown: false,
-    isInCanvas: false,
-    x: 0,
-    y: 0,
-    originMouseCursor: null,
-    colors: {
+    _isInit: false,
+    _isMouseDown: false,
+    _isInCanvas: false,
+    _x: 0,
+    _y: 0,
+    _originMouseCursor: null,
+    _colors: {
         "紅色": "#f542a7",
         "黃色": "#e8c62e",
         "藍色": "#0033cc"
     },
 
-    init: function() {
-        $("#container").css("cursor", "auto")
+    getInstance() {
+        if (this._isInit === false) {
+            // 設定畫布滑鼠指標、畫筆顏色、屬性
+            $("#container").css("cursor", "auto")
+            ctx.strokeStyle = $("#pen_color").val()
+            ctx.lineJoin = "round"
+            ctx.lineCap = "round"
+            ctx.lineWidth = 5
+
+            // 設定畫筆顏色選項
+            $.each(this._colors, function(colorName, value) {
+                var optionElement = document.createElement("option")
+                optionElement.setAttribute("value", value)
+                optionElement.style.color = value
+                optionElement.innerHTML = colorName
+                $("#pen_color").append(optionElement)
+            })
+
+            this._isInit = true
+        }
         return this
     },
 
-    mousedown: function(e) {
-        this.originMouseCursor = $("#container").css("cursor")
+    mousedown(e) {
+        this._originMouseCursor = $("#container").css("cursor")
         $("#container").css("cursor", "pointer")
-        this.isMouseDown = true
-        this.isInCanvas = true
-        this.x = e.offsetX
-        this.y = e.offsetY
-        this.draw(e)
+        this._isMouseDown = true
+        this._isInCanvas = true
+        this._x = e.offsetX
+        this._y = e.offsetY
+        this._draw(e)
     },
 
-    mouseup: function(e) {
-        this.isMouseDown = false
-        $("#container").css("cursor", this.originMouseCursor)
+    mouseup(e) {
+        this._isMouseDown = false
+        $("#container").css("cursor", this._originMouseCursor)
     },
 
-    mouseover: function(e) {
-        this.isInCanvas = true
-        this.x = e.offsetX
-        this.y = e.offsetY
-        if (this.isMouseDown) {
+    mouseover(e) {
+        this._isInCanvas = true
+        this._x = e.offsetX
+        this._y = e.offsetY
+        if (this._isMouseDown) {
             $("#container").css("cursor", "pointer")
         }
     },
 
-    mouseout: function(e) {
-        this.isInCanvas = false
-        $("#container").css("cursor", this.originMouseCursor)
+    mouseout(e) {
+        this._isInCanvas = false
+        $("#container").css("cursor", this._originMouseCursor)
     },
 
-    mousemove: function(e) {
-        if (this.isMouseDown == true && this.isInCanvas == true) {
-            this.draw(e)
+    mousemove(e) {
+        if (this._isMouseDown === true && this._isInCanvas === true) {
+            this._draw(e)
         }
     },
 
-    draw: function(e) {
+    _draw(e) {
         ctx.beginPath()
-        ctx.moveTo(this.x, this.y)
+        ctx.moveTo(this._x, this._y)
         ctx.lineTo(e.offsetX, e.offsetY)
         ctx.stroke()
-        this.x = e.offsetX
-        this.y = e.offsetY
+        this._x = e.offsetX
+        this._y = e.offsetY
     }
 }

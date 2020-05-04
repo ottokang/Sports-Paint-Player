@@ -1,22 +1,11 @@
 "use strict"
 
 // 設定 Canvas 畫布、繪圖物件
-var ctx = $("#canvas_area")[0].getContext("2d")
-var drawObj
+var ctx = $("#canvas_area")[0].getContext("2d"),
+    drawObj = null
 
 // 測試 Canvas
-//createTestCanvas()
-
-// 設定 canvas 大小、筆跡樣式（在 video_control.js 使用）
-function initCanvas() {
-    $("#canvas_area").show()
-    ctx.canvas.width = $("#video_content").width()
-    ctx.canvas.height = $("#video_content").height()
-    ctx.strokeStyle = $("#pen_color").val()
-    ctx.lineJoin = "round"
-    ctx.lineCap = "round"
-    ctx.lineWidth = 5
-}
+// createTestCanvas()
 
 // 初始畫筆選單、畫筆物件
 initDrawObj()
@@ -24,15 +13,6 @@ initDrawObj()
 // 綁定畫筆類型變更選單效果
 $("#pen_type").on("change", function() {
     initDrawObj()
-})
-
-// 設定畫筆顏色選項
-$.each(pen.colors, function(colorName, value) {
-    var optionElement = document.createElement("option")
-    optionElement.setAttribute("value", value)
-    optionElement.style.color = value
-    optionElement.innerHTML = colorName
-    $("#pen_color").append(optionElement)
 })
 
 // 設定畫筆顏色設定顏色變換效果
@@ -87,13 +67,13 @@ function createTestCanvas() {
     $("#container").css("position", "inherit")
 }
 
-// 初始畫筆物件、畫筆選單
+// 設定畫筆物件、畫筆選單
 function initDrawObj() {
     $("[class*='pen_type_id_']").hide()
     $(".pen_type_id_" + $("#pen_type").val()).show()
     switch ($("#pen_type").val()) {
         case "1":
-            drawObj = pen.init()
+            drawObj = pen.getInstance()
             break
         case "2":
             drawObj = mask.init()
