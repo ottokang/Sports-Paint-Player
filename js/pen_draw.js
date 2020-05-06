@@ -1,38 +1,25 @@
 "use strict"
 
 var pen = {
-    _isInit: false,
     _isMouseDown: false,
     _isInCanvas: false,
     _x: 0,
     _y: 0,
     _originMouseCursor: null,
-    _colors: {
+    colors: {
         "紅色": "#f542a7",
         "黃色": "#e8c62e",
         "藍色": "#0033cc"
     },
 
-    getInstance() {
-        if (this._isInit === false) {
-            // 設定畫布滑鼠指標、畫筆顏色、屬性
-            $("#container").css("cursor", "auto")
-            ctx.strokeStyle = $("#pen_color").val()
-            ctx.lineJoin = "round"
-            ctx.lineCap = "round"
-            ctx.lineWidth = 5
+    init() {
+        // 設定畫布滑鼠指標、畫筆顏色、屬性
+        $("#container").css("cursor", "auto")
+        ctx.strokeStyle = $("#pen_color").val()
+        ctx.lineJoin = "round"
+        ctx.lineCap = "round"
+        ctx.lineWidth = 5
 
-            // 設定畫筆顏色選項
-            $.each(this._colors, function(colorName, value) {
-                var optionElement = document.createElement("option")
-                optionElement.setAttribute("value", value)
-                optionElement.style.color = value
-                optionElement.innerHTML = colorName
-                $("#pen_color").append(optionElement)
-            })
-
-            this._isInit = true
-        }
         return this
     },
 

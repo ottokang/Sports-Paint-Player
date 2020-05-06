@@ -7,7 +7,7 @@ var video = $("#video_content")[0],
     resizeYOffset
 
 // 選擇影像後播放
-$("#video_source").change(function() {
+$("#video_source").on("change", function() {
     let file = this.files[0]
     if (video.canPlayType(file.type) === "") {
         showMessage(`瀏覽器無法播放此檔案類型：${file.type}，建議將影片轉檔為 H.264 + AAC 格式。`, 6)
@@ -15,7 +15,7 @@ $("#video_source").change(function() {
     } else {
         $("#video_source").show()
         $("#select_video_button").hide()
-        showMessage("開始播放", 1.2)
+        showMessage("開始播放", 1)
         video.src = URL.createObjectURL(file)
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案
         $("#video_content").focus()
@@ -24,10 +24,10 @@ $("#video_source").change(function() {
     // 設定播放進度列、顯示播放資訊、設定 container 高度、寬度
     $("#video_content").on("durationchange", function() {
         // 根據螢幕大小，設定 Container 大小
-        var maxViewWidth = $(window).width()
-        var maxViewHeight = $(window).height() * 0.88
-        var videoAspectRatio = video.videoWidth / video.videoHeight
-        var screenAspectRatio = maxViewWidth / maxViewHeight
+        let maxViewWidth = $(window).width()
+        let maxViewHeight = $(window).height() * 0.88
+        let videoAspectRatio = video.videoWidth / video.videoHeight
+        let screenAspectRatio = maxViewWidth / maxViewHeight
 
         if (videoAspectRatio >= screenAspectRatio) {
             var containerWidth = maxViewWidth
@@ -49,16 +49,19 @@ $("#video_source").change(function() {
         $(".video_info").css("display", "block")
         $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 
-        // 設定 Canvas 大小
+        // 初始 UI
+        $("#control").show()
+
+        // 設定 Canvas 大小、設定繪圖界面、物件
         $("#canvas_area").show()
         ctx.canvas.width = $("#video_content").width()
         ctx.canvas.height = $("#video_content").height()
-
-        //initCanvas()
+        initDrawUI()
+        setDrawObj()
     })
 
     // 綁定播放進度列點擊事件
-    $("#video_progress").click(function() {
+    $("#video_progress").on("click", function() {
         video.currentTime = $("#video_progress").val()
     })
 
@@ -75,6 +78,7 @@ $("#video_source").change(function() {
         resizeYOffset = parseInt(e.offsetY / ctx.canvas.height * 100)
     })
 })
+
 
 // 播放、暫停
 function playPause() {

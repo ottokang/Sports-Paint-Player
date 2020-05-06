@@ -7,17 +7,13 @@ var ctx = $("#canvas_area")[0].getContext("2d"),
 // 測試 Canvas
 // createTestCanvas()
 
-// 初始畫筆選單、畫筆物件
-initDrawObj()
-
-// 綁定畫筆類型變更選單效果
+// 綁定畫筆類型變更設定
 $("#pen_type").on("change", function() {
-    initDrawObj()
+    setDrawObj()
 })
 
 // 設定畫筆顏色設定顏色變換效果
-$("#pen_color").css("color", $("#pen_color").val())
-$("#pen_color").change(function() {
+$("#pen_color").on("change", function() {
     ctx.strokeStyle = $("#pen_color").val()
     $("#pen_color").css("color", $("#pen_color").val())
 })
@@ -65,18 +61,34 @@ function createTestCanvas() {
     ctx.lineCap = "round"
     ctx.lineWidth = 5
     $("#container").css("position", "inherit")
+    $("#select_video_button").hide()
+    initDrawUI()
+    setDrawObj()
 }
 
-// 設定畫筆物件、畫筆選單
-function initDrawObj() {
+// 設定畫筆物件選單
+function setDrawObj() {
     $("[class*='pen_type_id_']").hide()
     $(".pen_type_id_" + $("#pen_type").val()).show()
     switch ($("#pen_type").val()) {
         case "1":
-            drawObj = pen.getInstance()
+            drawObj = pen.init()
             break
         case "2":
             drawObj = mask.init()
             break
     }
+}
+
+// 初始化畫筆UI
+function initDrawUI() {
+    // 依照畫筆物件設定，加入畫筆顏色選項，設定畫筆顏色
+    $.each(pen.colors, function(colorName, value) {
+        var optionElement = document.createElement("option")
+        optionElement.setAttribute("value", value)
+        optionElement.style.color = value
+        optionElement.innerHTML = colorName
+        $("#pen_color").append(optionElement)
+    })
+    $("#pen_color").css("color", $("#pen_color").val())
 }

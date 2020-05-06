@@ -79,20 +79,21 @@ kbd {
     box-shadow: inset 0 10px 15px 0 #dba646;
 }
 
-#pen_control {
+#control {
+    display: none;
     float: right;
     padding: 3px;
     color: #ffffff;
 }
 
-#pen_control .item {
+#control .item {
     display: inline-block;
     margin-right: 1em;
 }
 
-#pen_control #mask_radius,
-#pen_control #mask_scale,
-#pen_control #mask_transparency {
+#control #mask_radius,
+#control #mask_scale,
+#control #mask_transparency {
     width: 3.2em;
 }
 
