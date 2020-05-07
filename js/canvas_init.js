@@ -5,11 +5,11 @@ var ctx = $("#canvas_area")[0].getContext("2d"),
     drawObj = null
 
 // 測試 Canvas
-// createTestCanvas()
+createTestCanvas()
 
 // 綁定畫筆類型變更設定
 $("#pen_type").on("change", function() {
-    setDrawObj()
+    setupDrawObj()
 })
 
 // 設定畫筆顏色設定顏色變換效果
@@ -54,28 +54,28 @@ function clearCanvas(isShowOsd = true) {
 // 建立測試 canvas
 function createTestCanvas() {
     $("#canvas_area").show()
-    ctx.canvas.width = 1200
-    ctx.canvas.height = 800
-    ctx.strokeStyle = "#f542a7"
-    ctx.lineJoin = "round"
-    ctx.lineCap = "round"
-    ctx.lineWidth = 5
+    $("#canvas_area").css("border", "2px solid grey")
+    $("#canvas_area").css("margin-top", "4em")
+    $("#video_content").css("top", "4em")
+    ctx.canvas.width = $(window).width() * 0.8
+    ctx.canvas.height = $(window).height() * 0.8
     $("#container").css("position", "inherit")
     $("#select_video_button").hide()
     initDrawUI()
-    setDrawObj()
+    setupDrawObj()
+    bind_key_mouse()
 }
 
 // 設定畫筆物件選單
-function setDrawObj() {
+function setupDrawObj() {
     $("[class*='pen_type_id_']").hide()
     $(".pen_type_id_" + $("#pen_type").val()).show()
     switch ($("#pen_type").val()) {
         case "1":
-            drawObj = pen.init()
+            drawObj = pen.setup()
             break
         case "2":
-            drawObj = mask.init()
+            drawObj = pathMask.setup()
             break
     }
 }
@@ -91,4 +91,5 @@ function initDrawUI() {
         $("#pen_color").append(optionElement)
     })
     $("#pen_color").css("color", $("#pen_color").val())
+    $("#control").show()
 }

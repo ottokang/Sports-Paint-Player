@@ -174,27 +174,26 @@ kbd {
     margin: 0 auto;
 }
 
-#control_area {
+#hotkeys {
     position: absolute;
     top: 10px;
     left: 10px;
-    width: 80%;
 }
 
-#control_buttons {
+#hotkey_buttons {
     display: none;
 }
 
-#control_buttons button {
+#hotkey_buttons button {
     font-size: 12px;
-    width: 10em;
+    width: 9em;
 }
 
-#control_buttons .small {
+#hotkey_buttons .small {
     font-size: 0.9em;
 }
 
-#control_buttons .button_info {
+#hotkey_buttons .button_info {
     display: block;
 }
 

@@ -16,7 +16,7 @@
         <span class="item">
             <select id="pen_type" name="pen_type">
                 <option value="1" selected>1.畫筆</option>
-                <option value="2">2.遮罩</option>
+                <option value="2">2.路徑遮罩</option>
             </select>
         </span>
         <span class="item pen_type_id_1">
@@ -82,9 +82,9 @@
         </div>
         <div id="video_resized" class="video_info">標準</div>
         <div id="video_osd"></div>
-        <div id="control_area">
-            <button id="toggole_button">顯示操作按鍵<kbd>`</kbd></button>
-            <div id="control_buttons">
+        <div id="hotkeys">
+            <button id="toggole_key">顯示操作按鍵<kbd>`</kbd></button>
+            <div id="hotkey_buttons">
                 <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆</span></button>
                 <button id="mask_button"><kbd>2</kbd><span class="button_info">遮罩</span></button>
                 <br>
@@ -113,9 +113,9 @@
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/pen_draw.js"></script>
     <script src="js/mask_draw.js"></script>
+    <script src="js/bind_key_mouse.js"></script>
     <script src="js/video_control.js"></script>
     <script src="js/canvas_init.js"></script>
-    <script src="js/key_mouse_bind.js"></script>
 </body>
 
 </html>

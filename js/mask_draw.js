@@ -1,64 +1,64 @@
 "use strict"
 
-var mask = {
-    isMouseDown: false,
-    isInCanvas: false,
-    x: 0,
-    y: 0,
-    originMouseCursor: null,
-    backgroudCanvasData: null,
+var pathMask = {
+    _isMouseDown: false,
+    _isInCanvas: false,
+    _x: 0,
+    _y: 0,
+    _originMouseCursor: null,
+    _backgroudCanvasData: null,
 
-    init() {
+    setup() {
         $("#container").css("cursor", "auto")
         return this
     },
 
     mousedown(e) {
-        this.originMouseCursor = $("#container").css("cursor")
+        this._originMouseCursor = $("#container").css("cursor")
         $("#container").css("cursor", "grabbing")
-        this.isMouseDown = true
-        this.isInCanvas = true
-        this.x = e.offsetX
-        this.y = e.offsetY
-        this.reDrawBackground()
-        this.drawCircleMask(e)
-        this.backgroudCanvasData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height)
+        this._isMouseDown = true
+        this._isInCanvas = true
+        this._x = e.offsetX
+        this._y = e.offsetY
+        this._reDrawBackground()
+        this._drawCircleMask(e)
+        this._backgroudCanvasData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
     mouseup(e) {
-        this.isMouseDown = false
-        $("#container").css("cursor", this.originMouseCursor)
+        this._isMouseDown = false
+        $("#container").css("cursor", this._originMouseCursor)
     },
 
     mouseover(e) {
-        this.isInCanvas = true
-        if (this.isMouseDown) {
+        this._isInCanvas = true
+        if (this._isMouseDown) {
             $("#container").css("cursor", "grabbing")
         }
     },
 
     mouseout(e) {
-        this.isInCanvas = false
-        $("#container").css("cursor", this.originMouseCursor)
+        this._isInCanvas = false
+        $("#container").css("cursor", this._originMouseCursor)
     },
 
     mousemove(e) {
         $("#container").css("cursor", "grab")
-        if (this.isMouseDown == true && this.isInCanvas == true) {
+        if (this._isMouseDown == true && this._isInCanvas == true) {
             clearCanvas(false)
-            ctx.putImageData(this.backgroudCanvasData, 0, 0)
-            this.drawCircleMask(e, parseFloat($("#mask_scale").val()))
-            this.drawPathMask(e)
+            ctx.putImageData(this._backgroudCanvasData, 0, 0)
+            this._drawCircleMask(e, parseFloat($("#mask_scale").val()))
+            this._drawPathMask(e)
         }
     },
 
-    reDrawBackground() {
+    _reDrawBackground() {
         clearCanvas(false)
         ctx.fillStyle = `rgba(30, 30, 30, ${$("#mask_transparency").val()})`
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
-    drawCircleMask(e, scale = 1) {
+    _drawCircleMask(e, scale = 1) {
         ctx.globalCompositeOperation = "destination-out"
         ctx.beginPath()
         ctx.arc(e.offsetX, e.offsetY, parseInt($("#mask_radius").val()) * scale, 0, 2 * Math.PI)
@@ -66,11 +66,11 @@ var mask = {
         ctx.globalCompositeOperation = "source-over"
     },
 
-    drawPathMask(e) {
-        let pathMaskCoordinates1 = this.getPathMaskCoordinates(this.x, this.y,
+    _drawPathMask(e) {
+        let pathMaskCoordinates1 = this._getPathMaskCoordinates(this._x, this._y,
             e.offsetX, e.offsetY, parseInt($("#mask_radius").val()))
-        let pathMaskCoordinates2 = this.getPathMaskCoordinates(e.offsetX, e.offsetY,
-            this.x, this.y, parseInt($("#mask_radius").val()) * parseFloat($("#mask_scale").val()))
+        let pathMaskCoordinates2 = this._getPathMaskCoordinates(e.offsetX, e.offsetY,
+            this._x, this._y, parseInt($("#mask_radius").val()) * parseFloat($("#mask_scale").val()))
         ctx.globalCompositeOperation = "destination-out"
         ctx.beginPath()
         ctx.moveTo(pathMaskCoordinates1.x1, pathMaskCoordinates1.y1)
@@ -82,7 +82,7 @@ var mask = {
         ctx.globalCompositeOperation = "source-over"
     },
 
-    getPathMaskCoordinates(baseX, baseY, faceX, faceY, radius) {
+    _getPathMaskCoordinates(baseX, baseY, faceX, faceY, radius) {
         let result = {
             x1: 0,
             y1: 0,

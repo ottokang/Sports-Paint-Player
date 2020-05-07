@@ -49,15 +49,15 @@ $("#video_source").on("change", function() {
         $(".video_info").css("display", "block")
         $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 
-        // 初始 UI
-        $("#control").show()
-
         // 設定 Canvas 大小、設定繪圖界面、物件
         $("#canvas_area").show()
         ctx.canvas.width = $("#video_content").width()
         ctx.canvas.height = $("#video_content").height()
         initDrawUI()
-        setDrawObj()
+        setupDrawObj()
+
+        // 綁定鍵盤、滑鼠動作
+        bind_key_mouse()
     })
 
     // 綁定播放進度列點擊事件

@@ -12,14 +12,13 @@ var pen = {
         "藍色": "#0033cc"
     },
 
-    init() {
+    setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
         $("#container").css("cursor", "auto")
         ctx.strokeStyle = $("#pen_color").val()
         ctx.lineJoin = "round"
         ctx.lineCap = "round"
         ctx.lineWidth = 5
-
         return this
     },
 

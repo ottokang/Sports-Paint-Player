@@ -1,7 +1,7 @@
 "use strict"
 
-$(function() {
-    // 綁定按鍵動作
+// 綁定鍵盤、滑鼠動作，影片啟動時作用
+function bind_key_mouse() {
     $("body").keydown(function(keyEvent) {
         switch (keyEvent.code) {
             case "Digit1": // 1：畫筆
@@ -11,11 +11,11 @@ $(function() {
 
             case "Digit2": // 2：拖曳遮罩
                 $("#pen_type").val(2).change()
-                showOsd("切換為遮罩", "center", "increase")
+                showOsd("切換為路徑遮罩", "center", "increase")
                 break
 
             case "Backquote": // `：展開/收起操作按鈕
-                $("#control_buttons").toggle(300)
+                $("#hotkey_buttons").toggle(300)
                 break
 
             case "Space": // Space：暫停/播放
@@ -61,7 +61,7 @@ $(function() {
     })
 
     // 綁定滑鼠滾輪動作
-    $("body").on("wheel", function(wheelEvent) {
+    $("#canvas_area").on("wheel", function(wheelEvent) {
         if (wheelEvent.originalEvent.deltaY < 0) {
             // 滾輪往上：放大影像
             zoomIn()
@@ -70,4 +70,4 @@ $(function() {
             zoomDefault()
         }
     })
-})
+}
