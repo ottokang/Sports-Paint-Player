@@ -84,10 +84,10 @@ $("#video_source").on("change", function() {
 function playPause() {
     if (video.paused) {
         video.play()
-        showOsd("繼續", "center", "increase")
+        showOSD("繼續", "center", "increase")
     } else {
         video.pause()
-        showOsd("暫停", "center", "increase")
+        showOSD("暫停", "center", "increase")
     }
 }
 
@@ -95,9 +95,9 @@ function playPause() {
 function jump(seconds) {
     video.currentTime = video.currentTime + seconds
     if (seconds > 0) {
-        showOsd(`+${seconds}秒`, "right", "right")
+        showOSD(`+${seconds}秒`, "right", "right")
     } else {
-        showOsd(`${seconds}秒`, "left", "left")
+        showOSD(`${seconds}秒`, "left", "left")
     }
 }
 
@@ -105,20 +105,20 @@ function jump(seconds) {
 function setPlaybackRate(percentage) {
     if (percentage == "100") {
         video.playbackRate = 1.0
-        showOsd("恢復播放速度", "center", "increase")
+        showOSD("恢復播放速度", "center", "none")
     } else if (percentage > 0 && video.playbackRate < 2) {
         video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
-        showOsd(`播放速度${percentage}%`, "center", "increase")
+        showOSD(`播放速度${percentage}%`, "center", "increase")
     } else if (percentage < 0 && video.playbackRate > 0.3) {
         video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
-        showOsd(`播放速度${percentage}%`, "center", "decrease")
+        showOSD(`播放速度${percentage}%`, "center", "decrease")
     }
     $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 }
 
 // 快速倒轉
 function fastReversePlay(seconds) {
-    showOsd(`快速倒轉${seconds}秒`, "center", "increase", seconds * 500)
+    showOSD(`快速倒轉${seconds}秒`, "center", "increase", seconds * 500)
     var originTime = video.currentTime
     var fastForwardInterval = setInterval(function() {
         video.currentTime -= 0.2
@@ -134,10 +134,10 @@ function zoomIn() {
         $("#video_content").css("transform-origin", resizeXOffset + "% " + resizeYOffset + "%")
         $("#video_content").css("transform", "scale(" + $("#resize_radio").val() + ")")
         $("#container").css("cursor", "zoom-in")
-        $("#video_resized").html("放大" + $("#resize_radio").val() + "倍")
-        $("#video_resized").css("color", "red")
-        $("#video_resized").css("font-size", "130%")
-        showOsd("放大" + $("#resize_radio").val() + "倍", "center", "increase")
+        $("#video_size").html("放大" + $("#resize_radio").val() + "倍")
+        $("#video_size").css("color", "red")
+        $("#video_size").css("font-size", "130%")
+        showOSD("放大" + $("#resize_radio").val() + "倍", "center", "increase")
         isResized = true
     }
 }
@@ -147,10 +147,10 @@ function zoomDefault() {
     if (isResized) {
         $("#video_content").css("transform", "scale(1)")
         $("#container").css("cursor", "default")
-        $("#video_resized").html("標準大小")
-        $("#video_resized").css("color", "#ffffff")
-        $("#video_resized").css("font-size", "100%")
-        showOsd("標準大小", "center", "decrease")
+        $("#video_size").html("標準大小")
+        $("#video_size").css("color", "#ffffff")
+        $("#video_size").css("font-size", "100%")
+        showOSD("標準大小", "center", "decrease")
         isResized = false
     }
 }
@@ -165,13 +165,12 @@ function showMessage(message, countDown = 2) {
 }
 
 // 顯示影片 OSD 訊息
-function showOsd(text, position = "center", fadeOut = "increase", fadeOutTime = 1000) {
-    $("#video_osd").remove()
-    $("#video_resized").after('<div id="video_osd"></div>')
+function showOSD(text, position = "center", fadeOut = "increase", fadeOutTime = 1000) {
+    $("#video_osd").finish().removeAttr("style")
     $("#video_osd").html(text)
     $("#video_osd").show()
     $("#video_osd").attr("class", `osd_${position}`)
-    // OSD 訊息置中
+    // OSD 訊息置中（使用 transform -50％會影響動畫效果）
     $("#video_osd").css("margin-left", -($("#video_osd").width() / 2))
     $("#video_osd").css("margin-top", -($("#video_osd").height() / 2))
 
@@ -188,12 +187,14 @@ function showOsd(text, position = "center", fadeOut = "increase", fadeOutTime = 
         case "left":
             $("#video_osd").css("transform", "translate(-1em)")
             break
+        case "none":
+            break
     }
 
     $("#video_osd").animate({
         opacity: "0"
     }, fadeOutTime, function() {
-        $(this).remove()
+        $(this).hide()
     })
 }
 

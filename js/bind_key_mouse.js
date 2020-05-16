@@ -2,16 +2,16 @@
 
 // 綁定鍵盤、滑鼠動作，影片啟動時作用
 function bind_key_mouse() {
-    $("body").keydown(function(keyEvent) {
+    $("body").on("keydown", (function(keyEvent) {
         switch (keyEvent.code) {
             case "Digit1": // 1：畫筆
                 $("#pen_type").val(1).change()
-                showOsd("切換為畫筆", "center", "increase")
+                showOSD("切換為畫筆", "center", "increase")
                 break
 
             case "Digit2": // 2：拖曳遮罩
                 $("#pen_type").val(2).change()
-                showOsd("切換為路徑遮罩", "center", "increase")
+                showOSD("切換為路徑遮罩", "center", "increase")
                 break
 
             case "Backquote": // `：展開/收起操作按鈕
@@ -58,9 +58,31 @@ function bind_key_mouse() {
                 clearCanvas()
                 break
         }
+    }))
+
+    // 綁定滑鼠滾輪調整 input 數值、select 選項，限制數值功能
+    $("#control > .item").on("wheel", function(wheelEvent) {
+        if (wheelEvent.originalEvent.deltaY < 0) {
+            // 滾輪往上：增加數值
+            $(this).children("input[type='number']").val(parseInt($(this).children("input[type='number']").val()) + 1).trigger("change")
+            $(this).find("select option:selected").removeAttr("selected").prev().prop("selected", "selected").trigger("change")
+        } else {
+            // 滾輪往下：減少數值
+            $(this).children("input[type='number']").val(parseInt($(this).children("input[type='number']").val()) - 1).trigger("change")
+            $(this).find("select option:selected").removeAttr("selected").next().prop("selected", "selected").trigger("change")
+        }
     })
 
-    // 綁定滑鼠滾輪動作
+    $("input[type='number']").on("change", function(wheelEvent) {
+        if ($(this).attr("max") != undefined && parseInt($(this).val()) > parseInt($(this).attr("max"))) {
+            $(this).val($(this).attr("max"))
+        }
+        if ($(this).attr("min") != undefined && parseInt($(this).val()) < parseInt($(this).attr("min"))) {
+            $(this).val($(this).attr("min"))
+        }
+    })
+
+    // 綁定影片播放滑鼠滾輪動作
     $("#canvas_area").on("wheel", function(wheelEvent) {
         if (wheelEvent.originalEvent.deltaY < 0) {
             // 滾輪往上：放大影像

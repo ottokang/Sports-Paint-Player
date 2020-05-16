@@ -91,6 +91,11 @@ kbd {
     margin-right: 1em;
 }
 
+#control .item:hover {
+    text-shadow: 1px 1px #aaa;
+    color: #6e6eca;
+}
+
 #control #mask_radius,
 #control #mask_scale,
 #control #mask_transparency {
@@ -132,7 +137,7 @@ kbd {
     right: 20px;
 }
 
-#video_resized {
+#video_size {
     top: 60px;
     right: 20px;
 }
@@ -195,6 +200,10 @@ kbd {
 
 #hotkey_buttons .button_info {
     display: block;
+}
+
+#hotkey_buttons #zoom_in_button {
+    width: 10em;
 }
 
 #video_progress {

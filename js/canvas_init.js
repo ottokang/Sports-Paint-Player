@@ -5,7 +5,7 @@ var ctx = $("#canvas_area")[0].getContext("2d"),
     drawObj = null
 
 // 測試 Canvas
-createTestCanvas()
+//createTestCanvas()
 
 // 綁定畫筆類型變更設定
 $("#pen_type").on("change", function() {
@@ -47,7 +47,7 @@ $("#canvas_area").mousemove(function(e) {
 function clearCanvas(isShowOsd = true) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     if (isShowOsd) {
-        showOsd("清除筆跡", "center", "increase")
+        showOSD("清除筆跡", "center", "increase")
     }
 }
 
