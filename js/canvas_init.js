@@ -68,8 +68,8 @@ function createTestCanvas() {
 
 // 設定畫筆物件選單
 function setupDrawObj() {
-    $("[class*='pen_type_id_']").hide()
-    $(".pen_type_id_" + $("#pen_type").val()).show()
+    $("[class*='pen_type_id_']").hide(200)
+    $(".pen_type_id_" + $("#pen_type").val()).show(200)
     switch ($("#pen_type").val()) {
         case "1":
             drawObj = pen.setup()

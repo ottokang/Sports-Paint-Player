@@ -15,6 +15,7 @@ $("#video_source").on("change", function() {
     } else {
         $("#video_source").show()
         $("#select_video_button").hide()
+        $(document).attr("title", "運動影片分析播放器：" + $("#video_source").val().split('\\').pop())
         showMessage("開始播放", 1)
         video.src = URL.createObjectURL(file)
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案
@@ -30,11 +31,11 @@ $("#video_source").on("change", function() {
         let screenAspectRatio = maxViewWidth / maxViewHeight
 
         if (videoAspectRatio >= screenAspectRatio) {
-            var containerWidth = maxViewWidth
-            var conatinerHeight = video.videoHeight * (maxViewWidth / video.videoWidth)
+            var containerWidth = parseInt(maxViewWidth)
+            var conatinerHeight = parseInt(video.videoHeight * (maxViewWidth / video.videoWidth))
         } else {
-            var containerWidth = video.videoWidth * (maxViewHeight / video.videoHeight)
-            var conatinerHeight = maxViewHeight
+            var containerWidth = parseInt(video.videoWidth * (maxViewHeight / video.videoHeight))
+            var conatinerHeight = parseInt(maxViewHeight)
         }
 
         // 設定 Container 寬、高、Margin-Top 距離

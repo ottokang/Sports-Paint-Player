@@ -45,16 +45,14 @@ kbd {
     position: absolute;
     transform: translateX(-50%);
     left: 50%;
-    top: 30%;
+    top: 40%;
     z-index: 1;
     display: inline-block;
-    background: #feda71;
     background: linear-gradient(#feda71, #febe4d);
     border: solid 1px #eab551;
     border-bottom: solid 3px #b98a37;
     border-radius: 5px;
     box-shadow: inset 0 0 0 1px #fee9aa;
-    color: #996633;
     text-shadow: 0 1px 0 #fedd9b;
     font-size: 1.5em;
     color: #403434;
@@ -65,15 +63,14 @@ kbd {
 }
 
 #select_video_button:hover {
-    background: #fec455;
     background: linear-gradient(#fec455, #fecd61);
     border: solid 1px #e6a93d;
     border-bottom: solid 3px #b98a37;
     box-shadow: inset 0 0 0 1px #fedb98;
+
 }
 
 #select_video_button:active {
-    background: #f9bd4f;
     background: linear-gradient(#f9bd4f, #f0b64d);
     border: solid 1px #a77f35;
     box-shadow: inset 0 10px 15px 0 #dba646;
@@ -183,6 +180,10 @@ kbd {
     position: absolute;
     top: 10px;
     left: 10px;
+}
+
+#hotkeys .button_pressed {
+    border-style: inset;
 }
 
 #hotkey_buttons {

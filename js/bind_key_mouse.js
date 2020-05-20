@@ -5,16 +5,25 @@ function bind_key_mouse() {
     $("body").on("keydown", (function(keyEvent) {
         switch (keyEvent.code) {
             case "Digit1": // 1：畫筆
-                $("#pen_type").val(1).change()
-                showOSD("切換為畫筆", "center", "increase")
+                if ($("#pen_type").val() != "1") {
+                    $("#pen_type").val(1).change()
+                    showOSD("切換為畫筆", "center", "increase")
+                }
                 break
 
             case "Digit2": // 2：拖曳遮罩
-                $("#pen_type").val(2).change()
-                showOSD("切換為路徑遮罩", "center", "increase")
+                if ($("#pen_type").val() != "2") {
+                    $("#pen_type").val(2).change()
+                    showOSD("切換為路徑遮罩", "center", "increase")
+                }
                 break
 
             case "Backquote": // `：展開/收起操作按鈕
+                if ($("#hotkey_buttons").css("display") === "none") {
+                    $("#toggle_button #toggle_button_text").html("隱藏操作按鍵").parent().addClass("button_pressed")
+                } else {
+                    $("#toggle_button #toggle_button_text").html("顯示操作按鍵").parent().removeClass("button_pressed")
+                }
                 $("#hotkey_buttons").toggle(300)
                 break
 
