@@ -22,7 +22,7 @@ kbd {
     margin: 0 0 5px 0;
     padding: 5px;
     border-radius: 10px;
-    background: #c6c2bc;
+    background: #9e9e9e;
 }
 
 #message {
@@ -35,10 +35,32 @@ kbd {
     border: 2px solid #ffffff;
     padding: 10px;
     border-radius: 10px;
-    background-color: #008CBA;
+    background-color: #1E88E5;
     transform: translateX(-50%);
     left: 50%;
     z-index: 1;
+}
+
+.button {
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #e67e22;
+    color: #ecf0f1;
+    font-size: 1.5em;
+    transition: background-color .3s;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #d35400;
+}
+
+.button label {
+    padding: 10px;
+    display: inline-block;
 }
 
 #select_video_button {
@@ -47,33 +69,6 @@ kbd {
     left: 50%;
     top: 40%;
     z-index: 1;
-    display: inline-block;
-    background: linear-gradient(#feda71, #febe4d);
-    border: solid 1px #eab551;
-    border-bottom: solid 3px #b98a37;
-    border-radius: 5px;
-    box-shadow: inset 0 0 0 1px #fee9aa;
-    text-shadow: 0 1px 0 #fedd9b;
-    font-size: 1.5em;
-    color: #403434;
-}
-
-#select_video_button label {
-    padding: 10px;
-}
-
-#select_video_button:hover {
-    background: linear-gradient(#fec455, #fecd61);
-    border: solid 1px #e6a93d;
-    border-bottom: solid 3px #b98a37;
-    box-shadow: inset 0 0 0 1px #fedb98;
-
-}
-
-#select_video_button:active {
-    background: linear-gradient(#f9bd4f, #f0b64d);
-    border: solid 1px #a77f35;
-    box-shadow: inset 0 10px 15px 0 #dba646;
 }
 
 #control {

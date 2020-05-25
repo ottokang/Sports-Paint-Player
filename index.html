@@ -9,8 +9,7 @@
 
 <body>
     <input id="video_source" name="video_source" type="file" accept="video/*">
-    <div id="select_video_button"><label for="video_source">請選擇要播放的影片</label></div>
-    <!--<div id="reselect_video_button"><label for="video_source">重新選擇其他檔案...</label></div>-->
+    <div id="select_video_button" class="button"><label for="video_source">請選擇要播放的影片</label></div>
     <div id="message"></div>
     <div id="control">
         <span class="item">
@@ -115,8 +114,8 @@
     </div>
     <div id="version">v0.5</div>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/pen_draw.js"></script>
-    <script src="js/pathmask_draw.js"></script>
+    <script src="js/draw_obj/pen.js"></script>
+    <script src="js/draw_obj/pathmask.js"></script>
     <script src="js/bind_key_mouse.js"></script>
     <script src="js/video_control.js"></script>
     <script src="js/canvas_init.js"></script>

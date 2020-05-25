@@ -66,6 +66,7 @@ var pathMask = {
         ctx.arc(e.offsetX, e.offsetY, parseInt($("#mask_radius").val()) * scale, 0, 2 * Math.PI)
         ctx.closePath()
         ctx.fill()
+        ctx.globalCompositeOperation = "source-over"
     },
 
     _drawPathMask(e) {
@@ -82,6 +83,7 @@ var pathMask = {
         ctx.lineTo(pathMaskCoordinates2.x2, pathMaskCoordinates2.y2)
         ctx.closePath()
         ctx.fill()
+        ctx.globalCompositeOperation = "source-over"
     },
 
     _getPathMaskCoordinates(baseX, baseY, faceX, faceY, radius) {
