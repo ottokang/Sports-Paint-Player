@@ -183,11 +183,12 @@ kbd {
 
 #hotkey_buttons {
     display: none;
+    padding-top: 0.5em;
 }
 
 #hotkey_buttons button {
     font-size: 12px;
-    width: 9em;
+    width: 8em;
 }
 
 #hotkey_buttons .small {
@@ -198,7 +199,8 @@ kbd {
     display: block;
 }
 
-#hotkey_buttons #zoom_in_button {
+#hotkey_buttons #video_wheel_button,
+#hotkey_buttons #option_wheel_button {
     width: 10em;
 }
 

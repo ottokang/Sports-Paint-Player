@@ -10,7 +10,7 @@ $("body").on("keydown", (function(keyEvent) {
             }
             break
 
-        case "Digit3": // 3：拖曳遮罩
+        case "Digit3": // 3：路徑遮罩
             if ($("#pen_type").val() != "3") {
                 $("#pen_type").val(3).change()
                 showOSD("切換為路徑遮罩", "center", "increase")
@@ -47,11 +47,11 @@ $("body").on("keydown", (function(keyEvent) {
             break
 
         case "KeyW": // W：加速20%
-            setPlaybackRate(20.0)
+            setPlaybackRate(20)
             break
 
         case "KeyS": // S：減速20%
-            setPlaybackRate(-20.0)
+            setPlaybackRate(-20)
             break
 
         case "KeyX": // X：恢復播放速度

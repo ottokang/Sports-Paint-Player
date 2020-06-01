@@ -1,13 +1,13 @@
 "use strict"
 
 // 設定 Canvas 畫布、繪圖物件
-var ctx = $("#canvas_area")[0].getContext("2d"),
-    drawObj = null
+var ctx = $("#canvas_area")[0].getContext("2d")
+var drawObj = ['', pen, '', pathMask]
 
 // 測試 Canvas
 //createTestCanvas()
 
-// 綁定畫筆類型變更設定
+// 綁定畫筆類型變更，設定繪圖物件
 $("#pen_type").on("change", function() {
     setupDrawObj()
 })
@@ -20,34 +20,34 @@ $("#pen_color").on("change", function() {
 
 // 綁定滑鼠在 canvas 上按下動作
 $("#canvas_area").on("mousedown", function(e) {
-    drawObj.mousedown(e)
+    drawObj[parseInt($("#pen_type").val())].mousedown(e)
 })
 
 // 綁定滑鼠在 canvas 上放開動作
 $("#canvas_area").on("mouseup", function(e) {
-    drawObj.mouseup(e)
+    drawObj[parseInt($("#pen_type").val())].mouseup(e)
 })
 
 // 綁定滑鼠進入 canvas 動作
 $("#canvas_area").on("mouseover", function(e) {
-    drawObj.mouseover(e)
+    drawObj[parseInt($("#pen_type").val())].mouseover(e)
 })
 
 // 綁定滑鼠移出 canvas 動作
 $("#canvas_area").on("mouseout", function(e) {
-    drawObj.mouseout(e)
+    drawObj[parseInt($("#pen_type").val())].mouseout(e)
 })
 
 // 綁定滑鼠在 canvas 上移動動作
 $("#canvas_area").on("mousemove", function(e) {
-    drawObj.mousemove(e)
+    drawObj[parseInt($("#pen_type").val())].mousemove(e)
 })
 
 // 清空畫布
 function clearCanvas(isShowOsd = true) {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     if (isShowOsd) {
-        showOSD("清除筆跡", "center", "increase")
+        showOSD("清空畫布", "center", "increase")
     }
 }
 
@@ -55,14 +55,7 @@ function clearCanvas(isShowOsd = true) {
 function setupDrawObj() {
     $("[class*='pen_type_id_']").hide()
     $(".pen_type_id_" + $("#pen_type").val()).show()
-    switch ($("#pen_type").val()) {
-        case "1":
-            drawObj = pen.setup()
-            break
-        case "3":
-            drawObj = pathMask.setup()
-            break
-    }
+    drawObj[parseInt($("#pen_type").val())].setup()
 }
 
 // 初始化畫筆UI
