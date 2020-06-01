@@ -6,7 +6,7 @@ var video = $("#video_content")[0],
     resizeXOffset,
     resizeYOffset
 
-// 選擇影像後播放
+// 綁定影片選擇後動作，選擇影像後播放
 $("#video_source").on("change", function() {
     let file = this.files[0]
     if (video.canPlayType(file.type) === "") {
@@ -21,67 +21,65 @@ $("#video_source").on("change", function() {
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案
         $("#video_content").focus()
     }
-
-    // 設定播放進度列、顯示播放資訊、設定 container 高度、寬度
-    $("#video_content").on("durationchange", function() {
-        // 根據螢幕大小，設定 Container 大小
-        let maxViewWidth = $(window).width()
-        let maxViewHeight = $(window).height() * 0.88
-        let videoAspectRatio = video.videoWidth / video.videoHeight
-        let screenAspectRatio = maxViewWidth / maxViewHeight
-
-        if (videoAspectRatio >= screenAspectRatio) {
-            var containerWidth = parseInt(maxViewWidth)
-            var conatinerHeight = parseInt(video.videoHeight * (maxViewWidth / video.videoWidth))
-        } else {
-            var containerWidth = parseInt(video.videoWidth * (maxViewHeight / video.videoHeight))
-            var conatinerHeight = parseInt(maxViewHeight)
-        }
-
-        // 設定 Container 寬、高、Margin-Top 距離
-        $("#container").width(containerWidth)
-        $("#container").height(conatinerHeight)
-        $("#container").css("margin-top", (maxViewHeight - conatinerHeight) / 2 + "px")
-        $("#video_content").width(containerWidth)
-        $("#video_content").height(conatinerHeight)
-        $("#video_progress").width(containerWidth)
-        $("#video_progress").prop("max", video.duration)
-        $("#video_progress").css("display", "block")
-        $(".video_info").css("display", "block")
-        $("#playback_speed").html(Math.floor(video.playbackRate * 100))
-
-        // 設定 Canvas 大小、設定繪圖界面、物件
-        $("#canvas_area").show()
-        ctx.canvas.width = $("#video_content").width()
-        ctx.canvas.height = $("#video_content").height()
-        initDrawUI()
-        setupDrawObj()
-
-        // 綁定鍵盤、滑鼠動作
-        bind_key_mouse()
-    })
-
-    // 綁定播放進度列點擊事件
-    $("#video_progress").on("click", function() {
-        video.currentTime = $("#video_progress").val()
-    })
-
-    // 定時更新進度列、播放資訊
-    setInterval(function() {
-        $("#video_progress").val(video.currentTime)
-        $("#current_time").html(video.currentTime.toString().toHHMMSS())
-        $("#total_time").html(video.duration.toString().toHHMMSS())
-    }, 500)
-
-    // 綁定滑鼠移動紀錄座標，作為縮放基準
-    $("#canvas_area").mousemove(function(e) {
-        resizeXOffset = parseInt(e.offsetX / ctx.canvas.width * 100)
-        resizeYOffset = parseInt(e.offsetY / ctx.canvas.height * 100)
-    })
 })
 
+// 綁定播放進度列點擊事件
+$("#video_progress").on("click", function() {
+    video.currentTime = $("#video_progress").val()
+})
 
-// 播放、暫停
+// 設定影片播放時更新進度列
+$("#video_content").on("timeupdate", function() {
+    $("#video_progress").val(video.currentTime)
+    $("#current_time").html(video.currentTime.toString().toHHMMSS())
+})
+
+// 綁定滑鼠移動時紀錄座標，作為影片縮放基準
+$("#canvas_area").on("mousemove", function(e) {
+    resizeXOffset = parseInt(e.offsetX / ctx.canvas.width * 100)
+    resizeYOffset = parseInt(e.offsetY / ctx.canvas.height * 100)
+})
+
+// 綁定影片長度變更時，設定播放進度列、播放資訊、container 高度/寬度
+$("#video_content").on("durationchange", function() {
+    // 根據螢幕大小，設定 Container 大小
+    let maxViewWidth = $(window).width()
+    let maxViewHeight = $(window).height() * 0.88
+    let videoAspectRatio = video.videoWidth / video.videoHeight
+    let screenAspectRatio = maxViewWidth / maxViewHeight
+
+    if (videoAspectRatio >= screenAspectRatio) {
+        var containerWidth = parseInt(maxViewWidth)
+        var conatinerHeight = parseInt(video.videoHeight * (maxViewWidth / video.videoWidth))
+    } else {
+        var containerWidth = parseInt(video.videoWidth * (maxViewHeight / video.videoHeight))
+        var conatinerHeight = parseInt(maxViewHeight)
+    }
+
+    // 設定 Container 寬、高、Margin-Top 距離
+    $("#container").width(containerWidth)
+    $("#container").height(conatinerHeight)
+    $("#container").css("margin-top", (maxViewHeight - conatinerHeight) / 2 + "px")
+    $("#video_content").width(containerWidth)
+    $("#video_content").height(conatinerHeight)
+
+    // 設定播放進度時間、播放資訊
+    $("#total_time").html(video.duration.toString().toHHMMSS())
+    $("#video_progress").width(containerWidth)
+    $("#video_progress").prop("max", video.duration)
+    $("#video_progress").css("display", "block")
+    $(".video_info").css("display", "block")
+    $("#playback_speed").html(Math.floor(video.playbackRate * 100))
+
+    // 設定 Canvas 大小、設定繪圖界面、物件
+    $("#canvas_area").show()
+    ctx.canvas.width = containerWidth
+    ctx.canvas.height = conatinerHeight
+    initDrawUI()
+    setupDrawObj()
+})
+
+// 播放/暫停
 function playPause() {
     if (video.paused) {
         video.play()
