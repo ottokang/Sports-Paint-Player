@@ -22,7 +22,7 @@ kbd {
     margin: 0 0 5px 0;
     padding: 5px;
     border-radius: 10px;
-    background: #9e9e9e;
+    background: #bdbdbd;
 }
 
 #message {
@@ -85,7 +85,7 @@ kbd {
 
 #control .item:hover {
     text-shadow: 1px 1px #aaa;
-    color: #6e6eca;
+    color: #1e88e5;
 }
 
 #control #mask_radius,
@@ -120,8 +120,8 @@ kbd {
 }
 
 #video_playback_time_info {
-    right: 20px;
-    bottom: 30px;
+    right: 10px;
+    bottom: 1.5em;
 }
 
 #video_playback_speed_info {

@@ -10,12 +10,11 @@ var video = $("#video_content")[0],
 $("#video_source").on("change", function() {
     let file = this.files[0]
     if (video.canPlayType(file.type) === "") {
-        showMessage(`瀏覽器無法播放此檔案類型：${file.type}，建議將影片轉檔為 H.264 + AAC 格式。`, 6)
+        showMessage(`瀏覽器無法播放此類影片（${file.type}），建議將影片轉檔為 H.264 + AAC 格式。`, 6)
         return
     } else {
         $("#video_source").show()
         $("#select_video_button").hide()
-        $(document).attr("title", "運動影片分析播放器：" + $("#video_source").val().split('\\').pop())
         showMessage("開始播放", 1)
         video.src = URL.createObjectURL(file)
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案
@@ -28,7 +27,7 @@ $("#video_progress").on("click", function() {
     video.currentTime = $("#video_progress").val()
 })
 
-// 設定影片播放時更新進度列
+// 綁定影片時間變化時更新進度列
 $("#video_content").on("timeupdate", function() {
     $("#video_progress").val(video.currentTime)
     $("#current_time").html(video.currentTime.toString().toHHMMSS())
@@ -43,7 +42,7 @@ $("#canvas_area").on("mousemove", function(e) {
 // 綁定影片長度變更時，設定播放進度列、播放資訊、container 高度/寬度
 $("#video_content").on("durationchange", function() {
     // 根據螢幕大小，設定 Container 大小
-    let maxViewWidth = $(window).width()
+    let maxViewWidth = $(window).width() * 0.98
     let maxViewHeight = $(window).height() * 0.88
     let videoAspectRatio = video.videoWidth / video.videoHeight
     let screenAspectRatio = maxViewWidth / maxViewHeight
