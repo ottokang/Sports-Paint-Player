@@ -88,9 +88,7 @@ kbd {
     color: #1e88e5;
 }
 
-#control #mask_radius,
-#control #mask_scale,
-#control #mask_transparency {
+#control input[type=number] {
     width: 3.2em;
 }
 

@@ -15,21 +15,39 @@
         <span class="item">
             <select id="pen_type" name="pen_type">
                 <option value="1" selected>1.畫筆</option>
+                <option value="2">2.遮罩</option>
                 <option value="3">3.路徑遮罩</option>
             </select>
         </span>
         <span class="item pen_type_id_1">
-            筆跡顏色：
+            顏色：
             <select id="pen_color" name="pen_color">
             </select>
         </span>
-        <span class="item pen_type_id_3">
-            遮罩半徑：
-            <input id="mask_radius" name="mask_radius" type="number" min="20" max="80" value="30" step="1">
+        <span class="item pen_type_id_2">
+            半徑：
+            <input id="mask_radius" name="mask_radius" type="number" min="50" max="150" value="100" step="1">
+        </span>
+        <span class="item pen_type_id_2">
+            圓形比例：
+            <input id="mask_proportion" name="mask_proportion" type="number" min="0.2" max="2" value="1" step="0.1">
         </span>
         <span class="item pen_type_id_3">
-            遮罩放大倍率：
-            <select id="mask_scale" name="mask_scale">
+            透明度：
+            <select id="mask_transparency" name="path_mask_transparency">
+                <option value="0.8">0.8</option>
+                <option value="0.7" selected>0.7</option>
+                <option value="0.6">0.6</option>
+                <option value="0.5">0.5</option>
+            </select>
+        </span>
+        <span class="item pen_type_id_3">
+            半徑：
+            <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="30" step="1">
+        </span>
+        <span class="item pen_type_id_3">
+            放大倍率：
+            <select id="path_mask_scale" name="mask_scale">
                 <option value="3.0" selected>3.0</option>
                 <option value="2.8">2.8</option>
                 <option value="2.6">2.6</option>
@@ -39,8 +57,8 @@
             </select>
         </span>
         <span class="item pen_type_id_3">
-            遮罩透明度：
-            <select id="mask_transparency" name="mask_transparency">
+            透明度：
+            <select id="path_mask_transparency" name="path_mask_transparency">
                 <option value="0.8">0.8</option>
                 <option value="0.7" selected>0.7</option>
                 <option value="0.6">0.6</option>
@@ -111,11 +129,12 @@
             </div>
         </div>
         <canvas id="canvas_area"></canvas>
-        <input id="video_progress" type="range" name="video_progress" min="0" step="0.01">
+        <input id="video_progress" name="video_progress" type="range" min="0" step="0.01">
     </div>
     <div id="version">v0.5</div>
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/draw_obj/pen.js"></script>
+    <script src="js/draw_obj/mask.js"></script>
     <script src="js/draw_obj/pathmask.js"></script>
     <script src="js/bind_key_mouse.js"></script>
     <script src="js/video_control.js"></script>

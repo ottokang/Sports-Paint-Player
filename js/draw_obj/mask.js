@@ -22,12 +22,12 @@ var mask = {
         this._y = e.offsetY
         this._reDrawBackground()
         this._drawCircleMask(e)
-        this._backgroudCanvasData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
     mouseup(e) {
         this._isMouseDown = false
         $("#container").css("cursor", this._originMouseCursor)
+        clearCanvas(false)
     },
 
     mouseover(e) {
@@ -46,8 +46,8 @@ var mask = {
         $("#container").css("cursor", "grab")
         if (this._isMouseDown == true && this._isInCanvas == true) {
             clearCanvas(false)
-            ctx.putImageData(this._backgroudCanvasData, 0, 0)
-            this._drawCircleMask(e, parseFloat($("#mask_scale").val()))
+            this._reDrawBackground()
+            this._drawCircleMask(e)
         }
     },
 
@@ -58,11 +58,13 @@ var mask = {
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)
     },
 
-    _drawCircleMask(e, scale = 1) {
+    _drawCircleMask(e) {
         ctx.globalCompositeOperation = "destination-out"
         ctx.fillStyle = "#000000" // 設定為不透明色，組合圖片可以正確透明
+        var radius = parseInt($("#mask_radius").val())
+        var proportion = parseFloat($("#mask_proportion").val())
         ctx.beginPath()
-        ctx.arc(e.offsetX, e.offsetY, parseInt($("#mask_radius").val()) * scale, 0, 2 * Math.PI)
+        ctx.ellipse(e.offsetX, e.offsetY, radius * proportion, radius / proportion, 0, 0, 2 * Math.PI)
         ctx.closePath()
         ctx.fill()
         ctx.globalCompositeOperation = "source-over"

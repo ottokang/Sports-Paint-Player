@@ -2,7 +2,7 @@
 
 // 設定 Canvas 畫布、繪圖物件
 var ctx = $("#canvas_area")[0].getContext("2d")
-var drawObj = ['', pen, '', pathMask]
+var drawObj = ['', pen, mask, pathMask]
 
 // 測試 Canvas
 //createTestCanvas()

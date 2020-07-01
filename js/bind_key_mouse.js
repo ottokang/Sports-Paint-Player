@@ -10,6 +10,13 @@ $("body").on("keydown", (function(keyEvent) {
             }
             break
 
+        case "Digit2": // 2：遮罩
+            if ($("#pen_type").val() != "2") {
+                $("#pen_type").val(2).change()
+                showOSD("切換為遮罩", "center", "increase")
+            }
+            break
+
         case "Digit3": // 3：路徑遮罩
             if ($("#pen_type").val() != "3") {
                 $("#pen_type").val(3).change()
@@ -68,19 +75,26 @@ $("body").on("keydown", (function(keyEvent) {
     }
 }))
 
-// 綁定滑鼠滾輪調整 input 數值、select 選項，並且限制數值上下限
+// 綁定滑鼠滾輪調整 input 數值、select 選項
 $("#control > .item").on("wheel", function(wheelEvent) {
+    let step = parseFloat($(this).children("input[type='number']").attr("step"))
+    let numberValue = parseFloat($(this).children("input[type='number']").val())
+
+    // 檢查小數位數，決定toFixed()的數值（尚未實做）
+    let fixCount = $(this).children("input[type='number']").attr("step").split(".")[1].length
+    console.log(fixCount)
     if (wheelEvent.originalEvent.deltaY < 0) {
-        // 滾輪往上：增加數值
-        $(this).children("input[type='number']").val(parseInt($(this).children("input[type='number']").val()) + 1).trigger("change")
+        // 滾輪往上：增加數值、往上移動選項
+        $(this).children("input[type='number']").val((numberValue + step).toFixed(fixCount)).trigger("change")
         $(this).find("select option:selected").removeAttr("selected").prev().prop("selected", "selected").trigger("change")
     } else {
-        // 滾輪往下：減少數值
-        $(this).children("input[type='number']").val(parseInt($(this).children("input[type='number']").val()) - 1).trigger("change")
+        // 滾輪往下：減少數值、往下移動選項
+        $(this).children("input[type='number']").val(numberValue - step).toFixed(fixCount).trigger("change")
         $(this).find("select option:selected").removeAttr("selected").next().prop("selected", "selected").trigger("change")
     }
 })
 
+// 限制 input 數值上下限
 $("input[type='number']").on("change", function(wheelEvent) {
     if ($(this).attr("max") != undefined && parseInt($(this).val()) > parseInt($(this).attr("max"))) {
         $(this).val($(this).attr("max"))
