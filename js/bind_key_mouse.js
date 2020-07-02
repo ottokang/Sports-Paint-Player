@@ -77,29 +77,42 @@ $("body").on("keydown", (function(keyEvent) {
 
 // 綁定滑鼠滾輪調整 input 數值、select 選項
 $("#control > .item").on("wheel", function(wheelEvent) {
-    let step = parseFloat($(this).children("input[type='number']").attr("step"))
-    let numberValue = parseFloat($(this).children("input[type='number']").val())
+    if ($(this).children("input[type='number']").length != 0) {
+        let inputNumber = $(this).children("input[type='number']")
+        let step = parseFloat(inputNumber.attr("step"))
+        let numberValue = parseFloat(inputNumber.val())
+        let stepNumber = Number(inputNumber.attr("step"))
+        let fixCount
+        if (Number.isInteger(stepNumber)) {
+            fixCount = 0
+        } else {
+            fixCount = inputNumber.attr("step").split(".")[1].length
+        }
 
-    // 檢查小數位數，決定toFixed()的數值（尚未實做）
-    let fixCount = $(this).children("input[type='number']").attr("step").split(".")[1].length
-    console.log(fixCount)
+        if (wheelEvent.originalEvent.deltaY < 0) {
+            // 滾輪往上：增加數值
+            inputNumber.val((numberValue + step).toFixed(fixCount)).trigger("change")
+        } else {
+            // 滾輪往下：減少數值
+            inputNumber.val((numberValue - step).toFixed(fixCount)).trigger("change")
+        }
+    }
+
     if (wheelEvent.originalEvent.deltaY < 0) {
-        // 滾輪往上：增加數值、往上移動選項
-        $(this).children("input[type='number']").val((numberValue + step).toFixed(fixCount)).trigger("change")
+        // 滾輪往上：往上移動選項
         $(this).find("select option:selected").removeAttr("selected").prev().prop("selected", "selected").trigger("change")
     } else {
-        // 滾輪往下：減少數值、往下移動選項
-        $(this).children("input[type='number']").val(numberValue - step).toFixed(fixCount).trigger("change")
+        // 滾輪往下：往下移動選項
         $(this).find("select option:selected").removeAttr("selected").next().prop("selected", "selected").trigger("change")
     }
 })
 
 // 限制 input 數值上下限
 $("input[type='number']").on("change", function(wheelEvent) {
-    if ($(this).attr("max") != undefined && parseInt($(this).val()) > parseInt($(this).attr("max"))) {
+    if ($(this).attr("max") != undefined && parseFloat($(this).val()) > parseFloat($(this).attr("max"))) {
         $(this).val($(this).attr("max"))
     }
-    if ($(this).attr("min") != undefined && parseInt($(this).val()) < parseInt($(this).attr("min"))) {
+    if ($(this).attr("min") != undefined && parseFloat($(this).val()) < parseFloat($(this).attr("min"))) {
         $(this).val($(this).attr("min"))
     }
 })
