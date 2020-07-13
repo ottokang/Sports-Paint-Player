@@ -131,7 +131,6 @@ function zoomIn() {
     if (!isResized) {
         $("#video_content").css("transform-origin", resizeXOffset + "% " + resizeYOffset + "%")
         $("#video_content").css("transform", "scale(" + $("#resize_radio").val() + ")")
-        $("#container").css("cursor", "zoom-in")
         $("#video_size").html("放大" + $("#resize_radio").val() + "倍")
         $("#video_size").css("color", "red")
         $("#video_size").css("font-size", "130%")
@@ -144,7 +143,6 @@ function zoomIn() {
 function zoomDefault() {
     if (isResized) {
         $("#video_content").css("transform", "scale(1)")
-        $("#container").css("cursor", "default")
         $("#video_size").html("標準大小")
         $("#video_size").css("color", "#ffffff")
         $("#video_size").css("font-size", "100%")

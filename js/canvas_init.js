@@ -1,20 +1,22 @@
 "use strict"
 
-// 設定 Canvas 畫布、繪圖物件
+// 設定 Canvas 畫布、繪圖物件、開發模式
 var ctx = $("#canvas_area")[0].getContext("2d")
 var drawObj = ['', pen, mask, pathMask]
+var developmentMode = 0
 
-// 測試 Canvas
-//createTestCanvas()
+// 是否進入開發模式
+if (developmentMode === 1) {
+    createTestCanvas()
+}
 
 // 綁定畫筆類型變更，設定繪圖物件
 $("#pen_type").on("change", function() {
     setupDrawObj()
 })
 
-// 設定畫筆顏色設定顏色變換效果
+// 設定畫筆顏色設定後，選項跟著變換顏色
 $("#pen_color").on("change", function() {
-    ctx.strokeStyle = $("#pen_color").val()
     $("#pen_color").css("color", $("#pen_color").val())
 })
 
