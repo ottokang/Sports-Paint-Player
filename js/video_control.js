@@ -15,6 +15,7 @@ $("#video_source").on("change", function() {
     } else {
         $("#video_source").show()
         $("#select_video_button").hide()
+        $("#select_comment_button").css("display", "inline-block")
         showMessage("開始播放", 1)
         video.src = URL.createObjectURL(file)
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案
@@ -196,10 +197,10 @@ function showOSD(text, position = "center", fadeOut = "increase", fadeOutTime = 
 
 // 處理播放時間為時:分:秒
 String.prototype.toHHMMSS = function() {
-    var sec_num = parseInt(this, 10)
-    var hours = Math.floor(sec_num / 3600)
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60)
-    var seconds = sec_num - (hours * 3600) - (minutes * 60)
+    let sec_num = parseInt(this, 10)
+    let hours = Math.floor(sec_num / 3600)
+    let minutes = Math.floor((sec_num - (hours * 3600)) / 60)
+    let seconds = sec_num - (hours * 3600) - (minutes * 60)
 
     if (hours < 10) {
         hours = `0${hours}`

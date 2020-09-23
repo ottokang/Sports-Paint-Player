@@ -72,6 +72,14 @@ $("body").on("keydown", (function(keyEvent) {
         case "KeyC": // C：清空畫布
             clearCanvas()
             break
+
+            // 測試註解
+        case "Numpad1":
+            addComment("1", "左下", 2, "left_down")
+            break
+        case "Numpad2":
+            addComment("2", "下", 2, "center_down")
+            break
     }
 }))
 
