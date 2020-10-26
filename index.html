@@ -10,7 +10,7 @@
 <body>
     <input id="video_source" name="video_source" type="file" accept="video/*">
     <div id="select_video_button" class="button"><label for="video_source">請選擇要播放的影片</label></div>
-    <input id="comment_source" name="comment_source" type="file" accept=".json">
+    <input id="comment_source" name="comment_source" type="file" accept="application/JSON">
     <div id="select_comment_button" class="button"><label for="comment_source">請選擇要載入的註解</label></div>
     <div id="message"></div>
     <div id="control">
@@ -36,7 +36,7 @@
         </span>
         <span class="item pen_type_id_2">
             半徑：
-            <input id="mask_radius" name="mask_radius" type="number" min="50" max="150" value="100" step="1">
+            <input id="mask_radius" name="mask_radius" type="number" min="50" max="150" value="120" step="1">
         </span>
         <span class="item pen_type_id_2">
             圓形比例：
@@ -53,7 +53,7 @@
         </span>
         <span class="item pen_type_id_3">
             半徑：
-            <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="30" step="1">
+            <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1">
         </span>
         <span class="item pen_type_id_3">
             放大倍率：
@@ -92,9 +92,11 @@
                 <option value="5">5</option>
                 <option value="4">4</option>
                 <option value="3" selected>3</option>
+                <option value="2">2</option>
             </select>
         </span>
     </div>
+    <div id="comment_list"></div>
     <div id="container">
         <video id="video_content" autoplay></video>
         <div id="video_playback_time_info" class="video_info">

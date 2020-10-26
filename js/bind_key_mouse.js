@@ -75,10 +75,7 @@ $("body").on("keydown", (function(keyEvent) {
 
             // 測試註解
         case "Numpad1":
-            addComment("1", "左下", 2, "left_down")
-            break
-        case "Numpad2":
-            addComment("2", "下", 2, "center_down")
+            showComment("1", "這球宛如老大一般", 3, "left_down")
             break
     }
 }))

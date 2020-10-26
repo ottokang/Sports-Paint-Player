@@ -43,7 +43,7 @@ $("#canvas_area").on("mousemove", function(e) {
 // 綁定影片長度變更時，設定播放進度列、播放資訊、container 高度/寬度
 $("#video_content").on("durationchange", function() {
     // 根據螢幕大小，設定 Container 大小
-    let maxViewWidth = $(window).width() * 0.98
+    let maxViewWidth = $(window).width() * 0.83
     let maxViewHeight = $(window).height() * 0.88
     let videoAspectRatio = video.videoWidth / video.videoHeight
     let screenAspectRatio = maxViewWidth / maxViewHeight
