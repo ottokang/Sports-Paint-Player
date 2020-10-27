@@ -61,14 +61,15 @@ $("body").on("keydown", (function(keyEvent) {
             setPlaybackRate(-20)
             break
 
-        case "KeyX": // X：恢復播放速度
+        case "KeyZ": // Z：恢復播放速度
             setPlaybackRate("100")
             break
 
-        case "KeyZ": // Z：快速倒轉
-            fastReversePlay(parseInt($("#jump_second").val()))
-            break
-
+            /* 暫時不使用
+            case "KeyZ": // Z：快速倒轉
+                fastReversePlay(parseInt($("#jump_second").val()))
+                break
+            */
         case "KeyC": // C：清空畫布
             clearCanvas()
             break
