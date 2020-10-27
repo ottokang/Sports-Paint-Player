@@ -187,39 +187,50 @@ kbd {
     left: 1em;
     padding: 0.5em;
     border: 2px solid #1565C0;
+    border-radius: 10px;
     background-color: #BBDEFB;
     width: 5%;
+}
+
+.comment_list_item:hover {
+    cursor: pointer;
+}
+
+.comment_list_item {
+    border-bottom: 2px solid #4a26fd;
+    margin-bottom: 3px;
 }
 
 .comment {
     position: absolute;
     padding: 5px;
-    font-size: 130%;
+    font-size: 80%;
     border: 1px solid #4a26fd;
     background: #ffddb0;
     border-radius: 10px;
-    width: 7%;
+    width: 10%;
+    margin-left: -5%;
     word-wrap: break-word;
     opacity: 0.8;
 }
 
 .comment_left_top {
-    top: 15%;
-    left: 15%;
+    top: 7%;
+    left: 7%;
 }
 
 .comment_left {
     top: 50%;
-    left: 15%;
+    left: 7%;
 }
 
 .comment_left_down {
-    bottom: 15%;
-    left: 15%;
+    bottom: 7%;
+    left: 7%;
 }
 
 .comment_center_top {
-    top: 15%;
+    top: 7%;
     left: 50%;
 }
 
@@ -229,23 +240,23 @@ kbd {
 }
 
 .comment_center_down {
-    bottom: 15%;
+    bottom: 7%;
     left: 50%;
 }
 
 .comment_right_top {
-    top: 15%;
-    right: 15%;
+    top: 7%;
+    right: 7%;
 }
 
 .comment_right {
     top: 50%;
-    right: 15%;
+    right: 7%;
 }
 
 .comment_right_down {
-    bottom: 15%;
-    right: 15%;
+    bottom: 7%;
+    right: 7%;
 }
 
 #canvas_area {

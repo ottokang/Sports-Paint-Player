@@ -7,20 +7,30 @@ $("#comment_source").on("change", function() {
     commentReader.onload = function(event) {
         // 檢查是否為正確的 JSON 檔案
         try {
-            var commentJson = JSON.parse(this.result)
+            var commentList = JSON.parse(this.result)
         } catch (e) {
             showMessage(`上傳的註解檔案"${commentFile.name}"有錯誤，無法解析內容`, 6)
             return
         }
 
         $("#comment_list").empty()
-        for (let i = 0; i < commentJson.length; i++) {
-            let comment = JSON.stringify(commentJson[i])
-            $("#comment_list").append(`<div id="commnet_${i}" class="comment_list_item" data-comment="${comment}">${commentJson[i].title}</div>`)
+        for (let i = 0; i < commentList.length; i++) {
+            let commentItem = JSON.stringify(commentList[i])
+            $("#comment_list").append(
+                `<div id="comment_list_${i}" class="comment_list_item">${commentList[i].title}</div>`)
+            $(`#comment_list_${i}`).data("comment", commentItem)
         }
         $("#select_comment_button").hide()
         $("#comment_source, #comment_list").show()
         showMessage("讀取註解完成", 1)
+
+        // 綁定註解列表點選動作
+        $(".comment_list_item").on("click", function() {
+            let comment = JSON.parse($(this).data("comment"))
+            video.currentTime = comment.time
+            clearAllComment()
+            showComment($(this).attr("id").replace("comment_list_", ""), comment.text, comment.duration, comment.position)
+        })
     }
 
     // 讀取註解檔
@@ -37,4 +47,9 @@ function showComment(id, text, timeOut = 10, position = "left_top") {
             $(this).remove()
         })
     }, timeOut * 1000)
+}
+
+// 移除全部註解
+function clearAllComment() {
+    $(".comment").remove()
 }
