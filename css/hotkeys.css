@@ -1,0 +1,45 @@
+kbd {
+    display: inline-block;
+    line-height: 1.2;
+    margin: 0 0.1em 0 0.5em;
+    padding: 0.2em 0.6em;
+    white-space: nowrap;
+    color: #242729;
+    border: 1px solid #adb3b9;
+    border-radius: 3px;
+    background-color: #eeeeee;
+    font-size: 1.2em;
+}
+
+#hotkeys {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#hotkeys .button_pressed {
+    border-style: inset;
+}
+
+#hotkey_buttons {
+    display: none;
+    padding-top: 0.5em;
+}
+
+#hotkey_buttons button {
+    font-size: 12px;
+    width: 8em;
+}
+
+#hotkey_buttons .small {
+    font-size: 0.9em;
+}
+
+#hotkey_buttons .button_info {
+    display: block;
+}
+
+#hotkey_buttons #video_wheel_button,
+#hotkey_buttons #option_wheel_button {
+    width: 10em;
+}

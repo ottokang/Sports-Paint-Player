@@ -67,7 +67,7 @@ $("#video_content").on("durationchange", function() {
     $("#total_time").html(video.duration.toString().toHHMMSS())
     $("#video_progress").width(containerWidth)
     $("#video_progress").prop("max", video.duration)
-    $("#video_progress").css("display", "block")
+    $("#video_progress, #video_progress_pointer").css("display", "block")
     $(".video_info").css("display", "block")
     $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 
@@ -115,16 +115,18 @@ function setPlaybackRate(percentage) {
     $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 }
 
-// 快速倒轉
-function fastReversePlay(seconds) {
-    showOSD(`快速倒轉${seconds}秒`, "center", "increase", seconds * 500)
-    var originTime = video.currentTime
-    var fastForwardInterval = setInterval(function() {
-        video.currentTime -= 0.2
-        if (video.currentTime < originTime - seconds || video.currentTime < 0.5) {
-            clearInterval(fastForwardInterval)
-        }
-    }, 50)
+// 設定影片回播點
+function setBackTime() {
+    let progressRadio = video.currentTime / video.duration
+    $("#video_progress_pointer").css("left", `${progressRadio * 100}%`)
+    $("#video_progress_pointer").attr("data-back_time", video.currentTime.toString())
+    showOSD(`設定回播點：${video.currentTime.toString().toHHMMSS()}`)
+}
+
+// 回到影片回播點
+function toBackTime() {
+    video.currentTime = $("#video_progress_pointer").attr("data-back_time")
+    showOSD(`回到回播點：${video.currentTime.toString().toHHMMSS()}`)
 }
 
 // 放大影像
@@ -132,9 +134,9 @@ function zoomIn() {
     if (!isResized) {
         $("#video_content").css("transform-origin", resizeXOffset + "% " + resizeYOffset + "%")
         $("#video_content").css("transform", "scale(" + $("#resize_radio").val() + ")")
-        $("#video_size").html("放大" + $("#resize_radio").val() + "倍")
-        $("#video_size").css("color", "red")
-        $("#video_size").css("font-size", "130%")
+        $("#video_size_info").html("放大" + $("#resize_radio").val() + "倍")
+        $("#video_size_info").css("color", "red")
+        $("#video_size_info").css("font-size", "130%")
         showOSD("放大" + $("#resize_radio").val() + "倍", "center", "increase")
         isResized = true
     }
@@ -144,9 +146,9 @@ function zoomIn() {
 function zoomDefault() {
     if (isResized) {
         $("#video_content").css("transform", "scale(1)")
-        $("#video_size").html("標準大小")
-        $("#video_size").css("color", "#ffffff")
-        $("#video_size").css("font-size", "100%")
+        $("#video_size_info").html("標準大小")
+        $("#video_size_info").css("color", "#ffffff")
+        $("#video_size_info").css("font-size", "100%")
         showOSD("標準大小", "center", "decrease")
         isResized = false
     }

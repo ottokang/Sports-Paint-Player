@@ -1,0 +1,187 @@
+/* 載入註解、熱鍵說明樣式 */
+@import "comment.css";
+@import "hotkeys.css";
+
+body {
+    margin: 5px;
+    padding: 5px;
+    background: #242729;
+}
+
+#video_source {
+    display: none;
+    margin: 0 0 5px 0;
+    padding: 5px;
+    border-radius: 10px;
+    background: #bdbdbd;
+}
+
+#select_video_button {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#message {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    font-size: 1.5em;
+    margin: 10px;
+    color: #fff;
+    border: 2px solid #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #1E88E5;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+.button {
+    overflow: hidden;
+    border-width: 0;
+    outline: none;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+    background-color: #e67e22;
+    color: #ecf0f1;
+    font-size: 1.5em;
+    transition: background-color .3s;
+}
+
+.button:hover,
+.button:focus {
+    background-color: #d35400;
+}
+
+.button label {
+    display: inline-block;
+    padding: 10px;
+}
+
+#control {
+    display: none;
+    float: right;
+    padding: 3px;
+    color: #ffffff;
+}
+
+#control .item {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+#control .item:hover {
+    text-shadow: 1px 1px #aaa;
+    color: #1e88e5;
+}
+
+#control input[type=number] {
+    width: 3.2em;
+}
+
+#container {
+    position: relative;
+    overflow: hidden;
+    margin: auto;
+}
+
+#video_content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+    transition-duration: 0.5s;
+}
+
+.video_info {
+    display: none;
+    position: absolute;
+    padding: 5px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.5);
+    text-shadow: 2px 2px 3px #434a54;
+}
+
+#video_playback_time_info {
+    right: 10px;
+    bottom: 1.5em;
+}
+
+#video_playback_speed_info {
+    top: 20px;
+    right: 20px;
+}
+
+#video_size_info {
+    top: 60px;
+    right: 20px;
+}
+
+#video_osd {
+    display: none;
+    position: absolute;
+    font-size: 130%;
+    padding: 5px;
+    transition: transform 0.4s;
+    opacity: 0.7;
+    color: #ffffff;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.osd_center {
+    top: 50%;
+    left: 50%;
+}
+
+.osd_right {
+    top: 50%;
+    right: 15%;
+}
+
+.osd_left {
+    top: 50%;
+    left: 15%;
+}
+
+#canvas_area {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: 0 auto;
+}
+
+#video_progress {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#video_progress_pointer {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    width: 3px;
+    height: 1.4em;
+    background-color: #d35400;
+}
+
+#version {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    color: #999999;
+}

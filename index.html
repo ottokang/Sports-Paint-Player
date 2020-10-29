@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>運動影片分析播放器</title>
-    <link rel="stylesheet" type="text/css" href="sytle.css">
+    <link rel="stylesheet" type="text/css" href="css/sytle.css">
 </head>
 
 <body>
@@ -108,7 +108,7 @@
             <span id="playback_speed"></span>
             %
         </div>
-        <div id="video_size" class="video_info">標準</div>
+        <div id="video_size_info" class="video_info">標準</div>
         <div id="video_osd"></div>
         <div id="hotkeys">
             <button id="toggle_button">
@@ -128,11 +128,12 @@
                 <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
                 <button id="foward_large_button"><kbd>D</kbd><span class="button_info">快進</span></button>
                 <br>
-                <button id="fast_reverse_button"><kbd>Z</kbd><span class="button_info">恢復播放速度</span></button>
-                <button id="speed_restore_button"><kbd>X</kbd><span class="button_info"></span></button>
+                <button id="speed_restore_button"><kbd>Z</kbd><span class="button_info">恢復播放速度</span></button>
+                <button id="to_back_time_button"><kbd>X</kbd><span class="button_info">回到回播點</span></button>
                 <button id="clear_canvas"><kbd>C</kbd><span class="button_info">清空畫布</span></button>
                 <br>
                 <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
+                <button id="set_back_time_button"><kbd class="small">Shift + X</kbd><span class="button_info">設定回播點</span></button>
                 <br>
                 <br>
                 <button id="video_wheel_button">在影片上<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>
@@ -141,9 +142,11 @@
         </div>
         <canvas id="canvas_area"></canvas>
         <input id="video_progress" name="video_progress" type="range" min="0" step="0.01">
+        <div id="video_progress_pointer" data-back_time="0"></div>
     </div>
     <div id="comment">
         <div id="comment_list"></div>
+        <div id="download_comment">下載註解⬇️</div>
         <div id="add_comment">新增註解...</div>
     </div>
     <div id="version">v0.6</div>

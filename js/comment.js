@@ -1,3 +1,5 @@
+"use strict"
+
 // 綁定註解檔案上傳動作
 $("#comment_source").on("change", function() {
     let commentFile = this.files[0]

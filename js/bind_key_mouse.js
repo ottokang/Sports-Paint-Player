@@ -65,11 +65,14 @@ $("body").on("keydown", (function(keyEvent) {
             setPlaybackRate("100")
             break
 
-            /* 暫時不使用
-            case "KeyZ": // Z：快速倒轉
-                fastReversePlay(parseInt($("#jump_second").val()))
-                break
-            */
+        case "KeyX": // X：回到回播點、設定回播點
+            if (keyEvent.shiftKey) {
+                setBackTime()
+            } else {
+                toBackTime()
+            }
+            break
+
         case "KeyC": // C：清空畫布
             clearCanvas()
             break
