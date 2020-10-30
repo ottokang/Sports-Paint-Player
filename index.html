@@ -149,6 +149,21 @@
         <div id="download_comment">下載註解⬇️</div>
         <div id="add_comment">新增註解...</div>
     </div>
+    <div id="comment_dialog">
+        <div id="comment_dialog_title">新增註解</div>
+        <div id="comment_time"></div>
+        <div id="comment_title">
+            註解標題：<input id="comment_title_input" name="comment_title_input" type="text" maxlength="30">
+        </div>
+        <div id="comment_text">
+            註解內容：
+            <textarea id="comment_text_input" name="comment_text_input" maxlength="50" rows="5" cols="10">
+            </textarea>
+        </div>
+        <div id="comment_duration">
+            持續<input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1">秒
+        </div>
+    </div>
     <div id="version">v0.6</div>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/draw_obj/pen.js"></script>

@@ -139,3 +139,25 @@
     right: 7%;
     bottom: 7%;
 }
+
+#comment_dialog {
+    /* display: none; */
+    position: absolute;
+    border: 1px solid olive;
+    border-radius: 5px;
+    background-color: orange;
+    padding: 10px;
+    width: 16em;
+}
+
+#comment_dialog_title {
+    text-align: center;
+}
+
+#comment_duration {
+    margin-bottom: 1em;
+}
+
+#comment_duration_input {
+    width: 3em;
+}

@@ -65,7 +65,7 @@ $("body").on("keydown", (function(keyEvent) {
             setPlaybackRate("100")
             break
 
-        case "KeyX": // X：回到回播點、設定回播點
+        case "KeyX": // X：回到回播點、Shift + X 設定回播點
             if (keyEvent.shiftKey) {
                 setBackTime()
             } else {
