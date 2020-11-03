@@ -22,6 +22,7 @@ $("#comment_source").on("change", function() {
             $("#comment_list").append(
                 `<div id="comment_list_${i}">
                     <div class="delete_comment" data-comment_id="${i}">刪除</div>
+                    <div class="edit_comment" data-comment_id="${i}">編輯</div>
                     <div class="comment_list_item">${commentList[i].title}</div>
                 </div>`
             )
@@ -51,6 +52,12 @@ $("#comment_source").on("change", function() {
     commentReader.readAsText(commentFile)
 })
 
+// 綁定關閉註解對話框按鈕動作
+$("#close_comment_dialog").on("click", closeCommentDialog)
+
+// 綁定開啟新增註解對話框動作
+$("#add_comment").on("click", showNewCommentDialog)
+
 // 顯示註解
 function showComment(id, text, timeOut = 10, position = "left_top") {
     $("#container").append(`<div id="comment_text_${id}" class="comment_text comment_text_${position}">${text}</div>`)
@@ -66,4 +73,29 @@ function showComment(id, text, timeOut = 10, position = "left_top") {
 // 移除全部註解
 function clearAllComment() {
     $(".comment_text").remove()
+}
+
+// 顯示新增註解對話框
+function showNewCommentDialog() {
+    $("#comment_dialog").show()
+    $(".new_comment").show()
+    $(".update_comment").hide()
+}
+
+// 顯示更新註解對話框
+function showUpdateCommentDialog(comment) {
+    $("#comment_dialog").show()
+    $(".new_comment").hide()
+    $(".update_comment").show()
+}
+
+// 關閉註解對話框
+function closeCommentDialog() {
+    if (confirm("確定關閉？")) {
+        // 清除註解對話框內容
+        $("#comment_time").html("")
+        $("#comment_title_input, #comment_text_input").val("")
+        $("#comment_duration_input").val("10")
+        $("#comment_dialog").hide()
+    }
 }

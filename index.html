@@ -150,7 +150,9 @@
         <div id="add_comment">新增註解...</div>
     </div>
     <div id="comment_dialog">
-        <div id="comment_dialog_title">新增註解</div>
+        <button id="close_comment_dialog">❌</button>
+        <div id="new_comment_dialog_title" class="new_comment">新增註解</div>
+        <div id="update_comment_dialog_title" class="update_comment">更新註解</div>
         <div id="comment_time"></div>
         <div id="comment_title">
             註解標題：<input id="comment_title_input" name="comment_title_input" type="text" maxlength="30">
@@ -161,8 +163,10 @@
             </textarea>
         </div>
         <div id="comment_duration">
-            持續<input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1">秒
+            持續<input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10">秒
         </div>
+        <button id="new_comment_submit" class="new_comment">新增</button>
+        <button id="update_comment_submit" class="update_comment">更新</button>
     </div>
     <div id="version">v0.6</div>
     <script src="js/jquery-3.5.1.min.js"></script>
