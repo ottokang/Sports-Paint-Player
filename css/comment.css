@@ -3,7 +3,7 @@
     margin: 0 0 5px 1em;
     padding: 5px;
     border-radius: 10px;
-    background: #d4bff9;
+    background: #E1BEE7;
 }
 
 #select_comment_button {
@@ -13,10 +13,16 @@
     font-size: 0.8em;
     text-align: center;
     background-color: #8E24AA;
+    color: #ecf0f1;
+}
+
+#select_comment_button:hover,
+#select_comment_button:focus {
+    background-color: #4A148C;
 }
 
 #select_comment_button label {
-    padding: 5px;
+    margin: -5px;
 }
 
 #comment {
@@ -59,13 +65,13 @@
 }
 
 #add_comment {
+    display: none;
     font-size: small;
     border: 1px solid #E65100;
     padding: 4px;
-    float: right;
-    margin-top: 1em;
     background-color: #FFCC80;
     border-radius: 5px;
+    margin: 0 0 -0.8em 1em;
 }
 
 #add_comment:hover {
@@ -77,7 +83,7 @@
     font-size: small;
     border: 1px solid #2E7D32;
     padding: 4px;
-    float: left;
+    float: right;
     margin-top: 1em;
     background-color: #A5D6A7;
     border-radius: 5px;

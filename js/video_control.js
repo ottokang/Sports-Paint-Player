@@ -15,7 +15,7 @@ $("#video_source").on("change", function() {
     } else {
         $("#video_source").show()
         $("#select_video_button").hide()
-        $("#select_comment_button").css("display", "inline-block")
+        $("#select_comment_button, #add_comment").css("display", "inline-block")
         showMessage("開始播放", 1)
         video.src = URL.createObjectURL(file)
         // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案

@@ -44,6 +44,9 @@ $("#comment_source").on("change", function() {
         $(".delete_comment").on("click", function() {
             if (confirm("確認刪除此註解？")) {
                 $(this).parent().remove()
+                if ($("#comment_list").children().length === 0) {
+                    // 隱藏註解列表（尚未實做）
+                }
             }
         })
     }
