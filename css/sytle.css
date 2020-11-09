@@ -169,11 +169,16 @@ body {
     z-index: 1;
 }
 
-#video_progress_pointer {
-    display: none;
+#back_time {
     position: absolute;
+    right: 0;
     bottom: 0;
+    left: 0;
     margin: 0 auto;
+}
+
+#back_time_pointer {
+    display: none;
     width: 3px;
     height: 1.4em;
     background-color: #d35400;

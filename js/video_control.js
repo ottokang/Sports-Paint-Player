@@ -66,9 +66,9 @@ $("#video_content").on("durationchange", function() {
     // 設定播放進度時間、播放資訊
     $("#total_time").html(video.duration.toString().toHHMMSS())
     $("#video_progress").width(containerWidth)
-    $("#video_progress").prop("max", video.duration)
-    $("#video_progress, #video_progress_pointer").css("display", "block")
-    $(".video_info").css("display", "block")
+    $("#back_time").width(containerWidth - 8)
+    $("#video_progress").show().prop("max", video.duration)
+    $(".video_info").show()
     $("#playback_speed").html(Math.floor(video.playbackRate * 100))
 
     // 設定 Canvas 大小、設定繪圖界面、物件
@@ -118,15 +118,28 @@ function setPlaybackRate(percentage) {
 // 設定影片回播點
 function setBackTime() {
     let progressRadio = video.currentTime / video.duration
-    $("#video_progress_pointer").css("left", `${progressRadio * 100}%`)
-    $("#video_progress_pointer").attr("data-back_time", video.currentTime.toString())
+    $("#back_time_pointer").css("margin-left", `${progressRadio * 100}%`)
+    $("#back_time_pointer").attr("data-back_time", video.currentTime.toString())
+    $("#back_time_pointer").show()
     showOSD(`設定回播點：${video.currentTime.toString().toHHMMSS()}`)
+}
+
+// 清除影片回播點
+function clearBackTime() {
+    if ($("#back_time_pointer").is(":visible")) {
+        $("#back_time_pointer").hide()
+        showOSD("清除回播點")
+    }
 }
 
 // 回到影片回播點
 function toBackTime() {
-    video.currentTime = $("#video_progress_pointer").attr("data-back_time")
-    showOSD(`回到回播點：${video.currentTime.toString().toHHMMSS()}`)
+    if ($("#back_time_pointer").is(":visible")) {
+        video.currentTime = $("#back_time_pointer").attr("data-back_time")
+        showOSD(`回到回播點：${video.currentTime.toString().toHHMMSS()}`)
+    } else {
+        showOSD("請先設定回播點")
+    }
 }
 
 // 放大影像

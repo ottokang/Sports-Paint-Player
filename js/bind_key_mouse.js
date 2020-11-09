@@ -73,8 +73,12 @@ $("body").on("keydown", (function(keyEvent) {
             }
             break
 
-        case "KeyC": // C：清空畫布
-            clearCanvas()
+        case "KeyC": // C：清空畫布、Shift + C 清除回播點
+            if (keyEvent.shiftKey) {
+                clearBackTime()
+            } else {
+                clearCanvas()
+            }
             break
     }
 }))

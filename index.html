@@ -134,6 +134,7 @@
                 <br>
                 <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
                 <button id="set_back_time_button"><kbd class="small">Shift + X</kbd><span class="button_info">設定回播點</span></button>
+                <button id="clear_back_time_button"><kbd class="small">Shift + C</kbd><span class="button_info">清除回播點</span></button>
                 <br>
                 <br>
                 <button id="video_wheel_button">在影片上<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>
@@ -142,7 +143,9 @@
         </div>
         <canvas id="canvas_area"></canvas>
         <input id="video_progress" name="video_progress" type="range" min="0" step="0.01">
-        <div id="video_progress_pointer" data-back_time="0"></div>
+        <div id="back_time">
+            <div id="back_time_pointer" data-back_time="0"></div>
+        </div>
     </div>
     <div id="comment">
         <div id="comment_list"></div>
