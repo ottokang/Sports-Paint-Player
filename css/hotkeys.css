@@ -29,6 +29,7 @@ kbd {
 #hotkey_buttons button {
     font-size: 12px;
     width: 8em;
+    vertical-align: top;
 }
 
 #hotkey_buttons .small {

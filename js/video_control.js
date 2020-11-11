@@ -138,7 +138,7 @@ function toBackTime() {
         video.currentTime = $("#back_time_pointer").attr("data-back_time")
         showOSD(`回到回播點：${video.currentTime.toString().toHHMMSS()}`)
     } else {
-        showOSD("請先設定回播點")
+        showMessage("請先設定回播點", 3)
     }
 }
 

@@ -28,19 +28,19 @@
             </select>
         </span>
         <span class="item pen_type_id_1">
-            線寬：
+            <label for="pen_width">線寬：</label>
             <input id="pen_width" name="pen_width" type="number" min="5" max="15" value="5" step="1">
         </span>
         <span class="item pen_type_id_1">
             <input id="is_arrow" name="is_arrow" type="checkbox">
-            箭頭
+            <label for="is_arrow">箭頭</label>
         </span>
         <span class="item pen_type_id_2">
-            半徑：
+            <label for="mask_radius">半徑：</label>
             <input id="mask_radius" name="mask_radius" type="number" min="50" max="150" value="120" step="1">
         </span>
         <span class="item pen_type_id_2">
-            圓形比例：
+            <label for="mask_proportion">圓形比例：</label>
             <input id="mask_proportion" name="mask_proportion" type="number" min="0.6" max="1.4" value="1" step="0.2">
         </span>
         <span class="item pen_type_id_3">
@@ -53,7 +53,7 @@
             </select>
         </span>
         <span class="item pen_type_id_3">
-            半徑：
+            <label for="path_mask_radius">半徑：</label>
             <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1">
         </span>
         <span class="item pen_type_id_3">
@@ -133,9 +133,11 @@
                 <button id="to_back_time_button"><kbd>X</kbd><span class="button_info">回到回播點</span></button>
                 <button id="clear_canvas"><kbd>C</kbd><span class="button_info">清空畫布</span></button>
                 <br>
-                <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
+                <button id="toggle_comment_list_button"><kbd class="small">Shift + Z</kbd><span class="button_info">顯示/隱藏註解列表</span></button>
                 <button id="set_back_time_button"><kbd class="small">Shift + X</kbd><span class="button_info">設定回播點</span></button>
                 <button id="clear_back_time_button"><kbd class="small">Shift + C</kbd><span class="button_info">清除回播點</span></button>
+                <br>
+                <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
                 <br>
                 <br>
                 <button id="video_wheel_button">在影片上<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>

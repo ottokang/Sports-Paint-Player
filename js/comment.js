@@ -1,5 +1,8 @@
 "use strict"
 
+// 設定是否在輸入註解，暫停熱鍵用
+var isInputComment = false
+
 // 綁定註解檔案上傳動作
 $("#comment_source").on("change", function() {
     let commentFile = this.files[0]
@@ -29,15 +32,16 @@ $("#comment_source").on("change", function() {
             $(`#comment_list_${i}`).data("comment", commentItem)
         }
         $("#select_comment_button").hide()
-        $("#comment_source, #comment").show()
+        $("#comment_source").show()
+        showCommentList()
         showMessage("讀取註解完成", 1)
 
         // 綁定註解列表點選動作
         $(".comment_list_item").on("click", function() {
             let comment = JSON.parse($(this).parent().data("comment"))
             video.currentTime = comment.time
-            clearAllComment()
-            showComment($(this).parent().attr("id").replace("comment_list_", ""), comment.text, comment.duration, comment.position)
+            clearAllCommentText()
+            showCommentText($(this).parent().attr("id").replace("comment_list_", ""), comment.text, comment.duration, comment.position)
         })
 
         // 綁定刪除註解動作
@@ -45,7 +49,7 @@ $("#comment_source").on("change", function() {
             if (confirm("確認刪除此註解？")) {
                 $(this).parent().remove()
                 if ($("#comment_list").children().length === 0) {
-                    // 隱藏註解列表（尚未實做）
+                    hideCommentList()
                 }
             }
         })
@@ -61,8 +65,31 @@ $("#close_comment_dialog").on("click", closeCommentDialog)
 // 綁定開啟新增註解對話框動作
 $("#add_comment").on("click", showNewCommentDialog)
 
-// 顯示註解
-function showComment(id, text, timeOut = 10, position = "left_top") {
+// 顯示註解列表
+function showCommentList() {
+    if ($("#comment_list").children().length > 0) {
+        $("#comment").addClass("comment_show")
+    } else {
+        showMessage("目前沒有註解可以顯示", 3)
+    }
+}
+
+// 隱藏註解列表
+function hideCommentList() {
+    $("#comment").removeClass("comment_show")
+}
+
+// 觸動註解列表
+function toggleCommentLsit() {
+    if ($("#comment").hasClass("comment_show")) {
+        hideCommentList()
+    } else {
+        showCommentList()
+    }
+}
+
+// 顯示註解文字
+function showCommentText(id, text, timeOut = 10, position = "left_top") {
     $("#container").append(`<div id="comment_text_${id}" class="comment_text comment_text_${position}">${text}</div>`)
     let commentFadeout = window.setTimeout(function() {
         $(`#comment_text_${id}`).animate({
@@ -73,13 +100,15 @@ function showComment(id, text, timeOut = 10, position = "left_top") {
     }, timeOut * 1000)
 }
 
-// 移除全部註解
-function clearAllComment() {
+// 移除全部註解文字
+function clearAllCommentText() {
     $(".comment_text").remove()
 }
 
 // 顯示新增註解對話框
 function showNewCommentDialog() {
+    isInputComment = true
+    video.pause()
     $("#comment_dialog").show()
     $(".new_comment").show()
     $(".update_comment").hide()
@@ -87,6 +116,8 @@ function showNewCommentDialog() {
 
 // 顯示更新註解對話框
 function showUpdateCommentDialog(comment) {
+    isInputComment = true
+    video.pause()
     $("#comment_dialog").show()
     $(".new_comment").hide()
     $(".update_comment").show()
@@ -94,11 +125,12 @@ function showUpdateCommentDialog(comment) {
 
 // 關閉註解對話框
 function closeCommentDialog() {
-    if (confirm("確定關閉？")) {
+    if (confirm("確定關閉註解？")) {
         // 清除註解對話框內容
         $("#comment_time").html("")
         $("#comment_title_input, #comment_text_input").val("")
         $("#comment_duration_input").val("10")
         $("#comment_dialog").hide()
+        isInputComment = false
     }
 }

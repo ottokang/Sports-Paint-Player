@@ -26,15 +26,19 @@
 }
 
 #comment {
-    display: none;
     position: absolute;
     top: 4em;
-    left: 1em;
+    left: -20em;
     padding: 0.5em;
     border: 2px solid #1565C0;
-    border-radius: 10px;
+    border-radius: 0% 5% 5% 0%;
     background-color: #BBDEFB;
     width: 15%;
+    transition: 0.5s;
+}
+
+.comment_show {
+    transform: translateX(20em);
 }
 
 .comment_list_item:hover {
@@ -153,7 +157,7 @@
 }
 
 #comment_dialog {
-    /* display: none; */
+    display: none;
     position: absolute;
     top: 30%;
     left: 45%;
