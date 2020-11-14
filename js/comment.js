@@ -21,7 +21,6 @@ $("#comment_source").on("change", function() {
         // 讀取註解檔案到註解列表
         $("#comment_list").empty()
         for (let i = 0; i < commentList.length; i++) {
-            let commentItem = JSON.stringify(commentList[i])
             $("#comment_list").append(
                 `<div id="comment_list_${i}">
                     <div class="delete_comment" data-comment_id="${i}">刪除</div>
@@ -29,30 +28,29 @@ $("#comment_source").on("change", function() {
                     <div class="comment_list_item">${commentList[i].title}</div>
                 </div>`
             )
-            $(`#comment_list_${i}`).data("comment", commentItem)
+            $(`#comment_list_${i}`).data("comment", JSON.stringify(commentList[i]))
+
+            // 綁定註解點選動作
+            $(`#comment_list_${i} .comment_list_item`).on("click", function() {
+                video.currentTime = commentList[i].time
+                clearAllCommentText()
+                showCommentText(i, commentList[i].text, commentList[i].duration, commentList[i].position)
+            })
+
+            // 綁定刪除註解動作
+            $(`#comment_list_${i} .delete_comment`).on("click", function() {
+                if (confirm("確認刪除此註解？")) {
+                    $(this).parent().remove()
+                    if ($("#comment_list").children().length === 0) {
+                        hideCommentList()
+                    }
+                }
+            })
         }
         $("#select_comment_button").hide()
         $("#comment_source").show()
         showCommentList()
         showMessage("讀取註解完成", 1)
-
-        // 綁定註解列表點選動作
-        $(".comment_list_item").on("click", function() {
-            let comment = JSON.parse($(this).parent().data("comment"))
-            video.currentTime = comment.time
-            clearAllCommentText()
-            showCommentText($(this).parent().attr("id").replace("comment_list_", ""), comment.text, comment.duration, comment.position)
-        })
-
-        // 綁定刪除註解動作
-        $(".delete_comment").on("click", function() {
-            if (confirm("確認刪除此註解？")) {
-                $(this).parent().remove()
-                if ($("#comment_list").children().length === 0) {
-                    hideCommentList()
-                }
-            }
-        })
     }
 
     // 讀取註解檔
@@ -112,6 +110,7 @@ function showNewCommentDialog() {
     $("#comment_dialog").show()
     $(".new_comment").show()
     $(".update_comment").hide()
+    $("#comment_position_center").prop("checked", "checked")
 }
 
 // 顯示更新註解對話框
@@ -121,6 +120,7 @@ function showUpdateCommentDialog(comment) {
     $("#comment_dialog").show()
     $(".new_comment").hide()
     $(".update_comment").show()
+    // 讀取資料到註解對話框中（尚未實做）
 }
 
 // 關閉註解對話框
@@ -133,4 +133,16 @@ function closeCommentDialog() {
         $("#comment_dialog").hide()
         isInputComment = false
     }
+}
+
+// 寫入註解到列表
+function saveComment(id = false) {
+    if (id === false) {
+
+    }
+}
+
+// 附加註解項目到註解選單
+function appendCommentItem() {
+
 }
