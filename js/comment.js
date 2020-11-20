@@ -21,31 +21,7 @@ $("#comment_source").on("change", function() {
         // 讀取註解檔案到註解列表
         $("#comment_list").empty()
         for (let i = 0; i < commentList.length; i++) {
-            $("#comment_list").append(
-                `<div id="comment_list_${i}">
-                    <div class="delete_comment" data-comment_id="${i}">刪除</div>
-                    <div class="edit_comment" data-comment_id="${i}">編輯</div>
-                    <div class="comment_list_item">${commentList[i].title}</div>
-                </div>`
-            )
-            $(`#comment_list_${i}`).data("comment", JSON.stringify(commentList[i]))
-
-            // 綁定註解點選動作
-            $(`#comment_list_${i} .comment_list_item`).on("click", function() {
-                video.currentTime = commentList[i].time
-                clearAllCommentText()
-                showCommentText(i, commentList[i].text, commentList[i].duration, commentList[i].position)
-            })
-
-            // 綁定刪除註解動作
-            $(`#comment_list_${i} .delete_comment`).on("click", function() {
-                if (confirm("確認刪除此註解？")) {
-                    $(this).parent().remove()
-                    if ($("#comment_list").children().length === 0) {
-                        hideCommentList()
-                    }
-                }
-            })
+            appendCommentItem(i, commentList[i])
         }
         $("#select_comment_button").hide()
         $("#comment_source").show()
@@ -136,13 +112,47 @@ function closeCommentDialog() {
 }
 
 // 寫入註解到列表
-function saveComment(id = false) {
+function saveComment(id = false, comment) {
     if (id === false) {
-
+        // 找最後一個ID
+        id = (parseInt($("#comment_list > div:last").attr("id").replace("comment_list_", "")) + 1).toString()
+        appendCommentItem(id, comment)
+    } else {
+        $(`#comment_list_${id}`).data("comment", JSON.stringify(comment))
+        // 這邊可能需要重新綁定
     }
 }
 
 // 附加註解項目到註解選單
-function appendCommentItem() {
+function appendCommentItem(commentId, comment) {
+    $("#comment_list").append(
+        `<div id="comment_list_${commentId}">
+            <div class="delete_comment" data-comment_id="${commentId}">刪除</div>
+            <div class="edit_comment" data-comment_id="${commentId}">編輯</div>
+            <div class="comment_list_item">${comment.title}</div>
+        </div>`
+    )
+    $(`#comment_list_${commentId}`).data("comment", JSON.stringify(comment))
+
+    // 綁定註解點選動作
+    $(`#comment_list_${commentId} .comment_list_item`).on("click", function() {
+        video.currentTime = comment.time
+        clearAllCommentText()
+        showCommentText(commentId, comment.text, comment.duration, comment.position)
+    })
+
+    // 綁定刪除註解動作
+    $(`#comment_list_${commentId} .delete_comment`).on("click", function() {
+        if (confirm("確認刪除此註解？")) {
+            $(this).parent().remove()
+            if ($("#comment_list").children().length === 0) {
+                hideCommentList()
+            }
+        }
+    })
+}
+
+// 讀取對話框內容為JSON物件
+function loadCommentDialogToJson() {
 
 }
