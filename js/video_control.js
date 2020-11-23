@@ -28,10 +28,11 @@ $("#video_progress").on("click", function() {
     video.currentTime = $("#video_progress").val()
 })
 
-// 綁定影片時間變化時更新進度列
+// 綁定影片時間變化時更新進度列、更新註解時間
 $("#video_content").on("timeupdate", function() {
     $("#video_progress").val(video.currentTime)
     $("#current_time").html(video.currentTime.toString().toHHMMSS())
+    $("#comment_time_HHMMSS").html(video.currentTime.toString().toHHMMSS())
 })
 
 // 綁定滑鼠移動時紀錄座標，作為影片縮放基準

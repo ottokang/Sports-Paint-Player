@@ -41,12 +41,12 @@
     transform: translateX(20em);
 }
 
-.comment_list_item:hover {
+.comment_title:hover {
     cursor: pointer;
     background-color: #42A5F5;
 }
 
-.comment_list_item {
+.comment_title {
     border-bottom: 2px solid #4a26fd;
     margin-bottom: 3px;
 }
