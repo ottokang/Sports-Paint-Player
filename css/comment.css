@@ -165,7 +165,12 @@
     border-radius: 5px;
     background-color: orange;
     padding: 10px;
-    width: 16em;
+    width: 20em;
+}
+
+#comment_text_input {
+    width: 18em;
+    height: 10em;
 }
 
 #close_comment_dialog {

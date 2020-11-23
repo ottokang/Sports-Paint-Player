@@ -44,6 +44,11 @@ $("#add_comment").on("click", showNewCommentDialog)
 // 綁定新增註解提交按鈕動作
 $("#new_comment_submit").on("click", addNewComment)
 
+// 綁定更新註解提交按鈕動作(ID綁在標題中)
+$("#update_comment_submit").on("click", function() {
+    updateComment(parseInt($("#update_comment_dialog_title").data("id")))
+})
+
 // 顯示註解列表
 function showCommentList() {
     if ($("#comment_list").children().length > 0) {
@@ -105,15 +110,11 @@ function showNewCommentDialog() {
 // 顯示更新註解對話框
 function showUpdateCommentDialog(id) {
     let comment = loadCommentJson(id)
+    $("#update_comment_dialog_title").data("id", id)
     isInputComment = true
     video.currentTime = comment.time
     video.pause()
     loadJsonToCommentDialog(comment)
-    // 綁定更新註解提交按鈕動作(ID綁在標題中)
-    $("#update_comment_submit").on("click", function() {
-        updateComment(id)
-    })
-
     $("#comment_dialog").show()
     $(".new_comment").hide()
     $(".update_comment").show()
@@ -143,6 +144,7 @@ function addNewComment() {
 function updateComment(id) {
     let comment = loadCommentDialogToJson()
     saveComment(id, comment)
+    $(`#comment_item_${id} .comment_title`).html(comment.title)
     closeCommentDialog(false)
 }
 
@@ -150,7 +152,11 @@ function updateComment(id) {
 function saveComment(id, comment) {
     if (id === "new") {
         // 找最後一個ID
-        id = (parseInt($("#comment_list > div:last").attr("id").replace("comment_item_", "")) + 1).toString()
+        if ($("#comment_list > div:last").length === 0) {
+            id = 0
+        } else {
+            id = (parseInt($("#comment_list > div:last").attr("id").replace("comment_item_", "")) + 1).toString()
+        }
         appendCommentItem(id, comment)
     } else {
         saveCommentJson(id, comment)
