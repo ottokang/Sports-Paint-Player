@@ -51,6 +51,11 @@
     margin-bottom: 3px;
 }
 
+.comment_title .comment_title_time_HHMMSS {
+    font-size: small;
+    color: #757575;
+}
+
 .delete_comment,
 .edit_comment {
     float: right;
@@ -188,6 +193,11 @@
 
 #comment_duration {
     margin-bottom: 1em;
+}
+
+#comment_duration:hover {
+    text-shadow: 1px 1px #aaa;
+    color: #1e88e5;
 }
 
 #comment_duration_input {

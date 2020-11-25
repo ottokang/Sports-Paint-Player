@@ -162,15 +162,17 @@
             註解時間：<span id="comment_time_HHMMSS"></span><b>（請點選時間軸設定）</b>
         </div>
         <div id="comment_title">
-            註解標題：<input id="comment_title_input" name="comment_title_input" type="text" maxlength="30">
+            <label for="comment_title_input">註解標題：</label>
+            <input id="comment_title_input" name="comment_title_input" type="text" maxlength="30">
         </div>
         <div id="comment_text">
-            註解內容：
+            <label for="comment_text_input">註解內容：</label>
             <textarea id="comment_text_input" name="comment_text_input" maxlength="50">
             </textarea>
         </div>
         <div id="comment_duration">
-            持續<input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10">秒
+            <label for="comment_duration_input">持續時間：</label>
+            <input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10">秒
         </div>
         <div id="comment_position">
             註解位置：

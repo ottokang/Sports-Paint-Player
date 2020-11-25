@@ -57,27 +57,32 @@ $("#add_comment").on("click", function() {
 
 // 綁定點選新增註解提交按鈕動作
 $("#add_comment_submit").on("click", function() {
-    let comment = loadCommentDialogToJson()
-    // 設定新註解的ID
-    let id
-    if ($("#comment_list > div:last").length === 0) {
-        id = 0
-    } else {
-        id = (parseInt($("#comment_list > div:last").attr("id").replace("comment_item_", "")) + 1).toString()
+    if (validateCommentDialog()) {
+        let comment = loadCommentDialogToJson()
+        // 設定新註解的ID
+        let id
+        if ($("#comment_list > div:last").length === 0) {
+            id = 0
+        } else {
+            id = parseInt($("#comment_list > div:last").attr("id").replace("comment_item_", "")) + 1
+        }
+        appendCommentItem(id, comment)
+        showMessage("新增註解成功")
+        showCommentList()
+        closeCommentDialog(false)
     }
-    appendCommentItem(id, comment)
-    showMessage("新增註解成功")
-    closeCommentDialog(false)
 })
 
 // 綁定點選註解更新提交按鈕動作
 $("#update_comment_submit").on("click", function() {
-    let id = parseInt($("#update_comment_dialog_title").data("id"))
-    let comment = loadCommentDialogToJson()
-    saveCommentJson(id, comment)
-    $(`#comment_item_${id} .comment_title`).html(comment.title)
-    showMessage("更新註解成功")
-    closeCommentDialog(false)
+    if (validateCommentDialog()) {
+        let id = parseInt($("#update_comment_dialog_title").data("id"))
+        let comment = loadCommentDialogToJson()
+        saveCommentJson(id, comment)
+        $(`#comment_item_${id} .comment_title`).html(comment.title)
+        showMessage("更新註解成功")
+        closeCommentDialog(false)
+    }
 })
 
 // 顯示註解列表
@@ -135,13 +140,37 @@ function closeCommentDialog(isConfirm = true) {
     }
 }
 
+// 驗證輸入資料
+function validateCommentDialog() {
+    // 清除空白
+    $("#comment_title_input").val($("#comment_title_input").val().trim())
+    $("#comment_text_input").val($("#comment_text_input").val().trim())
+
+    if ($("#comment_title_input").val() == "") {
+        alert("請輸入註解標題")
+        $("#comment_title_input").select()
+        return false
+    }
+
+    if ($("#comment_text_input").val() == "") {
+        alert("請輸入註解內容")
+        $("#comment_text_input").select()
+        return false
+    }
+
+    return true
+}
+
 // 附加註解項目到註解列表
 function appendCommentItem(id, comment) {
     $("#comment_list").append(
         `<div id="comment_item_${id}">
             <div class="delete_comment" data-comment_id="${id}">刪除</div>
             <div class="edit_comment" data-comment_id="${id}">編輯</div>
-            <div class="comment_title">${comment.title}</div>
+            <div class="comment_title">
+                <span class="comment_title_time_HHMMSS">${comment.time.toString().toHHMMSS()}</span>
+                ${comment.title}
+            </div>
         </div>`
     )
     saveCommentJson(id, comment)
