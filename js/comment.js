@@ -79,7 +79,8 @@ $("#update_comment_submit").on("click", function() {
         let id = parseInt($("#update_comment_dialog_title").data("id"))
         let comment = loadCommentDialogToJson()
         saveCommentJson(id, comment)
-        $(`#comment_item_${id} .comment_title`).html(comment.title)
+        $(`#comment_item_${id} .comment_title_text`).html(comment.title)
+        $(`#comment_item_${id} .comment_title_time_HHMMSS`).html(comment.time.toString().toHHMMSS())
         showMessage("更新註解成功")
         closeCommentDialog(false)
     }
@@ -169,7 +170,7 @@ function appendCommentItem(id, comment) {
             <div class="edit_comment" data-comment_id="${id}">編輯</div>
             <div class="comment_title">
                 <span class="comment_title_time_HHMMSS">${comment.time.toString().toHHMMSS()}</span>
-                ${comment.title}
+                <span class="comment_title_text">${comment.title}</span>
             </div>
         </div>`
     )
