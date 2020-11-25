@@ -41,7 +41,8 @@
     transform: translateX(20em);
 }
 
-.comment_title:hover {
+.comment_title:hover,
+.current_comment_item {
     cursor: pointer;
     background-color: #42A5F5;
 }
@@ -105,12 +106,12 @@
 
 .comment_text {
     position: absolute;
-    padding: 5px;
-    font-size: 80%;
+    padding: 10px;
+    font-size: small;
     border: 1px solid #4a26fd;
     background: #ffddb0;
     border-radius: 10px;
-    width: 10%;
+    width: 20%;
     margin-left: -5%;
     word-wrap: break-word;
     opacity: 0.8;

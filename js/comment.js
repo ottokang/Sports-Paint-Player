@@ -3,6 +3,9 @@
 // 設定是否正在輸入註解，暫停熱鍵用
 var isInputComment = false
 
+// 清除註解檔案名稱（設定下載）
+$("#comment_source").val("")
+
 // 綁定註解檔案上傳動作
 $("#comment_source").on("change", function() {
     let commentFile = this.files[0]
@@ -33,12 +36,12 @@ $("#comment_source").on("change", function() {
     commentReader.readAsText(commentFile)
 })
 
-// 綁定點選關閉註解對話框
+// 綁定點選關閉註解對話框動作
 $("#close_comment_dialog").on("click", function() {
     closeCommentDialog()
 })
 
-// 綁定點選顯示新增註解對話框
+// 綁定點選顯示新增註解對話框動作
 $("#add_comment").on("click", function() {
     isInputComment = true
     video.pause()
@@ -86,6 +89,25 @@ $("#update_comment_submit").on("click", function() {
     }
 })
 
+// 綁定點選下載註解動作
+$("#download_comment").on("click", function() {
+    let comment = []
+    $(".comment_item").each(function(i) {
+        comment.push(JSON.parse($(this).data("comment")))
+    })
+
+    // 按照時間排序註解
+    comment = comment.sort((a, b) => a.time - b.time)
+    let jsonString = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(comment))
+    let commentFileName = "註解.json"
+    if ($("#comment_source").val() !== "") {
+        commentFileName = $("#comment_source")[0].files[0].name
+    }
+    $(this).append(`<a id="download_comment_link" href="${jsonString}" download="${commentFileName}"></a>`)
+    $("#download_comment_link").get(0).click()
+    $("#download_comment_link").remove()
+})
+
 // 顯示註解列表
 function showCommentList() {
     if ($("#comment_list").children().length > 0) {
@@ -107,6 +129,28 @@ function toggleCommentLsit() {
     } else {
         showCommentList()
     }
+}
+
+// 移到下一個註解
+function nextComment() {
+    if ($("#comment_list").children().length === 0) {
+        showMessage("目前沒有註解可以顯示", 3)
+        return
+    }
+
+    // 如果都沒有選取，從第一個開始
+    if ($(".current_comment_item").length === 0) {
+        $(".comment_item:first").addClass("current_comment_item")
+    } else {
+        // 選取下一個（尚未實做）
+    }
+
+    // 觸發click
+}
+
+// 移到上一個註解，如果都沒有選取從第一個開始
+function prevComment() {
+
 }
 
 // 顯示註解文字
@@ -165,7 +209,7 @@ function validateCommentDialog() {
 // 附加註解項目到註解列表
 function appendCommentItem(id, comment) {
     $("#comment_list").append(
-        `<div id="comment_item_${id}">
+        `<div id="comment_item_${id}" class="comment_item">
             <div class="delete_comment" data-comment_id="${id}">刪除</div>
             <div class="edit_comment" data-comment_id="${id}">編輯</div>
             <div class="comment_title">
@@ -176,9 +220,11 @@ function appendCommentItem(id, comment) {
     )
     saveCommentJson(id, comment)
 
-    // 綁定點選跳到註解時間點
+    // 綁定點選跳到註解時間點，顯示註解文字
     $(`#comment_item_${id} .comment_title`).on("click", function() {
+        $(".current_comment_item").removeClass("current_comment_item")
         video.currentTime = loadCommentJson(id).time
+        $(this).addClass("current_comment_item")
         showCommentText(id)
         video.play()
     })
