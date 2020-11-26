@@ -134,30 +134,64 @@ function toggleCommentLsit() {
 // 移到下一個註解
 function nextComment() {
     if ($("#comment_list").children().length === 0) {
-        showMessage("目前沒有註解可以顯示", 3)
+        showMessage("目前沒有註解可以顯示", 2)
         return
     }
 
     // 如果都沒有選取，從第一個開始
     if ($(".current_comment_item").length === 0) {
-        $(".comment_item:first").addClass("current_comment_item")
+        $(".comment_title:first").addClass("current_comment_item")
     } else {
-        // 選取下一個（尚未實做）
+        // 選取下一個註解
+        if ($(".current_comment_item").parent().next().children(".comment_title").length === 0) {
+            showMessage("已經到最後一個註解", 2)
+            return
+        } else {
+            let currentCommentItem = $(".current_comment_item")
+            $(".current_comment_item").parent().next().children(".comment_title").addClass("current_comment_item")
+            currentCommentItem.removeClass("current_comment_item")
+        }
     }
 
-    // 觸發click
+    $(".current_comment_item").get(0).click()
 }
 
-// 移到上一個註解，如果都沒有選取從第一個開始
+// 移到上一個註解
 function prevComment() {
+    if ($("#comment_list").children().length === 0) {
+        showMessage("目前沒有註解可以顯示", 2)
+        return
+    }
 
+    // 如果都沒有選取，從最後一個開始
+    if ($(".current_comment_item").length === 0) {
+        $(".comment_title:last").addClass("current_comment_item")
+    } else {
+        // 選取上一個註解
+        if ($(".current_comment_item").parent().prev().children(".comment_title").length === 0) {
+            showMessage("已經到第一個註解", 2)
+            return
+        } else {
+            let currentCommentItem = $(".current_comment_item")
+            $(".current_comment_item").parent().prev().children(".comment_title").addClass("current_comment_item")
+            currentCommentItem.removeClass("current_comment_item")
+        }
+    }
+
+    $(".current_comment_item").get(0).click()
+}
+
+// 重新載入目前註解
+function reloadComment() {
+    $(".current_comment_item").get(0).click()
 }
 
 // 顯示註解文字
 function showCommentText(id) {
     clearAllCommentText()
     let comment = loadCommentJson(id)
-    $("#container").append(`<div id="comment_text_${id}" class="comment_text comment_text_${comment.position}">${comment.text}</div>`)
+    let commentText = handleCommentText(comment.text)
+    $("#container").append(`<div id="comment_text_${id}" class="comment_text comment_text_${comment.position}">${commentText}</div>`)
     window.setTimeout(function() {
         $(`#comment_text_${id}`).animate({
             opacity: "0"
@@ -170,6 +204,13 @@ function showCommentText(id) {
 // 移除全部註解文字
 function clearAllCommentText() {
     $(".comment_text").remove()
+}
+
+// 處理註解文字的換行、空白
+function handleCommentText(commentText) {
+    commentText = commentText.replace(/ /g, "&nbsp;")
+    commentText = commentText.replace(/\n/g, "<br>")
+    return commentText
 }
 
 // 關閉註解對話框

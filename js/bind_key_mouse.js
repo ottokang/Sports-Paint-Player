@@ -85,6 +85,18 @@ $("body").on("keydown", (function(keyEvent) {
                     clearCanvas()
                 }
                 break
+
+            case "PageDown": // 下一個註解
+                nextComment()
+                break
+
+            case "PageUp": // 下一個註解
+                prevComment()
+                break
+
+            case "End": // 重新載入註解
+                reloadComment()
+                break
         }
     }
 }))

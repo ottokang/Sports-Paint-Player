@@ -111,25 +111,24 @@
     border: 1px solid #4a26fd;
     background: #ffddb0;
     border-radius: 10px;
-    width: 20%;
-    margin-left: -5%;
+    max-width: 20%;
     word-wrap: break-word;
     opacity: 0.8;
 }
 
 .comment_text_left_top {
     top: 7%;
-    left: 7%;
+    left: 5%;
 }
 
 .comment_text_left {
     top: 50%;
-    left: 7%;
+    left: 5%;
 }
 
 .comment_text_left_down {
     bottom: 7%;
-    left: 7%;
+    left: 5%;
 }
 
 .comment_text_center_top {
@@ -140,6 +139,7 @@
 .comment_text_center {
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .comment_text_center_down {
@@ -149,16 +149,16 @@
 
 .comment_text_right_top {
     top: 7%;
-    right: 7%;
+    right: 5%;
 }
 
 .comment_text_right {
     top: 50%;
-    right: 7%;
+    right: 5%;
 }
 
 .comment_text_right_down {
-    right: 7%;
+    right: 5%;
     bottom: 7%;
 }
 
