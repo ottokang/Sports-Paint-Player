@@ -2,7 +2,7 @@
 
 // 設定 Canvas 畫布、繪圖物件、開發模式
 var ctx = $("#canvas_area")[0].getContext("2d")
-var drawObj = ['', pen, mask, pathMask]
+var drawObj = ['', pen, mask, pathMask] // 第一個陣列空白，因為選單值從1開始
 var developmentMode = 0
 
 // 是否進入開發模式

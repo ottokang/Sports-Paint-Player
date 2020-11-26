@@ -104,7 +104,7 @@ $("#download_comment").on("click", function() {
         commentFileName = $("#comment_source")[0].files[0].name
     }
     $(this).append(`<a id="download_comment_link" href="${jsonString}" download="${commentFileName}"></a>`)
-    $("#download_comment_link").get(0).click()
+    $("#download_comment_link")[0].click()
     $("#download_comment_link").remove()
 })
 
@@ -153,7 +153,7 @@ function nextComment() {
         }
     }
 
-    $(".current_comment_item").get(0).click()
+    $(".current_comment_item")[0].click()
 }
 
 // 移到上一個註解
@@ -178,12 +178,21 @@ function prevComment() {
         }
     }
 
-    $(".current_comment_item").get(0).click()
+    $(".current_comment_item")[0].click()
 }
 
 // 重新載入目前註解
 function reloadComment() {
-    $(".current_comment_item").get(0).click()
+    if ($("#comment_list").children().length === 0) {
+        showMessage("目前沒有註解可以顯示", 2)
+        return
+    } else {
+        if ($(".current_comment_item").length == 0) {
+            showMessage("請先點選註解", 2)
+        } else {
+            $(".current_comment_item")[0].click()
+        }
+    }
 }
 
 // 顯示註解文字
