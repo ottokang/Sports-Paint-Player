@@ -41,17 +41,25 @@ $("#close_comment_dialog").on("click", function() {
     closeCommentDialog()
 })
 
+// 綁定註解輸入欄位焦點標示
+$("#comment_dialog input[type*='text'], #comment_dialog textarea").on("focus", function() {
+    $(this).addClass("comment_input_focus")
+})
+$("#comment_dialog input[type*='text'], #comment_dialog textarea").on("blur", function() {
+    $(this).removeClass("comment_input_focus")
+})
+
 // 綁定點選顯示新增註解對話框動作
 $("#add_comment").on("click", function() {
     isInputComment = true
     video.pause()
     // 清除註解對話框內容、建立預設值
-    $("#comment_time_HHMMSS").html("")
+    $("#comment_time_HHMMSS").val("")
     $("#comment_title_input, #comment_text_input").val("")
     $("#comment_duration_input").val("10")
 
     // 顯示新增註解對話框
-    $("#comment_time_HHMMSS").html(video.currentTime.toString().toHHMMSS())
+    $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
     $("#comment_dialog").show()
     $(".new_comment").show()
     $(".update_comment").hide()
@@ -262,9 +270,9 @@ function appendCommentItem(id, comment) {
         `<div id="comment_item_${id}" class="comment_item">
             <div class="delete_comment" data-comment_id="${id}">刪除</div>
             <div class="edit_comment" data-comment_id="${id}">編輯</div>
-            <div class="comment_title">
+            <div class="comment_title" title="${comment.title}\n${comment.text}">
                 <span class="comment_title_time_HHMMSS">${comment.time.toString().toHHMMSS()}</span>
-                <span class="comment_title_text">${comment.title}</span>
+                <span class="comment_title_text" >${comment.title}</span>
             </div>
         </div>`
     )
@@ -317,7 +325,7 @@ function loadCommentDialogToJson() {
 
 // 讀取JSON到註解對話框
 function loadJsonToCommentDialog(comment) {
-    $("#comment_time_HHMMSS").html(comment.time.toString().toHHMMSS())
+    $("#comment_time_HHMMSS").val(comment.time.toString().toHHMMSS())
     $("#comment_title_input").val(comment.title)
     $(`input:radio[name="comment_text_position"][value="${comment.position}"]`).prop('checked', true)
     $("#comment_text_input").val(comment.text)

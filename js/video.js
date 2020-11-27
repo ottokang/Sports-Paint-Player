@@ -32,7 +32,7 @@ $("#video_progress").on("click", function() {
 $("#video_content").on("timeupdate", function() {
     $("#video_progress").val(video.currentTime)
     $("#current_time").html(video.currentTime.toString().toHHMMSS())
-    $("#comment_time_HHMMSS").html(video.currentTime.toString().toHHMMSS())
+    $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
 })
 
 // 綁定滑鼠移動時紀錄座標，作為影片縮放基準

@@ -103,7 +103,7 @@ $("body").on("keydown", (function(keyEvent) {
 
 // 綁定滑鼠滾輪調整 input 數值、select 選項
 $("#control > .item, #comment_dialog > div").on("wheel", function(wheelEvent) {
-    if ($(this).children("input[type='number']").length != 0) {
+    if ($(this).children("input[type='number']").length !== 0) {
         let inputNumber = $(this).children("input[type='number']")
         let step = parseFloat(inputNumber.attr("step"))
         let numberValue = parseFloat(inputNumber.val())
