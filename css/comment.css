@@ -89,9 +89,9 @@
 #add_comment {
     display: none;
     font-size: small;
-    border: 1px solid #E65100;
+    border: 1px solid #1976D2;
     padding: 4px;
-    background-color: #FFCC80;
+    background-color: #90CAF9;
     border-radius: 5px;
     margin: 0 0 -0.8em 1em;
     text-align: center;
@@ -100,7 +100,7 @@
 
 #add_comment:hover {
     cursor: pointer;
-    background-color: #FF9800;
+    background-color: #2196F3;
 }
 
 #download_comment {
@@ -121,9 +121,8 @@
 .comment_text {
     position: absolute;
     padding: 10px;
-    font-size: small;
-    border: 1px solid #4a26fd;
-    background: #ffddb0;
+    border: 1px solid #FF6F00;
+    background: #FFE082;
     border-radius: 10px;
     max-width: 20%;
     word-wrap: break-word;
@@ -210,10 +209,11 @@
     text-align: center;
     width: 50%;
     margin: 0 auto 1em auto;
-    background-color: #F8BBD0;
+    background-color: #2196F3;
     border-radius: 3px;
     font-size: large;
     padding: 5px;
+    color: #FFFFFF;
 }
 
 #comment_duration {

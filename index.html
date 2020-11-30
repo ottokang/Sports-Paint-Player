@@ -170,16 +170,16 @@
         </div>
         <div id="comment_title">
             <label for="comment_title_input">註解標題：</label>
-            <input id="comment_title_input" name="comment_title_input" type="text" maxlength="30">
+            <input id="comment_title_input" name="comment_title_input" type="text" maxlength="30" tabindex="1">
         </div>
         <div id="comment_text">
             <label for="comment_text_input">註解內容：</label>
-            <textarea id="comment_text_input" name="comment_text_input" maxlength="50">
+            <textarea id="comment_text_input" name="comment_text_input" maxlength="50" tabindex="2">
             </textarea>
         </div>
         <div id="comment_duration">
             <label for="comment_duration_input">持續時間：</label>
-            <input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10">秒
+            <input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10" tabindex="3">秒
         </div>
         <div id="comment_position">
             註解位置：
@@ -196,10 +196,10 @@
             <input id="comment_position_down" name="comment_text_position" type="radio" value="down">
             <input id="comment_position_right_down" name="comment_text_position" type="radio" value="right_down">
         </div>
-        <button id="add_comment_submit" class="new_comment">新增</button>
+        <button id="add_comment_submit" class="new_comment" tabindex="4">新增</button>
         <button id="update_comment_submit" class="update_comment">更新</button>
     </div>
-    <div id="version">v0.6</div>
+    <div id="version">v0.7</div>
     <script src="js/jquery-3.5.1.min.js"></script>
     <script src="js/draw_obj/pen.js"></script>
     <script src="js/draw_obj/mask.js"></script>

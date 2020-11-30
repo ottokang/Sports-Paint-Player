@@ -61,6 +61,7 @@ $("#add_comment").on("click", function() {
     // 顯示新增註解對話框
     $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
     $("#comment_dialog").show()
+    $("#comment_title_input").focus()
     $(".new_comment").show()
     $(".update_comment").hide()
     $("#comment_position_center").prop("checked", "checked")
@@ -215,7 +216,7 @@ function showCommentText(id) {
         }, 500, function() {
             $(this).remove()
         })
-    }, comment.duration * 1000)
+    }, comment.duration * 1000 * 1000)
 }
 
 // 移除全部註解文字
@@ -297,6 +298,7 @@ function appendCommentItem(id, comment) {
         video.pause()
         loadJsonToCommentDialog(comment)
         $("#comment_dialog").show()
+        $("#comment_title_input").focus()
         $(".new_comment").hide()
         $(".update_comment").show()
     })
