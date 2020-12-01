@@ -49,6 +49,9 @@ $("#comment_dialog input[type*='text'], #comment_dialog textarea").on("blur", fu
     $(this).removeClass("comment_input_focus")
 })
 
+// 綁定註解對話框可以拖曳
+dragElement(document.getElementById("comment_dialog"))
+
 // 綁定點選顯示新增註解對話框動作
 $("#add_comment").on("click", function() {
     isInputComment = true
@@ -59,12 +62,7 @@ $("#add_comment").on("click", function() {
     $("#comment_duration_input").val("10")
 
     // 顯示新增註解對話框
-    $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
-    $("#comment_dialog").show()
-    $("#comment_title_input").focus()
-    $(".new_comment").show()
-    $(".update_comment").hide()
-    $("#comment_position_center").prop("checked", "checked")
+    showCommentDialog("add")
 })
 
 // 綁定點選新增註解提交按鈕動作
@@ -231,6 +229,26 @@ function handleCommentText(commentText) {
     return commentText
 }
 
+// 顯示註解對話框
+function showCommentDialog(type) {
+    $("#comment_dialog").show()
+    $("#comment_title_input").focus()
+    $("#comment_dialog").css({
+        top: "25%",
+        left: "40%"
+    })
+    if (type === "add") {
+        $(".new_comment").show()
+        $(".update_comment").hide()
+        $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
+        $("#comment_position_center").prop("checked", "checked")
+    } else if (type === "edit") {
+        $(".new_comment").hide()
+        $(".update_comment").show()
+    }
+}
+
+
 // 關閉註解對話框
 function closeCommentDialog(isConfirm = true) {
     if (isConfirm === true) {
@@ -297,10 +315,7 @@ function appendCommentItem(id, comment) {
         video.currentTime = comment.time
         video.pause()
         loadJsonToCommentDialog(comment)
-        $("#comment_dialog").show()
-        $("#comment_title_input").focus()
-        $(".new_comment").hide()
-        $(".update_comment").show()
+        showCommentDialog("edit")
     })
 
     // 綁定點選刪除註解
@@ -342,4 +357,43 @@ function loadCommentJson(id) {
 // 寫入註解的JSON物件
 function saveCommentJson(id, comment) {
     $(`#comment_item_${id}`).data("comment", JSON.stringify(comment))
+}
+
+// 註解對話框拖曳
+function dragElement(domObject) {
+    var pos1 = 0,
+        pos2 = 0,
+        pos3 = 0,
+        pos4 = 0
+    domObject.onmousedown = dragMouseDown
+
+    function dragMouseDown(e) {
+        e = e || window.event
+        e.preventDefault()
+        // get the mouse cursor position at startup:
+        pos3 = e.clientX
+        pos4 = e.clientY
+        document.onmouseup = closeDragElement
+        // call a function whenever the cursor moves:
+        document.onmousemove = elementDrag
+    }
+
+    function elementDrag(e) {
+        e = e || window.event
+        e.preventDefault()
+        // calculate the new cursor position:
+        pos1 = pos3 - e.clientX
+        pos2 = pos4 - e.clientY
+        pos3 = e.clientX
+        pos4 = e.clientY
+        // set the element's new position:
+        domObject.style.top = (domObject.offsetTop - pos2) + "px"
+        domObject.style.left = (domObject.offsetLeft - pos1) + "px"
+    }
+
+    function closeDragElement() {
+        // stop moving when mouse button is released:
+        document.onmouseup = null
+        document.onmousemove = null
+    }
 }

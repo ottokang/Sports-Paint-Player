@@ -178,8 +178,9 @@
 #comment_dialog {
     display: none;
     position: absolute;
-    top: 30%;
-    left: 45%;
+    top: 25%;
+    left: 40%;
+    cursor: move;
     border: 1px solid olive;
     border-radius: 5px;
     background-color: orange;
