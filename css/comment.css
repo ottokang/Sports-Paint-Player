@@ -180,7 +180,6 @@
     position: absolute;
     top: 25%;
     left: 40%;
-    cursor: move;
     border: 1px solid olive;
     border-radius: 5px;
     background-color: orange;
@@ -208,13 +207,20 @@
 #new_comment_dialog_title,
 #update_comment_dialog_title {
     text-align: center;
-    width: 50%;
+    width: 70%;
     margin: 0 auto 1em auto;
     background-color: #2196F3;
     border-radius: 3px;
     font-size: large;
     padding: 5px;
     color: #FFFFFF;
+    cursor: move;
+}
+
+#new_comment_dialog_title:hover,
+#update_comment_dialog_title:hover {
+    text-shadow: 2px 2px #757575;
+
 }
 
 #comment_duration {

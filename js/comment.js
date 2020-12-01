@@ -204,6 +204,10 @@ function reloadComment() {
 
 // 顯示註解文字
 function showCommentText(id) {
+    let devModeTime = 1
+    if (developmentMode === 1) {
+        devModeTime = 1000
+    }
     clearAllCommentText()
     let comment = loadCommentJson(id)
     let commentText = handleCommentText(comment.text)
@@ -214,7 +218,7 @@ function showCommentText(id) {
         }, 500, function() {
             $(this).remove()
         })
-    }, comment.duration * 1000 * 1000)
+    }, comment.duration * 1000 * devModeTime)
 }
 
 // 移除全部註解文字
@@ -359,13 +363,14 @@ function saveCommentJson(id, comment) {
     $(`#comment_item_${id}`).data("comment", JSON.stringify(comment))
 }
 
-// 註解對話框拖曳
+// 註解對話框拖曳（來自 https://www.w3schools.com/howto/howto_js_draggable.asp）
 function dragElement(domObject) {
     var pos1 = 0,
         pos2 = 0,
         pos3 = 0,
         pos4 = 0
-    domObject.onmousedown = dragMouseDown
+    document.getElementById("new_comment_dialog_title").onmousedown = dragMouseDown
+    document.getElementById("update_comment_dialog_title").onmousedown = dragMouseDown
 
     function dragMouseDown(e) {
         e = e || window.event
