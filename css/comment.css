@@ -192,6 +192,10 @@
     height: 10em;
 }
 
+#comment_time b {
+    font-size: small;
+}
+
 #comment_time_HHMMSS {
     width: 5em;
 }

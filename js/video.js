@@ -33,6 +33,10 @@ $("#video_content").on("timeupdate", function() {
     $("#video_progress").val(video.currentTime)
     $("#current_time").html(video.currentTime.toString().toHHMMSS())
     $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
+    $("#comment_time_HHMMSS").addClass("comment_input_focus")
+    setTimeout(function() {
+        $("#comment_time_HHMMSS").removeClass("comment_input_focus")
+    }, 200)
 })
 
 // 綁定滑鼠移動時紀錄座標，作為影片縮放基準
