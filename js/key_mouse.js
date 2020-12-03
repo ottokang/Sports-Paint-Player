@@ -7,21 +7,21 @@ $("body").on("keydown", (function(keyEvent) {
             case "Digit1": // 1：畫筆
                 if ($("#pen_type").val() != "1") {
                     $("#pen_type").val(1).change()
-                    showOSD("切換為畫筆", "center", "increase")
+                    canvasNav.showOSD("切換為畫筆", "center", "increase")
                 }
                 break
 
             case "Digit2": // 2：遮罩
                 if ($("#pen_type").val() != "2") {
                     $("#pen_type").val(2).change()
-                    showOSD("切換為遮罩", "center", "increase")
+                    canvasNav.showOSD("切換為遮罩", "center", "increase")
                 }
                 break
 
             case "Digit3": // 3：路徑遮罩
                 if ($("#pen_type").val() != "3") {
                     $("#pen_type").val(3).change()
-                    showOSD("切換為路徑遮罩", "center", "increase")
+                    canvasNav.showOSD("切換為路徑遮罩", "center", "increase")
                 }
                 break
 
@@ -35,54 +35,54 @@ $("body").on("keydown", (function(keyEvent) {
                 break
 
             case "Space": // Space：暫停/播放
-                playPause()
+                videoNav.playPause()
                 break
 
             case "KeyA": // A：倒退
-                jump(0 - parseInt($("#jump_second").val()))
+                videoNav.jump(0 - parseInt($("#jump_second").val()))
                 break
 
             case "KeyD": // D：快進
-                jump(parseInt($("#jump_second").val()))
+                videoNav.jump(parseInt($("#jump_second").val()))
                 break
 
             case "KeyE": // E：倒退0.2秒
-                jump(0.2)
+                videoNav.jump(0.2)
                 break
 
             case "KeyQ": // Q：倒退0.2秒
-                jump(-0.2)
+                videoNav.jump(-0.2)
                 break
 
             case "KeyW": // W：加速20%
-                setPlaybackRate(20)
+                videoNav.setPlaybackRate(20)
                 break
 
             case "KeyS": // S：減速20%
-                setPlaybackRate(-20)
+                videoNav.setPlaybackRate(-20)
                 break
 
             case "KeyZ": // Z：恢復播放速度、Shift + Z 顯示/隱藏註解列表
                 if (keyEvent.shiftKey) {
                     toggleCommentLsit()
                 } else {
-                    setPlaybackRate("100")
+                    videoNav.setPlaybackRate("100")
                 }
                 break
 
             case "KeyX": // X：回到回播點、Shift + X 設定回播點
                 if (keyEvent.shiftKey) {
-                    setBackTime()
+                    videoNav.setBackTime()
                 } else {
-                    toBackTime()
+                    videoNav.toBackTime()
                 }
                 break
 
             case "KeyC": // C：清空畫布、Shift + C 清除回播點
                 if (keyEvent.shiftKey) {
-                    clearBackTime()
+                    videoNav.clearBackTime()
                 } else {
-                    clearCanvas()
+                    canvasNav.clearCanvas()
                 }
                 break
 
@@ -147,9 +147,9 @@ $("input[type='number']").on("change", function(wheelEvent) {
 $("#canvas_area").on("wheel", function(wheelEvent) {
     if (wheelEvent.originalEvent.deltaY < 0) {
         // 滾輪往上：放大影像
-        zoomIn()
+        videoNav.zoomIn()
     } else {
         // 滾輪往下：還原影像大小
-        zoomDefault()
+        videoNav.zoomDefault()
     }
 })

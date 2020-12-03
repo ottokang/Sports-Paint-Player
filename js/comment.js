@@ -17,7 +17,7 @@ $("#comment_source").on("change", function() {
         try {
             var commentList = JSON.parse(this.result)
         } catch (e) {
-            showMessage(`上傳的註解檔案"${commentFile.name}"有錯誤，無法解析內容`, 6)
+            canvasNav.showMessage(`上傳的註解檔案"${commentFile.name}"有錯誤，無法解析內容`, 6)
             return
         }
 
@@ -29,7 +29,7 @@ $("#comment_source").on("change", function() {
         $("#select_comment_button").hide()
         $("#comment_source").show()
         showCommentList()
-        showMessage("讀取註解完成", 1)
+        canvasNav.showMessage("讀取註解完成", 1)
     }
 
     // 讀取註解檔
@@ -77,7 +77,7 @@ $("#add_comment_submit").on("click", function() {
             id = parseInt($("#comment_list > div:last").attr("id").replace("comment_item_", "")) + 1
         }
         appendCommentItem(id, comment)
-        showMessage("新增註解成功")
+        canvasNav.showMessage("新增註解成功")
         showCommentList()
         closeCommentDialog(false)
     }
@@ -91,7 +91,7 @@ $("#update_comment_submit").on("click", function() {
         saveCommentJson(id, comment)
         $(`#comment_item_${id} .comment_title_text`).html(comment.title)
         $(`#comment_item_${id} .comment_title_time_HHMMSS`).html(comment.time.toString().toHHMMSS())
-        showMessage("更新註解成功")
+        canvasNav.showMessage("更新註解成功")
         closeCommentDialog(false)
     }
 })
@@ -120,7 +120,7 @@ function showCommentList() {
     if ($("#comment_list").children().length > 0) {
         $("#comment").addClass("comment_show")
     } else {
-        showMessage("目前沒有註解可以顯示", 3)
+        canvasNav.showMessage("目前沒有註解可以顯示", 3)
     }
 }
 
@@ -141,7 +141,7 @@ function toggleCommentLsit() {
 // 移到下一個註解
 function nextComment() {
     if ($("#comment_list").children().length === 0) {
-        showMessage("目前沒有註解可以顯示", 2)
+        canvasNav.showMessage("目前沒有註解可以顯示", 2)
         return
     }
 
@@ -151,7 +151,7 @@ function nextComment() {
     } else {
         // 選取下一個註解
         if ($(".current_comment_item").parent().next().children(".comment_title").length === 0) {
-            showMessage("已經到最後一個註解", 2)
+            canvasNav.showMessage("已經到最後一個註解", 2)
             return
         } else {
             let currentCommentItem = $(".current_comment_item")
@@ -166,7 +166,7 @@ function nextComment() {
 // 移到上一個註解
 function prevComment() {
     if ($("#comment_list").children().length === 0) {
-        showMessage("目前沒有註解可以顯示", 2)
+        canvasNav.showMessage("目前沒有註解可以顯示", 2)
         return
     }
 
@@ -176,7 +176,7 @@ function prevComment() {
     } else {
         // 選取上一個註解
         if ($(".current_comment_item").parent().prev().children(".comment_title").length === 0) {
-            showMessage("已經到第一個註解", 2)
+            canvasNav.showMessage("已經到第一個註解", 2)
             return
         } else {
             let currentCommentItem = $(".current_comment_item")
@@ -191,11 +191,11 @@ function prevComment() {
 // 重新載入目前註解
 function reloadComment() {
     if ($("#comment_list").children().length === 0) {
-        showMessage("目前沒有註解可以顯示", 2)
+        canvasNav.showMessage("目前沒有註解可以顯示", 2)
         return
     } else {
         if ($(".current_comment_item").length == 0) {
-            showMessage("請先點選註解", 2)
+            canvasNav.showMessage("請先點選註解", 2)
         } else {
             $(".current_comment_item")[0].click()
         }

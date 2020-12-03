@@ -45,7 +45,7 @@ var pathMask = {
     mousemove(e) {
         $("#container").css("cursor", "grab")
         if (this._isMouseDown == true && this._isInCanvas == true) {
-            clearCanvas(false)
+            canvasNav.clearCanvas(false)
             ctx.putImageData(this._backgroudCanvasData, 0, 0)
             this._drawPathMask(e)
             this._drawCircleMask(e, parseFloat($("#path_mask_scale").val()))
@@ -53,7 +53,7 @@ var pathMask = {
     },
 
     _reDrawBackground() {
-        clearCanvas(false)
+        canvasNav.clearCanvas(false)
         ctx.globalCompositeOperation = "source-over"
         ctx.fillStyle = `rgba(30, 30, 30, ${$("#path_mask_transparency").val()})`
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)

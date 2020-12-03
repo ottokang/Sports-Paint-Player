@@ -27,7 +27,7 @@ var mask = {
     mouseup(e) {
         this._isMouseDown = false
         $("#container").css("cursor", this._originMouseCursor)
-        clearCanvas(false)
+        canvasNav.clearCanvas(false)
     },
 
     mouseover(e) {
@@ -45,14 +45,14 @@ var mask = {
     mousemove(e) {
         $("#container").css("cursor", "grab")
         if (this._isMouseDown == true && this._isInCanvas == true) {
-            clearCanvas(false)
+            canvasNav.clearCanvas(false)
             this._reDrawBackground()
             this._drawCircleMask(e)
         }
     },
 
     _reDrawBackground() {
-        clearCanvas(false)
+        canvasNav.clearCanvas(false)
         ctx.globalCompositeOperation = "source-over"
         ctx.fillStyle = `rgba(30, 30, 30, ${$("#mask_transparency").val()})`
         ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height)

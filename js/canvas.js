@@ -7,13 +7,13 @@ var developmentMode = 0
 
 // 是否進入開發模式
 if (developmentMode === 1) {
-    createTestCanvas()
+    canvasNav.createTestCanvas()
     $("#comment_source, #add_comment").show()
 }
 
 // 綁定畫筆類型變更，設定繪圖物件
 $("#pen_type").on("change", function() {
-    setupDrawObj()
+    canvasNav.setupDrawObj()
 })
 
 // 設定畫筆顏色設定後，選項跟著變換顏色
@@ -45,46 +45,3 @@ $("#canvas_area").on("mouseout", function(e) {
 $("#canvas_area").on("mousemove", function(e) {
     drawObj[parseInt($("#pen_type").val())].mousemove(e)
 })
-
-// 清空畫布
-function clearCanvas(isShowOsd = true) {
-    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
-    if (isShowOsd) {
-        showOSD("清空畫布", "center", "increase")
-    }
-}
-
-// 設定畫筆物件選單
-function setupDrawObj() {
-    $("[class*='pen_type_id_']").hide()
-    $(".pen_type_id_" + $("#pen_type").val()).show()
-    drawObj[parseInt($("#pen_type").val())].setup()
-}
-
-// 初始化畫筆UI
-function initDrawUI() {
-    // 依照畫筆物件設定，加入畫筆顏色選項，設定畫筆顏色
-    $.each(pen.colors, function(colorName, value) {
-        var optionElement = document.createElement("option")
-        optionElement.setAttribute("value", value)
-        optionElement.style.color = value
-        optionElement.innerHTML = colorName
-        $("#pen_color").append(optionElement)
-    })
-    $("#pen_color").css("color", $("#pen_color").val())
-    $("#control").show()
-}
-
-// 建立測試 canvas
-function createTestCanvas() {
-    $("#canvas_area").show()
-    $("#canvas_area").css("border", "2px solid grey")
-    $("#canvas_area").css("margin-top", "4em")
-    $("#video_content").css("top", "4em")
-    ctx.canvas.width = $(window).width() * 0.8
-    ctx.canvas.height = $(window).height() * 0.8
-    $("#container").css("position", "inherit")
-    $("#select_video_button").hide()
-    initDrawUI()
-    setupDrawObj()
-}
