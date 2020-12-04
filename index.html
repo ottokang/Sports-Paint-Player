@@ -15,69 +15,7 @@
     <div id="add_comment" class="button">新增註解...</div>
     <div id="message"></div>
     <div id="control">
-        <span class="item">
-            <select id="pen_type" name="pen_type">
-                <option value="1" selected>1.畫筆</option>
-                <option value="2">2.遮罩</option>
-                <option value="3">3.路徑遮罩</option>
-            </select>
-        </span>
-        <span class="item pen_type_id_1">
-            顏色：
-            <select id="pen_color" name="pen_color">
-            </select>
-        </span>
-        <span class="item pen_type_id_1">
-            <label for="pen_width">線寬：</label>
-            <input id="pen_width" name="pen_width" type="number" min="5" max="15" value="5" step="1">
-        </span>
-        <span class="item pen_type_id_1">
-            <input id="is_arrow" name="is_arrow" type="checkbox">
-            <label for="is_arrow">箭頭</label>
-        </span>
-        <span class="item pen_type_id_2">
-            <label for="mask_radius">半徑：</label>
-            <input id="mask_radius" name="mask_radius" type="number" min="50" max="150" value="120" step="1">
-        </span>
-        <span class="item pen_type_id_2">
-            <label for="mask_proportion">圓形比例：</label>
-            <input id="mask_proportion" name="mask_proportion" type="number" min="0.6" max="1.4" value="1" step="0.2">
-        </span>
-        <span class="item pen_type_id_3">
-            透明度：
-            <select id="mask_transparency" name="path_mask_transparency">
-                <option value="0.8">0.8</option>
-                <option value="0.7" selected>0.7</option>
-                <option value="0.6">0.6</option>
-                <option value="0.5">0.5</option>
-            </select>
-        </span>
-        <span class="item pen_type_id_3">
-            <label for="path_mask_radius">半徑：</label>
-            <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1">
-        </span>
-        <span class="item pen_type_id_3">
-            放大倍率：
-            <select id="path_mask_scale" name="mask_scale">
-                <option value="3.0" selected>3.0</option>
-                <option value="2.8">2.8</option>
-                <option value="2.6">2.6</option>
-                <option value="2.4">2.4</option>
-                <option value="2.2">2.2</option>
-                <option value="2.0">2.0</option>
-            </select>
-        </span>
-        <span class="item pen_type_id_3">
-            透明度：
-            <select id="path_mask_transparency" name="path_mask_transparency">
-                <option value="0.8">0.8</option>
-                <option value="0.7" selected>0.7</option>
-                <option value="0.6">0.6</option>
-                <option value="0.5">0.5</option>
-            </select>
-        </span>
-        <span class="item">
-            ║
+        <span class="property_item">
             放大倍率：
             <select id="resize_radio" name="resize_radio">
                 <option value="2.0">2.0</option>
@@ -87,7 +25,7 @@
                 <option value="1.2">1.2</option>
             </select>
         </span>
-        <span class="item">
+        <span class="property_item">
             跳躍秒數：
             <select id="jump_second" name="jump_second">
                 <option value="5">5</option>
@@ -96,6 +34,76 @@
                 <option value="2" selected>2</option>
             </select>
         </span>
+        <span class="property_item">
+            ║
+            <select id="pen_type" name="pen_type">
+                <option value="1" selected>1.畫筆</option>
+                <option value="2">2.遮罩</option>
+                <option value="3">3.路徑遮罩</option>
+            </select>
+        </span>
+    </div>
+    <div id="draw_property">
+        <div id="pen_type_1" class="draw_property_block">
+            <div class="property_item">
+                顏色：
+                <select id="pen_color" name="pen_color">
+                </select>
+            </div>
+            <div class="property_item">
+                <label for="pen_width">線寬：</label>
+                <input id="pen_width" name="pen_width" type="number" min="5" max="15" value="5" step="1">
+            </div>
+            <div class="property_item">
+                <input id="is_arrow" name="is_arrow" type="checkbox">
+                <label for="is_arrow">箭頭</label>
+            </div>
+        </div>
+        <div id="pen_type_2" class="draw_property_block">
+            <div class="property_item">
+                <label for="mask_radius">半徑：</label>
+                <input id="mask_radius" name="mask_radius" type="number" min="50" max="150" value="120" step="1">
+            </div>
+            <div class="property_item">
+                <label for="mask_proportion">圓形比例：</label>
+                <input id="mask_proportion" name="mask_proportion" type="number" min="0.6" max="1.4" value="1" step="0.2">
+            </div>
+            <div class="property_item">
+                背景透明度：
+                <select id="mask_transparency" name="path_mask_transparency">
+                    <option value="0.8">0.8</option>
+                    <option value="0.7" selected>0.7</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.5">0.5</option>
+                </select>
+            </div>
+        </div>
+        <div id="pen_type_3" class="draw_property_block">
+            <div class="property_item">
+                <label for="path_mask_radius">半徑：</label>
+                <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1">
+            </div>
+            <div class="property_item">
+                放大倍率：
+                <select id="path_mask_scale" name="mask_scale">
+                    <option value="3.0" selected>3.0</option>
+                    <option value="2.8">2.8</option>
+                    <option value="2.6">2.6</option>
+                    <option value="2.4">2.4</option>
+                    <option value="2.2">2.2</option>
+                    <option value="2.0">2.0</option>
+                </select>
+            </div>
+            <div class="property_item">
+                背景透明度：
+                <select id="path_mask_transparency" name="path_mask_transparency">
+                    <option value="0.8">0.8</option>
+                    <option value="0.7" selected>0.7</option>
+                    <option value="0.6">0.6</option>
+                    <option value="0.5">0.5</option>
+                </select>
+            </div>
+        </div>
     </div>
     <div id="container">
         <video id="video_content" autoplay></video>

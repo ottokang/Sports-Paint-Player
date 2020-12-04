@@ -53,8 +53,8 @@ var canvasNav = {
 
     // 設定畫筆物件選單
     setupDrawObj() {
-        $("[class*='pen_type_id_']").hide()
-        $(".pen_type_id_" + $("#pen_type").val()).show()
+        $(".draw_property_block").hide()
+        $("#pen_type_" + $("#pen_type").val()).show()
         drawObj[$("#pen_type").val()].setup()
     },
 
@@ -62,11 +62,7 @@ var canvasNav = {
     initDrawUI() {
         // 依照畫筆物件設定，加入畫筆顏色選項，設定畫筆顏色
         $.each(pen.colors, function(colorName, value) {
-            let optionElement = document.createElement("option")
-            optionElement.setAttribute("value", value)
-            optionElement.style.color = value
-            optionElement.innerHTML = colorName
-            $("#pen_color").append(optionElement)
+            $("#pen_color").append(`<option value="${value}" style="color:${value};">${colorName}</option>`)
         })
         $("#pen_color").css("color", $("#pen_color").val())
         $("#control").show()

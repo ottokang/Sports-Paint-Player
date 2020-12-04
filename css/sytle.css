@@ -71,18 +71,34 @@ body {
     color: #ffffff;
 }
 
-#control .item {
+#control .property_item {
     display: inline-block;
     margin-right: 1em;
 }
 
-#control .item:hover {
-    text-shadow: 1px 1px #aaa;
-    color: #1e88e5;
+#draw_property {
+    position: absolute;
+    top: 3.2em;
+    right: 0;
+    border: 2px solid #F5F5F5;
+    padding: 1em;
+    z-index: 1;
+    background-color: #616161;
+    color: #ffffff;
+    border-radius: 5% 0% 0% 5%;
 }
 
-#control input[type=number] {
+#draw_property input[type=number] {
     width: 3.2em;
+}
+
+#draw_property .property_item {
+    margin: 0.7em 0;
+}
+
+.property_item:hover {
+    text-shadow: 1px 1px #aaa;
+    color: #1e88e5;
 }
 
 #container {

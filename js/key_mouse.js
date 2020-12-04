@@ -6,21 +6,21 @@ $("body").on("keydown", (function(keyEvent) {
         // 沒有在輸入註解的狀態
         switch (keyEvent.code) {
             case "Digit1": // 1：畫筆
-                if ($("#pen_type").val() != "1") {
+                if ($("#pen_type").val() !== "1") {
                     $("#pen_type").val(1).change()
                     canvasNav.showOSD("切換為畫筆", "center", "increase")
                 }
                 break
 
             case "Digit2": // 2：遮罩
-                if ($("#pen_type").val() != "2") {
+                if ($("#pen_type").val() !== "2") {
                     $("#pen_type").val(2).change()
                     canvasNav.showOSD("切換為遮罩", "center", "increase")
                 }
                 break
 
             case "Digit3": // 3：路徑遮罩
-                if ($("#pen_type").val() != "3") {
+                if ($("#pen_type").val() !== "3") {
                     $("#pen_type").val(3).change()
                     canvasNav.showOSD("切換為路徑遮罩", "center", "increase")
                 }
@@ -121,7 +121,7 @@ $("body").on("keydown", (function(keyEvent) {
 }))
 
 // 綁定滑鼠滾輪調整 input 數值、select 選項
-$("#control > .item, #comment_dialog > div").on("wheel", function(wheelEvent) {
+$(".property_item, #comment_dialog > div").on("wheel", function(wheelEvent) {
     if ($(this).children("input[type='number']").length !== 0) {
         let inputTypeNumber = $(this).children("input[type='number']")
         let step = Number(inputTypeNumber.attr("step"))
