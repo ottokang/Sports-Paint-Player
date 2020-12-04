@@ -61,8 +61,8 @@ var mask = {
     _drawCircleMask(e) {
         ctx.globalCompositeOperation = "destination-out"
         ctx.fillStyle = "#000000" // 設定為不透明色，組合圖片可以正確透明
-        var radius = parseInt($("#mask_radius").val())
-        var proportion = parseFloat($("#mask_proportion").val())
+        let radius = $("#mask_radius").val()
+        let proportion = $("#mask_proportion").val()
         ctx.beginPath()
         ctx.ellipse(e.offsetX, e.offsetY, radius * proportion, radius / proportion, 0, 0, 2 * Math.PI)
         ctx.closePath()

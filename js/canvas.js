@@ -2,7 +2,12 @@
 
 // 設定 Canvas 畫布、繪圖物件、開發模式
 var ctx = $("#canvas_area")[0].getContext("2d")
-var drawObj = ['', pen, mask, pathMask] // 第一個陣列空白，因為選單值從1開始
+var drawObj = {
+    "1": pen,
+    "2": mask,
+    "3": pathMask
+}
+
 var developmentMode = 0
 
 // 是否進入開發模式
@@ -23,25 +28,25 @@ $("#pen_color").on("change", function() {
 
 // 綁定滑鼠在 canvas 上按下動作
 $("#canvas_area").on("mousedown", function(e) {
-    drawObj[parseInt($("#pen_type").val())].mousedown(e)
+    drawObj[$("#pen_type").val()].mousedown(e)
 })
 
 // 綁定滑鼠在 canvas 上放開動作
 $("#canvas_area").on("mouseup", function(e) {
-    drawObj[parseInt($("#pen_type").val())].mouseup(e)
+    drawObj[$("#pen_type").val()].mouseup(e)
 })
 
 // 綁定滑鼠進入 canvas 動作
 $("#canvas_area").on("mouseover", function(e) {
-    drawObj[parseInt($("#pen_type").val())].mouseover(e)
+    drawObj[$("#pen_type").val()].mouseover(e)
 })
 
 // 綁定滑鼠移出 canvas 動作
 $("#canvas_area").on("mouseout", function(e) {
-    drawObj[parseInt($("#pen_type").val())].mouseout(e)
+    drawObj[$("#pen_type").val()].mouseout(e)
 })
 
 // 綁定滑鼠在 canvas 上移動動作
 $("#canvas_area").on("mousemove", function(e) {
-    drawObj[parseInt($("#pen_type").val())].mousemove(e)
+    drawObj[$("#pen_type").val()].mousemove(e)
 })

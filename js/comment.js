@@ -74,7 +74,7 @@ $("#add_comment_submit").on("click", function() {
         if ($("#comment_list > div:last").length === 0) {
             id = 0
         } else {
-            id = parseInt($("#comment_list > div:last").attr("id").replace("comment_item_", "")) + 1
+            id = Number($("#comment_list > div:last").attr("id").replace("comment_item_", "")) + 1
         }
         appendCommentItem(id, comment)
         canvasNav.showMessage("新增註解成功")
@@ -86,7 +86,7 @@ $("#add_comment_submit").on("click", function() {
 // 綁定點選註解更新提交按鈕動作
 $("#update_comment_submit").on("click", function() {
     if (validateCommentDialog()) {
-        let id = parseInt($("#update_comment_dialog_title").data("id"))
+        let id = $("#update_comment_dialog_title").data("id")
         let comment = loadCommentDialogToJson()
         saveCommentJson(id, comment)
         $(`#comment_item_${id} .comment_title_text`).html(comment.title)
@@ -312,7 +312,7 @@ function appendCommentItem(id, comment) {
 
     // 綁定點選顯示編輯註解對話框
     $(`#comment_item_${id} .edit_comment`).on("click", function() {
-        let id = parseInt($(this).parent().attr("id").replace("comment_item_", ""))
+        let id = $(this).parent().attr("id").replace("comment_item_", "")
         let comment = loadCommentJson(id)
         $("#update_comment_dialog_title").data("id", id)
         isInputComment = true
@@ -340,7 +340,7 @@ function loadCommentDialogToJson() {
     comment.title = $("#comment_title_input").val()
     comment.position = $('input[name="comment_text_position"]:checked').val()
     comment.text = $("#comment_text_input").val()
-    comment.duration = parseInt($("#comment_duration_input").val())
+    comment.duration = Number($("#comment_duration_input").val())
     return comment
 }
 

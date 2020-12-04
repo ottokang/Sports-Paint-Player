@@ -124,29 +124,32 @@
                 <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
                 <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
                 <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
+                &nbsp;
+                <button id="reload_comment_button"><kbd>R</kbd><span class="button_info">重新讀取註解</span></button>
                 <br>
                 <button id="backward_large_button"><kbd>A</kbd><span class="button_info">倒退</span></button>
                 <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
                 <button id="foward_large_button"><kbd>D</kbd><span class="button_info">快進</span></button>
+                &nbsp;
+                <button id="prev_comment_button"><kbd>F</kbd><span class="button_info">前一個註解</span></button>
                 <br>
                 <button id="speed_restore_button"><kbd>Z</kbd><span class="button_info">恢復播放速度</span></button>
                 <button id="to_back_time_button"><kbd>X</kbd><span class="button_info">回到回播點</span></button>
                 <button id="clear_canvas_button"><kbd>C</kbd><span class="button_info">清空畫布</span></button>
+                &nbsp;
+                <button id="next_comment_button"><kbd>V</kbd><span class="button_info">下一個註解</span></button>
+                <br>
                 <br>
                 <button id="toggle_comment_list_button"><kbd class="small">Shift + Z</kbd><span class="button_info">顯示/隱藏註解列表</span></button>
                 <button id="set_back_time_button"><kbd class="small">Shift + X</kbd><span class="button_info">設定回播點</span></button>
                 <button id="clear_back_time_button"><kbd class="small">Shift + C</kbd><span class="button_info">清除回播點</span></button>
+                <br>
                 <br>
                 <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
                 <br>
                 <br>
                 <button id="video_wheel_button">在影片上<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>
                 <button id="option_wheel_button">在選項上<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">調整選項設定</span></button>
-                <br>
-                <br>
-                <button id="next_comment_button"><kbd>PageDown</kbd><span class="button_info">下一個註解</span></button>
-                <button id="prev_comment_button"><kbd>PageUp</kbd><span class="button_info">前一個註解</span></button>
-                <button id="reload_comment_button"><kbd>End</kbd><span class="button_info">重新讀取註解</span></button>
             </div>
         </div>
         <canvas id="canvas_area"></canvas>
@@ -160,7 +163,7 @@
         <div id="download_comment">下載註解⬇️</div>
     </div>
     <div id="comment_dialog">
-        <button id="close_comment_dialog">❌</button>
+        <button id="close_comment_dialog">❌<br><kbd>Esc</kbd></button>
         <div id="new_comment_dialog_title" class="new_comment">新增註解</div>
         <div id="update_comment_dialog_title" class="update_comment" data-id="">更新註解</div>
         <div id="comment_time">
@@ -196,8 +199,8 @@
             <input id="comment_position_down" name="comment_text_position" type="radio" value="down">
             <input id="comment_position_right_down" name="comment_text_position" type="radio" value="right_down">
         </div>
-        <button id="add_comment_submit" class="new_comment" tabindex="4">新增</button>
-        <button id="update_comment_submit" class="update_comment">更新</button>
+        <button id="add_comment_submit" class="new_comment" tabindex="4">新增<br><kbd>Ctrl + Enter</kbd></button>
+        <button id="update_comment_submit" class="update_comment" tabindex="4">更新<br><kbd>Ctrl + Enter</kbd></button>
     </div>
     <div id="version">v0.7</div>
     <script src="js/jquery-3.5.1.min.js"></script>

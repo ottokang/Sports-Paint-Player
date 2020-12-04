@@ -41,8 +41,8 @@ $("#video_content").on("timeupdate", function() {
 
 // 綁定滑鼠移動時紀錄座標，作為影片縮放基準
 $("#canvas_area").on("mousemove", function(e) {
-    resizeXOffset = parseInt(e.offsetX / ctx.canvas.width * 100)
-    resizeYOffset = parseInt(e.offsetY / ctx.canvas.height * 100)
+    resizeXOffset = Number(e.offsetX / ctx.canvas.width * 100)
+    resizeYOffset = Number(e.offsetY / ctx.canvas.height * 100)
 })
 
 // 綁定影片長度變更時，設定播放進度列、播放資訊、container 高度/寬度
@@ -52,13 +52,13 @@ $("#video_content").on("durationchange", function() {
     let maxViewHeight = $(window).height() * 0.88
     let videoAspectRatio = video.videoWidth / video.videoHeight
     let screenAspectRatio = maxViewWidth / maxViewHeight
-
+    let containerWidth, conatinerHeight
     if (videoAspectRatio >= screenAspectRatio) {
-        var containerWidth = parseInt(maxViewWidth)
-        var conatinerHeight = parseInt(video.videoHeight * (maxViewWidth / video.videoWidth))
+        containerWidth = Number(maxViewWidth)
+        conatinerHeight = Number(video.videoHeight * (maxViewWidth / video.videoWidth))
     } else {
-        var containerWidth = parseInt(video.videoWidth * (maxViewHeight / video.videoHeight))
-        var conatinerHeight = parseInt(maxViewHeight)
+        containerWidth = Number(video.videoWidth * (maxViewHeight / video.videoHeight))
+        conatinerHeight = Number(maxViewHeight)
     }
 
     // 設定 Container 寬、高、Margin-Top 距離
@@ -86,10 +86,10 @@ $("#video_content").on("durationchange", function() {
 
 // 處理播放時間為時:分:秒
 String.prototype.toHHMMSS = function() {
-    let sec_num = parseInt(this, 10)
-    let hours = Math.floor(sec_num / 3600)
-    let minutes = Math.floor((sec_num - (hours * 3600)) / 60)
-    let seconds = sec_num - (hours * 3600) - (minutes * 60)
+    let secondsNumber = Number.parseInt(this, 10)
+    let hours = Math.floor(secondsNumber / 3600)
+    let minutes = Math.floor((secondsNumber - (hours * 3600)) / 60)
+    let seconds = secondsNumber - (hours * 3600) - (minutes * 60)
 
     if (hours < 10) {
         hours = `0${hours}`

@@ -3,6 +3,7 @@
 // 綁定鍵盤、滑鼠動作
 $("body").on("keydown", (function(keyEvent) {
     if (isInputComment === false) {
+        // 沒有在輸入註解的狀態
         switch (keyEvent.code) {
             case "Digit1": // 1：畫筆
                 if ($("#pen_type").val() != "1") {
@@ -39,11 +40,11 @@ $("body").on("keydown", (function(keyEvent) {
                 break
 
             case "KeyA": // A：倒退
-                videoNav.jump(0 - parseInt($("#jump_second").val()))
+                videoNav.jump(0 - Number($("#jump_second").val()))
                 break
 
             case "KeyD": // D：快進
-                videoNav.jump(parseInt($("#jump_second").val()))
+                videoNav.jump($("#jump_second").val())
                 break
 
             case "KeyE": // E：倒退0.2秒
@@ -86,16 +87,34 @@ $("body").on("keydown", (function(keyEvent) {
                 }
                 break
 
-            case "PageDown": // 下一個註解
-                nextComment()
-                break
-
-            case "PageUp": // 下一個註解
+            case "KeyF": // F：上一個註解
                 prevComment()
                 break
 
-            case "End": // 重新載入註解
+            case "KeyV": // V：下一個註解
+                nextComment()
+                break
+
+            case "KeyR": // R：重新目前載入註解
                 reloadComment()
+                break
+        }
+    } else {
+        // 輸入註解狀態
+        switch (keyEvent.code) {
+            case "Escape": // Esc：關閉註解對話框
+                closeCommentDialog()
+                break
+            case "Enter": // Ctrl + Enter：送出註解對話框內容
+                if (keyEvent.ctrlKey) {
+                    if ($("#add_comment_submit").is(":visible")) {
+                        $("#add_comment_submit").trigger("click")
+                    }
+
+                    if ($("#update_comment_submit").is(":visible")) {
+                        $("#update_comment_submit").trigger("click")
+                    }
+                }
                 break
         }
     }
@@ -104,23 +123,22 @@ $("body").on("keydown", (function(keyEvent) {
 // 綁定滑鼠滾輪調整 input 數值、select 選項
 $("#control > .item, #comment_dialog > div").on("wheel", function(wheelEvent) {
     if ($(this).children("input[type='number']").length !== 0) {
-        let inputNumber = $(this).children("input[type='number']")
-        let step = parseFloat(inputNumber.attr("step"))
-        let numberValue = parseFloat(inputNumber.val())
-        let stepNumber = Number(inputNumber.attr("step"))
-        let fixCount
-        if (Number.isInteger(stepNumber)) {
-            fixCount = 0
+        let inputTypeNumber = $(this).children("input[type='number']")
+        let step = Number(inputTypeNumber.attr("step"))
+        let inputTypeNumberValue = Number(inputTypeNumber.val())
+        let stepFixCount
+        if (Number.isInteger(step)) {
+            stepFixCount = 0
         } else {
-            fixCount = inputNumber.attr("step").split(".")[1].length
+            stepFixCount = inputTypeNumber.attr("step").split(".")[1].length
         }
 
         if (wheelEvent.originalEvent.deltaY < 0) {
             // 滾輪往上：增加數值
-            inputNumber.val((numberValue + step).toFixed(fixCount)).trigger("change")
+            inputTypeNumber.val((inputTypeNumberValue + step).toFixed(stepFixCount)).trigger("change")
         } else {
             // 滾輪往下：減少數值
-            inputNumber.val((numberValue - step).toFixed(fixCount)).trigger("change")
+            inputTypeNumber.val((inputTypeNumberValue - step).toFixed(stepFixCount)).trigger("change")
         }
     }
 
@@ -134,11 +152,11 @@ $("#control > .item, #comment_dialog > div").on("wheel", function(wheelEvent) {
 })
 
 // 限制 input 數值上下限
-$("input[type='number']").on("change", function(wheelEvent) {
-    if ($(this).attr("max") != undefined && parseFloat($(this).val()) > parseFloat($(this).attr("max"))) {
+$("input[type='number']").on("change", function() {
+    if ($(this).attr("max") !== undefined && Number($(this).val()) > Number($(this).attr("max"))) {
         $(this).val($(this).attr("max"))
     }
-    if ($(this).attr("min") != undefined && parseFloat($(this).val()) < parseFloat($(this).attr("min"))) {
+    if ($(this).attr("min") !== undefined && Number($(this).val()) < Number($(this).attr("min"))) {
         $(this).val($(this).attr("min"))
     }
 })

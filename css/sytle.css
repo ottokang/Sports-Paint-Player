@@ -116,13 +116,13 @@ body {
 }
 
 #video_playback_speed_info {
-    top: 20px;
-    right: 20px;
+    top: 10px;
+    right: 10px;
 }
 
 #video_size_info {
-    top: 60px;
-    right: 20px;
+    top: 50px;
+    right: 10px;
 }
 
 #video_osd {

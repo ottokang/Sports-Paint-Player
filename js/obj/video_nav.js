@@ -13,6 +13,9 @@ var videoNav = {
 
     // 跳躍秒數設定
     jump(seconds) {
+        if (typeof seconds === "string") {
+            seconds = Number(seconds)
+        }
         video.currentTime = video.currentTime + seconds
         if (seconds > 0) {
             canvasNav.showOSD(`+${seconds}秒`, "right", "right")
@@ -27,10 +30,10 @@ var videoNav = {
             video.playbackRate = 1.0
             canvasNav.showOSD("恢復播放速度", "center", "none")
         } else if (percentage > 0 && video.playbackRate < 2) {
-            video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
+            video.playbackRate = Number(video.playbackRate + percentage / 100).toFixed(2)
             canvasNav.showOSD(`播放速度${percentage}%`, "center", "increase")
         } else if (percentage < 0 && video.playbackRate > 0.3) {
-            video.playbackRate = Number.parseFloat(video.playbackRate + percentage / 100).toFixed(2)
+            video.playbackRate = Number(video.playbackRate + percentage / 100).toFixed(2)
             canvasNav.showOSD(`播放速度${percentage}%`, "center", "decrease")
         }
         $("#playback_speed").html(Math.floor(video.playbackRate * 100))

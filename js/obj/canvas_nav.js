@@ -4,34 +4,33 @@ var canvasNav = {
     // 顯示訊息
     showMessage(message, countDown = 2) {
         $("#message").html(message).show()
-        var messageInterval = setInterval(function() {
+        let messageInterval = setInterval(function() {
             $("#message").hide("slow")
             clearInterval(messageInterval)
         }, countDown * 1000)
     },
 
     // 顯示影片 OSD 訊息
-    showOSD(text, position = "center", fadeOut = "increase", fadeOutTime = 1000) {
-        $("#video_osd").finish().removeAttr("style")
-        $("#video_osd").html(text)
-        $("#video_osd").show()
+    showOSD(message, position = "center", fadeOutEffect = "increase", fadeOutSeconds = 1.2) {
+        $("#video_osd").finish().removeAttr("style") //清除之前的效果，讓 OSD 可以再次顯示
+        $("#video_osd").html(message).show()
         $("#video_osd").attr("class", `osd_${position}`)
         // OSD 訊息置中（使用 transform -50％會影響動畫效果）
         $("#video_osd").css("margin-left", -($("#video_osd").width() / 2))
         $("#video_osd").css("margin-top", -($("#video_osd").height() / 2))
 
-        switch (fadeOut) {
+        switch (fadeOutEffect) {
             case "increase":
-                $("#video_osd").css("transform", "scale(1.2)")
+                $("#video_osd").css("transform", "scale(1.3)")
                 break
             case "decrease":
-                $("#video_osd").css("transform", "scale(0.8)")
+                $("#video_osd").css("transform", "scale(0.7)")
                 break
             case "right":
-                $("#video_osd").css("transform", "translate(1em)")
+                $("#video_osd").css("transform", "translate(1.2em)")
                 break
             case "left":
-                $("#video_osd").css("transform", "translate(-1em)")
+                $("#video_osd").css("transform", "translate(-1.2em)")
                 break
             case "none":
                 break
@@ -39,10 +38,11 @@ var canvasNav = {
 
         $("#video_osd").animate({
             opacity: "0"
-        }, fadeOutTime, function() {
+        }, fadeOutSeconds * 1000, function() {
             $(this).hide()
         })
     },
+
     // 清空畫布
     clearCanvas(isShowOsd = true) {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
@@ -55,14 +55,14 @@ var canvasNav = {
     setupDrawObj() {
         $("[class*='pen_type_id_']").hide()
         $(".pen_type_id_" + $("#pen_type").val()).show()
-        drawObj[parseInt($("#pen_type").val())].setup()
+        drawObj[$("#pen_type").val()].setup()
     },
 
     // 初始化畫筆UI
     initDrawUI() {
         // 依照畫筆物件設定，加入畫筆顏色選項，設定畫筆顏色
         $.each(pen.colors, function(colorName, value) {
-            var optionElement = document.createElement("option")
+            let optionElement = document.createElement("option")
             optionElement.setAttribute("value", value)
             optionElement.style.color = value
             optionElement.innerHTML = colorName

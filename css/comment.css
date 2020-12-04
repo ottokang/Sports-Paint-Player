@@ -187,6 +187,12 @@
     width: 20em;
 }
 
+#comment_dialog kbd {
+    font-size: 10px;
+    margin: 4px 0px;
+
+}
+
 #comment_text_input {
     width: 18em;
     height: 10em;
@@ -211,7 +217,7 @@
 #new_comment_dialog_title,
 #update_comment_dialog_title {
     text-align: center;
-    width: 70%;
+    width: 60%;
     margin: 0 auto 1em auto;
     background-color: #2196F3;
     border-radius: 3px;

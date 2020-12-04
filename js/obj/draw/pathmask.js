@@ -48,7 +48,7 @@ var pathMask = {
             canvasNav.clearCanvas(false)
             ctx.putImageData(this._backgroudCanvasData, 0, 0)
             this._drawPathMask(e)
-            this._drawCircleMask(e, parseFloat($("#path_mask_scale").val()))
+            this._drawCircleMask(e, $("#path_mask_scale").val())
         }
     },
 
@@ -63,7 +63,7 @@ var pathMask = {
         ctx.globalCompositeOperation = "destination-out"
         ctx.fillStyle = "#000000" // 設定為不透明色，組合圖片可以正確透明
         ctx.beginPath()
-        ctx.arc(e.offsetX, e.offsetY, parseInt($("#path_mask_radius").val()) * scale, 0, 2 * Math.PI)
+        ctx.arc(e.offsetX, e.offsetY, $("#path_mask_radius").val() * scale, 0, 2 * Math.PI)
         ctx.closePath()
         ctx.fill()
         ctx.globalCompositeOperation = "source-over"
@@ -71,9 +71,9 @@ var pathMask = {
 
     _drawPathMask(e) {
         let pathMaskCoordinates1 = this._getPathMaskCoordinates(this._x, this._y,
-            e.offsetX, e.offsetY, parseInt($("#path_mask_radius").val()))
+            e.offsetX, e.offsetY, Number($("#path_mask_radius").val()))
         let pathMaskCoordinates2 = this._getPathMaskCoordinates(e.offsetX, e.offsetY,
-            this._x, this._y, parseInt($("#path_mask_radius").val()) * parseFloat($("#path_mask_scale").val()))
+            this._x, this._y, $("#path_mask_radius").val() * $("#path_mask_scale").val())
         ctx.globalCompositeOperation = "destination-out"
         ctx.fillStyle = "#000000"
         ctx.beginPath()
