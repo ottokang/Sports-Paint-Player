@@ -66,6 +66,32 @@ var canvasNav = {
         })
         $("#pen_color").css("color", $("#pen_color").val())
         $("#control").show()
+        $("#draw_property").show()
+        $("#draw_property_toggle_button").on("click", function() {
+            canvasNav.toggleDrawPropertyButton()
+        })
+    },
+
+    // 觸發說明按鈕
+    toggleHotkeyButton() {
+        $("#hotkey_toggle_button").toggleClass("button_pressed")
+        if ($("#hotkey_toggle_button").hasClass("button_pressed")) {
+            $("#hotkey_toggle_button_text").html("隱藏操作按鍵")
+        } else {
+            $("#hotkey_toggle_button_text").html("顯示操作按鍵")
+        }
+        $("#hotkey_buttons").toggleClass("show_hotkeys")
+    },
+
+    // 觸發繪圖屬性按鈕
+    toggleDrawPropertyButton() {
+        $("#draw_property_toggle_button").toggleClass("button_pressed")
+        if ($("#draw_property_toggle_button").hasClass("button_pressed")) {
+            $("#draw_property_button_text").html("隱藏繪圖屬性")
+        } else {
+            $("#draw_property_button_text").html("顯示繪圖屬性")
+        }
+        $("#draw_property").toggleClass("show_draw_property")
     },
 
     // 建立測試 canvas

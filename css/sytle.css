@@ -55,7 +55,7 @@ body {
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
     font-size: 1.5em;
-    transition: background-color .3s;
+    transition: background-color 0.3s;
 }
 
 .button label {
@@ -77,15 +77,24 @@ body {
 }
 
 #draw_property {
+    display: none;
     position: absolute;
-    top: 3.2em;
-    right: 0;
+    top: -12em;
+    right: 6em;
+    opacity: 0;
+    width: 10em;
     border: 2px solid #F5F5F5;
     padding: 1em;
     z-index: 1;
     background-color: #616161;
     color: #ffffff;
     border-radius: 5% 0% 0% 5%;
+    transition: 0.5s;
+}
+
+#draw_property.show_draw_property {
+    transform: translateY(15em);
+    opacity: 1;
 }
 
 #draw_property input[type=number] {

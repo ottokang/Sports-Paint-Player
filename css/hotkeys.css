@@ -10,29 +10,37 @@ kbd {
     font-size: 1.2em;
 }
 
+kbd.small {
+    font-size: 0.9em;
+}
+
 #hotkeys {
     position: absolute;
     top: 10px;
     left: 10px;
 }
 
-#hotkeys .button_pressed {
+.button_pressed {
     border-style: inset;
 }
 
+#hotkeys .show_hotkeys {
+    transform: translateY(30em);
+    transition-timing-function: ease-in;
+    opacity: 1;
+}
+
 #hotkey_buttons {
-    display: none;
     padding-top: 0.5em;
+    transition: 0.5s;
+    margin-top: -30em;
+    opacity: 0;
 }
 
 #hotkey_buttons button {
     font-size: 12px;
     width: 8em;
     vertical-align: top;
-}
-
-#hotkey_buttons .small {
-    font-size: 0.9em;
 }
 
 #hotkey_buttons .button_info {

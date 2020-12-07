@@ -26,13 +26,13 @@ $("body").on("keydown", (function(keyEvent) {
                 }
                 break
 
-            case "Backquote": // `：展開/收起操作按鈕
-                if ($("#hotkey_buttons").css("display") === "none") {
-                    $("#toggle_button #toggle_button_text").html("隱藏操作按鍵").parent().addClass("button_pressed")
+            case "Backquote":
+                if (keyEvent.shiftKey) {
+                    canvasNav.toggleDrawPropertyButton()
                 } else {
-                    $("#toggle_button #toggle_button_text").html("顯示操作按鍵").parent().removeClass("button_pressed")
+                    // `：展開/收起操作按鈕
+                    canvasNav.toggleHotkeyButton()
                 }
-                $("#hotkey_buttons").toggle(300)
                 break
 
             case "Space": // Space：暫停/播放
