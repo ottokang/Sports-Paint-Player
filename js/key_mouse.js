@@ -26,13 +26,8 @@ $("body").on("keydown", (function(keyEvent) {
                 }
                 break
 
-            case "Backquote":
-                if (keyEvent.shiftKey) {
-                    canvasNav.toggleDrawPropertyButton()
-                } else {
-                    // `：展開/收起操作按鈕
-                    canvasNav.toggleHotkeyButton()
-                }
+            case "Backquote": // `：展開/收起操作按鈕說明
+                canvasNav.toggleHotkeyButton()
                 break
 
             case "Space": // Space：暫停/播放

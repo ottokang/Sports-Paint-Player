@@ -48,7 +48,7 @@ body {
     z-index: 1;
 }
 
-.button {
+.select_button {
     overflow: hidden;
     border-width: 0;
     outline: none;
@@ -58,7 +58,7 @@ body {
     transition: background-color 0.3s;
 }
 
-.button label {
+.select_button label {
     display: inline-block;
     padding: 10px;
     width: 100%;
@@ -80,7 +80,7 @@ body {
     display: none;
     position: absolute;
     top: -12em;
-    right: 6em;
+    right: 1em;
     opacity: 0;
     width: 10em;
     border: 2px solid #F5F5F5;
@@ -88,7 +88,7 @@ body {
     z-index: 1;
     background-color: #616161;
     color: #ffffff;
-    border-radius: 5% 0% 0% 5%;
+    border-radius: 0% 0% 5% 5%;
     transition: 0.5s;
 }
 

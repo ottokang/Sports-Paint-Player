@@ -106,5 +106,7 @@ var canvasNav = {
         $("#select_video_button").hide()
         this.initDrawUI()
         this.setupDrawObj()
+        $("#comment_source").show().css("margin-left", "12em")
+        $("#add_comment").css("display", "inline-block")
     }
 }

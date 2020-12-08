@@ -48,6 +48,8 @@ kbd.small {
 }
 
 #hotkey_buttons #video_wheel_button,
-#hotkey_buttons #option_wheel_button {
+#hotkey_buttons #option_wheel_button,
+#hotkey_buttons #close_comment_dialog_button,
+#hotkey_buttons #submit_comment_dialog_button {
     width: 10em;
 }

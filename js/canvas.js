@@ -8,12 +8,11 @@ var drawObj = {
     "3": pathMask
 }
 
-var developmentMode = 0
-
 // 是否進入開發模式
+var developmentMode = 0
 if (developmentMode === 1) {
     canvasNav.createTestCanvas()
-    $("#comment_source, #add_comment").show()
+
 }
 
 // 綁定畫筆類型變更，設定繪圖物件

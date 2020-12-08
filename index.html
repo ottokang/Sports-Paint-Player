@@ -9,14 +9,14 @@
 
 <body>
     <input id="video_source" name="video_source" type="file" accept="video/*">
-    <div id="select_video_button" class="button"><label for="video_source">請選擇要播放的影片</label></div>
+    <div id="select_video_button" class="select_button"><label for="video_source">請選擇要播放的影片</label></div>
     <input id="comment_source" name="comment_source" type="file" accept="application/JSON">
-    <div id="select_comment_button" class="button"><label for="comment_source">載入註解...</label></div>
-    <div id="add_comment" class="button">新增註解...</div>
+    <div id="select_comment_button" class="select_button"><label for="comment_source">載入註解...</label></div>
+    <div id="add_comment" class="select_button">新增註解...</div>
     <div id="message"></div>
     <div id="control">
         <span class="property_item">
-            放大倍率：
+            <label for="resize_radio">放大倍率：</label>
             <select id="resize_radio" name="resize_radio">
                 <option value="2.0">2.0</option>
                 <option value="1.8">1.8</option>
@@ -26,7 +26,7 @@
             </select>
         </span>
         <span class="property_item">
-            跳躍秒數：
+            <label for="jump_second">跳躍秒數：</label>
             <select id="jump_second" name="jump_second">
                 <option value="5">5</option>
                 <option value="4">4</option>
@@ -35,7 +35,7 @@
             </select>
         </span>
         <span class="property_item">
-            ║
+            <label for="pen_type">標記類型：</label>
             <select id="pen_type" name="pen_type">
                 <option value="1" selected>1.畫筆</option>
                 <option value="2">2.遮罩</option>
@@ -44,13 +44,12 @@
         </span>
         <button id="draw_property_toggle_button">
             <span id="draw_property_button_text">顯示繪圖屬性</span>
-            <kbd class="small">Shift + `</kbd>
         </button>
     </div>
     <div id="draw_property">
         <div id="pen_type_1" class="draw_property_block">
             <div class="property_item">
-                顏色：
+                <label for="pen_color">顏色：</label>
                 <select id="pen_color" name="pen_color">
                 </select>
             </div>
@@ -66,15 +65,15 @@
         <div id="pen_type_2" class="draw_property_block">
             <div class="property_item">
                 <label for="mask_radius">半徑：</label>
-                <input id="mask_radius" name="mask_radius" type="number" min="50" max="150" value="120" step="1">
+                <input id="mask_radius" name="mask_radius" type="number" min="50" max="200" value="120" step="1">
             </div>
             <div class="property_item">
                 <label for="mask_proportion">圓形比例：</label>
                 <input id="mask_proportion" name="mask_proportion" type="number" min="0.6" max="1.4" value="1" step="0.2">
             </div>
             <div class="property_item">
-                背景透明度：
-                <select id="mask_transparency" name="path_mask_transparency">
+                <label for="mask_transparency">背景透明度：</label>
+                <select id="mask_transparency" name="mask_transparency">
                     <option value="0.8">0.8</option>
                     <option value="0.7" selected>0.7</option>
                     <option value="0.6">0.6</option>
@@ -88,8 +87,8 @@
                 <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1">
             </div>
             <div class="property_item">
-                放大倍率：
-                <select id="path_mask_scale" name="mask_scale">
+                <label for="path_mask_scale">放大倍率：</label>
+                <select id="path_mask_scale" name="path_mask_scale">
                     <option value="3.0" selected>3.0</option>
                     <option value="2.8">2.8</option>
                     <option value="2.6">2.6</option>
@@ -99,7 +98,7 @@
                 </select>
             </div>
             <div class="property_item">
-                背景透明度：
+                <label for="path_mask_transparency">背景透明度：</label>
                 <select id="path_mask_transparency" name="path_mask_transparency">
                     <option value="0.8">0.8</option>
                     <option value="0.7" selected>0.7</option>
@@ -160,8 +159,12 @@
                 <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
                 <br>
                 <br>
-                <button id="video_wheel_button">在影片上<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>
-                <button id="option_wheel_button">在選項上<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">調整選項設定</span></button>
+                <button id="video_wheel_button">在影片上...<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>
+                <button id="option_wheel_button">在選項上...<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">調整選項設定</span></button>
+                <br>
+                <br>
+                <button id="close_comment_dialog_button">在輸入註解...<kbd class="small">Esc</kbd><span class="button_info">關閉註解對話框</span></button>
+                <button id="submit_comment_dialog_button">在輸入註解...<kbd class="small">Ctrl + Enter</kbd><span class="button_info">提交註解對話框</span></button>
             </div>
         </div>
         <canvas id="canvas_area"></canvas>
@@ -175,7 +178,7 @@
         <div id="download_comment">下載註解⬇️</div>
     </div>
     <div id="comment_dialog">
-        <button id="close_comment_dialog">❌<br><kbd>Esc</kbd></button>
+        <button id="close_comment_dialog" title="Esc">關閉❌</button>
         <div id="new_comment_dialog_title" class="new_comment">新增註解</div>
         <div id="update_comment_dialog_title" class="update_comment" data-id="">更新註解</div>
         <div id="comment_time">
@@ -211,8 +214,8 @@
             <input id="comment_position_down" name="comment_text_position" type="radio" value="down">
             <input id="comment_position_right_down" name="comment_text_position" type="radio" value="right_down">
         </div>
-        <button id="add_comment_submit" class="new_comment" tabindex="4">新增<br><kbd>Ctrl + Enter</kbd></button>
-        <button id="update_comment_submit" class="update_comment" tabindex="4">更新<br><kbd>Ctrl + Enter</kbd></button>
+        <button id="add_comment_submit" class="new_comment" tabindex="4" title="Ctrl+Enter">新增</button>
+        <button id="update_comment_submit" class="update_comment" tabindex="4" title="Ctrl+Enter">更新</button>
     </div>
     <div id="version">v0.7</div>
     <script src="js/jquery-3.5.1.min.js"></script>

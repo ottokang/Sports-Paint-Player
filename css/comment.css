@@ -13,13 +13,13 @@
     width: 14em;
     font-size: 0.8em;
     text-align: center;
-    background-color: #8E24AA;
+    background-color: #AB47BC;
     color: #ecf0f1;
 }
 
 #select_comment_button:hover,
 #select_comment_button:focus {
-    background-color: #4A148C;
+    background-color: #8E24AA;
 }
 
 #select_comment_button label {
@@ -36,6 +36,8 @@
     background-color: #BBDEFB;
     width: 16em;
     transition: 0.5s;
+    overflow: auto;
+    max-height: 80%;
 }
 
 .comment_show {
@@ -217,7 +219,7 @@
 #new_comment_dialog_title,
 #update_comment_dialog_title {
     text-align: center;
-    width: 60%;
+    width: 50%;
     margin: 0 auto 1em auto;
     background-color: #2196F3;
     border-radius: 3px;
