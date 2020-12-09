@@ -83,15 +83,15 @@ $("body").on("keydown", (function(keyEvent) {
                 break
 
             case "KeyF": // F：上一個註解
-                prevComment()
+                commentList.prev()
                 break
 
             case "KeyV": // V：下一個註解
-                nextComment()
+                commentList.next()
                 break
 
             case "KeyR": // R：重新目前載入註解
-                reloadComment()
+                commentList.reloadCurrent()
                 break
         }
     } else {
