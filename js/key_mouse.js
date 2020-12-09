@@ -60,7 +60,7 @@ $("body").on("keydown", (function(keyEvent) {
 
             case "KeyZ": // Z：恢復播放速度、Shift + Z 顯示/隱藏註解列表
                 if (keyEvent.shiftKey) {
-                    toggleCommentLsit()
+                    commentList.toggle()
                 } else {
                     videoNav.setPlaybackRate("100")
                 }

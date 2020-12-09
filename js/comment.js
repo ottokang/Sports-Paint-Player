@@ -9,13 +9,14 @@ $("#comment_source").val("")
 // 綁定註解檔案上傳動作
 $("#comment_source").on("change", function() {
     let commentFile = this.files[0]
-    let commentReader = new FileReader()
+    let commentFileReader = new FileReader()
 
-    // 設定讀取註解動作
-    commentReader.onload = function(event) {
+    // 綁定註解檔案讀取動作
+    commentFileReader.onload = function(event) {
         // 檢查是否為正確的 JSON 檔案
+        let commentListJson
         try {
-            var commentList = JSON.parse(this.result)
+            commentListJson = JSON.parse(this.result)
         } catch (e) {
             canvasNav.showMessage(`上傳的註解檔案"${commentFile.name}"有錯誤，無法解析內容`, 6)
             return
@@ -23,17 +24,17 @@ $("#comment_source").on("change", function() {
 
         // 讀取註解檔案到註解列表
         $("#comment_list").empty()
-        for (let i = 0; i < commentList.length; i++) {
-            appendCommentItem(i, commentList[i])
+        for (let i = 0; i < commentListJson.length; i++) {
+            appendCommentItem(i, commentListJson[i])
         }
         $("#select_comment_button").hide()
         $("#comment_source").show()
-        showCommentList()
+        commentList.show()
         canvasNav.showMessage("讀取註解完成", 1)
     }
 
     // 讀取註解檔
-    commentReader.readAsText(commentFile)
+    commentFileReader.readAsText(commentFile)
 })
 
 // 綁定點選關閉註解對話框動作
@@ -54,14 +55,6 @@ dragElement(document.getElementById("comment_dialog"))
 
 // 綁定點選顯示新增註解對話框動作
 $("#add_comment").on("click", function() {
-    isInputComment = true
-    video.pause()
-    // 清除註解對話框內容、建立預設值
-    $("#comment_time_HHMMSS").val("")
-    $("#comment_title_input, #comment_text_input").val("")
-    $("#comment_duration_input").val("10")
-
-    // 顯示新增註解對話框
     showCommentDialog("add")
 })
 
@@ -78,7 +71,7 @@ $("#add_comment_submit").on("click", function() {
         }
         appendCommentItem(id, comment)
         canvasNav.showMessage("新增註解成功")
-        showCommentList()
+        commentList.show()
         closeCommentDialog(false)
     }
 })
@@ -114,29 +107,6 @@ $("#download_comment").on("click", function() {
     $("#download_comment_link")[0].click()
     $("#download_comment_link").remove()
 })
-
-// 顯示註解列表
-function showCommentList() {
-    if ($("#comment_list").children().length > 0) {
-        $("#comment").addClass("comment_show")
-    } else {
-        canvasNav.showMessage("目前沒有註解可以顯示", 3)
-    }
-}
-
-// 隱藏註解列表
-function hideCommentList() {
-    $("#comment").removeClass("comment_show")
-}
-
-// 觸動註解列表
-function toggleCommentLsit() {
-    if ($("#comment").hasClass("comment_show")) {
-        hideCommentList()
-    } else {
-        showCommentList()
-    }
-}
 
 // 移到下一個註解
 function nextComment() {
@@ -235,6 +205,8 @@ function handleCommentText(commentText) {
 
 // 顯示註解對話框
 function showCommentDialog(type) {
+    isInputComment = true
+    video.pause()
     $("#comment_dialog").show()
     $("#comment_title_input").focus()
     $("#comment_dialog").css({
@@ -242,10 +214,13 @@ function showCommentDialog(type) {
         left: "40%"
     })
     if (type === "add") {
+        // 清除註解對話框內容、建立預設值
+        $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
+        $("#comment_title_input, #comment_text_input").val("")
+        $("#comment_duration_input").val("10")
+        $("#comment_position_center").prop("checked", "checked")
         $(".new_comment").show()
         $(".update_comment").hide()
-        $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
-        $("#comment_position_center").prop("checked", "checked")
     } else if (type === "edit") {
         $(".new_comment").hide()
         $(".update_comment").show()
@@ -315,9 +290,7 @@ function appendCommentItem(id, comment) {
         let id = $(this).parent().attr("id").replace("comment_item_", "")
         let comment = loadCommentJson(id)
         $("#update_comment_dialog_title").data("id", id)
-        isInputComment = true
         video.currentTime = comment.time
-        video.pause()
         loadJsonToCommentDialog(comment)
         showCommentDialog("edit")
     })
@@ -327,7 +300,7 @@ function appendCommentItem(id, comment) {
         if (confirm("確認刪除此註解？")) {
             $(this).parent().remove()
             if ($("#comment_list").children().length === 0) {
-                hideCommentList()
+                commentList.hide()
             }
         }
     })

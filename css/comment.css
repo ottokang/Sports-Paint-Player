@@ -192,7 +192,6 @@
 #comment_dialog kbd {
     font-size: 10px;
     margin: 4px 0px;
-
 }
 
 #comment_text_input {
@@ -232,7 +231,7 @@
 #new_comment_dialog_title:hover,
 #update_comment_dialog_title:hover {
     text-shadow: 2px 2px #757575;
-
+    background-color: #1565C0;
 }
 
 #comment_duration {
