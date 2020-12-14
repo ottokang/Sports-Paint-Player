@@ -58,7 +58,7 @@ var canvasNav = {
         drawObj[$("#pen_type").val()].setup()
     },
 
-    // 初始化畫筆UI
+    // 初始化繪圖UI
     initDrawUI() {
         // 依照畫筆物件設定，加入畫筆顏色選項，設定畫筆顏色
         $.each(pen.colors, function(colorName, value) {
@@ -69,6 +69,11 @@ var canvasNav = {
         $("#draw_property").show()
         $("#draw_property_toggle_button").on("click", function() {
             canvasNav.toggleDrawPropertyButton()
+        })
+
+        // 轉移焦點到影片上，避免空白鍵再度觸發選項
+        $("#control option, #draw_property option").on("click", function() {
+            $("#video_content").focus()
         })
     },
 

@@ -18,7 +18,7 @@ $("#video_source").on("change", function() {
         $("#select_comment_button, #add_comment").css("display", "inline-block")
         canvasNav.showMessage("開始播放", 1)
         video.src = URL.createObjectURL(file)
-        // 轉移焦點到 video上，避免空白鍵再度觸發選擇影像檔案
+        // 轉移焦點到影片上，避免空白鍵再度觸發選擇影像檔案
         $("#video_content").focus()
     }
 })
