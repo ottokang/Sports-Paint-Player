@@ -32,6 +32,10 @@ var pathMask = {
 
     mouseover(e) {
         this._isInCanvas = true
+        // 偵測是否進入 canvas 時，滑鼠左鍵是否按著
+        if (e.buttons === 1) {
+            this._isMouseDown = true
+        }
         if (this._isMouseDown) {
             $("#container").css("cursor", "grabbing")
         }
@@ -39,6 +43,7 @@ var pathMask = {
 
     mouseout(e) {
         this._isInCanvas = false
+        this._isMouseDown = false
         $("#container").css("cursor", this._originMouseCursor)
     },
 

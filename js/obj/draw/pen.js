@@ -48,6 +48,10 @@ var pen = {
 
     mouseover(e) {
         this._isInCanvas = true
+        // 偵測是否進入 canvas 時，滑鼠左鍵是否按著
+        if (e.buttons === 1) {
+            this._isMouseDown = true
+        }
         this._x = e.offsetX
         this._y = e.offsetY
         if (this._isMouseDown) {
@@ -57,6 +61,7 @@ var pen = {
 
     mouseout(e) {
         this._isInCanvas = false
+        this._isMouseDown = false
         $("#container").css("cursor", this._originMouseCursor)
     },
 
