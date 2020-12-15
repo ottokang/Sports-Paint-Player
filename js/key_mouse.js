@@ -98,7 +98,7 @@ $("body").on("keydown", (function(keyEvent) {
         // 輸入註解狀態
         switch (keyEvent.code) {
             case "Escape": // Esc：關閉註解對話框
-                closeCommentDialog()
+                commentList.closeDialog()
                 break
             case "Enter": // Ctrl + Enter：送出註解對話框內容
                 if (keyEvent.ctrlKey) {

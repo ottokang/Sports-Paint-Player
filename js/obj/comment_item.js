@@ -1,10 +1,6 @@
 "use strict"
 
 var commentItem = {
-    // showText
-    // saveJson
-    // LoadJson
-
     // 顯示註解文字
     showText(id) {
         let devModeTime = 1
