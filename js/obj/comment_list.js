@@ -4,7 +4,10 @@ var commentList = {
     // 顯示註解列表
     show() {
         if ($("#comment_list").children().length > 0) {
-            $("#comment").addClass("comment_show")
+            $("#comment").show(100).addClass("comment_show")
+            $("#toggle_comment_list").removeClass("toggle_comment_show")
+            $("#toggle_comment_list").addClass("toggle_comment_hide")
+            $("#toggle_comment_list").html("隱藏註解列表←")
         } else {
             canvasNav.showMessage("目前沒有註解可以顯示", 3)
         }
@@ -13,6 +16,9 @@ var commentList = {
     // 隱藏註解列表
     hide() {
         $("#comment").removeClass("comment_show")
+        $("#toggle_comment_list").removeClass("toggle_comment_hide")
+        $("#toggle_comment_list").addClass("toggle_comment_show")
+        $("#toggle_comment_list").html("顯示註解列表→")
     },
 
     // 觸動註解列表
@@ -43,6 +49,7 @@ var commentList = {
                 let currentCommentItem = $(".current_comment_item")
                 $(".current_comment_item").parent().next().children(".comment_title").addClass("current_comment_item")
                 currentCommentItem.removeClass("current_comment_item")
+                canvasNav.showOSD("下一個註解", "center", "decrease")
             }
         }
 
@@ -68,6 +75,7 @@ var commentList = {
                 let currentCommentItem = $(".current_comment_item")
                 $(".current_comment_item").parent().prev().children(".comment_title").addClass("current_comment_item")
                 currentCommentItem.removeClass("current_comment_item")
+                canvasNav.showOSD("上一個註解", "center", "increase")
             }
         }
 
@@ -185,6 +193,7 @@ var commentList = {
                 $(this).parent().remove()
                 if ($("#comment_list").children().length === 0) {
                     commentList.hide()
+                    $("#comment").hide(500)
                 }
             }
         })

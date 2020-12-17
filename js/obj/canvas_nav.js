@@ -113,5 +113,13 @@ var canvasNav = {
         this.setupDrawObj()
         $("#comment_source").show().css("margin-left", "12em")
         $("#add_comment").css("display", "inline-block")
+        commentList.appendItem(0, {
+            "time": 58,
+            "title": "註解1",
+            "position": "right_down",
+            "text": "這個傳球要看另外一邊",
+            "duration": 10
+        })
+        commentList.show()
     }
 }

@@ -108,3 +108,8 @@ $("#download_comment").on("click", function() {
     $("#download_comment_link")[0].click()
     $("#download_comment_link").remove()
 })
+
+// 綁定觸動註解顯示按鈕
+$("#toggle_comment_list").on("click", function() {
+    commentList.toggle()
+})
