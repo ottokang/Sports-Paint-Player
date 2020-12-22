@@ -12,7 +12,6 @@ var drawObj = {
 var developmentMode = 0
 if (developmentMode === 1) {
     canvasNav.createTestCanvas()
-
 }
 
 // 綁定畫筆類型變更，設定繪圖物件

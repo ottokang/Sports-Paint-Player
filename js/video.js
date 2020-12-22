@@ -8,16 +8,16 @@ var video = $("#video_content")[0],
 
 // 綁定影片選擇後動作，選擇影像後播放
 $("#video_source").on("change", function() {
-    let file = this.files[0]
-    if (video.canPlayType(file.type) === "") {
-        canvasNav.showMessage(`瀏覽器無法播放此類影片（${file.type}），建議將影片轉檔為 H.264 + AAC 格式。`, 6)
+    let videoFile = this.files[0]
+    if (video.canPlayType(videoFile.type) === "") {
+        canvasNav.showMessage(`瀏覽器無法播放此類影片（${videoFile.type}），建議將影片轉檔為 H.264 + AAC 格式。`, 6)
         return
     } else {
         $("#video_source").show()
         $("#select_video_button").hide()
         $("#select_comment_button, #add_comment").css("display", "inline-block")
         canvasNav.showMessage("開始播放", 1)
-        video.src = URL.createObjectURL(file)
+        video.src = URL.createObjectURL(videoFile)
         // 轉移焦點到影片上，避免空白鍵再度觸發選擇影像檔案
         $("#video_content").focus()
     }
