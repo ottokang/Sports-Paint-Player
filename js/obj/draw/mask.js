@@ -27,12 +27,11 @@ var mask = {
     mouseup(e) {
         this._isMouseDown = false
         $("#container").css("cursor", this._originMouseCursor)
-        canvasNav.clearCanvas(false)
     },
 
     mouseover(e) {
         this._isInCanvas = true
-        // 偵測是否進入 canvas 時，滑鼠左鍵是否按著
+        // 偵測游標進入 canvas 時，滑鼠左鍵是否按著
         if (e.buttons === 1) {
             this._isMouseDown = true
         }
