@@ -1,6 +1,7 @@
-0.8(dev):
+0.7.2:
     - 修正 style.css 拼字錯誤
     - 新增 changelog 檔案
+    - 更新部份 API
 
 
 0.7.1:
