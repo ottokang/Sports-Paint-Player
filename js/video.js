@@ -34,7 +34,7 @@ $("#video_content").on("timeupdate", function() {
     $("#current_time").html(video.currentTime.toString().toHHMMSS())
     $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
     $("#comment_time_HHMMSS").addClass("comment_input_focus")
-    setTimeout(function() {
+    window.setTimeout(function() {
         $("#comment_time_HHMMSS").removeClass("comment_input_focus")
     }, 200)
 })
@@ -48,8 +48,8 @@ $("#canvas_area").on("mousemove", function(e) {
 // 綁定影片長度變更時，設定播放進度列、播放資訊、container 高度/寬度
 $("#video_content").on("durationchange", function() {
     // 根據螢幕大小，設定 Container 大小
-    let maxViewWidth = $(window).width() * 0.90
-    let maxViewHeight = $(window).height() * 0.88
+    let maxViewWidth = window.innerWidth * 0.90
+    let maxViewHeight = window.innerHeight * 0.88
     let videoAspectRatio = video.videoWidth / video.videoHeight
     let screenAspectRatio = maxViewWidth / maxViewHeight
     let containerWidth, conatinerHeight

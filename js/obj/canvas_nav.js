@@ -105,8 +105,8 @@ var canvasNav = {
         $("#canvas_area").css("border", "2px solid grey")
         $("#canvas_area").css("margin-top", "4em")
         $("#video_content").css("top", "4em")
-        ctx.canvas.width = $(window).width() * 0.8
-        ctx.canvas.height = $(window).height() * 0.8
+        ctx.canvas.width = window.innerWidth * 0.8
+        ctx.canvas.height = window.innerHeight * 0.8
         $("#container").css("position", "inherit")
         $("#select_video_button").hide()
         this.initDrawUI()
