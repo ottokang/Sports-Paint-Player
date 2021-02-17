@@ -42,12 +42,12 @@
 }
 
 #toggle_comment_list {
+    padding: 3px;
     float: right;
     width: 1em;
     height: 100%;
     background-color: #B0BEC5;
     border: 2px solid #78909C;
-    padding: 3px;
     font-size: x-small;
     cursor: e-resize;
     color: #263238;
@@ -98,9 +98,9 @@
 
 .delete_comment,
 .edit_comment {
+    padding: 3px;
     float: right;
     font-size: small;
-    padding: 3px;
 }
 
 .delete_comment:hover {
@@ -115,12 +115,12 @@
 
 #add_comment {
     display: none;
+    margin: 0 0 -0.8em 1em;
+    padding: 4px;
     font-size: small;
     border: 1px solid #1976D2;
-    padding: 4px;
     background-color: #90CAF9;
     border-radius: 5px;
-    margin: 0 0 -0.8em 1em;
     text-align: center;
     width: 6em;
 }
@@ -131,11 +131,11 @@
 }
 
 #download_comment {
+    margin: 1em 0.5em 0 0;
+    padding: 4px;
     font-size: small;
     border: 1px solid #2E7D32;
-    padding: 4px;
     float: right;
-    margin: 1em 0.5em 0 0;
     background-color: #A5D6A7;
     border-radius: 5px;
 }
@@ -207,16 +207,16 @@
     position: absolute;
     top: 25%;
     left: 40%;
+    padding: 10px;
     border: 1px solid olive;
     border-radius: 5px;
     background-color: orange;
-    padding: 10px;
     width: 20em;
 }
 
 #comment_dialog kbd {
-    font-size: 10px;
     margin: 4px 0px;
+    font-size: 10px;
 }
 
 #comment_text_input {
@@ -242,13 +242,13 @@
 
 #new_comment_dialog_title,
 #update_comment_dialog_title {
+    margin: 0 auto 1em auto;
+    padding: 5px;
     text-align: center;
     width: 50%;
-    margin: 0 auto 1em auto;
     background-color: #2196F3;
     border-radius: 3px;
     font-size: large;
-    padding: 5px;
     color: #FFFFFF;
     cursor: move;
 }
