@@ -59,17 +59,17 @@ $("#video_content").on("durationchange", function() {
     let screenAspectRatio = maxViewWidth / maxViewHeight
     let containerWidth, conatinerHeight
     if (videoAspectRatio >= screenAspectRatio) {
-        containerWidth = Number(maxViewWidth)
-        conatinerHeight = Number(video.videoHeight * (maxViewWidth / video.videoWidth))
+        containerWidth = Number.parseInt(maxViewWidth)
+        conatinerHeight = Number.parseInt(video.videoHeight * (maxViewWidth / video.videoWidth))
     } else {
-        containerWidth = Number(video.videoWidth * (maxViewHeight / video.videoHeight))
-        conatinerHeight = Number(maxViewHeight)
+        containerWidth = Number.parseInt(video.videoWidth * (maxViewHeight / video.videoHeight))
+        conatinerHeight = Number.parseInt(maxViewHeight)
     }
 
     // 設定 Container 寬、高、Margin-Top 距離
     $("#container").width(containerWidth)
     $("#container").height(conatinerHeight)
-    $("#container").css("margin-top", (maxViewHeight - conatinerHeight) / 2 + "px")
+    $("#container").css("margin-top", (maxViewHeight - conatinerHeight) / 2 + 10 + "px")
     $("#video_content").width(containerWidth)
     $("#video_content").height(conatinerHeight)
 
