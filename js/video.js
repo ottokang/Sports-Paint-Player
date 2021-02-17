@@ -6,6 +6,11 @@ var video = $("#video_content")[0],
     resizeXOffset,
     resizeYOffset
 
+// 綁定螢幕畫面大小改變偵測說明
+$(window).on("resize", function() {
+    $("#resize_messgage").show()
+})
+
 // 綁定影片選擇後動作，選擇影像後播放
 $("#video_source").on("change", function() {
     let videoFile = this.files[0]
@@ -14,7 +19,7 @@ $("#video_source").on("change", function() {
         return
     } else {
         $("#video_source").show()
-        $("#select_video_button").hide()
+        $("#select_video_button, #instruction").hide()
         $("#select_comment_button, #add_comment").css("display", "inline-block")
         canvasNav.showMessage("開始播放", 1)
         video.src = URL.createObjectURL(videoFile)

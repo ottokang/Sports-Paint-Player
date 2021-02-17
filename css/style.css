@@ -27,6 +27,41 @@ body {
     z-index: 1;
 }
 
+#instruction {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+}
+
+.instruction_message {
+    background-color: #29B6F6;
+    padding: 10px;
+    border: 1px solid #0277BD;
+    border-radius: 10px;
+}
+
+.instruction_message kbd {
+    font-size: 0.8em;
+    margin: 0 0.3em;
+}
+
+/* 偵測是否在全螢幕模式，顯示說明 */
+@media all and (display-mode: fullscreen) {
+    #full_screen_messgage {
+        display: none;
+    }
+}
+
+#full_screen_messgage {
+    margin-bottom: 0.5em;
+}
+
+#resize_messgage {
+    display: none;
+}
+
 #select_video_button:hover,
 #select_video_button:focus {
     background-color: #bf360c;

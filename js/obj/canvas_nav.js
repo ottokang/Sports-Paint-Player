@@ -101,12 +101,13 @@ var canvasNav = {
 
     // 建立測試 canvas
     createTestCanvas() {
-        $("#canvas_area").show()
-        $("#canvas_area").css("border", "2px solid grey")
-        $("#canvas_area").css("margin-top", "4em")
+        $("#canvas_area").show().css({
+            border: "2px solid grey",
+            marginTop: "4em"
+        })
         $("#video_content").css("top", "4em")
-        ctx.canvas.width = window.innerWidth * 0.8
-        ctx.canvas.height = window.innerHeight * 0.8
+        ctx.canvas.width = window.innerWidth * 0.85
+        ctx.canvas.height = window.innerHeight * 0.85
         $("#container").css("position", "inherit")
         $("#select_video_button").hide()
         this.initDrawUI()
