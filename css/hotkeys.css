@@ -1,13 +1,13 @@
 kbd {
     display: inline-block;
     padding: 0.2em 0.6em;
-    line-height: 1.2;
-    white-space: nowrap;
-    color: #242729;
     border: 1px solid #adb3b9;
     border-radius: 3px;
     background-color: #eeeeee;
+    color: #242729;
+    white-space: nowrap;
     font-size: 1.2em;
+    line-height: 1.2;
 }
 
 kbd.small {
@@ -25,22 +25,22 @@ kbd.small {
 }
 
 #hotkeys .show_hotkeys {
-    transform: translateY(30em);
-    transition-timing-function: ease-in;
     opacity: 1;
+    transition-timing-function: ease-in;
+    transform: translateY(30em);
 }
 
 #hotkey_buttons {
-    padding-top: 0.5em;
-    transition: 0.5s;
     margin-top: -30em;
+    padding-top: 0.5em;
     opacity: 0;
+    transition: 0.5s;
 }
 
 #hotkey_buttons button {
-    font-size: 12px;
     width: 8em;
     vertical-align: top;
+    font-size: 12px;
 }
 
 #hotkey_buttons .button_info {

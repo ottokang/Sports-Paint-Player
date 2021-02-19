@@ -12,34 +12,34 @@ body {
     display: none;
     margin: 0 0 5px 0;
     padding: 5px;
+    width: 16em;
     border-radius: 10px;
     background-color: #bdbdbd;
-    width: 16em;
 }
 
 #select_video_button {
     position: absolute;
     top: 40%;
     left: 50%;
+    z-index: 1;
     background-color: #F4511e;
     color: #ecf0f1;
     transform: translateX(-50%);
-    z-index: 1;
 }
 
 #instruction {
     position: absolute;
     top: 55%;
     left: 50%;
-    transform: translateX(-50%);
     text-align: center;
+    transform: translateX(-50%);
 }
 
 .instruction_message {
     padding: 10px;
     border: 1px solid #0277BD;
-    background-color: #29B6F6;
     border-radius: 10px;
+    background-color: #29B6F6;
 }
 
 .instruction_message kbd {
@@ -47,7 +47,7 @@ body {
     font-size: 0.8em;
 }
 
-/* 偵測是否在全螢幕模式，顯示說明 */
+/* 偵測是否啟用全螢幕，若沒有則顯示說明 */
 @media all and (display-mode: fullscreen) {
     #full_screen_messgage {
         display: none;
@@ -72,21 +72,21 @@ body {
     position: absolute;
     top: 40%;
     left: 50%;
+    z-index: 1;
     margin: 10px;
     padding: 10px;
     border: 2px solid #ffffff;
-    font-size: 1.5em;
-    color: #fff;
     border-radius: 10px;
     background-color: #1E88E5;
+    color: #fff;
+    font-size: 1.5em;
     transform: translateX(-50%);
-    z-index: 1;
 }
 
 .select_button {
     overflow: hidden;
-    border-width: 0;
     outline: none;
+    border-width: 0;
     border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
     font-size: 1.5em;
@@ -101,8 +101,8 @@ body {
 
 #control {
     display: none;
-    padding: 3px;
     float: right;
+    padding: 3px;
     color: #ffffff;
 }
 
@@ -116,20 +116,20 @@ body {
     position: absolute;
     top: -12em;
     right: 1em;
-    padding: 1em;
-    border: 2px solid #F5F5F5;
-    opacity: 0;
-    width: 10em;
     z-index: 1;
+    padding: 1em;
+    width: 10em;
+    border: 2px solid #F5F5F5;
+    border-radius: 0% 0% 5% 5%;
     background-color: #616161;
     color: #ffffff;
-    border-radius: 0% 0% 5% 5%;
+    opacity: 0;
     transition: 0.5s;
 }
 
 #draw_property.show_draw_property {
-    transform: translateY(15em);
     opacity: 1;
+    transform: translateY(15em);
 }
 
 #draw_property input[type=number] {
@@ -141,14 +141,14 @@ body {
 }
 
 .property_item:hover {
-    text-shadow: 1px 1px #aaa;
     color: #1e88e5;
+    text-shadow: 1px 1px #aaa;
 }
 
 #container {
     position: relative;
-    margin: auto;
     overflow: hidden;
+    margin: auto;
 }
 
 #video_content {
@@ -165,8 +165,8 @@ body {
     display: none;
     position: absolute;
     padding: 5px;
-    color: #ffffff;
     background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
     text-shadow: 2px 2px 3px #434a54;
 }
 
@@ -189,12 +189,12 @@ body {
     display: none;
     position: absolute;
     padding: 5px;
-    font-size: 130%;
-    transition: transform 0.4s;
-    opacity: 0.7;
-    color: #ffffff;
     border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    font-size: 130%;
+    opacity: 0.7;
+    transition: transform 0.4s;
 }
 
 .osd_center {
@@ -226,9 +226,9 @@ body {
     display: none;
     position: absolute;
     bottom: 0;
+    z-index: 1;
     margin: 0 auto;
     cursor: pointer;
-    z-index: 1;
 }
 
 #back_time {
