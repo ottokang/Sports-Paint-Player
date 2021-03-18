@@ -50,6 +50,47 @@ $("#close_comment_dialog").on("click", function() {
     commentList.closeDialog()
 })
 
+// 綁定註解點選動作，委派不同任務
+$("#comment_list").on("click", function(e) {
+    let targetObj = $(e.target)
+    let commentId
+
+    // 綁定點選跳到註解時間點，顯示註解文字
+    if (targetObj.is(".comment_title_text, .comment_title_time_HHMMSS ,.comment_title")) {
+        if (targetObj.is(".comment_title_text, .comment_title_time_HHMMSS")) {
+            commentId = targetObj.parent().parent().data("comment_id")
+        } else if (targetObj.is(".comment_title")) {
+            commentId = targetObj.parent().data("comment_id")
+        }
+
+        $(".current_comment_item").removeClass("current_comment_item")
+        targetObj.parent().addClass("current_comment_item")
+        commentItem.showText(commentId)
+        video.play()
+    }
+
+    // 綁定點選顯示編輯註解對話框
+    if (targetObj.is(".edit_comment")) {
+        commentId = targetObj.parent().data("comment_id")
+        let comment = commentItem.loadJson(commentId)
+        $("#update_comment_dialog_title").data("id", commentId)
+        video.currentTime = comment.time
+        commentList.setDialog(comment)
+        commentList.showDialog("edit")
+    }
+
+    // 綁定點選刪除註解
+    if (targetObj.is(".delete_comment")) {
+        if (confirm("確認刪除此註解？")) {
+            targetObj.parent().remove()
+            if ($("#comment_list").children().length === 0) {
+                commentList.hide()
+                $("#comment").hide(500)
+            }
+        }
+    }
+})
+
 // 綁定註解輸入欄位焦點標示
 $("#comment_dialog input[type*='text'], #comment_dialog textarea").on("focus", function() {
     $(this).addClass("comment_input_focus")

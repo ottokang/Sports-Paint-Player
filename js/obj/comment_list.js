@@ -158,9 +158,9 @@ var commentList = {
     // 附加註解項目到註解列表
     appendItem(id, comment) {
         $("#comment_list").append(
-            `<div id="comment_item_${id}" class="comment_item">
-            <div class="delete_comment" data-comment_id="${id}">刪除</div>
-            <div class="edit_comment" data-comment_id="${id}">編輯</div>
+            `<div id="comment_item_${id}" class="comment_item" data-comment_id="${id}">
+            <div class="delete_comment">刪除</div>
+            <div class="edit_comment">編輯</div>
             <div class="comment_title" title="${comment.title}\n${comment.text}">
                 <span class="comment_title_time_HHMMSS">${comment.time.toString().toHHMMSS()}</span>
                 <span class="comment_title_text" >${comment.title}</span>
@@ -168,35 +168,6 @@ var commentList = {
         </div>`
         )
         commentItem.saveJson(id, comment)
-
-        // 綁定點選跳到註解時間點，顯示註解文字
-        $(`#comment_item_${id} .comment_title`).on("click", function() {
-            $(".current_comment_item").removeClass("current_comment_item")
-            $(this).addClass("current_comment_item")
-            commentItem.showText(id)
-            video.play()
-        })
-
-        // 綁定點選顯示編輯註解對話框
-        $(`#comment_item_${id} .edit_comment`).on("click", function() {
-            let id = $(this).parent().attr("id").replace("comment_item_", "")
-            let comment = commentItem.loadJson(id)
-            $("#update_comment_dialog_title").data("id", id)
-            video.currentTime = comment.time
-            commentList.setDialog(comment)
-            commentList.showDialog("edit")
-        })
-
-        // 綁定點選刪除註解
-        $(`#comment_item_${id} .delete_comment`).on("click", function() {
-            if (confirm("確認刪除此註解？")) {
-                $(this).parent().remove()
-                if ($("#comment_list").children().length === 0) {
-                    commentList.hide()
-                    $("#comment").hide(500)
-                }
-            }
-        })
     },
 
     // 讀取對話框內容為JSON物件
