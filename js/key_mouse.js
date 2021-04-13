@@ -27,7 +27,12 @@ $("body").on("keydown", (function(keyEvent) {
                 break
 
             case "Backquote": // `：展開/收起操作按鈕說明
-                canvasNav.toggleHotkeyButton()
+                if (keyEvent.ctrlKey) {
+                    canvasNav.toggleDrawPropertyButton()
+                    console.log("ctrl")
+                } else {
+                    canvasNav.toggleHotkeyButton()
+                }
                 break
 
             case "Space": // Space：暫停/播放
