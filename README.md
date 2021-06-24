@@ -1,4 +1,4 @@
-# 運動影片標記播放器 Sports-Paint-Player
+# 運動影片標記播放器-Sports Paint Player
 
 播放器提供功能：
 
