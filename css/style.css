@@ -252,3 +252,11 @@ body {
     bottom: 20px;
     color: #999999;
 }
+
+#version a {
+    color: #bdbdbd;
+}
+
+#version a:hover {
+    color: #757575;
+}
