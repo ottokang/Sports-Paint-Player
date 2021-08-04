@@ -1,7 +1,7 @@
 "use strict"
 
 // 綁定鍵盤、滑鼠動作
-$("body").on("keydown", (function(keyEvent) {
+$("body").on("keydown", function(keyEvent) {
     if (isInputComment === false) {
         // 沒有在輸入註解的狀態
         switch (keyEvent.code) {
@@ -118,7 +118,7 @@ $("body").on("keydown", (function(keyEvent) {
                 break
         }
     }
-}))
+})
 
 // 綁定滑鼠滾輪調整 input 數值、select 選項
 $(".property_item, #comment_dialog > div").on("wheel", function(wheelEvent) {
