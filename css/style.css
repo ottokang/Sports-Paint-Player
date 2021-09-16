@@ -12,9 +12,13 @@ body {
     display: none;
     margin: 0 0 5px 0;
     padding: 5px;
-    width: 16em;
+    width: 12em;
     border-radius: 10px;
     background-color: #bdbdbd;
+}
+
+#video_source:hover {
+    background-color: #757575;
 }
 
 #select_video_button {
@@ -97,6 +101,11 @@ body {
     display: inline-block;
     padding: 10px;
     width: 100%;
+    cursor: pointer;
+}
+
+.select_button:hover {
+    cursor: pointer;
 }
 
 #control {

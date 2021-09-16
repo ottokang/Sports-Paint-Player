@@ -92,9 +92,9 @@ var canvasNav = {
     toggleDrawPropertyButton() {
         $("#draw_property_toggle_button").toggleClass("button_pressed")
         if ($("#draw_property_toggle_button").hasClass("button_pressed")) {
-            $("#draw_property_button_text").html("隱藏繪圖屬性")
+            $("#draw_property_button_text").html("隱藏標記屬性")
         } else {
-            $("#draw_property_button_text").html("顯示繪圖屬性")
+            $("#draw_property_button_text").html("顯示標記屬性")
         }
         $("#draw_property").toggleClass("show_draw_property")
     },

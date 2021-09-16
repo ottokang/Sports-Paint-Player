@@ -2,23 +2,26 @@
     display: none;
     margin: 0 0 5px 1em;
     padding: 5px;
-    width: 16em;
+    width: 12em;
     border-radius: 10px;
     background: #E1BEE7;
 }
 
+#comment_source:hover {
+    background-color: #AB47BC;
+}
+
 #select_comment_button {
     display: none;
-    margin: 0 0 -0.8em 1em;
-    width: 14em;
-    background-color: #AB47BC;
-    color: #ecf0f1;
+    margin: 0 0 -0.9em 1em;
+    width: 8em;
+    border: 1px solid #4A148C;
+    background-color: #B39DDB;
     text-align: center;
     font-size: 0.8em;
 }
 
-#select_comment_button:hover,
-#select_comment_button:focus {
+#select_comment_button:hover {
     background-color: #8E24AA;
 }
 
@@ -127,7 +130,6 @@
 
 #add_comment:hover {
     background-color: #2196F3;
-    cursor: pointer;
 }
 
 #download_comment {
