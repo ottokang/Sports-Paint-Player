@@ -29,7 +29,6 @@ $("body").on("keydown", function(keyEvent) {
             case "Backquote": // `：展開/收起操作按鈕說明
                 if (keyEvent.ctrlKey) {
                     canvasNav.toggleDrawPropertyButton()
-                    console.log("ctrl")
                 } else {
                     canvasNav.toggleHotkeyButton()
                 }

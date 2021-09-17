@@ -11,6 +11,11 @@ $(window).on("resize", function() {
     $("#resize_messgage").show()
 })
 
+// 綁定靜音按鈕動作
+$("#is_mute").on("click", function() {
+    videoNav.toggleMute()
+})
+
 // 綁定影片選擇後動作，選擇影像後播放
 $("#video_source").on("change", function() {
     let videoFile = this.files[0]
@@ -18,6 +23,7 @@ $("#video_source").on("change", function() {
         canvasNav.showMessage(`瀏覽器無法播放此類影片（${videoFile.type}），建議將影片轉檔為 H.264 + AAC 格式。`, 6)
         return
     } else {
+        videoNav.setMute()
         $("#video_source").show()
         $("#select_video_button, #instruction").hide()
         $("#select_comment_button, #add_comment").css("display", "inline-block")

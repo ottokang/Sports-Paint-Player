@@ -1,0 +1,49 @@
+#control {
+    display: none;
+    float: right;
+    padding: 3px;
+    color: #ffffff;
+}
+
+#control .property_item {
+    display: inline-block;
+    margin-right: 1em;
+}
+
+#control .property_item > * {
+    cursor: pointer;
+}
+
+#draw_property {
+    display: none;
+    position: absolute;
+    top: -12em;
+    right: 1em;
+    z-index: 1;
+    padding: 1em;
+    width: 10em;
+    border: 2px solid #F5F5F5;
+    border-radius: 0% 0% 5% 5%;
+    background-color: #616161;
+    color: #ffffff;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+#draw_property.show_draw_property {
+    opacity: 1;
+    transform: translateY(15em);
+}
+
+#draw_property input[type=number] {
+    width: 3.2em;
+}
+
+#draw_property .property_item {
+    margin: 0.7em 0;
+}
+
+.property_item:hover {
+    color: #1e88e5;
+    text-shadow: 1px 1px #aaa;
+}

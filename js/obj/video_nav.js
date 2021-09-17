@@ -89,5 +89,27 @@ var videoNav = {
             canvasNav.showOSD("標準大小", "center", "decrease")
             isResized = false
         }
+    },
+
+    // 設定靜音
+    setMute() {
+        $("#is_mute").html("靜音🔇").addClass("button_pressed")
+        video.volume = 0
+    },
+
+    // 取消靜音
+    cancelMute() {
+        $("#is_mute").html("有聲🔊").removeClass("button_pressed")
+        video.volume = 1
+    },
+
+    // 觸動靜音
+    toggleMute() {
+        $("#is_mute").toggleClass("button_pressed")
+        if ($("#is_mute").hasClass("button_pressed")) {
+            this.setMute()
+        } else {
+            this.cancelMute()
+        }
     }
 }
