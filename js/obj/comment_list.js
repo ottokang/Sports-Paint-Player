@@ -102,10 +102,6 @@ var commentList = {
         video.pause()
         $("#comment_dialog").show()
         $("#comment_title_input").focus()
-        $("#comment_dialog").css({
-            top: "25%",
-            left: "40%"
-        })
 
         if (type === "add") {
             // 清除註解對話框內容、建立預設值
