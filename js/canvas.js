@@ -8,12 +8,6 @@ var drawObj = {
     "3": pathMask
 }
 
-// 是否進入開發模式
-var developmentMode = 0
-if (developmentMode === 1) {
-    canvasNav.createTestCanvas()
-}
-
 // 綁定畫筆類型變更，設定繪圖物件
 $("#pen_type").on("change", function() {
     canvasNav.setupDrawObj()

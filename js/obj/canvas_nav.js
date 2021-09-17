@@ -97,30 +97,5 @@ var canvasNav = {
             $("#draw_property_button_text").html("顯示標記屬性")
         }
         $("#draw_property").toggleClass("show_draw_property")
-    },
-
-    // 建立測試 canvas
-    createTestCanvas() {
-        $("#canvas_area").show().css({
-            border: "2px solid grey",
-            marginTop: "4em"
-        })
-        $("#video_content").css("top", "4em")
-        ctx.canvas.width = window.innerWidth * 0.85
-        ctx.canvas.height = window.innerHeight * 0.85
-        $("#container").css("position", "inherit")
-        $("#select_video_button").hide()
-        this.initDrawUI()
-        this.setupDrawObj()
-        $("#comment_source").show().css("margin-left", "12em")
-        $("#add_comment").css("display", "inline-block")
-        commentList.appendItem(0, {
-            "time": 58,
-            "title": "註解1",
-            "position": "right_down",
-            "text": "這個傳球要看另外一邊",
-            "duration": 10
-        })
-        commentList.show()
     }
 }

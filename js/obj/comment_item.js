@@ -1,12 +1,8 @@
 "use strict"
 
 var commentItem = {
-    // 顯示註解文字
+    // 顯示註解文字（在開發模式延長顯示時間為1000倍）
     showText(id) {
-        let devModeTime = 1
-        if (developmentMode === 1) {
-            devModeTime = 1000
-        }
         this.clearAllText()
         let comment = this.loadJson(id)
         video.currentTime = comment.time
@@ -18,7 +14,7 @@ var commentItem = {
             }, 500, function() {
                 $(this).remove()
             })
-        }, comment.duration * 1000 * devModeTime)
+        }, comment.duration * 1000 * (developmentMode === 1 ? 1000 : 1))
     },
 
     // 移除全部註解文字
