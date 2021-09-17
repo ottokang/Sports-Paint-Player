@@ -1,5 +1,5 @@
 // 是否進入開發模式
-var developmentMode = 1
+var developmentMode = 0
 
 // 設定開發模式
 if (developmentMode === 1) {
