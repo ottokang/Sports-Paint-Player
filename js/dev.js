@@ -13,8 +13,11 @@ if (developmentMode === 1) {
     ctx.canvas.height = window.innerHeight * 0.85
     $("#container").css("position", "inherit")
     $("#select_video_button").hide()
+
+    // 顯示控制、標記界面
     canvasNav.initDrawUI()
     canvasNav.setupDrawObj()
+    $("#control, #draw_property").show()
 
     // 註解部份
     $("#comment_source").show().css("margin-left", "12em")

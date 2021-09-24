@@ -25,9 +25,6 @@
     <div id="message"></div>
     <div id="control">
         <span class="property_item">
-            <button id="is_mute" class="button_pressed">靜音🔇</button>
-        </span>
-        <span class="property_item">
             <label for="resize_radio">放大倍率：</label>
             <select id="resize_radio" name="resize_radio">
                 <option value="2.0">2.0</option>
@@ -132,7 +129,8 @@
             <span id="playback_speed"></span>
             %
         </div>
-        <div id="video_size_info" class="video_info">標準</div>
+        <div id="video_muted_info" class="video_info">靜音🔇</div>
+        <div id="video_size_info" class="video_info">標準畫面大小</div>
         <div id="video_osd"></div>
         <div id="hotkeys">
             <button id="hotkey_toggle_button">
@@ -168,12 +166,13 @@
                 <button id="clear_back_time_button"><kbd class="small">Shift + C</kbd><span class="button_info">清除回播點</span></button>
                 <br>
                 <br>
-                <button id="play_pause_button"><kbd class="small">Space</kbd><span class="button_info">暫停/播放</span></button>
+                <button id="play_pause_button"><kbd>空白鍵</kbd><span class="button_info">暫停/播放</span></button>
+                <button id="muted_button"><kbd>M</kbd><span class="button_info">靜音/有聲</span></button>
                 <br>
                 <br>
                 <button id="video_wheel_button">在影片上...<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>
                 <button id="option_wheel_button">在選項上...<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">調整選項設定</span></button>
-                <button id="toggle_draw_property_button"><kbd class="small">Ctrl + `</kbd><span class="button_info">顯示/隱藏繪圖屬性</span></button>
+                <button id="toggle_draw_property_button"><kbd class="small">Ctrl + `</kbd><span class="button_info">顯示/隱藏標記屬性</span></button>
                 <br>
                 <br>
                 <button id="close_comment_dialog_button">輸入註解時...<kbd class="small">Esc</kbd><span class="button_info">關閉註解對話框</span></button>

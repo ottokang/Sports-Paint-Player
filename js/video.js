@@ -60,7 +60,7 @@ $("#canvas_area").on("mousemove", function(e) {
 $("#video_content").on("durationchange", function() {
     // 根據螢幕大小，設定 Container 大小
     let maxViewWidth = window.innerWidth * 0.90
-    let maxViewHeight = window.innerHeight * 0.88
+    let maxViewHeight = window.innerHeight * 0.86
     let videoAspectRatio = video.videoWidth / video.videoHeight
     let screenAspectRatio = maxViewWidth / maxViewHeight
     let containerWidth, conatinerHeight
@@ -91,8 +91,9 @@ $("#video_content").on("durationchange", function() {
     $("#canvas_area").show()
     ctx.canvas.width = containerWidth
     ctx.canvas.height = conatinerHeight
-    canvasNav.initDrawUI()
-    canvasNav.setupDrawObj()
+
+    // 顯示控制、標記界面
+    $("#control, #draw_property").show()
 })
 
 // 處理播放時間為時:分:秒

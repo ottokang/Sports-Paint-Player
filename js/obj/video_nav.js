@@ -31,7 +31,7 @@ var videoNav = {
             canvasNav.showOSD("恢復播放速度", "center", "none")
         } else if (percentage > 0 && video.playbackRate < 2) {
             video.playbackRate = Number(video.playbackRate + percentage / 100).toFixed(2)
-            canvasNav.showOSD(`播放速度${percentage}%`, "center", "increase")
+            canvasNav.showOSD(`播放速度+${percentage}%`, "center", "increase")
         } else if (percentage < 0 && video.playbackRate > 0.3) {
             video.playbackRate = Number(video.playbackRate + percentage / 100).toFixed(2)
             canvasNav.showOSD(`播放速度${percentage}%`, "center", "decrease")
@@ -83,30 +83,31 @@ var videoNav = {
     zoomDefault() {
         if (isResized) {
             $("#video_content").css("transform", "scale(1)")
-            $("#video_size_info").html("標準大小")
+            $("#video_size_info").html("標準畫面大小")
             $("#video_size_info").css("color", "#ffffff")
             $("#video_size_info").css("font-size", "100%")
-            canvasNav.showOSD("標準大小", "center", "decrease")
+            canvasNav.showOSD("標準畫面大小", "center", "decrease")
             isResized = false
         }
     },
 
     // 設定靜音
     setMute() {
-        $("#is_mute").html("靜音🔇").addClass("button_pressed")
+        $("#video_muted_info").html("影片靜音🔇")
         video.volume = 0
+        canvasNav.showOSD("影片靜音", "center", "none", 2)
     },
 
     // 取消靜音
     cancelMute() {
-        $("#is_mute").html("有聲🔊").removeClass("button_pressed")
+        $("#video_muted_info").html("影片有聲🔊")
         video.volume = 1
+        canvasNav.showOSD("影片有聲", "center", "none", 2)
     },
 
     // 觸動靜音
     toggleMute() {
-        $("#is_mute").toggleClass("button_pressed")
-        if ($("#is_mute").hasClass("button_pressed")) {
+        if (video.volume === 1) {
             this.setMute()
         } else {
             this.cancelMute()

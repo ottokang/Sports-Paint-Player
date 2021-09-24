@@ -61,17 +61,18 @@ var canvasNav = {
     // 初始化繪圖UI
     initDrawUI() {
         // 依照畫筆物件設定，加入畫筆顏色選項，設定畫筆顏色
+        $("#pen_color").html("")
         $.each(pen.colors, function(colorName, value) {
             $("#pen_color").append(`<option value="${value}" style="color:${value};">${colorName}</option>`)
         })
         $("#pen_color").css("color", $("#pen_color").val())
-        $("#control").show()
-        $("#draw_property").show()
+
+        // 綁定觸發標記屬性按鈕
         $("#draw_property_toggle_button").on("click", function() {
             canvasNav.toggleDrawPropertyButton()
         })
 
-        // 轉移焦點到影片上，避免空白鍵再度觸發選項
+        // 綁定設定標記屬性後，轉移焦點到影片上，避免空白鍵再度觸發選項
         $("#control option, #draw_property option").on("click", function() {
             $("#video_content").focus()
         })

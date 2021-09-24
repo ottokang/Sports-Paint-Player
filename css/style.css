@@ -144,8 +144,13 @@ body {
     right: 10px;
 }
 
-#video_size_info {
+#video_muted_info {
     top: 50px;
+    right: 10px;
+}
+
+#video_size_info {
+    top: 90px;
     right: 10px;
 }
 

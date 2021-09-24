@@ -8,6 +8,10 @@ var drawObj = {
     "3": pathMask
 }
 
+// 初始化繪圖界面、繪圖物件
+canvasNav.initDrawUI()
+canvasNav.setupDrawObj()
+
 // 綁定畫筆類型變更，設定繪圖物件
 $("#pen_type").on("change", function() {
     canvasNav.setupDrawObj()

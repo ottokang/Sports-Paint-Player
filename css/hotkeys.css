@@ -39,6 +39,8 @@ kbd.small {
 
 #hotkey_buttons button {
     width: 8em;
+    background-color: #B0BEC5;
+    color: #0D47A1;
     vertical-align: top;
     font-size: 12px;
 }

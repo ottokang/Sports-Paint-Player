@@ -38,6 +38,10 @@ $("body").on("keydown", function(keyEvent) {
                 videoNav.playPause()
                 break
 
+            case "KeyM": // M：靜音/有聲
+                videoNav.toggleMute()
+                break
+
             case "KeyA": // A：倒退
                 videoNav.jump(0 - Number($("#jump_second").val()))
                 break
