@@ -144,6 +144,18 @@ body {
     right: 10px;
 }
 
+#playback_speed.normal {
+    color: inherit;
+}
+
+#playback_speed.faster {
+    color: #FF1744;
+}
+
+#playback_speed.slower {
+    color: #CE93D8;
+}
+
 #video_muted_info {
     top: 50px;
     right: 10px;

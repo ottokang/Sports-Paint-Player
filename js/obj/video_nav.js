@@ -36,7 +36,17 @@ var videoNav = {
             video.playbackRate = Number(video.playbackRate + percentage / 100).toFixed(2)
             canvasNav.showOSD(`播放速度${percentage}%`, "center", "decrease")
         }
-        $("#playback_speed").html(Math.floor(video.playbackRate * 100))
+
+        let playbackRateClass
+        if (video.playbackRate > 1) {
+            playbackRateClass = "faster"
+        } else if (video.playbackRate < 1) {
+            playbackRateClass = "slower"
+        } else {
+            playbackRateClass = "normal"
+        }
+
+        $("#playback_speed").html(Math.floor(video.playbackRate * 100) + "%").attr("class", playbackRateClass)
     },
 
     // 設定影片回播點

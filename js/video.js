@@ -85,7 +85,7 @@ $("#video_content").on("durationchange", function() {
     $("#back_time").width(containerWidth - 8)
     $("#video_progress").show().prop("max", video.duration)
     $(".video_info").show()
-    $("#playback_speed").html(Math.floor(video.playbackRate * 100))
+    $("#playback_speed").html(Math.floor(video.playbackRate * 100) + "%")
 
     // 設定 Canvas 大小、設定繪圖界面、物件
     $("#canvas_area").show()
