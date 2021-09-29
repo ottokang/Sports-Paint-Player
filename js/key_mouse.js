@@ -148,9 +148,19 @@ $(".property_item, #comment_dialog > div").on("wheel", function(wheelEvent) {
     if (wheelEvent.originalEvent.deltaY < 0) {
         // 滾輪往上：往上移動選項
         $(this).find("select option:selected").removeAttr("selected").prev().prop("selected", "selected").trigger("change")
+
+        // 到達選項頂端效果
+        if ($(this).find("select option:selected").prevAll().length === 0) {
+            reachTopEffect($(this).find("select"))
+        }
     } else {
         // 滾輪往下：往下移動選項
         $(this).find("select option:selected").removeAttr("selected").next().prop("selected", "selected").trigger("change")
+
+        // 到達選項底部效果
+        if ($(this).find("select option:selected").nextAll().length === 0) {
+            reachBottomEffect($(this).find("select"))
+        }
     }
 })
 
@@ -158,9 +168,15 @@ $(".property_item, #comment_dialog > div").on("wheel", function(wheelEvent) {
 $("input[type='number']").on("change", function() {
     if ($(this).attr("max") !== undefined && Number($(this).val()) > Number($(this).attr("max"))) {
         $(this).val($(this).attr("max"))
+
+        // 到達上限效果
+        reachTopEffect($(this))
     }
     if ($(this).attr("min") !== undefined && Number($(this).val()) < Number($(this).attr("min"))) {
         $(this).val($(this).attr("min"))
+
+        // 到達下限效果
+        reachTopEffect($(this))
     }
 })
 
@@ -174,3 +190,25 @@ $("#canvas_area").on("wheel", function(wheelEvent) {
         videoNav.zoomDefault()
     }
 })
+
+// 到達上限、選項到頂部效果
+function reachTopEffect(jqueryObj) {
+    jqueryObj.stop(true, true).css({
+        "fontWeight": "normal"
+    }).animate({
+        "font-weight": "+=300"
+    }, 200).animate({
+        "font-weight": "-=300"
+    }, 200)
+}
+
+// 到達下限、選項到底部效果
+function reachBottomEffect(jqueryObj) {
+    jqueryObj.stop(true, true).css({
+        "fontWeight": "normal"
+    }).animate({
+        "font-weight": "+=300"
+    }, 200).animate({
+        "font-weight": "-=300"
+    }, 200)
+}
