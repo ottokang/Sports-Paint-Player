@@ -17,7 +17,6 @@
     width: 8em;
     border: 1px solid #4A148C;
     background-color: #B39DDB;
-    text-align: center;
     font-size: 0.8em;
 }
 
@@ -124,7 +123,6 @@
     border: 1px solid #1976D2;
     border-radius: 5px;
     background-color: #90CAF9;
-    text-align: center;
     font-size: small;
 }
 
