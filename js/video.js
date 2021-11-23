@@ -4,7 +4,8 @@
 var video = $("#video_content")[0],
     isResized = false,
     resizeXOffset,
-    resizeYOffset
+    resizeYOffset,
+    isProgressbarMousedown
 
 // 綁定螢幕畫面大小改變偵測說明
 $(window).on("resize", function() {
@@ -34,22 +35,34 @@ $("#video_source").on("change", function() {
     }
 })
 
-// 綁定播放進度列點擊事件
-$("#video_progress").on("click", function() {
-    video.currentTime = $("#video_progress").val()
+// 綁定播放進度列點擊事件，拖曳也可以作用
+$("#video_progress").on("click mousedown mouseup mousemove", function(event) {
+    if (event.type === "mousedown") {
+        isProgressbarMousedown = true
+    }
 
-    // 點選進度列，新增/編輯註解時間會提示效果
-    $("#comment_time_HHMMSS").addClass("comment_input_focus")
-    window.setTimeout(function() {
-        $("#comment_time_HHMMSS").removeClass("comment_input_focus")
-    }, 200)
+    if (event.type === "click" || isProgressbarMousedown === true && "mousemove") {
+        video.currentTime = $("#video_progress").val()
+
+        // 點選進度列，新增/編輯註解時間會提示效果
+        $("#comment_time_HHMMSS").addClass("comment_input_focus")
+        window.setTimeout(function() {
+            $("#comment_time_HHMMSS").removeClass("comment_input_focus")
+        }, 200)
+    }
+
+    if (event.type === "mouseup") {
+        isProgressbarMousedown = false
+    }
 })
 
 // 綁定影片時間變化時更新進度列、更新註解時間
 $("#video_content").on("timeupdate", function() {
-    $("#video_progress").val(video.currentTime)
-    $("#current_time").html(video.currentTime.toString().toHHMMSS())
-    $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
+    if (isProgressbarMousedown === false) {
+        $("#video_progress").val(video.currentTime)
+        $("#current_time").html(video.currentTime.toString().toHHMMSS())
+        $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
+    }
 })
 
 // 綁定滑鼠移動時紀錄座標，作為影片縮放基準
