@@ -37,6 +37,12 @@ $("#video_source").on("change", function() {
 // 綁定播放進度列點擊事件
 $("#video_progress").on("click", function() {
     video.currentTime = $("#video_progress").val()
+
+    // 點選進度列，新增/編輯註解時間會提示效果
+    $("#comment_time_HHMMSS").addClass("comment_input_focus")
+    window.setTimeout(function() {
+        $("#comment_time_HHMMSS").removeClass("comment_input_focus")
+    }, 200)
 })
 
 // 綁定影片時間變化時更新進度列、更新註解時間
@@ -44,10 +50,6 @@ $("#video_content").on("timeupdate", function() {
     $("#video_progress").val(video.currentTime)
     $("#current_time").html(video.currentTime.toString().toHHMMSS())
     $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
-    $("#comment_time_HHMMSS").addClass("comment_input_focus")
-    window.setTimeout(function() {
-        $("#comment_time_HHMMSS").removeClass("comment_input_focus")
-    }, 200)
 })
 
 // 綁定滑鼠移動時紀錄座標，作為影片縮放基準

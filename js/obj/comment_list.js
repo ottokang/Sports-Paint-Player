@@ -120,7 +120,7 @@ var commentList = {
     // 關閉註解對話框
     closeDialog(isConfirm = true) {
         if (isConfirm === true) {
-            if (confirm("確定關閉註解？")) {
+            if (confirm("確定關閉註解編輯對話框？")) {
                 $("#comment_dialog").hide()
                 isInputComment = false
             }
