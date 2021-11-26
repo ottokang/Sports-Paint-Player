@@ -58,10 +58,10 @@ $("#video_progress").on("click mousedown mouseup mousemove", function(event) {
 
 // 綁定影片時間變化時更新進度列、更新註解時間
 $("#video_content").on("timeupdate", function() {
+    $("#current_time").html(video.currentTime.toString().toHHMMSS())
+    $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
     if (isProgressbarMousedown === false) {
         $("#video_progress").val(video.currentTime)
-        $("#current_time").html(video.currentTime.toString().toHHMMSS())
-        $("#comment_time_HHMMSS").val(video.currentTime.toString().toHHMMSS())
     }
 })
 

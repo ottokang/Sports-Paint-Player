@@ -26,6 +26,13 @@ $("body").on("keydown", function(keyEvent) {
                 }
                 break
 
+            case "Digit4": // 4：多邊形
+                if ($("#pen_type").val() !== "4") {
+                    $("#pen_type").val(4).change()
+                    canvasNav.showOSD("切換為多邊形", "center", "increase")
+                }
+                break
+
             case "Backquote": // `：展開/收起操作按鈕說明
                 if (keyEvent.ctrlKey) {
                     canvasNav.toggleDrawPropertyButton()

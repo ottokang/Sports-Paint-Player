@@ -77,6 +77,8 @@ var pen = {
         }
     },
 
+    dblclick(e) {},
+
     _draw(e) {
         ctx.beginPath()
         ctx.moveTo(this._x, this._y)

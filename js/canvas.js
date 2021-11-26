@@ -5,7 +5,8 @@ var ctx = $("#canvas_area")[0].getContext("2d")
 var drawObj = {
     "1": pen,
     "2": mask,
-    "3": pathMask
+    "3": pathMask,
+    "4": polygon
 }
 
 // 初始化繪圖界面、繪圖物件
@@ -45,4 +46,9 @@ $("#canvas_area").on("mouseout", function(e) {
 // 綁定滑鼠在 canvas 上移動動作
 $("#canvas_area").on("mousemove", function(e) {
     drawObj[$("#pen_type").val()].mousemove(e)
+})
+
+// 綁定滑鼠在 canvas 上連點
+$("#canvas_area").on("dblclick", function(e) {
+    drawObj[$("#pen_type").val()].dblclick(e)
 })

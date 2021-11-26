@@ -57,6 +57,8 @@ var pathMask = {
         }
     },
 
+    dblclick(e) {},
+
     _reDrawBackground() {
         canvasNav.clearCanvas(false)
         ctx.globalCompositeOperation = "source-over"
