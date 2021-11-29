@@ -10,7 +10,6 @@ var mask = {
 
     setup() {
         $("#container").css("cursor", "auto")
-        return this
     },
 
     mousedown(e) {
@@ -54,8 +53,6 @@ var mask = {
             this._drawCircleMask(e)
         }
     },
-
-    dblclick(e) {},
 
     _reDrawBackground() {
         canvasNav.clearCanvas(false)

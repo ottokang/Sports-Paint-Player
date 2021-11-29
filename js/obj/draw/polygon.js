@@ -10,6 +10,11 @@ var polygon = {
     _polygonVertex: [],
     _isDrawing: false,
 
+    reset() {
+        this._polygonVertex = []
+        this._isDrawing = false
+    },
+
     setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
         $("#container").css("cursor", "auto")
@@ -18,10 +23,7 @@ var polygon = {
         ctx.lineJoin = "round"
         ctx.lineCap = "round"
         ctx.lineWidth = 2
-        return this
     },
-
-    mousedown(e) {},
 
     mouseup(e) {
         this.setup()
@@ -32,10 +34,6 @@ var polygon = {
             y: e.offsetY
         })
     },
-
-    mouseover(e) {},
-
-    mouseout(e) {},
 
     mousemove(e) {
         if (this._isDrawing === true) {

@@ -44,17 +44,26 @@ var canvasNav = {
     },
 
     // 清空畫布
-    clearCanvas(isShowOsd = true) {
+    clearCanvas(isShowOsd = true, isReset = false) {
         ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height)
         if (isShowOsd) {
             this.showOSD("清空畫布", "center", "increase")
+        }
+
+        // 設定繪圖物件為初始狀態
+        if (isReset === true) {
+            Object.keys(drawObj).forEach(key => {
+                if (drawObj[key].hasOwnProperty("reset")) {
+                    drawObj[key].reset()
+                }
+            })
         }
     },
 
     // 設定畫筆物件選單
     setupDrawObj() {
         $(".draw_property_block").hide()
-        $("#pen_type_" + $("#pen_type").val()).show()
+        $("#draw_property #pen_type_" + $("#pen_type").val()).show()
         drawObj[$("#pen_type").val()].setup()
     },
 

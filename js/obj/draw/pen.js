@@ -15,6 +15,11 @@ var pen = {
         "藍色": "#0033cc"
     },
 
+    reset() {
+        this._isMouseDown = false
+        this._isInCanvas = false
+    },
+
     setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
         $("#container").css("cursor", "auto")
@@ -23,7 +28,6 @@ var pen = {
         ctx.lineJoin = "round"
         ctx.lineCap = "round"
         ctx.lineWidth = $("#pen_width").val()
-        return this
     },
 
     mousedown(e) {
@@ -76,8 +80,6 @@ var pen = {
             this._draw(e)
         }
     },
-
-    dblclick(e) {},
 
     _draw(e) {
         ctx.beginPath()

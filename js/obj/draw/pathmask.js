@@ -10,7 +10,6 @@ var pathMask = {
 
     setup() {
         $("#container").css("cursor", "auto")
-        return this
     },
 
     mousedown(e) {
@@ -56,8 +55,6 @@ var pathMask = {
             this._drawCircleMask(e, $("#path_mask_scale").val())
         }
     },
-
-    dblclick(e) {},
 
     _reDrawBackground() {
         canvasNav.clearCanvas(false)

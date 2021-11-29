@@ -18,37 +18,17 @@ $("#pen_type").on("change", function() {
     canvasNav.setupDrawObj()
 })
 
-// 設定畫筆顏色設定後，選項跟著變換顏色
-$("#pen_color").on("change", function() {
-    $("#pen_color").css("color", $("#pen_color").val())
+// 設定畫筆、多邊形顏色設定後，選項跟著變換顏色
+$("#pen_color, #polygon_color").on("change", function(e) {
+    let changedColorObj = $(e.target).closest(".property_item").children("select")
+    changedColorObj.css("color", changedColorObj.val())
 })
 
-// 綁定滑鼠在 canvas 上按下動作
-$("#canvas_area").on("mousedown", function(e) {
-    drawObj[$("#pen_type").val()].mousedown(e)
-})
-
-// 綁定滑鼠在 canvas 上放開動作
-$("#canvas_area").on("mouseup", function(e) {
-    drawObj[$("#pen_type").val()].mouseup(e)
-})
-
-// 綁定滑鼠進入 canvas 動作
-$("#canvas_area").on("mouseover", function(e) {
-    drawObj[$("#pen_type").val()].mouseover(e)
-})
-
-// 綁定滑鼠移出 canvas 動作
-$("#canvas_area").on("mouseout", function(e) {
-    drawObj[$("#pen_type").val()].mouseout(e)
-})
-
-// 綁定滑鼠在 canvas 上移動動作
-$("#canvas_area").on("mousemove", function(e) {
-    drawObj[$("#pen_type").val()].mousemove(e)
-})
-
-// 綁定滑鼠在 canvas 上連點
-$("#canvas_area").on("dblclick", function(e) {
-    drawObj[$("#pen_type").val()].dblclick(e)
+// 綁定滑鼠在 canvas 上的動作，由繪圖物件實現方法
+$("#canvas_area").on("mousedown mouseup mouseover mouseout mousemove dblclick", function(e) {
+    if (drawObj[$("#pen_type").val()].hasOwnProperty(e.type)) {
+        drawObj[$("#pen_type").val()][e.type](e)
+    } else {
+        e.preventDefault()
+    }
 })

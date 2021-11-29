@@ -93,7 +93,7 @@ $("body").on("keydown", function(keyEvent) {
                 if (keyEvent.shiftKey) {
                     videoNav.clearBackTime()
                 } else {
-                    canvasNav.clearCanvas()
+                    canvasNav.clearCanvas(true, true)
                 }
                 break
 
