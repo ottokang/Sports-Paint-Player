@@ -36,11 +36,13 @@ var canvasNav = {
                 break
         }
 
-        $("#video_osd").animate({
-            opacity: "0"
-        }, fadeOutSeconds * 1000, function() {
-            $(this).hide()
-        })
+        if (fadeOutSeconds !== 0) {
+            $("#video_osd").animate({
+                opacity: "0"
+            }, fadeOutSeconds * 1000, function() {
+                $(this).hide()
+            })
+        }
     },
 
     // 清空畫布

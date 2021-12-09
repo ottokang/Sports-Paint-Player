@@ -1,3 +1,5 @@
+"use strict"
+
 // 是否進入開發模式
 var developmentMode = 0
 
