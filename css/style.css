@@ -103,7 +103,6 @@ body {
 .buttons label {
     display: inline-block;
     padding: 10px;
-    width: 100%;
     cursor: pointer;
 }
 
@@ -224,6 +223,8 @@ body {
 
 #back_time_pointer {
     display: none;
+    position: relative;
+    z-index: 1;
     width: 3px;
     height: 1.4em;
     background-color: #d35400;

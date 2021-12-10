@@ -42,6 +42,8 @@ $("body").on("keydown", function(keyEvent) {
                 break
 
             case "Space": // Space：暫停/播放
+                keyEvent.preventDefault()
+                keyEvent.stopPropagation()
                 videoNav.playPause()
                 break
 

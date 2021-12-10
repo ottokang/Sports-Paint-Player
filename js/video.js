@@ -1,11 +1,11 @@
 "use strict"
 
-// 初始化影片物件、影片是否縮放、縮放基準座標
-var video = $("#video_content")[0],
-    isResized = false,
-    resizeXOffset,
-    resizeYOffset,
-    isProgressbarMousedown
+// 進度列是否按下、影片是否縮放、縮放基準座標、影片物件
+var isProgressbarMousedown
+var isResized = false
+var resizeXOffset
+var resizeYOffset
+var video = $("#video_content")[0]
 
 // 綁定螢幕畫面大小改變偵測說明
 $(window).on("resize", function() {
@@ -20,6 +20,12 @@ $("#is_mute").on("click", function() {
 // 綁定影片選擇後動作，選擇影像後播放
 $("#video_source").on("change", function() {
     let videoFile = this.files[0]
+
+    // 若取消選擇檔案，直接結束
+    if (videoFile === undefined) {
+        return
+    }
+
     if (video.canPlayType(videoFile.type) === "") {
         canvasNav.showMessage(`瀏覽器無法播放此類影片（${videoFile.type}），建議將影片轉檔為 H.264 + AAC 格式。`, 6)
         return
@@ -30,8 +36,6 @@ $("#video_source").on("change", function() {
         $("#select_comment_button, #add_comment").css("display", "inline-block")
         canvasNav.showMessage("開始播放", 1)
         video.src = URL.createObjectURL(videoFile)
-        // 轉移焦點到影片上，避免空白鍵再度觸發選擇影像檔案
-        $("#video_content").focus()
     }
 })
 
