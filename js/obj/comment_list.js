@@ -226,5 +226,11 @@ var commentList = {
             document.onmouseup = null
             document.onmousemove = null
         }
+    },
+
+    // 重置註解列表
+    reset() {
+        $("#comment, #comment_source").hide()
+        $("#comment_source").val("")
     }
 }

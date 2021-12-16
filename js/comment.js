@@ -28,7 +28,8 @@ $("#comment_source").on("change", function() {
             commentList.appendItem(i, commentListJson[i])
         }
         $("#select_comment_button").hide()
-        $("#comment_source").show()
+        $("#comment_source, #comment").show()
+
         commentList.show()
         canvasNav.showMessage("讀取註解完成", 1)
     }

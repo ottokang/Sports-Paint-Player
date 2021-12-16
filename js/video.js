@@ -34,6 +34,7 @@ $("#video_source").on("change", function() {
         $("#video_source").show()
         $("#select_video_button, #instruction").hide()
         $("#select_comment_button, #add_comment").css("display", "inline-block")
+        commentList.reset()
         canvasNav.showMessage("開始播放", 1)
         video.src = URL.createObjectURL(videoFile)
     }
@@ -111,7 +112,7 @@ $("#video_content").on("durationchange", function() {
     ctx.canvas.width = containerWidth
     ctx.canvas.height = conatinerHeight
 
-    // 顯示控制、標記界面
+    // 顯示控制介面、標記界面
     $("#control, #draw_property").show()
 })
 
