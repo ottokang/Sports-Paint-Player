@@ -33,12 +33,8 @@ $("body").on("keydown", function(keyEvent) {
                 }
                 break
 
-            case "Backquote": // `：展開/收起操作按鈕說明
-                if (keyEvent.ctrlKey) {
-                    canvasNav.toggleDrawPropertyButton()
-                } else {
-                    canvasNav.toggleHotkeyButton()
-                }
+            case "Backquote": // `：展開/收起繪圖屬性
+                canvasNav.toggleDrawPropertyButton()
                 break
 
             case "Space": // Space：暫停/播放

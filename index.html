@@ -146,7 +146,6 @@
         <div id="hotkeys">
             <button id="hotkey_toggle_button">
                 <span id="hotkey_toggle_button_text">顯示操作按鍵</span>
-                <kbd>`</kbd>
             </button>
             <div id="hotkey_buttons">
                 <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆</span></button>
@@ -181,13 +180,28 @@
                 <button id="muted_button"><kbd>M</kbd><span class="button_info">靜音/有聲</span></button>
                 <br>
                 <br>
-                <button id="video_wheel_button">在影片上...<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">放大/還原影像</span></button>
-                <button id="option_wheel_button">在選項上...<kbd class="small">🖱️滑鼠滾輪↑/↓</kbd><span class="button_info">調整選項設定</span></button>
-                <button id="toggle_draw_property_button"><kbd class="small">Ctrl + `</kbd><span class="button_info">顯示/隱藏標記屬性</span></button>
+                <button id="video_wheel_button">
+                    <span class="button_on_info">在影片上...</span>
+                    <kbd class="small">🖱️滑鼠滾輪↑/↓</kbd>
+                    <span class="button_info">放大/還原影像</span>
+                </button>
+                <button id="option_wheel_button">
+                    <span class="button_on_info">在選項上...</span>
+                    <kbd class="small">🖱️滑鼠滾輪↑/↓</kbd>
+                    <span class="button_info">調整選項設定</span>
+                </button>
+                <button id="toggle_draw_property_button"><kbd class="small">`</kbd><span class="button_info">顯示/隱藏標記屬性</span></button>
                 <br>
                 <br>
-                <button id="close_comment_dialog_button">在輸入註解時...<kbd class="small">Esc</kbd><span class="button_info">關閉註解對話框</span></button>
-                <button id="submit_comment_dialog_button">在輸入註解時...<kbd class="small">Ctrl + Enter</kbd><span class="button_info">提交註解對話框</span></button>
+                <button id="close_comment_dialog_button">
+                    <span class="button_on_info">在輸入註解時...</span>
+                    <kbd class="small">Esc</kbd>
+                    <span class="button_info">關閉註解對話框</span>
+                </button>
+                <button id="submit_comment_dialog_button">
+                    <span class="button_on_info">在輸入註解時...</span>
+                    <kbd class="small">Ctrl + Enter</kbd><span class="button_info">提交註解對話框</span>
+                </button>
             </div>
         </div>
         <canvas id="canvas_area"></canvas>

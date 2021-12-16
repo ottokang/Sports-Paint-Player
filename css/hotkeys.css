@@ -22,6 +22,12 @@ kbd.small {
 
 .button_pressed {
     border-style: inset;
+    background-color: #9E9E9E;
+}
+
+#hotkey_toggle_button {
+    position: relative;
+    z-index: 1;
 }
 
 #hotkeys .show_hotkeys {
@@ -43,6 +49,11 @@ kbd.small {
     color: #0D47A1;
     vertical-align: top;
     font-size: 12px;
+}
+
+#hotkey_buttons .button_on_info {
+    display: block;
+    color: #E64A19;
 }
 
 #hotkey_buttons .button_info {

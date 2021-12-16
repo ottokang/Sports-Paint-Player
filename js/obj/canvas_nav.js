@@ -85,6 +85,11 @@ var canvasNav = {
         })
         $("#polygon_color").css("color", $("#polygon_color").val())
 
+        // 綁定熱鍵說明按鈕
+        $("#hotkey_toggle_button").on("click", function() {
+            canvasNav.toggleHotkeyButton()
+        })
+
         // 綁定觸發標記屬性按鈕
         $("#draw_property_toggle_button").on("click", function() {
             canvasNav.toggleDrawPropertyButton()
