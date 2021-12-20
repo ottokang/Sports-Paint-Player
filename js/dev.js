@@ -21,7 +21,7 @@ if (developmentMode === 1) {
     canvasNav.setupDrawObj()
     $("#control, #draw_property").show()
 
-    // 註解部份
+    // 設定註解
     $("#comment_source").show().css("margin-left", "12em")
     $("#add_comment").css("display", "inline-block")
     commentList.appendItem(0, {
@@ -29,6 +29,13 @@ if (developmentMode === 1) {
         "title": "註解1",
         "position": "right_down",
         "text": "這個傳球要看另外一邊",
+        "duration": 10
+    })
+    commentList.appendItem(1, {
+        "time": 28,
+        "title": "註解2",
+        "position": "center",
+        "text": "註解2",
         "duration": 10
     })
     commentList.show()

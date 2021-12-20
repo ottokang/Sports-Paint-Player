@@ -42,7 +42,7 @@ var commentList = {
             $(".comment_title:first").addClass("current_comment_item")
         } else {
             // 選取下一個註解
-            if ($(".current_comment_item").parent().next().children(".comment_title").length === 0) {
+            if ($(".current_comment_item").parent().next().length === 0) {
                 canvasNav.showMessage("已經到最後一個註解", 2)
                 return
             } else {
@@ -68,7 +68,7 @@ var commentList = {
             $(".comment_title:last").addClass("current_comment_item")
         } else {
             // 選取上一個註解
-            if ($(".current_comment_item").parent().prev().children(".comment_title").length === 0) {
+            if ($(".current_comment_item").parent().prev().length === 0) {
                 canvasNav.showMessage("已經到第一個註解", 2)
                 return
             } else {

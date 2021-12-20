@@ -54,18 +54,21 @@ $("#close_comment_dialog").on("click", function() {
 // 綁定註解點選動作，委派不同任務
 $("#comment_list").on("click", function(e) {
     let targetObj = $(e.target)
+    let targetCommentTitle
     let commentId
 
     // 綁定點選跳到註解時間點，顯示註解文字
     if (targetObj.is(".comment_title_text, .comment_title_time_HHMMSS ,.comment_title")) {
         if (targetObj.is(".comment_title_text, .comment_title_time_HHMMSS")) {
             commentId = targetObj.parent().parent().data("comment_id")
+            targetCommentTitle = targetObj.parent()
         } else if (targetObj.is(".comment_title")) {
             commentId = targetObj.parent().data("comment_id")
+            targetCommentTitle = targetObj
         }
 
         $(".current_comment_item").removeClass("current_comment_item")
-        targetObj.parent().addClass("current_comment_item")
+        targetCommentTitle.addClass("current_comment_item")
         commentItem.showText(commentId)
         video.play()
     }
