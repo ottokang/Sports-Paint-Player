@@ -46,7 +46,7 @@ var pen = {
         $("#container").css("cursor", this._originMouseCursor)
         this._arrowRecordCountDown = 5
         if ($("#is_arrow").prop("checked") === true) {
-            this._drawArrow(this._arrowFromX, this._arrowFromY, e.offsetX, e.offsetY, $("#pen_width").val() * 2)
+            this._drawArrow(this._arrowFromX, this._arrowFromY, e.offsetX, e.offsetY, $("#pen_width").val() * 2.5)
         }
     },
 
