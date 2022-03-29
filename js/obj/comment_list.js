@@ -132,18 +132,18 @@ var commentList = {
 
     // 驗證輸入資料
     validateDialog() {
-        // 清除空白
+        // 清除輸入前後空白
         $("#comment_title_input").val($("#comment_title_input").val().trim())
         $("#comment_text_input").val($("#comment_text_input").val().trim())
 
         if ($("#comment_title_input").val() == "") {
-            alert("請輸入註解標題")
+            this.notifyInput("#comment_title_input")
             $("#comment_title_input").select()
             return false
         }
 
         if ($("#comment_text_input").val() == "") {
-            alert("請輸入註解內容")
+            this.notifyInput("#comment_text_input")
             $("#comment_text_input").select()
             return false
         }
@@ -232,5 +232,13 @@ var commentList = {
     reset() {
         $("#comment, #comment_source").hide()
         $("#comment_source").val("")
+    },
+
+    // 提示輸入區
+    notifyInput(domId) {
+        for (let i = 0; i < 2; i++) {
+            $(domId).fadeOut(350)
+            $(domId).fadeIn(350)
+        }
     }
 }

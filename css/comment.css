@@ -230,6 +230,7 @@
 
 #comment_time_HHMMSS {
     width: 5em;
+    cursor: not-allowed;
 }
 
 .comment_input_focus {
