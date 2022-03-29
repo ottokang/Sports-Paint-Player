@@ -43,9 +43,6 @@ $("#add_comment").on("click", function() {
     commentList.showDialog("add")
 })
 
-// 綁定註解對話框可以拖曳
-commentList.setDialogDraggable()
-
 // 綁定點選關閉註解對話框動作
 $("#close_comment_dialog").on("click", function() {
     commentList.closeDialog()

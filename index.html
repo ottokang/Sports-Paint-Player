@@ -22,20 +22,20 @@
         <span class="property_item">
             <label for="resize_radio">放大倍率：</label>
             <select id="resize_radio" name="resize_radio">
-                <option value="2.0">2.0</option>
-                <option value="1.8">1.8</option>
-                <option value="1.6" selected>1.6</option>
-                <option value="1.4">1.4</option>
-                <option value="1.2">1.2</option>
+                <option value="2.0">2.0x</option>
+                <option value="1.8">1.8x</option>
+                <option value="1.6" selected>1.6x</option>
+                <option value="1.4">1.4x</option>
+                <option value="1.2">1.2x</option>
             </select>
         </span>
         <span class="property_item">
             <label for="jump_second">跳躍秒數：</label>
             <select id="jump_second" name="jump_second">
-                <option value="5">5</option>
-                <option value="4">4</option>
-                <option value="3">3</option>
-                <option value="2" selected>2</option>
+                <option value="5">5 秒</option>
+                <option value="4">4 秒</option>
+                <option value="3">3 秒</option>
+                <option value="2" selected>2 秒</option>
             </select>
         </span>
         <span class="property_item">
@@ -79,10 +79,10 @@
             <div class="property_item">
                 <label for="mask_transparency">背景透明度：</label>
                 <select id="mask_transparency" name="mask_transparency">
-                    <option value="0.8">0.8</option>
-                    <option value="0.7" selected>0.7</option>
-                    <option value="0.6">0.6</option>
-                    <option value="0.5">0.5</option>
+                    <option value="0.8">80%</option>
+                    <option value="0.7" selected>70%</option>
+                    <option value="0.6">60%</option>
+                    <option value="0.5">50%</option>
                 </select>
             </div>
         </div>
@@ -92,23 +92,23 @@
                 <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1">
             </div>
             <div class="property_item">
-                <label for="path_mask_scale">放大倍率：</label>
+                <label for="path_mask_scale">放大比例：</label>
                 <select id="path_mask_scale" name="path_mask_scale">
-                    <option value="3.0" selected>3.0</option>
-                    <option value="2.8">2.8</option>
-                    <option value="2.6">2.6</option>
-                    <option value="2.4">2.4</option>
-                    <option value="2.2">2.2</option>
-                    <option value="2.0">2.0</option>
+                    <option value="3.0" selected>3.0x</option>
+                    <option value="2.8">2.8x</option>
+                    <option value="2.6">2.6x</option>
+                    <option value="2.4">2.4x</option>
+                    <option value="2.2">2.2x</option>
+                    <option value="2.0">2.0x</option>
                 </select>
             </div>
             <div class="property_item">
                 <label for="path_mask_transparency">背景透明度：</label>
                 <select id="path_mask_transparency" name="path_mask_transparency">
-                    <option value="0.8">0.8</option>
-                    <option value="0.7" selected>0.7</option>
-                    <option value="0.6">0.6</option>
-                    <option value="0.5">0.5</option>
+                    <option value="0.8">80%</option>
+                    <option value="0.7" selected>70%</option>
+                    <option value="0.6">60%</option>
+                    <option value="0.5">50%</option>
                 </select>
             </div>
         </div>
@@ -121,10 +121,10 @@
             <div class="property_item">
                 <label for="polygon_transparency">透明度：</label>
                 <select id="polygon_transparency" name="polygon_transparency">
-                    <option value="0.6">0.6</option>
-                    <option value="0.5">0.5</option>
-                    <option value="0.4" selected>0.4</option>
-                    <option value="0.3">0.3</option>
+                    <option value="0.6">60%</option>
+                    <option value="0.5">50%</option>
+                    <option value="0.4" selected>40%</option>
+                    <option value="0.3">30%</option>
                 </select>
             </div>
         </div>
@@ -215,7 +215,7 @@
         <div id="comment_list"></div>
         <div id="download_comment">下載註解⬇️</div>
     </div>
-    <div id="comment_dialog">
+    <dialog id="comment_dialog">
         <button id="close_comment_dialog" title="Esc">關閉❌</button>
         <div id="new_comment_dialog_title" class="new_comment">新增註解</div>
         <div id="update_comment_dialog_title" class="update_comment" data-id="">更新註解</div>
@@ -254,7 +254,7 @@
         </div>
         <button id="add_comment_submit" class="new_comment" tabindex="4" title="Ctrl+Enter">新增</button>
         <button id="update_comment_submit" class="update_comment" tabindex="4" title="Ctrl+Enter">更新</button>
-    </div>
+    </dialog>
     <div id="version">
         <a href="https://github.com/ottokang/Sports-Paint-Player">GitHub 專案網站</a>
     </div>

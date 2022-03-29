@@ -203,10 +203,7 @@
 }
 
 #comment_dialog {
-    display: none;
-    position: absolute;
-    top: 20%;
-    left: 40%;
+    top: 15%;
     padding: 10px;
     width: 20em;
     border: 1px solid olive;
@@ -251,13 +248,6 @@
     color: #FFFFFF;
     text-align: center;
     font-size: large;
-    cursor: move;
-}
-
-#new_comment_dialog_title:hover,
-#update_comment_dialog_title:hover {
-    background-color: #1565C0;
-    text-shadow: 2px 2px #757575;
 }
 
 #comment_duration {
@@ -266,7 +256,7 @@
 
 #comment_duration:hover {
     color: #1e88e5;
-    text-shadow: 1px 1px #aaa;
+    text-shadow: 1px 1px #aaaaaa;
 }
 
 #comment_duration_input {
