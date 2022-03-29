@@ -1,7 +1,7 @@
 "use strict"
 
 // 進度列是否按下、影片是否縮放、縮放基準座標、影片物件
-var isProgressbarMousedown
+var isProgressbarMousedown = false
 var isResized = false
 var resizeXOffset
 var resizeYOffset
