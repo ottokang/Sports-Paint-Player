@@ -33,6 +33,7 @@
     position: absolute;
     top: 3.2em;
     left: -15em;
+    z-index: 1;
     overflow: auto;
     padding: 0.5em 3px 0.5em 0.5em;
     max-height: 80%;
@@ -110,7 +111,8 @@
     cursor: pointer;
 }
 
-.edit_comment:hover {
+.edit_comment:hover,
+.edit_comment_editing {
     background-color: #A5D6A7;
     cursor: pointer;
 }
@@ -134,14 +136,14 @@
     float: right;
     margin: 1em 0.5em 0 0;
     padding: 4px;
-    border: 1px solid #2E7D32;
+    border: 1px solid #5D4037;
     border-radius: 5px;
-    background-color: #A5D6A7;
+    background-color: #A1887F;
     font-size: small;
 }
 
 #download_comment:hover {
-    background-color: #43A047;
+    background-color: #795548;
     cursor: pointer;
 }
 
@@ -241,17 +243,24 @@
 #new_comment_dialog_title,
 #update_comment_dialog_title {
     margin: 0 auto 1em auto;
-    padding: 5px;
     width: 50%;
-    border-radius: 3px;
-    background-color: #2196F3;
+    border-radius: 4px;
     color: #FFFFFF;
     text-align: center;
     font-size: large;
 }
 
+#new_comment_dialog_title {
+    background-color: #2196F3;
+}
+
+#update_comment_dialog_title {
+    background-color: #2E7D32;
+}
+
 #comment_duration {
-    margin-bottom: 1em;
+    float: left;
+    margin-top: 10px;
 }
 
 #comment_duration:hover {
@@ -261,4 +270,19 @@
 
 #comment_duration_input {
     width: 3em;
+}
+
+#comment_position {
+    float: left;
+    margin: 5px 0 0 15px;
+    padding: 5px;
+    border: 1px solid #757575;
+    border-radius: 5px;
+    background-color: #E0E0E0;
+    text-align: center;
+}
+
+.comment_submit_button {
+    display: block;
+    clear: left;
 }

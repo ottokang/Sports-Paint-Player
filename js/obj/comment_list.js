@@ -122,6 +122,7 @@ var commentList = {
         if (isConfirm === true) {
             if (confirm("確定關閉註解編輯對話框？")) {
                 $("#comment_dialog").hide()
+                $(".edit_comment").removeClass("edit_comment_editing")
                 isInputComment = false
             }
         } else {

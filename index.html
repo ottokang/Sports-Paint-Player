@@ -141,7 +141,7 @@
             <span id="playback_speed"></span>
         </div>
         <div id="video_muted_info" class="video_info">靜音🔇</div>
-        <div id="video_size_info" class="video_info">標準畫面大小</div>
+        <div id="video_size_info" class="video_info">標準大小</div>
         <div id="video_osd"></div>
         <div id="hotkeys">
             <button id="hotkey_toggle_button">
@@ -151,23 +151,21 @@
                 <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆</span></button>
                 <button id="mask_button"><kbd>2</kbd><span class="button_info">遮罩</span></button>
                 <button id="path_mask_button"><kbd>3</kbd><span class="button_info">路徑遮罩</span></button>
+                <button id="polygon_button"><kbd>4</kbd><span class="button_info">多邊形</span></button>
                 <br>
                 <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
                 <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
                 <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
-                &nbsp;
                 <button id="reload_comment_button"><kbd>R</kbd><span class="button_info">重新讀取註解</span></button>
                 <br>
                 <button id="backward_large_button"><kbd>A</kbd><span class="button_info">倒退</span></button>
                 <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
                 <button id="foward_large_button"><kbd>D</kbd><span class="button_info">快進</span></button>
-                &nbsp;
                 <button id="prev_comment_button"><kbd>F</kbd><span class="button_info">前一個註解</span></button>
                 <br>
                 <button id="speed_restore_button"><kbd>Z</kbd><span class="button_info">恢復播放速度</span></button>
                 <button id="to_back_time_button"><kbd>X</kbd><span class="button_info">回到回播點</span></button>
                 <button id="clear_canvas_button"><kbd>C</kbd><span class="button_info">清除標記</span></button>
-                &nbsp;
                 <button id="next_comment_button"><kbd>V</kbd><span class="button_info">下一個註解</span></button>
                 <br>
                 <br>
@@ -216,7 +214,7 @@
         <div id="download_comment">下載註解⬇️</div>
     </div>
     <dialog id="comment_dialog">
-        <button id="close_comment_dialog" title="Esc">關閉❌</button>
+        <button id="close_comment_dialog" title="Esc">❌</button>
         <div id="new_comment_dialog_title" class="new_comment">新增註解</div>
         <div id="update_comment_dialog_title" class="update_comment" data-id="">更新註解</div>
         <div id="comment_time">
@@ -238,7 +236,7 @@
             <input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10" tabindex="3">秒
         </div>
         <div id="comment_position">
-            註解位置：
+            註解位置
             <br>
             <input id="comment_position_left_top" name="comment_text_position" type="radio" value="left_top">
             <input id="comment_position_top" name="comment_text_position" type="radio" value="top">
@@ -252,8 +250,8 @@
             <input id="comment_position_down" name="comment_text_position" type="radio" value="down">
             <input id="comment_position_right_down" name="comment_text_position" type="radio" value="right_down">
         </div>
-        <button id="add_comment_submit" class="new_comment" tabindex="4" title="Ctrl+Enter">新增</button>
-        <button id="update_comment_submit" class="update_comment" tabindex="4" title="Ctrl+Enter">更新</button>
+        <button id="add_comment_submit" class="new_comment comment_submit_button" tabindex="4" title="Ctrl+Enter">新增</button>
+        <button id="update_comment_submit" class="update_comment comment_submit_button" tabindex="4" title="Ctrl+Enter">更新</button>
     </dialog>
     <div id="version">
         <a href="https://github.com/ottokang/Sports-Paint-Player">GitHub 專案網站</a>

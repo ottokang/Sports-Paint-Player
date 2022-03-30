@@ -104,6 +104,7 @@ var canvasNav = {
     // 觸發說明按鈕
     toggleHotkeyButton() {
         $("#hotkey_toggle_button").toggleClass("button_pressed")
+        console.log("11")
         if ($("#hotkey_toggle_button").hasClass("button_pressed")) {
             $("#hotkey_toggle_button_text").html("隱藏操作按鍵")
         } else {

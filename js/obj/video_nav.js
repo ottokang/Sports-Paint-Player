@@ -93,10 +93,10 @@ var videoNav = {
     zoomDefault() {
         if (isResized) {
             $("#video_content").css("transform", "scale(1)")
-            $("#video_size_info").html("標準畫面大小")
+            $("#video_size_info").html("標準大小")
             $("#video_size_info").css("color", "#ffffff")
             $("#video_size_info").css("font-size", "100%")
-            canvasNav.showOSD("標準畫面大小", "center", "decrease")
+            canvasNav.showOSD("標準大小", "center", "decrease")
             isResized = false
         }
     },

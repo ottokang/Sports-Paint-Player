@@ -33,11 +33,11 @@ kbd.small {
 #hotkeys .show_hotkeys {
     opacity: 1;
     transition-timing-function: ease-in;
-    transform: translateY(30em);
+    transform: translateY(35em);
 }
 
 #hotkey_buttons {
-    margin-top: -30em;
+    margin-top: -35em;
     padding-top: 0.5em;
     opacity: 0;
     transition: 0.5s;

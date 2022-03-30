@@ -16,13 +16,12 @@ if (developmentMode === 1) {
     $("#container").css("position", "inherit")
     $("#select_video_button").hide()
 
-    // 顯示控制、標記界面
-    canvasNav.initDrawUI()
-    canvasNav.setupDrawObj()
+    // 顯示影片控制、標記界面
+    $("#video_source").show().css("margin-left", "6em")
     $("#control, #draw_property").show()
 
     // 設定註解
-    $("#comment_source").show().css("margin-left", "12em")
+    $("#comment_source").show().css("margin-left", "1em")
     $("#add_comment").css("display", "inline-block")
     commentList.appendItem(0, {
         "time": 58,

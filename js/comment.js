@@ -72,6 +72,7 @@ $("#comment_list").on("click", function(e) {
 
     // 綁定點選顯示編輯註解對話框
     if (targetObj.is(".edit_comment")) {
+        targetObj.addClass("edit_comment_editing")
         commentId = targetObj.parent().data("comment_id")
         let comment = commentItem.loadJson(commentId)
         $("#update_comment_dialog_title").data("id", commentId)
