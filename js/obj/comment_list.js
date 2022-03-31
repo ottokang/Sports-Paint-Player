@@ -195,9 +195,9 @@ var commentList = {
 
     // 提示輸入區
     notifyInput(domId) {
-        for (let i = 0; i < 2; i++) {
-            $(domId).fadeOut(350)
-            $(domId).fadeIn(350)
+        for (let i = 0; i < 1; i++) {
+            $(domId).fadeOut(300)
+            $(domId).fadeIn(300)
         }
     }
 }
