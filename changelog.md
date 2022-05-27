@@ -4,7 +4,7 @@
 
 * 更新 README.md 說明
 * 修正說明文字
-* 加上 favicon
+* 加上 favicon 網站圖示
 
 ## 2022.03
 
