@@ -2,20 +2,20 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>運動影片標記播放器 Sports Paint Player</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="icon" type="image/png" href="media/favicon.png">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="icon" type="image/png" href="media/favicon.png" />
 </head>
 
 <body>
-    <input id="video_source" name="video_source" type="file" accept="video/*">
+    <input id="video_source" name="video_source" type="file" accept="video/*" />
     <div id="select_video_button" class="buttons"><label for="video_source">請選擇要播放的影片</label></div>
     <div id="instruction">
         <div id="full_screen_messgage" class="instruction_message">建議按<kbd>F11</kbd>進入全螢幕模式取得最佳效果</div>
         <div id="resize_messgage" class="instruction_message">瀏覽器畫面大小變動，請按<kbd>F5</kbd>重新整理</div>
     </div>
-    <input id="comment_source" name="comment_source" type="file" accept="application/JSON">
+    <input id="comment_source" name="comment_source" type="file" accept="application/JSON" />
     <div id="select_comment_button" class="buttons"><label for="comment_source">載入註解...</label></div>
     <div id="add_comment" class="buttons">新增註解...</div>
     <div id="message"></div>
@@ -42,10 +42,10 @@
         <span class="property_item">
             <label for="pen_type">標記類型：</label>
             <select id="pen_type" name="pen_type">
-                <option value="1" selected>1.畫筆🖍️ </option>
+                <option value="1" selected>1.畫筆🖍️</option>
                 <option value="2">2.遮罩⚫</option>
-                <option value="3">3.路徑遮罩〽️ </option>
-                <option value="4">4.多邊形🔸 </option>
+                <option value="3">3.路徑遮罩〽️</option>
+                <option value="4">4.多邊形🔸</option>
             </select>
         </span>
         <button id="draw_property_toggle_button">
@@ -56,26 +56,25 @@
         <div id="pen_type_1" class="draw_property_block">
             <div class="property_item">
                 <label for="pen_color">顏色：</label>
-                <select id="pen_color" name="pen_color">
-                </select>
+                <select id="pen_color" name="pen_color"></select>
             </div>
             <div class="property_item">
                 <label for="pen_width">線寬：</label>
-                <input id="pen_width" name="pen_width" type="number" min="5" max="15" value="5" step="1">
+                <input id="pen_width" name="pen_width" type="number" min="5" max="15" value="5" step="1" />
             </div>
             <div class="property_item">
-                <input id="is_arrow" name="is_arrow" type="checkbox" checked>
+                <input id="is_arrow" name="is_arrow" type="checkbox" checked />
                 <label for="is_arrow">箭頭</label>
             </div>
         </div>
         <div id="pen_type_2" class="draw_property_block">
             <div class="property_item">
                 <label for="mask_radius">半徑：</label>
-                <input id="mask_radius" name="mask_radius" type="number" min="50" max="200" value="120" step="1">
+                <input id="mask_radius" name="mask_radius" type="number" min="50" max="200" value="120" step="1" />
             </div>
             <div class="property_item">
                 <label for="mask_proportion">圓形比例：</label>
-                <input id="mask_proportion" name="mask_proportion" type="number" min="0.6" max="1.4" value="1" step="0.2">
+                <input id="mask_proportion" name="mask_proportion" type="number" min="0.6" max="1.4" value="1" step="0.2" />
             </div>
             <div class="property_item">
                 <label for="mask_transparency">背景透明度：</label>
@@ -90,7 +89,7 @@
         <div id="pen_type_3" class="draw_property_block">
             <div class="property_item">
                 <label for="path_mask_radius">半徑：</label>
-                <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1">
+                <input id="path_mask_radius" name="path_mask_radius" type="number" min="20" max="80" value="40" step="1" />
             </div>
             <div class="property_item">
                 <label for="path_mask_scale">放大比例：</label>
@@ -116,8 +115,7 @@
         <div id="pen_type_4" class="draw_property_block">
             <div class="property_item">
                 <label for="polygon_color">顏色：</label>
-                <select id="polygon_color" name="polygon_color">
-                </select>
+                <select id="polygon_color" name="polygon_color"></select>
             </div>
             <div class="property_item">
                 <label for="polygon_transparency">透明度：</label>
@@ -153,32 +151,32 @@
                 <button id="mask_button"><kbd>2</kbd><span class="button_info">遮罩</span></button>
                 <button id="path_mask_button"><kbd>3</kbd><span class="button_info">路徑遮罩</span></button>
                 <button id="polygon_button"><kbd>4</kbd><span class="button_info">多邊形</span></button>
-                <br>
+                <br />
                 <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
                 <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
                 <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
                 <button id="reload_comment_button"><kbd>R</kbd><span class="button_info">重新讀取註解</span></button>
-                <br>
+                <br />
                 <button id="backward_large_button"><kbd>A</kbd><span class="button_info">倒退</span></button>
                 <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
                 <button id="foward_large_button"><kbd>D</kbd><span class="button_info">快進</span></button>
                 <button id="prev_comment_button"><kbd>F</kbd><span class="button_info">前一個註解</span></button>
-                <br>
+                <br />
                 <button id="speed_restore_button"><kbd>Z</kbd><span class="button_info">恢復播放速度</span></button>
                 <button id="to_back_time_button"><kbd>X</kbd><span class="button_info">回到回播點</span></button>
                 <button id="clear_canvas_button"><kbd>C</kbd><span class="button_info">清除標記</span></button>
                 <button id="next_comment_button"><kbd>V</kbd><span class="button_info">下一個註解</span></button>
-                <br>
-                <br>
+                <br />
+                <br />
                 <button id="toggle_comment_list_button"><kbd class="small">Shift + Z</kbd><span class="button_info">顯示/隱藏註解列表</span></button>
                 <button id="set_back_time_button"><kbd class="small">Shift + X</kbd><span class="button_info">設定回播點</span></button>
                 <button id="clear_back_time_button"><kbd class="small">Shift + C</kbd><span class="button_info">清除回播點</span></button>
-                <br>
-                <br>
+                <br />
+                <br />
                 <button id="play_pause_button"><kbd>空白鍵</kbd><span class="button_info">暫停/播放</span></button>
                 <button id="muted_button"><kbd>M</kbd><span class="button_info">靜音/有聲</span></button>
-                <br>
-                <br>
+                <br />
+                <br />
                 <button id="video_wheel_button">
                     <span class="button_on_info">在影片上...</span>
                     <kbd class="small">🖱️滑鼠滾輪↑/↓</kbd>
@@ -190,8 +188,8 @@
                     <span class="button_info">調整選項設定</span>
                 </button>
                 <button id="toggle_draw_property_button"><kbd class="small">`</kbd><span class="button_info">顯示/隱藏標記屬性</span></button>
-                <br>
-                <br>
+                <br />
+                <br />
                 <button id="close_comment_dialog_button">
                     <span class="button_on_info">在輸入註解時...</span>
                     <kbd class="small">Esc</kbd>
@@ -204,7 +202,7 @@
             </div>
         </div>
         <canvas id="canvas_area"></canvas>
-        <input id="video_progress" name="video_progress" type="range" min="0" step="0.01" value="0">
+        <input id="video_progress" name="video_progress" type="range" min="0" step="0.01" value="0" />
         <div id="back_time">
             <div id="back_time_pointer" data-back_time="0"></div>
         </div>
@@ -220,36 +218,35 @@
         <div id="update_comment_dialog_title" class="update_comment" data-id="">更新註解</div>
         <div id="comment_time">
             <label for="comment_time_HHMMSS">註解時間：</label>
-            <input id="comment_time_HHMMSS" name="comment_time_HHMMSS" type="text" readonly>
+            <input id="comment_time_HHMMSS" name="comment_time_HHMMSS" type="text" readonly />
             <b>（請點選影片時間軸設定）</b>
         </div>
         <div id="comment_title">
             <label for="comment_title_input">註解標題：</label>
-            <input id="comment_title_input" name="comment_title_input" type="text" maxlength="30" placeholder="請輸入註解標題..." tabindex="1">
+            <input id="comment_title_input" name="comment_title_input" type="text" maxlength="30" placeholder="請輸入註解標題..." tabindex="1" />
         </div>
         <div id="comment_text">
             <label for="comment_text_input">註解內容：</label>
-            <textarea id="comment_text_input" name="comment_text_input" maxlength="50" placeholder="請輸入註解內容..." tabindex="2">
-            </textarea>
+            <textarea id="comment_text_input" name="comment_text_input" maxlength="50" placeholder="請輸入註解內容..." tabindex="2"> </textarea>
         </div>
         <div id="comment_duration">
             <label for="comment_duration_input">持續時間：</label>
-            <input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10" tabindex="3">秒
+            <input id="comment_duration_input" name="comment_duration_input" type="number" min="2" max="20" step="1" value="10" tabindex="3" />秒
         </div>
         <div id="comment_position">
             註解顯示位置
-            <br>
-            <input id="comment_position_left_top" name="comment_text_position" type="radio" value="left_top">
-            <input id="comment_position_top" name="comment_text_position" type="radio" value="top">
-            <input id="comment_position_right_top" name="comment_text_position" type="radio" value="right_top">
-            <br>
-            <input id="comment_position_left" name="comment_text_position" type="radio" value="left">
-            <input id="comment_position_center" name="comment_text_position" type="radio" value="center">
-            <input id="comment_position_right" name="comment_text_position" type="radio" value="right">
-            <br>
-            <input id="comment_position_left_down" name="comment_text_position" type="radio" value="left_down">
-            <input id="comment_position_down" name="comment_text_position" type="radio" value="down">
-            <input id="comment_position_right_down" name="comment_text_position" type="radio" value="right_down">
+            <br />
+            <input id="comment_position_left_top" name="comment_text_position" type="radio" value="left_top" />
+            <input id="comment_position_top" name="comment_text_position" type="radio" value="top" />
+            <input id="comment_position_right_top" name="comment_text_position" type="radio" value="right_top" />
+            <br />
+            <input id="comment_position_left" name="comment_text_position" type="radio" value="left" />
+            <input id="comment_position_center" name="comment_text_position" type="radio" value="center" />
+            <input id="comment_position_right" name="comment_text_position" type="radio" value="right" />
+            <br />
+            <input id="comment_position_left_down" name="comment_text_position" type="radio" value="left_down" />
+            <input id="comment_position_down" name="comment_text_position" type="radio" value="down" />
+            <input id="comment_position_right_down" name="comment_text_position" type="radio" value="right_down" />
         </div>
         <button id="add_comment_submit" class="new_comment comment_submit_button" tabindex="4" title="Ctrl+Enter">新增</button>
         <button id="update_comment_submit" class="update_comment comment_submit_button" tabindex="4" title="Ctrl+Enter">更新</button>

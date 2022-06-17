@@ -4,18 +4,18 @@
 @import "control_draw.css";
 
 body {
+    background: #242729;
     margin: 5px;
     padding: 5px;
-    background: #242729;
 }
 
 #video_source {
+    background-color: #bdbdbd;
+    border-radius: 10px;
     display: none;
     margin: 0 0 5px 0;
     padding: 5px;
     width: 12em;
-    border-radius: 10px;
-    background-color: #bdbdbd;
 }
 
 #video_source:hover {
@@ -23,33 +23,33 @@ body {
 }
 
 #select_video_button {
+    background-color: #f4511e;
+    color: #ecf0f1;
+    left: 50%;
     position: absolute;
     top: 40%;
-    left: 50%;
-    z-index: 1;
-    background-color: #F4511e;
-    color: #ecf0f1;
     transform: translateX(-50%);
+    z-index: 1;
 }
 
 #instruction {
-    position: absolute;
-    top: 55%;
     left: 50%;
+    position: absolute;
     text-align: center;
+    top: 55%;
     transform: translateX(-50%);
 }
 
 .instruction_message {
-    padding: 10px;
-    border: 1px solid #0277BD;
+    background-color: #29b6f6;
+    border: 1px solid #0277bd;
     border-radius: 10px;
-    background-color: #29B6F6;
+    padding: 10px;
 }
 
 .instruction_message kbd {
-    margin: 0 0.3em;
     font-size: 0.8em;
+    margin: 0 0.3em;
 }
 
 /* 偵測是否啟用全螢幕，若沒有則顯示說明 */
@@ -73,37 +73,37 @@ body {
 }
 
 #message {
-    display: none;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    z-index: 1;
-    margin: 10px;
-    padding: 10px;
+    background-color: #1e88e5;
     border: 2px solid #ffffff;
     border-radius: 10px;
-    background-color: #1E88E5;
     color: #fff;
+    display: none;
     font-size: 1.5em;
+    left: 50%;
+    margin: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 40%;
     transform: translateX(-50%);
+    z-index: 1;
 }
 
 .buttons {
-    display: inline-block;
-    overflow: hidden;
-    outline: none;
-    border-width: 0;
     border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-    text-align: center;
+    border-width: 0;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+    display: inline-block;
     font-size: 1.5em;
+    outline: none;
+    overflow: hidden;
+    text-align: center;
     transition: background-color 0.3s;
 }
 
 .buttons label {
+    cursor: pointer;
     display: inline-block;
     padding: 10px;
-    cursor: pointer;
 }
 
 .buttons:hover {
@@ -111,38 +111,38 @@ body {
 }
 
 #container {
-    position: relative;
-    overflow: hidden;
     margin: auto;
+    overflow: hidden;
+    position: relative;
 }
 
 #video_content {
-    position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
     left: 0;
     margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 0;
     transition-duration: 0.5s;
 }
 
 .video_info {
-    display: none;
-    position: absolute;
-    padding: 5px;
     background-color: rgba(0, 0, 0, 0.5);
     color: #ffffff;
+    display: none;
+    padding: 5px;
+    position: absolute;
     text-shadow: 2px 2px 3px #434a54;
 }
 
 #video_playback_time_info {
-    right: 10px;
     bottom: 1.5em;
+    right: 10px;
 }
 
 #video_playback_speed_info {
-    top: 10px;
     right: 10px;
+    top: 10px;
 }
 
 #playback_speed.normal {
@@ -150,91 +150,91 @@ body {
 }
 
 #playback_speed.faster {
-    color: #FF1744;
+    color: #ff1744;
 }
 
 #playback_speed.slower {
-    color: #CE93D8;
+    color: #ce93d8;
 }
 
 #video_muted_info {
-    top: 50px;
     right: 10px;
+    top: 50px;
 }
 
 #video_size_info {
-    top: 90px;
     right: 10px;
+    top: 90px;
 }
 
 #video_osd {
-    display: none;
-    position: absolute;
-    padding: 5px;
-    border-radius: 10px;
     background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
     color: #ffffff;
+    display: none;
     font-size: 130%;
     opacity: 0.7;
+    padding: 5px;
+    position: absolute;
     transition: transform 0.4s;
 }
 
 .osd_center {
-    top: 50%;
     left: 50%;
+    top: 50%;
 }
 
 .osd_right {
-    top: 50%;
     right: 15%;
+    top: 50%;
 }
 
 .osd_left {
-    top: 50%;
     left: 15%;
+    top: 50%;
 }
 
 #canvas_area {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
     bottom: 0;
+    display: none;
     left: 0;
     margin: 0 auto;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 #video_progress {
-    display: none;
-    position: absolute;
     bottom: 0;
-    z-index: 1;
-    margin: 0 auto;
     cursor: pointer;
+    display: none;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 1;
 }
 
 #back_time {
-    position: absolute;
-    right: 0;
     bottom: 0;
     left: 0;
     margin: 0 auto;
+    position: absolute;
+    right: 0;
 }
 
 #back_time_pointer {
-    display: none;
-    position: relative;
-    z-index: 1;
-    width: 3px;
-    height: 1.4em;
     background-color: #d35400;
+    display: none;
+    height: 1.4em;
+    position: relative;
+    width: 3px;
+    z-index: 1;
 }
 
 #version {
-    position: absolute;
-    right: 20px;
     bottom: 20px;
     color: #999999;
+    position: absolute;
+    right: 20px;
 }
 
 #version a {

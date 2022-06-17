@@ -1,27 +1,27 @@
 #comment_source {
+    background: #e1bee7;
+    border-radius: 10px;
     display: none;
     margin: 0 0 5px 1em;
     padding: 5px;
     width: 12em;
-    border-radius: 10px;
-    background: #E1BEE7;
 }
 
 #comment_source:hover {
-    background-color: #AB47BC;
+    background-color: #ab47bc;
 }
 
 #select_comment_button {
+    background-color: #b39ddb;
+    border: 1px solid #4a148c;
     display: none;
+    font-size: 0.8em;
     margin: 0 0 -0.9em 1em;
     width: 8em;
-    border: 1px solid #4A148C;
-    background-color: #B39DDB;
-    font-size: 0.8em;
 }
 
 #select_comment_button:hover {
-    background-color: #8E24AA;
+    background-color: #8e24aa;
 }
 
 #select_comment_button label {
@@ -29,31 +29,31 @@
 }
 
 #comment {
+    background-color: #bbdefb;
+    border: 2px solid #1565c0;
+    border-radius: 0% 5% 5% 0%;
     display: none;
-    position: absolute;
-    top: 3.2em;
     left: -15em;
-    z-index: 1;
+    max-height: 80%;
     overflow: auto;
     padding: 0.5em 3px 0.5em 0.5em;
-    max-height: 80%;
-    width: 16em;
-    border: 2px solid #1565C0;
-    border-radius: 0% 5% 5% 0%;
-    background-color: #BBDEFB;
+    position: absolute;
+    top: 3.2em;
     transition: 0.5s;
+    width: 16em;
+    z-index: 1;
 }
 
 #toggle_comment_list {
+    background-color: #b0bec5;
+    border: 2px solid #78909c;
+    color: #263238;
+    cursor: e-resize;
     float: right;
+    font-size: x-small;
+    height: 100%;
     padding: 3px;
     width: 1em;
-    height: 100%;
-    border: 2px solid #78909C;
-    background-color: #B0BEC5;
-    color: #263238;
-    font-size: x-small;
-    cursor: e-resize;
 }
 
 #toggle_comment_list.toggle_comment_show {
@@ -70,7 +70,7 @@
 
 .comment_title:hover,
 .current_comment_item {
-    background-color: #42A5F5;
+    background-color: #42a5f5;
     cursor: pointer;
 }
 
@@ -79,67 +79,67 @@
 }
 
 .comment_title {
-    margin-bottom: 3px;
     border-bottom: 2px solid #4a26fd;
+    margin-bottom: 3px;
 }
 
 .comment_title .comment_title_time_HHMMSS {
+    color: #757575;
     display: inline-block;
+    font-size: small;
     overflow: hidden;
     width: 4em;
-    color: #757575;
-    font-size: small;
 }
 
 .comment_title .comment_title_text {
     display: inline-block;
     overflow: hidden;
-    width: 6em;
     text-overflow: ellipsis;
     white-space: nowrap;
+    width: 6em;
 }
 
 .delete_comment,
 .edit_comment {
     float: right;
-    padding: 3px;
     font-size: small;
+    padding: 3px;
 }
 
 .delete_comment:hover {
-    background-color: #E53935;
+    background-color: #e53935;
     cursor: pointer;
 }
 
 .edit_comment:hover,
 .edit_comment_editing {
-    background-color: #A5D6A7;
+    background-color: #a5d6a7;
     cursor: pointer;
 }
 
 #add_comment {
+    background-color: #90caf9;
+    border: 1px solid #1976d2;
+    border-radius: 5px;
     display: none;
+    font-size: small;
     margin: 0 0 -0.8em 1em;
     padding: 4px;
     width: 6em;
-    border: 1px solid #1976D2;
-    border-radius: 5px;
-    background-color: #90CAF9;
-    font-size: small;
 }
 
 #add_comment:hover {
-    background-color: #2196F3;
+    background-color: #2196f3;
 }
 
 #download_comment {
+    background-color: #a1887f;
+    border: 1px solid #5d4037;
+    border-radius: 5px;
     float: right;
+    font-size: small;
     margin: 1em 0.5em 0 0;
     padding: 4px;
-    border: 1px solid #5D4037;
-    border-radius: 5px;
-    background-color: #A1887F;
-    font-size: small;
 }
 
 #download_comment:hover {
@@ -148,24 +148,24 @@
 }
 
 .comment_text {
-    position: absolute;
-    padding: 10px;
-    max-width: 20%;
-    border: 1px solid #FF6F00;
+    background: #ffe082;
+    border: 1px solid #ff6f00;
     border-radius: 10px;
-    background: #FFE082;
-    word-wrap: break-word;
+    max-width: 20%;
     opacity: 0.8;
+    padding: 10px;
+    position: absolute;
+    word-wrap: break-word;
 }
 
 .comment_text_left_top {
-    top: 7%;
     left: 5%;
+    top: 7%;
 }
 
 .comment_text_left {
-    top: 50%;
     left: 5%;
+    top: 50%;
 }
 
 .comment_text_left_down {
@@ -174,13 +174,13 @@
 }
 
 .comment_text_center_top {
-    top: 7%;
     left: 50%;
+    top: 7%;
 }
 
 .comment_text_center {
-    top: 50%;
     left: 50%;
+    top: 50%;
     transform: translate(-50%, -50%);
 }
 
@@ -190,37 +190,37 @@
 }
 
 .comment_text_right_top {
-    top: 7%;
     right: 5%;
+    top: 7%;
 }
 
 .comment_text_right {
-    top: 50%;
     right: 5%;
+    top: 50%;
 }
 
 .comment_text_right_down {
-    right: 5%;
     bottom: 7%;
+    right: 5%;
 }
 
 #comment_dialog {
-    top: 15%;
-    padding: 10px;
-    width: 20em;
+    background-color: orange;
     border: 1px solid olive;
     border-radius: 5px;
-    background-color: orange;
+    padding: 10px;
+    top: 15%;
+    width: 20em;
 }
 
 #comment_dialog kbd {
-    margin: 4px 0px;
     font-size: 10px;
+    margin: 4px 0px;
 }
 
 #comment_text_input {
-    width: 18em;
     height: 10em;
+    width: 18em;
 }
 
 #comment_time b {
@@ -228,12 +228,12 @@
 }
 
 #comment_time_HHMMSS {
-    width: 5em;
     cursor: not-allowed;
+    width: 5em;
 }
 
 .comment_input_focus {
-    background-color: #FFF59D;
+    background-color: #fff59d;
 }
 
 #close_comment_dialog {
@@ -242,20 +242,20 @@
 
 #new_comment_dialog_title,
 #update_comment_dialog_title {
-    margin: 0 auto 1em auto;
-    width: 50%;
     border-radius: 4px;
-    color: #FFFFFF;
-    text-align: center;
+    color: #ffffff;
     font-size: large;
+    margin: 0 auto 1em auto;
+    text-align: center;
+    width: 50%;
 }
 
 #new_comment_dialog_title {
-    background-color: #2196F3;
+    background-color: #2196f3;
 }
 
 #update_comment_dialog_title {
-    background-color: #2E7D32;
+    background-color: #2e7d32;
 }
 
 #comment_duration {
@@ -273,16 +273,16 @@
 }
 
 #comment_position {
+    background-color: #e0e0e0;
+    border: 1px solid #757575;
+    border-radius: 5px;
     float: left;
     margin: 5px 0 0 15px;
     padding: 5px;
-    border: 1px solid #757575;
-    border-radius: 5px;
-    background-color: #E0E0E0;
     text-align: center;
 }
 
 .comment_submit_button {
-    display: block;
     clear: left;
+    display: block;
 }

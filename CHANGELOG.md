@@ -1,5 +1,9 @@
 # 更新說明
 
+## 2022.06
+
+* Javascript 檔案新增分號、更換 Formatter 格式
+
 ## 2022.05
 
 * 更新 README.md 說明

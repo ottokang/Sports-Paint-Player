@@ -1,13 +1,13 @@
 kbd {
-    display: inline-block;
-    padding: 0.2em 0.6em;
+    background-color: #eeeeee;
     border: 1px solid #adb3b9;
     border-radius: 3px;
-    background-color: #eeeeee;
     color: #242729;
-    white-space: nowrap;
+    display: inline-block;
     font-size: 1.2em;
     line-height: 1.2;
+    padding: 0.2em 0.6em;
+    white-space: nowrap;
 }
 
 kbd.small {
@@ -15,14 +15,14 @@ kbd.small {
 }
 
 #hotkeys {
+    left: 10px;
     position: absolute;
     top: 10px;
-    left: 10px;
 }
 
 .button_pressed {
+    background-color: #9e9e9e;
     border-style: inset;
-    background-color: #9E9E9E;
 }
 
 #hotkey_toggle_button {
@@ -32,28 +32,28 @@ kbd.small {
 
 #hotkeys .show_hotkeys {
     opacity: 1;
-    transition-timing-function: ease-in;
     transform: translateY(35em);
+    transition-timing-function: ease-in;
 }
 
 #hotkey_buttons {
     margin-top: -35em;
-    padding-top: 0.5em;
     opacity: 0;
+    padding-top: 0.5em;
     transition: 0.5s;
 }
 
 #hotkey_buttons button {
-    width: 8em;
-    background-color: #B0BEC5;
-    color: #0D47A1;
-    vertical-align: top;
+    background-color: #b0bec5;
+    color: #0d47a1;
     font-size: 12px;
+    vertical-align: top;
+    width: 8em;
 }
 
 #hotkey_buttons .button_on_info {
+    color: #e64a19;
     display: block;
-    color: #E64A19;
 }
 
 #hotkey_buttons .button_info {
