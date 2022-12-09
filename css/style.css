@@ -7,6 +7,7 @@ body {
     background: #242729;
     margin: 5px;
     padding: 5px;
+    user-select: none;
 }
 
 #video_source {

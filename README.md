@@ -11,3 +11,5 @@
 * 直接線上使用：[https://ottokang.github.io/Sports-Paint-Player/](https://ottokang.github.io/Sports-Paint-Player/)
 * 可參考[使用說明](https://github.com/ottokang/Sports-Paint-Player/wiki/%E4%BD%BF%E7%94%A8%E8%AA%AA%E6%98%8E "運動影片標記播放器使用說明")
 * 建議將影片轉檔為 MP4 檔案（H.264 影像編碼、AAC 聲音編碼）
+
+[📃更新紀錄](https://github.com/ottokang/Sports-Paint-Player/blob/main/CHANGELOG.md)

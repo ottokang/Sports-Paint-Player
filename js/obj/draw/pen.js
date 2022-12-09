@@ -18,6 +18,7 @@ var pen = {
     reset() {
         this._isMouseDown = false;
         this._isInCanvas = false;
+        ctx.setLineDash([]);
     },
 
     setup() {

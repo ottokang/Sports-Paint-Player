@@ -38,7 +38,7 @@ var polygon = {
     mousemove(e) {
         if (this._isDrawing === true) {
             canvasNav.showOSD("繪製中...", "center", "none", 0);
-            ctx.setLineDash([10, 10]); // 繪製時顯示虛線
+            ctx.setLineDash([30, 30]); // 繪製時顯示虛線
             this._draw(e);
         }
     },
