@@ -37,9 +37,11 @@ var polygon = {
 
     mousemove(e) {
         if (this._isDrawing === true) {
-            canvasNav.showOSD("繪製中...", "center", "none", 0);
-            ctx.setLineDash([30, 30]); // 繪製時顯示虛線
-            this._draw(e);
+            // 繪製時顯示虛線，邊框線條不透明加粗
+            ctx.setLineDash([30, 30]);
+            ctx.strokeStyle = `rgba(${this._hexToRgb($("#polygon_color").val())}, 1)`;
+            ctx.lineWidth = 4;
+            this._draw(e, "雙擊左鍵完成繪製");
         }
     },
 
@@ -54,7 +56,7 @@ var polygon = {
         }
     },
 
-    _draw(e = null) {
+    _draw(e = null, withText = null) {
         canvasNav.clearCanvas(false);
         ctx.beginPath();
         let i = 0;
@@ -68,6 +70,15 @@ var polygon = {
         ctx.closePath();
         ctx.stroke();
         ctx.fill();
+
+        // 繪製說明文字，繪製完成後還原
+        if (withText !== null) {
+            ctx.save();
+            ctx.fillStyle = `rgba(${this._hexToRgb($("#polygon_color").val())})`;
+            ctx.font = "20px sans-serif";
+            ctx.fillText(withText, e.offsetX, e.offsetY);
+            ctx.restore();
+        }
     },
 
     _hexToRgb(hex) {
