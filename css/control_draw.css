@@ -10,10 +10,6 @@
     margin-right: 1em;
 }
 
-#control .property_item > * {
-    cursor: pointer;
-}
-
 #draw_property {
     background-color: #616161;
     border: 2px solid #f5f5f5;
@@ -41,6 +37,10 @@
 
 #draw_property .property_item {
     margin: 0.7em 0;
+}
+
+.property_item > * {
+    cursor: pointer;
 }
 
 .property_item:hover {

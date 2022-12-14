@@ -44,15 +44,15 @@ kbd.small {
 }
 
 #hotkey_buttons button {
-    background-color: #b0bec5;
-    color: #0d47a1;
+    background-color: #cfd8dc;
+    color: #1565c0;
     font-size: 12px;
     vertical-align: top;
     width: 8em;
 }
 
 #hotkey_buttons .button_on_info {
-    color: #e64a19;
+    color: #d84315;
     display: block;
 }
 
