@@ -55,16 +55,16 @@ body {
 
 /* 偵測是否啟用全螢幕，若沒有則顯示說明 */
 @media all and (display-mode: fullscreen) {
-    #full_screen_messgage {
+    #full_screen_message {
         display: none;
     }
 }
 
-#full_screen_messgage {
+#full_screen_message {
     margin-bottom: 0.5em;
 }
 
-#resize_messgage {
+#resize_message {
     display: none;
 }
 

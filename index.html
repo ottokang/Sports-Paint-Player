@@ -12,8 +12,8 @@
     <input id="video_source" name="video_source" type="file" accept="video/*" />
     <div id="select_video_button" class="buttons"><label for="video_source">請選擇要播放的影片</label></div>
     <div id="instruction">
-        <div id="full_screen_messgage" class="instruction_message">建議按<kbd>F11</kbd>進入全螢幕模式取得最佳效果</div>
-        <div id="resize_messgage" class="instruction_message">瀏覽器畫面大小變動，請按<kbd>F5</kbd>重新整理</div>
+        <div id="full_screen_message" class="instruction_message">建議按<kbd>F11</kbd>進入全螢幕模式取得最佳效果</div>
+        <div id="resize_message" class="instruction_message">瀏覽器畫面大小變動，請按<kbd>F5</kbd>重新整理</div>
     </div>
     <input id="comment_source" name="comment_source" type="file" accept="application/JSON" />
     <div id="select_comment_button" class="buttons"><label for="comment_source">載入註解...</label></div>
@@ -42,10 +42,10 @@
         <span class="property_item">
             <label for="pen_type">標記類型：</label>
             <select id="pen_type" name="pen_type">
-                <option value="1" selected>1.畫筆🖍️</option>
-                <option value="2">2.遮罩⚫</option>
-                <option value="3">3.路徑遮罩〽️</option>
-                <option value="4">4.多邊形🔸</option>
+                <option value="1" selected>1. 畫筆🖍️</option>
+                <option value="2">2. 遮罩⚫</option>
+                <option value="3">3. 路徑遮罩〽️</option>
+                <option value="4">4. 多邊形🔸</option>
             </select>
         </span>
         <button id="draw_property_toggle_button">
@@ -147,10 +147,10 @@
                 <span id="hotkey_toggle_button_text">顯示操作按鍵</span>
             </button>
             <div id="hotkey_buttons">
-                <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆</span></button>
-                <button id="mask_button"><kbd>2</kbd><span class="button_info">遮罩</span></button>
-                <button id="path_mask_button"><kbd>3</kbd><span class="button_info">路徑遮罩</span></button>
-                <button id="polygon_button"><kbd>4</kbd><span class="button_info">多邊形</span></button>
+                <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆🖍️</span></button>
+                <button id="mask_button"><kbd>2</kbd><span class="button_info">遮罩⚫</span></button>
+                <button id="path_mask_button"><kbd>3</kbd><span class="button_info">路徑遮罩〽️</span></button>
+                <button id="polygon_button"><kbd>4</kbd><span class="button_info">多邊形🔸</span></button>
                 <br />
                 <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
                 <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>

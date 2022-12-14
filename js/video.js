@@ -9,7 +9,7 @@ var video = $("#video_content")[0];
 
 // 綁定螢幕畫面大小改變偵測說明
 $(window).on("resize", function () {
-    $("#resize_messgage").show();
+    $("#resize_message").show();
 });
 
 // 綁定靜音按鈕動作
