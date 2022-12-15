@@ -147,36 +147,39 @@
                 <span id="hotkey_toggle_button_text">顯示操作按鍵</span>
             </button>
             <div id="hotkey_buttons">
+                <button id="toggle_draw_property_button"><kbd>`</kbd><span class="button_info small">顯示/隱藏標記屬性</span></button>
                 <button id="pen_button"><kbd>1</kbd><span class="button_info">畫筆🖍️</span></button>
                 <button id="mask_button"><kbd>2</kbd><span class="button_info">遮罩⚫</span></button>
                 <button id="path_mask_button"><kbd>3</kbd><span class="button_info">路徑遮罩〽️</span></button>
                 <button id="polygon_button"><kbd>4</kbd><span class="button_info">多邊形🔸</span></button>
-                <br />
-                <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
-                <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
-                <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
-                <button id="reload_comment_button"><kbd>R</kbd><span class="button_info">重新讀取註解</span></button>
-                <br />
-                <button id="backward_large_button"><kbd>A</kbd><span class="button_info">倒退</span></button>
-                <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
-                <button id="foward_large_button"><kbd>D</kbd><span class="button_info">快進</span></button>
-                <button id="prev_comment_button"><kbd>F</kbd><span class="button_info">前一個註解</span></button>
-                <br />
-                <button id="speed_restore_button"><kbd>Z</kbd><span class="button_info">恢復播放速度</span></button>
-                <button id="to_back_time_button"><kbd>X</kbd><span class="button_info">回到回播點</span></button>
-                <button id="clear_canvas_button"><kbd>C</kbd><span class="button_info">清除標記</span></button>
-                <button id="next_comment_button"><kbd>V</kbd><span class="button_info">下一個註解</span></button>
-                <br />
-                <br />
-                <button id="toggle_comment_list_button"><kbd class="small">Shift + Z</kbd><span class="button_info">顯示/隱藏註解列表</span></button>
+                <div id="line2">
+                    <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
+                    <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
+                    <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
+                    <button id="reload_comment_button"><kbd>R</kbd><span class="button_info">重新讀取註解</span></button>
+                </div>
+                <div id="line3">
+                    <button id="backward_large_button"><kbd>A</kbd><span class="button_info">倒退</span></button>
+                    <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
+                    <button id="foward_large_button"><kbd>D</kbd><span class="button_info">快進</span></button>
+                    <button id="prev_comment_button"><kbd>F</kbd><span class="button_info">前一個註解</span></button>
+                </div>
+                <div id="line4">
+                    <button id="speed_restore_button"><kbd>Z</kbd><span class="button_info">恢復播放速度</span></button>
+                    <button id="to_back_time_button"><kbd>X</kbd><span class="button_info">回到回播點</span></button>
+                    <button id="clear_canvas_button"><kbd>C</kbd><span class="button_info">清除標記</span></button>
+                    <button id="next_comment_button"><kbd>V</kbd><span class="button_info">下一個註解</span></button>
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <button id="muted_button"><kbd>M</kbd><span class="button_info">靜音/有聲</span></button>
+                </div>
+                <button id="play_pause_button"><kbd>空白鍵</kbd><span class="button_info">暫停/播放</span></button>
+                <br>
+                <br>
+                <button id="toggle_comment_list_button"><kbd class="small">Shift + Z</kbd><span class="button_info small">顯示/隱藏註解列表</span></button>
                 <button id="set_back_time_button"><kbd class="small">Shift + X</kbd><span class="button_info">設定回播點</span></button>
                 <button id="clear_back_time_button"><kbd class="small">Shift + C</kbd><span class="button_info">清除回播點</span></button>
-                <br />
-                <br />
-                <button id="play_pause_button"><kbd>空白鍵</kbd><span class="button_info">暫停/播放</span></button>
-                <button id="muted_button"><kbd>M</kbd><span class="button_info">靜音/有聲</span></button>
-                <br />
-                <br />
+                <br>
+                <br>
                 <button id="video_wheel_button">
                     <span class="button_on_info">在影片上...</span>
                     <kbd class="small">🖱️滑鼠滾輪↑/↓</kbd>
@@ -187,16 +190,15 @@
                     <kbd class="small">🖱️滑鼠滾輪↑/↓</kbd>
                     <span class="button_info">調整選項設定</span>
                 </button>
-                <button id="toggle_draw_property_button"><kbd class="small">`</kbd><span class="button_info">顯示/隱藏標記屬性</span></button>
-                <br />
-                <br />
+                <br>
+                <br>
                 <button id="close_comment_dialog_button">
-                    <span class="button_on_info">在輸入註解時...</span>
+                    <span class="button_on_info">輸入註解時...</span>
                     <kbd class="small">Esc</kbd>
                     <span class="button_info">關閉註解對話框</span>
                 </button>
                 <button id="submit_comment_dialog_button">
-                    <span class="button_on_info">在輸入註解時...</span>
+                    <span class="button_on_info">輸入註解時...</span>
                     <kbd class="small">Ctrl + Enter</kbd><span class="button_info">提交註解對話框</span>
                 </button>
             </div>
@@ -235,15 +237,15 @@
         </div>
         <div id="comment_position">
             註解顯示位置
-            <br />
+            <br>
             <input id="comment_position_left_top" name="comment_text_position" type="radio" value="left_top" />
             <input id="comment_position_top" name="comment_text_position" type="radio" value="top" />
             <input id="comment_position_right_top" name="comment_text_position" type="radio" value="right_top" />
-            <br />
+            <br>
             <input id="comment_position_left" name="comment_text_position" type="radio" value="left" />
             <input id="comment_position_center" name="comment_text_position" type="radio" value="center" />
             <input id="comment_position_right" name="comment_text_position" type="radio" value="right" />
-            <br />
+            <br>
             <input id="comment_position_left_down" name="comment_text_position" type="radio" value="left_down" />
             <input id="comment_position_down" name="comment_text_position" type="radio" value="down" />
             <input id="comment_position_right_down" name="comment_text_position" type="radio" value="right_down" />
