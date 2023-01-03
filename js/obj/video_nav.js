@@ -1,6 +1,8 @@
 "use strict";
 
 var videoNav = {
+    _moveToBackTimeTimeout: null,
+
     playPause() {
         if (video.paused) {
             video.play();
@@ -68,13 +70,20 @@ var videoNav = {
         }
     },
 
-    // 回到影片回播點
-    toBackTime() {
+    // 回到影片回播點，延遲 0.6 秒後播放
+    moveToBackTime() {
         if ($("#back_time_pointer").is(":visible")) {
             video.currentTime = $("#back_time_pointer").attr("data-back_time");
-            canvasNav.showOSD(`回到回播點：${video.currentTime.toString().toHHMMSS()}`);
+            video.pause();
+            if (this._moveToBackTimeTimeout === null) {
+                clearTimeout(this._moveToBackTimeTimeout);
+            }
+            this._moveToBackTimeTimeout = setTimeout(() => {
+                video.play();
+            }, 600);
+            canvasNav.showOSD(`移到回播點：${video.currentTime.toString().toHHMMSS()}`);
         } else {
-            canvasNav.showMessage("請先設定回播點", 3);
+            canvasNav.showMessage("請先設定回播點", 2);
         }
     },
 
