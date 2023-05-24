@@ -7,6 +7,7 @@ var pathMask = {
     _y: 0,
     _originMouseCursor: null,
     _backgroudCanvasData: null,
+    defaultRadius: Number.parseInt($(window).width() / 39),
 
     setup() {
         $("#container").css("cursor", "auto");

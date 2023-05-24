@@ -2,13 +2,13 @@
 
 var polygon = {
     _originMouseCursor: null,
+    _polygonVertex: [],
+    _isDrawing: false,
     colors: {
         黃色: "#e8c62e",
         藍色: "#0033cc",
         紅色: "#f542a7",
     },
-    _polygonVertex: [],
-    _isDrawing: false,
 
     reset() {
         this._polygonVertex = [];

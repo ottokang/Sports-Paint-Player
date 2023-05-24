@@ -89,6 +89,10 @@ var canvasNav = {
         });
         $("#polygon_color").css("color", $("#polygon_color").val());
 
+        // 設定遮罩、路徑遮罩預設大小
+        $("#mask_radius").val(mask.defaultRadius);
+        $("#path_mask_radius").val(pathMask.defaultRadius);
+
         // 綁定熱鍵說明按鈕
         $("#hotkey_toggle_button").on("click", function () {
             canvasNav.toggleHotkeyButton();

@@ -7,6 +7,7 @@ var mask = {
     _y: 0,
     _originMouseCursor: null,
     _backgroudCanvasData: null,
+    defaultRadius: Number.parseInt($(window).width() / 13),
 
     setup() {
         $("#container").css("cursor", "auto");
