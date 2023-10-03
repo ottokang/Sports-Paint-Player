@@ -7,7 +7,7 @@ var mask = {
     _y: 0,
     _originMouseCursor: null,
     _backgroudCanvasData: null,
-    defaultRadius: Number.parseInt($(window).width() / 13),
+    defaultRadius: Number.parseInt($(window).width() / 12),
 
     setup() {
         $("#container").css("cursor", "auto");
@@ -66,9 +66,8 @@ var mask = {
         ctx.globalCompositeOperation = "destination-out";
         ctx.fillStyle = "#000000"; // 設定為不透明色，組合圖片可以正確透明
         let radius = $("#mask_radius").val();
-        let proportion = $("#mask_proportion").val();
         ctx.beginPath();
-        ctx.ellipse(e.offsetX, e.offsetY, radius * proportion, radius / proportion, 0, 0, 2 * Math.PI);
+        ctx.ellipse(e.offsetX, e.offsetY, radius, radius , 0, 0, 2 * Math.PI);
         ctx.closePath();
         ctx.fill();
         ctx.globalCompositeOperation = "source-over";
