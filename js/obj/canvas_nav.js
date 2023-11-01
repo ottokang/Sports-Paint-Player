@@ -73,7 +73,7 @@ var canvasNav = {
         drawObj[$("#pen_type").val()].setup();
     },
 
-    // 初始化繪圖UI
+    // 初始化繪圖 UI
     initDrawUI() {
         // 依照畫筆物件設定，加入畫筆顏色選項
         $("#pen_color").html("");
@@ -89,9 +89,10 @@ var canvasNav = {
         });
         $("#polygon_color").css("color", $("#polygon_color").val());
 
-        // 設定遮罩、路徑遮罩預設大小
+        // 設定預設遮罩、路徑遮罩大小
         $("#mask_radius").val(mask.defaultRadius);
         $("#path_mask_radius").val(pathMask.defaultRadius);
+        $("#pillar_mask_radius").val(pillarMask.defaultRadius);
 
         // 綁定熱鍵說明按鈕
         $("#hotkey_toggle_button").on("click", function () {

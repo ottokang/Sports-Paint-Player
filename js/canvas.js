@@ -7,6 +7,7 @@ var drawObj = {
     2: mask,
     3: pathMask,
     4: polygon,
+    5: pillarMask,
 };
 
 // 初始化繪圖界面、繪圖物件

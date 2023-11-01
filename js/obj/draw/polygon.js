@@ -52,7 +52,6 @@ var polygon = {
             this._isDrawing = false;
             this._polygonVertex = [];
             $("#container").css("cursor", "auto");
-            canvasNav.showOSD("繪製多邊形完成");
         }
     },
 

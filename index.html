@@ -46,6 +46,7 @@
                 <option value="2">2️⃣ 遮罩⚫</option>
                 <option value="3">3️⃣ 路徑遮罩〽️</option>
                 <option value="4">4️⃣ 多邊形🔸</option>
+                <option value="5">5️⃣ 光柱遮罩🥫</option>
             </select>
         </span>
         <button id="draw_property_toggle_button">
@@ -118,6 +119,20 @@
                 </select>
             </div>
         </div>
+        <div id="pen_type_5" class="draw_property_block">
+            <div class="property_item">
+                <label for="pillar_mask_radius">半徑：</label>
+                <input id="pillar_mask_radius" name="pillar_mask_radius" type="number" min="50" max="200" value="120" step="1" />
+            </div>
+            <div class="property_item">
+                <label for="pillar_mask_transparency">背景透明度：</label>
+                <select id="pillar_mask_transparency" name="pillar_mask_transparency">
+                    <option value="0.7">70%</option>
+                    <option value="0.6" selected>60%</option>
+                    <option value="0.5">50%</option>
+                </select>
+            </div>
+        </div>
     </div>
     <div id="container">
         <video id="video_content" autoplay></video>
@@ -144,14 +159,14 @@
                 <button id="path_mask_button"><kbd>3</kbd><span class="button_info">路徑遮罩〽️</span></button>
                 <button id="polygon_button"><kbd>4</kbd><span class="button_info">多邊形🔸</span></button>
                 <div id="line2">
-                    <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退0.2秒</span></button>
-                    <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速20％</span></button>
-                    <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進0.2秒</span></button>
+                    <button id="backward_small_button"><kbd>Q</kbd><span class="button_info">倒退 0.2 秒</span></button>
+                    <button id="speed_up_button"><kbd>W</kbd><span class="button_info">播放加速 20％</span></button>
+                    <button id="foward_small_button"><kbd>E</kbd><span class="button_info">快進 0.2 秒</span></button>
                     <button id="reload_comment_button"><kbd>R</kbd><span class="button_info">重新讀取註解</span></button>
                 </div>
                 <div id="line3">
                     <button id="backward_large_button"><kbd>A</kbd><span class="button_info">倒退</span></button>
-                    <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速20％</span></button>
+                    <button id="speed_down_button"><kbd>S</kbd><span class="button_info">播放減速 20％</span></button>
                     <button id="foward_large_button"><kbd>D</kbd><span class="button_info">快進</span></button>
                     <button id="prev_comment_button"><kbd>F</kbd><span class="button_info">前一個註解</span></button>
                 </div>
@@ -252,6 +267,7 @@
     <script src="js/obj/draw/mask.js"></script>
     <script src="js/obj/draw/pathmask.js"></script>
     <script src="js/obj/draw/polygon.js"></script>
+    <script src="js/obj/draw/pillarMask.js"></script>
     <script src="js/obj/video_nav.js"></script>
     <script src="js/obj/canvas_nav.js"></script>
     <script src="js/obj/comment_list.js"></script>

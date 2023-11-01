@@ -2,6 +2,7 @@
 
 // 是否進入開發模式
 var developmentMode = 0;
+//developmentMode = 1;
 
 // 設定開發模式
 if (developmentMode === 1) {
@@ -25,16 +26,16 @@ if (developmentMode === 1) {
     $("#add_comment").css("display", "inline-block");
     commentList.appendItem(0, {
         time: 58,
-        title: "註解1",
+        title: "註解 1",
         position: "right_down",
         text: "這個傳球要看另外一邊",
         duration: 10,
     });
     commentList.appendItem(1, {
         time: 28,
-        title: "註解2",
+        title: "註解 2",
         position: "center",
-        text: "註解2",
+        text: "註解 2",
         duration: 10,
     });
     commentList.show();

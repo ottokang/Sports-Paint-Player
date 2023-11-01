@@ -33,6 +33,13 @@ $("body").on("keydown", function (keyEvent) {
                 }
                 break;
 
+            case "Digit5": // 5：光柱遮罩
+                if ($("#pen_type").val() !== "5") {
+                    $("#pen_type").val(5).change();
+                    canvasNav.showOSD("切換為光柱遮罩", "center", "increase");
+                }
+                break;
+
             case "Backquote": // `：展開/收起繪圖屬性
                 canvasNav.toggleDrawPropertyButton();
                 break;
@@ -55,19 +62,19 @@ $("body").on("keydown", function (keyEvent) {
                 videoNav.jump($("#jump_second").val());
                 break;
 
-            case "KeyE": // E：倒退0.2秒
+            case "KeyE": // E：倒退 0.2 秒
                 videoNav.jump(0.2);
                 break;
 
-            case "KeyQ": // Q：倒退0.2秒
+            case "KeyQ": // Q：倒退 0.2 秒
                 videoNav.jump(-0.2);
                 break;
 
-            case "KeyW": // W：加速20%
+            case "KeyW": // W：加速 20%
                 videoNav.setPlaybackRate(20);
                 break;
 
-            case "KeyS": // S：減速20%
+            case "KeyS": // S：減速 20%
                 videoNav.setPlaybackRate(-20);
                 break;
 
