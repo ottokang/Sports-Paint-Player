@@ -9,8 +9,15 @@ var pillarMask = {
     _backgroudCanvasData: null,
     _rectRatio: 0.9,
     _ellipseproportion: 1.3,
-    defaultRadius: Number.parseInt($(window).width() / 22),
+    _defaultRadius: Number.parseInt($(window).width() / 22),
 
+    // 初始物件設定
+    init() {
+        // 設定預設光柱遮罩大小
+        $("#pillar_mask_radius").val(this._defaultRadius);
+    },
+
+    // 切換物件後設定物件選項
     setup() {
         $("#container").css("cursor", "auto");
     },

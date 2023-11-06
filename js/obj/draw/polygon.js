@@ -4,17 +4,29 @@ var polygon = {
     _originMouseCursor: null,
     _polygonVertex: [],
     _isDrawing: false,
-    colors: {
+    _colors: {
         黃色: "#e8c62e",
         藍色: "#0033cc",
         紅色: "#f542a7",
     },
 
+    // 初始物件設定
+    init() {
+        // 依照多邊形顏色設定 UI 選項
+        $("#polygon_color").html("");
+        $.each(this._colors, function (colorName, value) {
+            $("#polygon_color").append(`<option value="${value}" style="color:${value};">${colorName}</option>`);
+        });
+        $("#polygon_color").css("color", $("#polygon_color").val());
+    },
+
+    // 重置物件設定
     reset() {
         this._polygonVertex = [];
         this._isDrawing = false;
     },
 
+    // 切換物件後設定物件選項
     setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
         $("#container").css("cursor", "auto");

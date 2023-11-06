@@ -2,7 +2,7 @@
 
 // 是否進入開發模式
 var developmentMode = 0;
-//developmentMode = 1;
+developmentMode = 1;
 
 // 設定開發模式
 if (developmentMode === 1) {

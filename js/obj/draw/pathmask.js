@@ -7,8 +7,15 @@ var pathMask = {
     _y: 0,
     _originMouseCursor: null,
     _backgroudCanvasData: null,
-    defaultRadius: Number.parseInt($(window).width() / 39),
+    _defaultRadius: Number.parseInt($(window).width() / 39),
 
+    // 初始物件設定
+    init() {
+        // 設定預設路徑遮罩大小
+        $("#path_mask_radius").val(this._defaultRadius);
+    },
+
+    // 切換物件後設定物件選項
     setup() {
         $("#container").css("cursor", "auto");
     },

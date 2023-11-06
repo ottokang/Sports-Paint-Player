@@ -75,24 +75,12 @@ var canvasNav = {
 
     // 初始化繪圖 UI
     initDrawUI() {
-        // 依照畫筆物件設定，加入畫筆顏色選項
-        $("#pen_color").html("");
-        $.each(pen.colors, function (colorName, value) {
-            $("#pen_color").append(`<option value="${value}" style="color:${value};">${colorName}</option>`);
+        // 設定繪圖物件初始值
+        Object.keys(drawObj).forEach((key) => {
+            if (drawObj[key].hasOwnProperty("init")) {
+                drawObj[key].init();
+            }
         });
-        $("#pen_color").css("color", $("#pen_color").val());
-
-        // 依照多邊形物件設定，加入多邊形顏色選項
-        $("#polygon_color").html("");
-        $.each(polygon.colors, function (colorName, value) {
-            $("#polygon_color").append(`<option value="${value}" style="color:${value};">${colorName}</option>`);
-        });
-        $("#polygon_color").css("color", $("#polygon_color").val());
-
-        // 設定預設遮罩、路徑遮罩大小
-        $("#mask_radius").val(mask.defaultRadius);
-        $("#path_mask_radius").val(pathMask.defaultRadius);
-        $("#pillar_mask_radius").val(pillarMask.defaultRadius);
 
         // 綁定熱鍵說明按鈕
         $("#hotkey_toggle_button").on("click", function () {

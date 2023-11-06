@@ -9,18 +9,30 @@ var pen = {
     _arrowRecordCountDown: 5,
     _arrowFromX: null,
     _arrowFromY: null,
-    colors: {
+    _colors: {
         紅色: "#f542a7",
         黃色: "#e8c62e",
         藍色: "#0033cc",
     },
 
+    // 初始物件設定
+    init() {
+        // 依照畫筆顏色設定 UI 選項
+        $("#pen_color").html("");
+        $.each(this._colors, function (colorName, value) {
+            $("#pen_color").append(`<option value="${value}" style="color:${value};">${colorName}</option>`);
+        });
+        $("#pen_color").css("color", $("#pen_color").val());
+    },
+
+    // 重置物件設定
     reset() {
         this._isMouseDown = false;
         this._isInCanvas = false;
         ctx.setLineDash([]);
     },
 
+    // 切換物件後設定物件選項
     setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
         $("#container").css("cursor", "auto");

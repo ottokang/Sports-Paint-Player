@@ -1,7 +1,7 @@
 "use strict";
 
 var commentItem = {
-    // 顯示註解文字（在開發模式延長顯示時間為1000倍）
+    // 顯示註解文字（在開發模式延長顯示時間為 1000 倍）
     showText(id) {
         this.clearAllText();
         let comment = this.loadJson(id);
@@ -25,17 +25,17 @@ var commentItem = {
         $(".comment_text").remove();
     },
 
-    // 讀取註解的JSON物件
+    // 讀取註解的 JSON 物件
     loadJson(id) {
         return JSON.parse($(`#comment_item_${id}`).data("comment"));
     },
 
-    // 寫入註解的JSON物件
+    // 寫入註解的 JSON 物件
     saveJson(id, comment) {
         $(`#comment_item_${id}`).data("comment", JSON.stringify(comment));
     },
 
-    // 過濾換行、空白符號為HTML標籤
+    // 過濾換行、空白符號為 HTML 標籤
     _filterToHTML(text) {
         text = text.replace(/ /g, "&nbsp;");
         text = text.replace(/\n/g, "<br>");
