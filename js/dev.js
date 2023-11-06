@@ -7,10 +7,7 @@ var developmentMode = 0;
 // 設定開發模式
 if (developmentMode === 1) {
     // 繪圖區域
-    $("#canvas_area").show().css({
-        border: "2px solid grey",
-        marginTop: "4em",
-    });
+    $("#canvas_area").show().css({ border: "2px solid grey", marginTop: "4em" });
     $("#video_content").css("top", "4em");
     ctx.canvas.width = window.innerWidth * 0.85;
     ctx.canvas.height = window.innerHeight * 0.85;
@@ -21,7 +18,7 @@ if (developmentMode === 1) {
     $("#video_source").show().css("margin-left", "6em");
     $("#control, #draw_property").show();
 
-    // 設定註解
+    // 建議測試註解
     $("#comment_source").show().css("margin-left", "1em");
     $("#add_comment").css("display", "inline-block");
     commentList.appendItem(0, {

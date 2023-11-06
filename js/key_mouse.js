@@ -192,7 +192,7 @@ $("input[type='number']").on("change", function () {
     }
 });
 
-// 綁定影片播放滑鼠滾輪動作
+// 綁定影片播放時滑鼠滾輪動作
 $("#canvas_area").on("wheel", function (wheelEvent) {
     if (wheelEvent.originalEvent.deltaY < 0) {
         // 滾輪往上：放大影像
@@ -203,13 +203,11 @@ $("#canvas_area").on("wheel", function (wheelEvent) {
     }
 });
 
-// 到達上限、選項到頂部效果
+// 輸入到達上限效果
 function reachTopEffect(jqueryObj) {
     jqueryObj
         .stop(true, true)
-        .css({
-            fontWeight: "normal",
-        })
+        .css({ fontWeight: "normal" })
         .animate(
             {
                 "font-weight": "+=300",

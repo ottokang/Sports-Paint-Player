@@ -20,7 +20,7 @@ var mask = {
         this._isInCanvas = true;
         this._x = e.offsetX;
         this._y = e.offsetY;
-        this._reDrawBackground();
+        this._redrawBackground();
         this._drawCircleMask(e);
     },
 
@@ -50,12 +50,12 @@ var mask = {
         $("#container").css("cursor", "grab");
         if (this._isMouseDown == true && this._isInCanvas == true) {
             canvasNav.clearCanvas(false);
-            this._reDrawBackground();
+            this._redrawBackground();
             this._drawCircleMask(e);
         }
     },
 
-    _reDrawBackground() {
+    _redrawBackground() {
         canvasNav.clearCanvas(false);
         ctx.globalCompositeOperation = "source-over";
         ctx.fillStyle = `rgba(30, 30, 30, ${$("#mask_transparency").val()})`;

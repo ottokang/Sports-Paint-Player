@@ -20,7 +20,7 @@ var pathMask = {
         this._isInCanvas = true;
         this._x = e.offsetX;
         this._y = e.offsetY;
-        this._reDrawBackground();
+        this._redrawBackground();
         this._drawCircleMask(e);
         this._backgroudCanvasData = ctx.getImageData(0, 0, ctx.canvas.width, ctx.canvas.height);
     },
@@ -57,7 +57,7 @@ var pathMask = {
         }
     },
 
-    _reDrawBackground() {
+    _redrawBackground() {
         canvasNav.clearCanvas(false);
         ctx.globalCompositeOperation = "source-over";
         ctx.fillStyle = `rgba(30, 30, 30, ${$("#path_mask_transparency").val()})`;
