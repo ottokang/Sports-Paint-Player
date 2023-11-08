@@ -2,9 +2,9 @@
 
 var polygon = {
     _colors: {
-        黃色: "#e8c62e",
-        藍色: "#0033cc",
         紅色: "#f542a7",
+        藍色: "#0033cc",
+        黃色: "#e8c62e",
     },
     _isDrawing: false,
     _originMouseCursor: null,

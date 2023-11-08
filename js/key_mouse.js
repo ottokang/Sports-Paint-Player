@@ -207,7 +207,7 @@ $("#canvas_area").on("wheel", function (wheelEvent) {
 function reachTopEffect(jqueryObj) {
     jqueryObj
         .stop(true, true)
-        .css({ fontWeight: "normal" })
+        .css("font-weight", "normal")
         .animate(
             {
                 "font-weight": "+=300",
@@ -226,9 +226,7 @@ function reachTopEffect(jqueryObj) {
 function reachBottomEffect(jqueryObj) {
     jqueryObj
         .stop(true, true)
-        .css({
-            fontWeight: "normal",
-        })
+        .css("font-weight", "normal")
         .animate(
             {
                 "font-weight": "+=300",

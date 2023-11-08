@@ -6,8 +6,8 @@ var pen = {
     _arrowRecordCountDown: 5,
     _colors: {
         紅色: "#f542a7",
-        黃色: "#e8c62e",
         藍色: "#0033cc",
+        黃色: "#e8c62e",
     },
     _isInCanvas: false,
     _isMouseDown: false,

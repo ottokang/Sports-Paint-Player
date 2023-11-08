@@ -15,9 +15,12 @@ var canvasNav = {
         $("#video_osd").finish().removeAttr("style"); //清除之前的效果，讓 OSD 可以再次顯示
         $("#video_osd").html(message).show();
         $("#video_osd").attr("class", `osd_${position}`);
+
         // OSD 訊息置中（使用 transform -50％會影響動畫效果）
-        $("#video_osd").css("margin-left", -($("#video_osd").width() / 2));
-        $("#video_osd").css("margin-top", -($("#video_osd").height() / 2));
+        $("#video_osd").css({
+            marginLeft: -($("#video_osd").width() / 2),
+            marginTop: -($("#video_osd").height() / 2),
+        });
 
         switch (fadeOutEffect) {
             case "increase":
