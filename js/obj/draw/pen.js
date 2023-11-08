@@ -1,19 +1,19 @@
 "use strict";
 
 var pen = {
-    _isMouseDown: false,
-    _isInCanvas: false,
-    _x: 0,
-    _y: 0,
-    _originMouseCursor: null,
-    _arrowRecordCountDown: 5,
     _arrowFromX: null,
     _arrowFromY: null,
+    _arrowRecordCountDown: 5,
     _colors: {
         紅色: "#f542a7",
         黃色: "#e8c62e",
         藍色: "#0033cc",
     },
+    _isInCanvas: false,
+    _isMouseDown: false,
+    _originMouseCursor: null,
+    _x: 0,
+    _y: 0,
 
     // 初始物件設定
     init() {

@@ -1,13 +1,13 @@
 "use strict";
 
 var pathMask = {
-    _isMouseDown: false,
-    _isInCanvas: false,
-    _x: 0,
-    _y: 0,
-    _originMouseCursor: null,
     _backgroudCanvasData: null,
     _defaultRadius: Number.parseInt($(window).width() / 39),
+    _isInCanvas: false,
+    _isMouseDown: false,
+    _originMouseCursor: null,
+    _x: 0,
+    _y: 0,
 
     // 初始物件設定
     init() {

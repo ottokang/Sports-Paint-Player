@@ -1,15 +1,15 @@
 "use strict";
 
 var pillarMask = {
-    _isMouseDown: false,
+    _backgroudCanvasData: null,
+    _defaultRadius: Number.parseInt($(window).width() / 22),
+    _ellipseproportion: 1.3,
     _isInCanvas: false,
+    _isMouseDown: false,
+    _originMouseCursor: null,
+    _rectRatio: 0.9,
     _x: 0,
     _y: 0,
-    _originMouseCursor: null,
-    _backgroudCanvasData: null,
-    _rectRatio: 0.9,
-    _ellipseproportion: 1.3,
-    _defaultRadius: Number.parseInt($(window).width() / 22),
 
     // 初始物件設定
     init() {

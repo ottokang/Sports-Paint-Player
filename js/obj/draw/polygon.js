@@ -1,14 +1,14 @@
 "use strict";
 
 var polygon = {
-    _originMouseCursor: null,
-    _polygonVertex: [],
-    _isDrawing: false,
     _colors: {
         黃色: "#e8c62e",
         藍色: "#0033cc",
         紅色: "#f542a7",
     },
+    _isDrawing: false,
+    _originMouseCursor: null,
+    _polygonVertex: [],
 
     // 初始物件設定
     init() {

@@ -116,7 +116,7 @@ $("#video_content").on("durationchange", function () {
     $("#control, #draw_property").show();
 });
 
-// 處理播放時間為時:分:秒
+// 處理播放時間為時：分：秒
 String.prototype.toHHMMSS = function () {
     let secondsNumber = Number.parseInt(this, 10);
     let hours = Math.floor(secondsNumber / 3600);
