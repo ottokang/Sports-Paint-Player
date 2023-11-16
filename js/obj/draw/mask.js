@@ -17,12 +17,12 @@ var mask = {
 
     // 切換物件後設定物件選項
     setup() {
-        $("#container").css("cursor", "auto");
+        $("#canvas_area").css("cursor", "grab");
     },
 
     mousedown(e) {
-        this._originMouseCursor = $("#container").css("cursor");
-        $("#container").css("cursor", "grabbing");
+        this._originMouseCursor = $("#canvas_area").css("cursor");
+        $("#canvas_area").css("cursor", "grabbing");
         this._isMouseDown = true;
         this._isInCanvas = true;
         this._x = e.offsetX;
@@ -33,7 +33,7 @@ var mask = {
 
     mouseup(e) {
         this._isMouseDown = false;
-        $("#container").css("cursor", this._originMouseCursor);
+        $("#canvas_area").css("cursor", this._originMouseCursor);
     },
 
     mouseover(e) {
@@ -42,20 +42,22 @@ var mask = {
         if (e.buttons === 1) {
             this._isMouseDown = true;
         }
+
         if (this._isMouseDown) {
-            $("#container").css("cursor", "grabbing");
+            $("#canvas_area").css("cursor", "grabbing");
         }
     },
 
     mouseout(e) {
         this._isInCanvas = false;
         this._isMouseDown = false;
-        $("#container").css("cursor", this._originMouseCursor);
+        $("#canvas_area").css("cursor", this._originMouseCursor);
     },
 
     mousemove(e) {
-        $("#container").css("cursor", "grab");
+        $("#canvas_area").css("cursor", "grab");
         if (this._isMouseDown == true && this._isInCanvas == true) {
+            $("#canvas_area").css("cursor", "grabbing");
             canvasNav.clearCanvas(false);
             this._redrawBackground();
             this._drawCircleMask(e);

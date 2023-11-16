@@ -17,6 +17,9 @@ var polygon = {
         $.each(this._colors, function (colorName, value) {
             $("#polygon_color").append(`<option value="${value}" style="color:${value};">${colorName}</option>`);
         });
+
+        // 設定預設為第二選項
+        $("#polygon_color").prop("selectedIndex", 1);
         $("#polygon_color").css("color", $("#polygon_color").val());
     },
 
@@ -29,7 +32,7 @@ var polygon = {
     // 切換物件後設定物件選項
     setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
-        $("#container").css("cursor", "auto");
+        $("#canvas_area").css("cursor", "pointer");
         ctx.strokeStyle = `rgba(${this._hexToRgb($("#polygon_color").val())}, ${Number.parseFloat($("#polygon_transparency").val())})`;
         ctx.fillStyle = `rgba(${this._hexToRgb($("#polygon_color").val())}, ${Number.parseFloat($("#polygon_transparency").val())})`;
         ctx.lineJoin = "round";
@@ -39,7 +42,7 @@ var polygon = {
 
     mouseup(e) {
         this.setup();
-        $("#container").css("cursor", "pointer");
+        $("#canvas_area").css("cursor", "progress");
         this._isDrawing = true;
         this._polygonVertex.push({
             x: e.offsetX,
@@ -50,6 +53,7 @@ var polygon = {
     mousemove(e) {
         if (this._isDrawing === true) {
             // 繪製時顯示虛線，邊框線條不透明加粗
+            $("#canvas_area").css("cursor", "progress");
             ctx.setLineDash([30, 30]);
             ctx.strokeStyle = `rgba(${this._hexToRgb($("#polygon_color").val())}, 1)`;
             ctx.lineWidth = 4;
@@ -63,7 +67,7 @@ var polygon = {
             this._draw(e);
             this._isDrawing = false;
             this._polygonVertex = [];
-            $("#container").css("cursor", "auto");
+            $("#canvas_area").css("cursor", "pointer");
         }
     },
 

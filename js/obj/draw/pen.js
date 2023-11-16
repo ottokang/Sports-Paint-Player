@@ -35,7 +35,7 @@ var pen = {
     // 切換物件後設定物件選項
     setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
-        $("#container").css("cursor", "auto");
+        $("#canvas_area").css("cursor", "url('media/cursor/pen.png'), auto");
         ctx.strokeStyle = $("#pen_color").val();
         ctx.fillStyle = $("#pen_color").val();
         ctx.lineJoin = "round";
@@ -45,8 +45,9 @@ var pen = {
 
     mousedown(e) {
         this.setup();
-        this._originMouseCursor = $("#container").css("cursor");
-        $("#container").css("cursor", "pointer");
+        this._originMouseCursor = $("#canvas_area").css("cursor");
+        $("#canvas_area").css("cursor", "pointer");
+        $("#canvas_area").css("cursor", "url('media/cursor/pen.png'), auto");
         this._isMouseDown = true;
         this._isInCanvas = true;
         this._x = e.offsetX;
@@ -56,7 +57,7 @@ var pen = {
 
     mouseup(e) {
         this._isMouseDown = false;
-        $("#container").css("cursor", this._originMouseCursor);
+        $("#canvas_area").css("cursor", this._originMouseCursor);
         this._arrowRecordCountDown = 5;
         if ($("#is_arrow").prop("checked") === true) {
             this._drawArrow(this._arrowFromX, this._arrowFromY, e.offsetX, e.offsetY, $("#pen_width").val() * 2.5);
@@ -72,14 +73,14 @@ var pen = {
         this._x = e.offsetX;
         this._y = e.offsetY;
         if (this._isMouseDown) {
-            $("#container").css("cursor", "pointer");
+            $("#canvas_area").css("cursor", "pointer");
         }
     },
 
     mouseout(e) {
         this._isInCanvas = false;
         this._isMouseDown = false;
-        $("#container").css("cursor", this._originMouseCursor);
+        $("#canvas_area").css("cursor", this._originMouseCursor);
     },
 
     mousemove(e) {

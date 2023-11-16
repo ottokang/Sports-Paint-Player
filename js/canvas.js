@@ -14,7 +14,7 @@ var drawObj = {
 canvasNav.initDrawUI();
 canvasNav.setupDrawObj();
 
-// 綁定畫筆類型變更，設定繪圖物件
+// 綁定畫筆類型變更時，設定繪圖物件
 $("#pen_type").on("change", function () {
     canvasNav.setupDrawObj();
 });
