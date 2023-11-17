@@ -56,7 +56,6 @@ var pillarMask = {
     },
 
     mousemove(e) {
-        $("#canvas_area").css("cursor", "grab");
         if (this._isMouseDown == true && this._isInCanvas == true) {
             $("#canvas_area").css("cursor", "grabbing");
             canvasNav.clearCanvas(false);

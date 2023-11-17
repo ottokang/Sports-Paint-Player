@@ -55,8 +55,8 @@ var pathMask = {
     },
 
     mousemove(e) {
-        $("#canvas_area").css("cursor", "grab");
         if (this._isMouseDown == true && this._isInCanvas == true) {
+            $("#canvas_area").css("cursor", "grabbing");
             canvasNav.clearCanvas(false);
             ctx.putImageData(this._backgroudCanvasData, 0, 0);
             this._drawPathMask(e);
