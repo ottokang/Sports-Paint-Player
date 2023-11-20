@@ -17,7 +17,7 @@ var pathMask = {
 
     // 切換物件後設定物件選項
     setup() {
-        $("#canvas_area").css("cursor", "auto");
+        $("#canvas_area").css("cursor", "grab");
     },
 
     mousedown(e) {
