@@ -63,7 +63,6 @@ var polygon = {
 
     dblclick(e) {
         if (this._isDrawing === true) {
-            console.log(this._polygonVertex.length);
             // 多邊形繪製低於 3 點提示訊息
             if (this._polygonVertex.length < 4) {
                 canvasNav.showMessage("請繪製超過 3 點", 2);
