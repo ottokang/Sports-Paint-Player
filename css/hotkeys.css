@@ -79,6 +79,10 @@ kbd.small {
     width: 10em;
 }
 
+#hotkey_buttons #muted_button {
+    margin-left: 18em;
+}
+
 #hotkey_buttons #play_pause_button {
     width: 20em;
 }

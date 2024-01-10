@@ -106,7 +106,7 @@ $("body").on("keydown", function (keyEvent) {
                 commentList.prev();
                 break;
 
-            case "KeyV": // V：下一個註解
+            case "KeyG": // G：下一個註解
                 commentList.next();
                 break;
 
