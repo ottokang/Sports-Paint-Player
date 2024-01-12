@@ -1,6 +1,6 @@
 "use strict";
 
-// 設定 Canvas 畫布、繪圖物件、開發模式
+// 設定 Canvas 畫布、繪圖物件
 var ctx = $("#canvas_area")[0].getContext("2d");
 var drawObj = {
     1: pen,
@@ -25,7 +25,7 @@ $("#pen_color, #polygon_color").on("change", function (e) {
     changedColorObj.css("color", changedColorObj.val());
 });
 
-// 綁定滑鼠在 canvas 上的動作，由繪圖物件實現方法
+// 綁定滑鼠在 Canvas 上的動作，由繪圖物件實現方法
 $("#canvas_area").on("mousedown mouseup mouseover mouseout mousemove dblclick", function (e) {
     if (drawObj[$("#pen_type").val()].hasOwnProperty(e.type)) {
         drawObj[$("#pen_type").val()][e.type](e);

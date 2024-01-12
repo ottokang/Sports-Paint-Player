@@ -12,11 +12,6 @@ $(window).on("resize", function () {
     $("#resize_message").show();
 });
 
-// 綁定靜音按鈕動作
-$("#is_mute").on("click", function () {
-    videoNav.toggleMute();
-});
-
 // 綁定影片選擇後動作，選擇影像後播放
 $("#video_source").on("change", function () {
     let videoFile = this.files[0];
@@ -116,7 +111,7 @@ $("#video_content").on("durationchange", function () {
     $("#control, #draw_property").show();
 });
 
-// 處理播放時間為時：分：秒
+// 處理播放時間轉換為時：分：秒
 String.prototype.toHHMMSS = function () {
     let secondsNumber = Number.parseInt(this, 10);
     let hours = Math.floor(secondsNumber / 3600);
