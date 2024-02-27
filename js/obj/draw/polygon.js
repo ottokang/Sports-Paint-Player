@@ -32,7 +32,7 @@ var polygon = {
     // 切換物件後設定物件選項
     setup() {
         // 設定畫布滑鼠指標、畫筆顏色、屬性
-        $("#canvas_area").css("cursor", "pointer");
+        $("#canvas_area").css("cursor", "url('media/cursor/polygon.png'), pointer");
         ctx.strokeStyle = `rgba(${this._hexToRgb($("#polygon_color").val())}, ${Number.parseFloat($("#polygon_transparency").val())})`;
         ctx.fillStyle = `rgba(${this._hexToRgb($("#polygon_color").val())}, ${Number.parseFloat($("#polygon_transparency").val())})`;
         ctx.lineJoin = "round";
@@ -73,7 +73,7 @@ var polygon = {
             this._draw(e);
             this._isDrawing = false;
             this._polygonVertex = [];
-            $("#canvas_area").css("cursor", "pointer");
+            $("#canvas_area").css("cursor", "url('media/cursor/polygon.png'), pointer");
         }
     },
 
