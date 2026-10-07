@@ -7,9 +7,74 @@ var resizeXOffset;
 var resizeYOffset;
 var video = $("#video_content")[0];
 
-// 綁定螢幕畫面大小改變偵測說明
+var resizeRafId = null;
+
+// 自適應調整畫面大小與版面配置
+function updateLayout() {
+    if (!video.videoWidth || !video.videoHeight) {
+        return;
+    }
+
+    if (isResized) {
+        videoNav.zoomDefault();
+    }
+
+    // 根據螢幕大小，計算 Container 大小
+    let maxViewWidth = window.innerWidth * 0.9;
+    let maxViewHeight = window.innerHeight * 0.86;
+    let videoAspectRatio = video.videoWidth / video.videoHeight;
+    let screenAspectRatio = maxViewWidth / maxViewHeight;
+    let containerWidth, containerHeight;
+    if (videoAspectRatio >= screenAspectRatio) {
+        containerWidth = Number.parseInt(maxViewWidth);
+        containerHeight = Number.parseInt(video.videoHeight * (maxViewWidth / video.videoWidth));
+    } else {
+        containerWidth = Number.parseInt(video.videoWidth * (maxViewHeight / video.videoHeight));
+        containerHeight = Number.parseInt(maxViewHeight);
+    }
+
+    // 設定 Container 寬、高、Margin-Top 距離
+    $("#container").width(containerWidth);
+    $("#container").height(containerHeight);
+    $("#container").css("margin-top", (maxViewHeight - containerHeight) / 2 + 10 + "px");
+    $("#video_content").width(containerWidth);
+    $("#video_content").height(containerHeight);
+
+    // 設定進度列與回播點寬度
+    $("#video_progress").width(containerWidth);
+    $("#back_time").width(containerWidth - 8);
+
+    // 調整 Canvas 畫布大小並保持畫布上的繪圖內容等比例縮放
+    let oldWidth = ctx.canvas.width;
+    let oldHeight = ctx.canvas.height;
+    if (oldWidth !== containerWidth || oldHeight !== containerHeight) {
+        if (oldWidth > 0 && oldHeight > 0) {
+            let tempCanvas = document.createElement("canvas");
+            tempCanvas.width = oldWidth;
+            tempCanvas.height = oldHeight;
+            let tempCtx = tempCanvas.getContext("2d");
+            tempCtx.drawImage(ctx.canvas, 0, 0);
+
+            ctx.canvas.width = containerWidth;
+            ctx.canvas.height = containerHeight;
+            ctx.drawImage(tempCanvas, 0, 0, oldWidth, oldHeight, 0, 0, containerWidth, containerHeight);
+        } else {
+            ctx.canvas.width = containerWidth;
+            ctx.canvas.height = containerHeight;
+        }
+        canvasNav.setupDrawObj();
+    }
+}
+
+// 綁定螢幕畫面大小改變自動調整版面
 $(window).on("resize", function () {
-    $("#resize_message").show();
+    if (resizeRafId !== null) {
+        cancelAnimationFrame(resizeRafId);
+    }
+    resizeRafId = requestAnimationFrame(function () {
+        updateLayout();
+        resizeRafId = null;
+    });
 });
 
 // 綁定影片選擇後動作，選擇影像後播放
@@ -73,39 +138,16 @@ $("#canvas_area").on("mousemove", function (e) {
 
 // 綁定影片長度變更時，設定播放進度列、播放資訊、container 高度/寬度
 $("#video_content").on("durationchange", function () {
-    // 根據螢幕大小，設定 Container 大小
-    let maxViewWidth = window.innerWidth * 0.9;
-    let maxViewHeight = window.innerHeight * 0.86;
-    let videoAspectRatio = video.videoWidth / video.videoHeight;
-    let screenAspectRatio = maxViewWidth / maxViewHeight;
-    let containerWidth, conatinerHeight;
-    if (videoAspectRatio >= screenAspectRatio) {
-        containerWidth = Number.parseInt(maxViewWidth);
-        conatinerHeight = Number.parseInt(video.videoHeight * (maxViewWidth / video.videoWidth));
-    } else {
-        containerWidth = Number.parseInt(video.videoWidth * (maxViewHeight / video.videoHeight));
-        conatinerHeight = Number.parseInt(maxViewHeight);
-    }
-
-    // 設定 Container 寬、高、Margin-Top 距離
-    $("#container").width(containerWidth);
-    $("#container").height(conatinerHeight);
-    $("#container").css("margin-top", (maxViewHeight - conatinerHeight) / 2 + 10 + "px");
-    $("#video_content").width(containerWidth);
-    $("#video_content").height(conatinerHeight);
+    updateLayout();
 
     // 設定播放進度時間、播放資訊
     $("#total_time").html(video.duration.toString().toHHMMSS());
-    $("#video_progress").width(containerWidth);
-    $("#back_time").width(containerWidth - 8);
     $("#video_progress").show().prop("max", video.duration);
     $(".video_info").show();
     $("#playback_speed").html(Math.floor(video.playbackRate * 100) + "%");
 
     // 設定 Canvas 大小、設定繪圖界面、物件
     $("#canvas_area").show();
-    ctx.canvas.width = containerWidth;
-    ctx.canvas.height = conatinerHeight;
 
     // 顯示控制介面、標記界面
     $("#control, #draw_property").show();

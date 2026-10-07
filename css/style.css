@@ -64,10 +64,6 @@ body {
     margin-bottom: 0.5em;
 }
 
-#resize_message {
-    display: none;
-}
-
 #select_video_button:hover,
 #select_video_button:focus {
     background-color: #bf360c;
