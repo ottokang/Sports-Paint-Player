@@ -64,6 +64,10 @@ var videoNav = {
 
     // 清除影片回播點
     clearBackTime() {
+        if (this._moveToBackTimeTimeout !== null) {
+            clearTimeout(this._moveToBackTimeTimeout);
+            this._moveToBackTimeTimeout = null;
+        }
         if ($("#back_time_pointer").is(":visible")) {
             $("#back_time_pointer").hide();
             canvasNav.showOSD("清除回播點");
@@ -75,11 +79,12 @@ var videoNav = {
         if ($("#back_time_pointer").is(":visible")) {
             video.currentTime = $("#back_time_pointer").attr("data-back_time");
             video.pause();
-            if (this._moveToBackTimeTimeout === null) {
+            if (this._moveToBackTimeTimeout !== null) {
                 clearTimeout(this._moveToBackTimeTimeout);
             }
             this._moveToBackTimeTimeout = setTimeout(() => {
                 video.play();
+                this._moveToBackTimeTimeout = null;
             }, 600);
             canvasNav.showOSD(`移到回播點：${video.currentTime.toString().toHHMMSS()}`);
         } else {
